@@ -1,0 +1,1 @@
+﻿$flags="DisableOnSoftRemove","DisableRecoveryFromPowerDrain","DisableLPM","SkipBOSDescriptorQuery","SkipContainerIdQuery";Get-ChildItem HKLM:\SYSTEM\CurrentControlSet\Control\usbflags | ? { $_.PSChildName.Length -eq 12 } | % { foreach($f in $flags){ New-ItemProperty -Path $_.PSPath -Name $f -PropertyType DWord -Value 1 -Force | Out-Null } }

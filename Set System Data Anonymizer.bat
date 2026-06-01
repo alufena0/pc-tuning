@@ -1,0 +1,9 @@
+powershell -nop -c "Set-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Cryptography' -Name 'MachineGuid' -Value ([guid]::NewGuid().ToString()) -Force" >nul 2>&1
+::powershell -nop -ex bypass -c "Get-NetAdapter | %% { Set-NetAdapter -Name $_.Name -MacAddress (((1..6|%%{'{0:X2}' -f (Get-Random 256)})-join '-')) -Confirm:$false -ErrorAction SilentlyContinue }" >nul 2>&1
+powershell -nop -ex bypass -c "Set-ItemProperty 'HKLM:\SYSTEM\CurrentControlSet\Control\Class\{4D36E972-E325-11CE-BFC1-08002bE10318}\0000' NetworkAddress (-join((1..6)|%%{'{0:X2}' -f (Get-Random 256)}))" >nul 2>&1
+powershell -nop -ex bypass -c "$cv='HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion'; Set-ItemProperty $cv RegisteredOwner ('User'+(Get-Random -Max 999999)); Set-ItemProperty $cv InstallDate ([int](Get-Date (Get-Date).AddDays(-(Get-Random -Min 30 -Max 730)) -UFormat %%s))" >nul 2>&1
+powershell -nop -ex bypass -c "$d=(Get-Date).AddDays(-(Get-Random -Min 30 -Max 730)).ToFileTime(); $b=[System.BitConverter]::GetBytes([long]$d); Set-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion' InstallTime $b" >nul 2>&1
+powershell -nop -ex bypass -c "$cv='HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion'; $p={-join((1..5)|%%{Get-Random -Max 10})}; Set-ItemProperty $cv ProductId ((&$p)+'-'+(&$p)+'-'+(&$p)+'-'+(&$p))" >nul 2>&1
+powershell -nop -ex bypass -c "$r={-join((1..8)|%%{'{0:x}' -f (Get-Random 16)})}; Set-ItemProperty 'HKLM:\HARDWARE\DESCRIPTION\System\BIOS' SystemSerialNumber ('SN-'+(&$r).ToUpper()); Set-ItemProperty 'HKLM:\HARDWARE\DESCRIPTION\System\BIOS' BaseBoardSerialNumber ('MB-'+(&$r).ToUpper())" >nul 2>&1
+powershell -nop -c "Rename-Computer -NewName ('DESKTOP-'+(-join((1..7)|%%{([char[]]'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'|Get-Random)}))) -Force" >nul 2>&1
+exit
