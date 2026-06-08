@@ -998,6 +998,11 @@ Windows Registry Editor Version 5.00
 "IoPriority"=dword:00000000
 "PagePriority"=dword:00000001
 
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\ApplicationFrameHost.exe\PerfOptions]
+"CpuPriorityClass"=dword:00000001
+"IoPriority"=dword:00000000
+"PagePriority"=dword:00000001
+
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\fontdrvhost.exe\PerfOptions]
 "CpuPriorityClass"=dword:00000001
 "IoPriority"=dword:00000000
@@ -4228,6 +4233,7 @@ Windows Registry Editor Version 5.00
 "TPExclusions"=dword:00000000
 "AllowSwitchToAsyncInspection"=dword:00000000
 "BruteForceProtectionLocalNetworkBlocking"=dword:00000000
+"SenseDevMode"=dword:00000000
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Defender\Spynet]
 "DisableBlockAtFirstSeen"=dword:00000001
 "LocalSettingOverrideSpynetReporting"=dword:00000000
@@ -5542,6 +5548,9 @@ Windows Registry Editor Version 5.00
 "BypassNRO"=dword:00000001
 "DisablePrivacyExperience"=dword:00000001
 "DisableVoice"=dword:00000001
+"HideEULAPage"=dword:00000001
+"HideWirelessSetupInOOBE"=dword:00000001
+"HideOnlineAccountScreens"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\System\DriverDatabase\Policies\Settings]
 "AllowRemoteRPC"=dword:00000000
@@ -6482,6 +6491,8 @@ Windows Registry Editor Version 5.00
 "debugger"="Blocked"
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\TextInputHost.exe]
 "debugger"="Blocked"
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\OneDrive.exe]
+"debugger"="Blocked"
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer\DisallowRun]
 "1"="wlms.exe"
@@ -6626,6 +6637,7 @@ Windows Registry Editor Version 5.00
 "140"="aimgr.exe"
 "141"="ctfmon.exe"
 "142"="TextInputHost.exe"
+"143"="OneDrive.exe"
 
 [HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\8\2283032206]
 "EnabledState"=dword:00000001
@@ -6770,6 +6782,17 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Internet Explorer\Main]
 "DEPOff"=dword:00000001 ; 00000000, 00000001 security option for anticheats
 "DoNotTrack"=dword:00000001
+"AutoSearch"=dword:00000000
+"Isolation64Bit"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Internet Explorer\PrefetchPrerender]
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Internet Explorer\Main\WindowsSearch]
+"EnabledScopes"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Internet Explorer\ContinuousBrowsing]
+"Enabled"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\Software\Microsoft\RemovalTools\MpGears]
 "HeartbeatTrackingIndex"=dword:00000000
@@ -7526,6 +7549,9 @@ Windows Registry Editor Version 5.00
 "AddressBarMicrosoftSearchInBingProviderEnabled"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Edge]
+"PromptForDownloadLocation"=dword:00000001
+"WebSelectEnabled"=dword:00000000
+"BrowserAddProfileEnabled"=dword:00000001
 "CopilotAddressBarSuggestionsEnabled"=dword:00000000
 "ProactiveAuthEnabled"=dword:00000000
 "EnableUnsafeSwiftShader"=dword:00000000
@@ -7578,7 +7604,7 @@ Windows Registry Editor Version 5.00
 "AutomatedPasswordChangeSettings"=dword:00000002
 ; "AutomaticHttpsDefault"=dword:00000001
 "AutoplayAllowed"=dword:00000001
-"BackgroundModeEnabled"=dword:00000001 ; 00000000/00000001
+"BackgroundModeEnabled"=dword:00000000 ; 00000000/00000001
 "BackgroundTemplateListUpdatesEnabled"=dword:00000000
 "BasicAuthOverHttpEnabled"=dword:00000001 ; 00000000/00000001
 "BeforeunloadEventCancelByPreventDefaultEnabled"=dword:00000001
@@ -7871,7 +7897,7 @@ Windows Registry Editor Version 5.00
 "ScreenCaptureAllowed"=dword:00000001
 "SeamlessWebToBrowserSignInEnabled"=dword:00000001
 "SearchbarAllowed"=dword:00000000 ; 00000000/00000001
-"SearchbarIsEnabledOnStartup"=dword:00000001
+"SearchbarIsEnabledOnStartup"=dword:00000001 ; 00000000/00000001
 "SearchFiltersEnabled"=dword:00000000
 "SearchForImageEnabled"=dword:00000001
 "SearchInSidebarEnabled"=dword:00000002
@@ -8066,9 +8092,6 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\MicrosoftEdge\SearchScopes]
 "ShowSearchSuggestionsGlobal"=dword:00000000
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\SearchScopes]
-"ShowSearchSuggestionsGlobal"=dword:00000000
-
 [HKEY_CURRENT_USER\Software\Policies\Microsoft\MicrosoftEdge\Main]
 "AllowPrelaunch"=dword:00000000
 "DoNotTrack"=dword:00000001
@@ -8107,6 +8130,7 @@ Windows Registry Editor Version 5.00
 "DisableMFUTracking"=dword:00000001
 "DisableRecentApps"=dword:00000001
 "TurnOffBackstack"=dword:00000001
+"DisableHelpSticker"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EdgeUI]
 "AllowEdgeSwipe"=dword:00000000
@@ -8253,7 +8277,13 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\TabPreloader]
 "AllowTabPreloading"=dword:00000000
 
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\ServiceUI]
+"AllowWebContentOnNewTabPage"=dword:00000000
+
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome]
+"SmartTabSharingSettings"=dword:00000001
+"GeminiActOnWebSettings"=dword:00000001
+"GeminiSparkSettings"=dword:00000001
 "RemoteAccessHostRequireCurtain"=dword:00000001
 "RemoteAccessHostAllowClientPairing"=dword:00000000
 "AbusiveExperienceInterventionEnforce"=dword:00000000
@@ -8278,7 +8308,7 @@ Windows Registry Editor Version 5.00
 "AutofillPredictionSettings"=dword:00000002
 "AutomatedPasswordChangeSettings"=dword:00000002
 "AutoplayAllowed"=dword:00000001
-"BackgroundModeEnabled"=dword:00000001
+"BackgroundModeEnabled"=dword:00000000
 "BatterySaverModeAvailability"=dword:00000001
 "BrowserGuestModeEnabled"=dword:00000000
 "BrowserGuestModeEnforced"=dword:00000000
@@ -8497,7 +8527,7 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\SOFTWARE\Policies\Google\Chrome]
 "AutofillAddressEnabled"=dword:00000000
 "AutofillCreditCardEnabled"=dword:00000000
-"BackgroundModeEnabled"=dword:00000001
+"BackgroundModeEnabled"=dword:00000000
 "BuiltInDnsClientEnabled"=dword:00000000
 "ChromeCleanupEnabled"=dword:00000001
 "ChromeCleanupReportingEnabled"=dword:00000000
@@ -8596,7 +8626,7 @@ Windows Registry Editor Version 5.00
 "AutofillPredictionSettings"=dword:00000002
 "AutomatedPasswordChangeSettings"=dword:00000002
 "AutoplayAllowed"=dword:00000001
-"BackgroundModeEnabled"=dword:00000001
+"BackgroundModeEnabled"=dword:00000000
 "BatterySaverModeAvailability"=dword:00000001
 "BraveAIChatEnabled"=dword:00000000
 "BraveRewardsDisabled"=dword:00000001
@@ -10200,6 +10230,9 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RGS]
 "Start"=dword:00000003 ; 00000002, 00000003
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\MSKSSRV]
+"Start"=dword:00000004
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\BrokerInfrastructure\Parameters]
 "ActivityCheckTimerLowPowerPeriodMs"=dword:00000000
@@ -12057,9 +12090,6 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\7516b95f-f776-4464-8c53-06167f40cc99\8EC4B3A5-6868-48c2-BE75-4F3044BE88A7]
 "Attributes"=dword:00000002
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Internet Explorer\Safety\PrivacIE]
-"DisableLogging"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Speech]
 "AllowSpeechModelUpdate"=dword:00000000
@@ -13968,6 +13998,9 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Perflib]
 "Disable Performance Counters"=dword:00000000 ; 00000000, 00000001 breaks taskmgr and anticheats
+"DebugTraceLevel"=dword:00000000
+"Disable"=dword:00000001
+"EventLogLevel"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\.NET CLR Data\Performance]
 "Disable Performance Counters"=dword:00000001
@@ -14122,8 +14155,8 @@ Windows Registry Editor Version 5.00
 "DisableAecStateHistory"=dword:00000001
 "DisableAutomaticGainControl"=dword:00000001
 "DisableExemptionForBCMStartupLatency"=dword:00000001
-"DisableProtectedAudioDG"=dword:00000001
-"DisablePumpBackupTimer"=dword:00000000 ; 00000000/00000001
+"DisableProtectedAudioDG"=dword:00000000 ; 00000000/00000001
+"DisablePumpBackupTimer"=dword:00000001 ; 00000000/00000001
 "DisableSpatialAudioGlobal"=dword:00000001
 "DisableSpatialAudioPerEndpoint"=dword:00000001
 "DisableSpatialAudioVssFeature"=dword:00000001
@@ -15325,6 +15358,7 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\PCHealth\HelpSvc]
 "Headlines"=dword:00000000
+"MicrosoftKBSearch"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsRuntime\ActivatableClassId\ValueBanner.IdealStateFeatureControlProvider]
 "ActivationType"=dword:00000000
@@ -15377,6 +15411,9 @@ Windows Registry Editor Version 5.00
 "DisableEnhancedNotifications"=dword:00000001
 "WppTracingLevel"=dword:00000000
 "WppTracingComponents"=dword:00000000
+"AdditionalActionTimeOut"=dword:00000000
+"CriticalFailureTimeOut"=dword:00000000
+"NonCriticalTimeOut"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Defender\Windows Defender\ControlledFolderAccess]
 "Enable"=dword:00000000
@@ -15696,6 +15733,12 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Internet Explorer]
 "AllowServicePoweredQSA"=dword:00000000
 "DisableFlashInIE"=dword:00000001 ; =-, 00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Internet Explorer\DomainSuggestion]
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Internet Explorer\SearchScopes]
+"TopResult"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\FindMyDevice]
 "Enabled"=dword:00000000
@@ -16408,6 +16451,9 @@ Windows Registry Editor Version 5.00
 "TSAppCompat"=dword:00000000
 "TSEnabled"=dword:00000000
 "TSUserEnabled"=dword:00000000
+"AllowSignedFiles"=dword:00000000
+"AllowUnsignedFiles"=dword:00000000
+"DisablePasswordSaving"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Remote Assistance]
 "fAllowToGetHelp"=dword:00000000
@@ -16926,6 +16972,7 @@ Windows Registry Editor Version 5.00
 "SignatureDisableNotification"=dword:00000001
 "SpynetReporting"=dword:00000000
 "SubmitSamplesConsent"=dword:00000002
+"SpyNetReportingLocation"=hex(7):30,00,00,00,00,00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Account protection]
 "UILockdown"=dword:00000001
@@ -17357,6 +17404,7 @@ Windows Registry Editor Version 5.00
 "NoHelpItemNetscapeHelp"=dword:00000001
 "NoHelpItemSendFeedback"=dword:00000001
 "NoHelpItemTipOfTheDay"=dword:00000001
+"NoCrashDetection"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\QuietHours]
 "AllowCalls"=dword:00000000
@@ -17475,6 +17523,10 @@ Windows Registry Editor Version 5.00
 "NoAddingComponents"=dword:00000001
 "NoComponents"=dword:00000001
 
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Windows\Sidebar]
+"TurnOffSidebar"=dword:00000001
+"TurnOffUnsignedGadgets"=dword:00000001
+
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Holographic]
 "DesktopAppLaunchEnabled"=dword:00000000
 "FirstRunSucceeded"=dword:00000000
@@ -17503,7 +17555,7 @@ Windows Registry Editor Version 5.00
 "DisableLazyLoading"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\USB\AutomaticSurpriseRemoval]
-"AttemptRecoveryFromUsbPowerDrain"=dword:00000000
+"AttemptRecoveryFromUsbPowerDrain"=dword:00000000 ; 00000000/00000001
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\usb\Usb20HardwareLpm]
 "Usb20HardwareLpmOverride"=dword:00000000
@@ -17730,8 +17782,52 @@ Windows Registry Editor Version 5.00
 "skydrivesigninoption"=dword:00000000
 "DisableBootToOfficeStart"=dword:00000001
 
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\office\16.0\common\services\fax]
+"nofax"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\office\16.0\access\security]
+"vbawarnings"=dword:00000004
+
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\office\16.0\excel\security]
+"vbawarnings"=dword:00000004
+"blockcontentexecutionfrominternet"=dword:00000001
+"excelbypassencryptedmacroscan"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\office\16.0\ms project\security]
+"vbawarnings"=dword:00000004
+"level"=dword:00000004
+
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\office\16.0\powerpoint\security]
+"vbawarnings"=dword:00000004
+"blockcontentexecutionfrominternet"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\office\16.0\publisher\security]
+"vbawarnings"=dword:00000004
+
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\office\16.0\visio\security]
+"vbawarnings"=dword:00000004
+"blockcontentexecutionfrominternet"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\office\16.0\word\security]
+"vbawarnings"=dword:00000004
+"blockcontentexecutionfrominternet"=dword:00000001
+"wordbypassencryptedmacroscan"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\office\common\security]
+"automationsecurity"=dword:00000003
+
 [HKEY_CURRENT_USER\Software\Microsoft\Office\16.0\Common\TeachingCallouts]
 "DontShowTeachingCallouts"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\office\16.0\outlook\options\mail]
+"blockextcontent"=dword:00000001
+"junkmailenablelinks"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\office\16.0\common\officeupdate]
+"enableautomaticupdates"=dword:00000000
+"hideenabledisableupdates"=dword:00000001
+"onlinerepair"=dword:00000000
+"fallbacktocdn"=dword:00000000
 
 [HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\15.0\Common\General]
 "skydrivesigninoption"=dword:00000000
@@ -17875,6 +17971,7 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\16.0\Outlook\Security]
 "InitEncrypt"=dword:00000002
 "InitSign"=dword:00000002
+"level"=dword:00000004
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Outlook Express]
 "Hide Messenger"=dword:00000002
@@ -18284,9 +18381,6 @@ Windows Registry Editor Version 5.00
 "NoExplicitFeedback"=dword:00000001
 "NoImplicitFeedback"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Assistance\Client\1.0]
-"NoActiveHelp"=dword:00000001
-
 [HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Assistance\Client\1.0]
 "NoActiveHelp"=dword:00000001
 
@@ -18550,6 +18644,36 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Device Installer]
 "DisableCoInstallers"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\UEV\Agent\Configuration\Windows8AppList\Microsoft.BingFinance_8wekyb3d8bbwe]
+"SyncSettings"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\UEV\Agent\Configuration\Windows8AppList\Microsoft.BingMaps_8wekyb3d8bbwe]
+"SyncSettings"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\UEV\Agent\Configuration\Windows8AppList\Microsoft.BingNews_8wekyb3d8bbwe]
+"SyncSettings"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\UEV\Agent\Configuration\Windows8AppList\Microsoft.BingSports_8wekyb3d8bbwe]
+"SyncSettings"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\UEV\Agent\Configuration\Windows8AppList\Microsoft.BingTravel_8wekyb3d8bbwe]
+"SyncSettings"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\UEV\Agent\Configuration\Windows8AppList\Microsoft.BingWeather_8wekyb3d8bbwe]
+"SyncSettings"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\UEV\Agent\Configuration\Windows8AppList\Microsoft.Reader_8wekyb3d8bbwe]
+"SyncSettings"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\UEV\Agent\Configuration\Windows8AppList\Microsoft.XboxLIVEGames_8wekyb3d8bbwe]
+"SyncSettings"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\UEV\Agent\Configuration\Windows8AppList\Microsoft.ZuneMusic_8wekyb3d8bbwe]
+"SyncSettings"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\UEV\Agent\Configuration\Windows8AppList\Microsoft.ZuneVideo_8wekyb3d8bbwe]
+"SyncSettings"=dword:00000000
 
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\webcam\Microsoft.WindowsCamera_8wekyb3d8bbwe]
 "LastUsedTimeStart"=-
@@ -18955,6 +19079,12 @@ Windows Registry Editor Version 5.00
 
 [HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Internet Explorer\SQM]
 "DisableCustomerImprovementProgram"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Internet Explorer\Safety\PrivacIE]
+"DisableLogging"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Internet Explorer\Safety\PrivacIE]
+"DisableLogging"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SRUM\Telemetry]
 "UploadAcRecords"=dword:00000000
@@ -20153,6 +20283,9 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\WCN\UI]
 "DisableWcnUi"=dword:00000001
 
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\WCN\UI]
+"DisableWcnUi"=dword:00000001
+
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WCN\Registrars]
 "DisableFlashConfigRegistrar"=dword:00000001
 "DisableInBand802DOT11Registrar"=dword:00000001
@@ -20207,6 +20340,7 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Remediation]
 "Scan_ScheduleDay"=dword:00000008
+"Scan_ScheduleTime"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender]
 "AllowFastService"=dword:00000000
@@ -20268,6 +20402,7 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Defender\Signature Updates]
 "EngineUpdatesChannel"=dword:00000000
 "PlatformUpdatesChannel"=dword:00000000
+"FirstAuGracePeriod"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows Defender\MpEngine]
 "DisableGradualRelease"=dword:00000001
@@ -20303,7 +20438,8 @@ Windows Registry Editor Version 5.00
 "Threats_ThreatSeverityDefaultAction"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Quarantine]
-"PurgeItemsAfterDelay"=dword:00000001
+"LocalSettingOverridePurgeItemsAfterDelay"=dword:00000000
+"PurgeItemsAfterDelay"=dword:00000000 ; 00000000/00000001
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Threats\ThreatSeverityDefaultAction]
 "1"="6"
@@ -20495,13 +20631,14 @@ Windows Registry Editor Version 5.00
 "DisableScanningNetworkFiles"=dword:00000001
 "LowCpuPriority"=dword:00000001
 "MissedScheduledScanCountBeforeCatchup"=dword:00000014
-"PurgeItemsAfterDelay"=dword:00000001
+"PurgeItemsAfterDelay"=dword:00000000
 "QuickScanInterval"=dword:00000018
 "QuickScanTime"=dword:ffffffff
 "ScanAvgCPULoadFactor"=dword:00000001 ; 00000001/00000019
-"ScanOnlyIfIdle"=dword:00000001
-"ScanParameters"=dword:00000001
+"ScanOnlyIfIdle"=dword:00000000 ; 00000000/00000001
+"ScanParameters"=dword:00000000 ; 00000000/00000001
 "ScheduleDay"=dword:00000008
+"ScheduleTime"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Remediation\Behavioral Network Blocks\Brute Force Protection]
 "BruteForceProtectionAggressiveness"=dword:00000000
@@ -20524,9 +20661,9 @@ Windows Registry Editor Version 5.00
 "ForceUpdateFromMU"=dword:00000000 ; 00000000/00000001
 "RealtimeSignatureDelivery"=dword:00000000
 "ScheduleDay"=dword:00000008
-"ScheduleTime"=dword:00001440
+"ScheduleTime"=dword:00000000 ; 00000000/00001440
 "SignatureDisableNotification"=dword:00000001
-"SignatureUpdateCatchupInterval"=dword:00000002 ; 00000000/00000002
+"SignatureUpdateCatchupInterval"=dword:00000000 ; 00000000/00000002
 "SignatureUpdateInterval"=dword:00000018
 "UpdateOnStartUp"=dword:00000000
 "MeteredConnectionUpdates"=dword:00000000
@@ -20536,7 +20673,7 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\SmartScreen]
 "ConfigureAppInstallControl"="Anywhere"
-"ConfigureAppInstallControlEnabled"=dword:00000001 ; 00000000/00000001
+"ConfigureAppInstallControlEnabled"=dword:00000000 ; 00000000/00000001
 "DontReportInfectionInformation"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\SmartScreen]
@@ -20656,6 +20793,7 @@ Windows Registry Editor Version 5.00
 "Enabled"=dword:00000000
 "EnabledV8"=dword:00000000
 "EnabledV9"=dword:00000000
+"PreventOverride"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsMitigation]
 "UserPreference"=dword:00000001 ; 00000001/00000002/00000003
@@ -20669,6 +20807,7 @@ Windows Registry Editor Version 5.00
 "Enabled"=dword:00000000
 "EnableWebContentEvaluation"=dword:00000000
 "PreventOverride"=dword:00000000
+"SmartScreenEnabled"="Off"
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\AppHost]
 "EnableWebContentEvaluation"=dword:00000000
@@ -20910,7 +21049,7 @@ Windows Registry Editor Version 5.00
 "IrqPolicySingleProcessor"=dword:00000002
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\usbaudio\Parameters]
-"AudioAlwaysOn"=dword:00000001
+"AudioAlwaysOn"=dword:00000000 ; 00000000/00000001
 "BandwidthAllocation"=dword:00000020
 "BufferSize"=dword:00001000
 "IsochronousTransferMode"=dword:00000001
@@ -22569,6 +22708,12 @@ Windows Registry Editor Version 5.00
 "Personal"=hex(2):25,00,55,00,53,00,45,00,52,00,50,00,52,00,4f,00,46,00,49,00,4c,00,45,00,25,00,5c,00,44,00,6f,00,63,00,75,00,6d,00,65,00,6e,00,74,00,73,00,00,00
 "AppData"=hex(2):25,00,55,00,53,00,45,00,52,00,50,00,52,00,4f,00,46,00,49,00,4c,00,45,00,25,00,5c,00,41,00,70,00,70,00,44,00,61,00,74,00,61,00,5c,00,52,00,6f,00,61,00,6d,00,69,00,6e,00,67,00,00,00
 "Cache"=hex(2):25,00,55,00,53,00,45,00,52,00,50,00,52,00,4f,00,46,00,49,00,4c,00,45,00,25,00,5c,00,41,00,70,00,70,00,44,00,61,00,74,00,61,00,5c,00,4c,00,6f,00,63,00,61,00,6c,00,5c,00,4d,00,69,00,63,00,72,00,6f,00,73,00,6f,00,66,00,74,00,5c,00,57,00,69,00,6e,00,64,00,6f,00,77,00,73,00,5c,00,49,00,4e,00,65,00,74,00,43,00,61,00,63,00,68,00,65,00,00,00
+
+[-HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\OneDriveFileLauncher.exe]
+
+[-HKEY_CURRENT_USER\SOFTWARE\Google\Chrome\NativeMessagingHosts\com.microsoft.onedrive.nucleus.auth.provider]
+
+[-HKEY_CURRENT_USER\SOFTWARE\Classes\odopen]
 
 [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FolderDescriptions\{31C0DD25-9439-4F12-BF41-7FF4EDA38722}]
 
@@ -24497,6 +24642,12 @@ Windows Registry Editor Version 5.00
 "MitigationAuditOptions"=hex:22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22
 "MitigationOptions"=hex:22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22
 "FrontEndHeapDebugOptions"=dword:00000004
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\ApplicationFrameHost.exe]
+"EAFModules"=" "
+"FrontEndHeapDebugOptions"=dword:00000004
+"MitigationAuditOptions"=hex:22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22
+"MitigationOptions"=hex:22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22
+"UseLargePages"=dword:00000000
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\dllhost.exe]
 "EAFModules"=" "
 "FrontEndHeapDebugOptions"=dword:00000004
