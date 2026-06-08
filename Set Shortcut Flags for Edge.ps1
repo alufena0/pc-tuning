@@ -1,4 +1,4 @@
-﻿# create-edge-shortcut-v2.ps1
+# create-edge-shortcut-v2.ps1
 # Definitive solution: .lnk shortcut with Edge icon that runs ALL flags via invisible launcher
 
 $edgePath = "C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"
@@ -42,7 +42,8 @@ $disableFeatures = @(
     "SplitCacheByIncludeCredentials",
     "SplitCacheByNetworkIsolationKey",
     "SplitCodeCacheByNetworkIsolationKey",
-    "LensOverlay"
+    "LensOverlay",
+    "msFeatureGroupNewLookAndFeelHoldout"
 )
 $disableFeatures = $disableFeatures | Select-Object -Unique
 
@@ -63,7 +64,8 @@ $enableFeatures = @(
     "RendererAppContainer",
     "WinSboxRestrictCoreSharingOnRenderer",
     "WinSboxStrictHandleChecks",
-    "PrintCompositorLPAC"
+    "PrintCompositorLPAC",
+    "msForceNoRoundedCornerAndMargin"
 )
 $enableFeatures = $enableFeatures | Select-Object -Unique
 
