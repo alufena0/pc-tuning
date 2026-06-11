@@ -1,20 +1,54 @@
-﻿# =====================================================================
+# =====================================================================
 # SENSE CLIENT REMOVER — SAFE VERSION (BUILD 26100+)
 #
-# Requires: Administrator ou TrustedInstaller (PowerRun/NSudo)
+# Requires: Administrator or TrustedInstaller (PowerRun/NSudo)
 #
-# SAFE: Usa DISM API para remoção — NÃO deleta arquivos físicos .mum/.cat
-# SAFE: NÃO deleta chaves CBS do registro diretamente
-# Windows Update permanece funcional após execução.
+# SAFE: Uses DISM API for removal — does NOT delete physical .mum/.cat files
+# SAFE: Does NOT delete CBS registry keys directly
+# Windows Update remains functional after execution.
 # =====================================================================
 
+# =====================================================================
+# GUARD: Windows 11 only (build 26100+)
+# =====================================================================
+$build = [System.Environment]::OSVersion.Version.Build
+if ($build -lt 26100) {
+    Write-Host ""
+    Write-Host "  *** THIS SCRIPT IS FOR WINDOWS 11 (BUILD 26100+) ONLY ***" -ForegroundColor Red
+    Write-Host "  Detected build: $build" -ForegroundColor Yellow
+    Write-Host ""
+    Write-Host "  Running this on Windows 10 can break Windows Update." -ForegroundColor Red
+    Write-Host "  Press any key to exit..." -ForegroundColor Gray
+    $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+    exit 1
+}
+
+Write-Host ""
+Write-Host "  ============================================" -ForegroundColor DarkCyan
+Write-Host "   SENSE CLIENT REMOVER — SAFE MODE" -ForegroundColor Cyan
+Write-Host "   Detected build: $build (Windows 11 OK)" -ForegroundColor Green
+Write-Host "  ============================================" -ForegroundColor DarkCyan
+Write-Host ""
+Write-Host "  This will remove SenseClient packages and capabilities via DISM API." -ForegroundColor White
+Write-Host "  Physical CBS files will NOT be touched." -ForegroundColor Gray
+Write-Host ""
+Write-Host "  Are you sure you want to continue? [Y / N]" -ForegroundColor Yellow
+Write-Host ""
+
+$confirm = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+if ($confirm.Character -notin @('y','Y')) {
+    Write-Host "  Aborted by user." -ForegroundColor DarkGray
+    exit 0
+}
+
+Write-Host ""
 Write-Host "Starting Sense Client removal (safe mode)..." -ForegroundColor Cyan
 
 $cbsRegPath  = 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages'
 $targetMatch = '*SenseClient*'
 
 # =====================================================================
-# STEP 1: Tenta remoção via DISM API (método correto)
+# STEP 1: Attempt removal via DISM API (correct method)
 # =====================================================================
 Write-Host "`n[STEP 1] Attempting removal via DISM API..." -ForegroundColor Yellow
 
@@ -24,17 +58,17 @@ Get-ChildItem $cbsRegPath -ErrorAction SilentlyContinue |
         $keyName = $_.PSChildName
         Write-Host "  [CBS] $keyName" -ForegroundColor Red
 
-        # Unhide para o DISM conseguir ver e remover
+        # Unhide the package so DISM can see and remove it
         try {
             Set-ItemProperty "registry::$($_.Name)" -Name Visibility -Value 1 -Force -ErrorAction SilentlyContinue
             New-ItemProperty "registry::$($_.Name)" -Name DefVis -PropertyType DWord -Value 2 -Force -ErrorAction SilentlyContinue | Out-Null
         } catch {}
 
-        # Remove subkeys que bloqueiam desinstalação
+        # Remove subkeys that block uninstallation
         Remove-Item "registry::$($_.Name)\Owners"  -Force -ErrorAction SilentlyContinue
         Remove-Item "registry::$($_.Name)\Updates" -Force -ErrorAction SilentlyContinue
 
-        # Tenta remoção via API
+        # Attempt removal via API
         try {
             Remove-WindowsPackage -Online -PackageName $keyName -NoRestart -ErrorAction Stop *>$null
             Write-Host "    -> Removed via Remove-WindowsPackage" -ForegroundColor Green
