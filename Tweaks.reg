@@ -1208,7 +1208,7 @@ Windows Registry Editor Version 5.00
 "TcpWindowSize"=- ; =- autotuning on, 000016d0/0000ffff/00002238/0030d400/00200000/0005ae4c/00040000/00010000/0003ebc0 autotuning off
 "ThreadPriority"=dword:0000000f
 "UdpNoDelay"=dword:00000001
-"UseDomainNameDevolution"=dword:00000000
+"UseDomainNameDevolution"=dword:00000000 ; 00000000/00000001
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces]
 "DefaultTTL"=dword:00000040
@@ -2007,7 +2007,7 @@ Windows Registry Editor Version 5.00
 "CacheHashTableSize"=dword:00000180
 "DisableCoalescing"=dword:00000001
 "DisableParallelAandAAAA"=dword:00000000 ; 00000000/00000001
-"DisableSmartNameResolution"=dword:00000001
+"DisableSmartNameResolution"=dword:00000001 ; 00000000/00000001
 "EnableAutoDoh"=dword:00000000 ; 00000000/00000002
 "EnableDnr"=dword:00000000
 "EnableDnsOverTcp"=dword:00000000 ; 00000000/00000001
@@ -2979,7 +2979,7 @@ Windows Registry Editor Version 5.00
 "TurboQueue"=dword:00000001
 
 ; gpu
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0001]
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0002]
 "RMCtxswLogMaxRecordsPerIntr"=dword:00000001
 "RMAvoidBusyReadingTimer"=dword:00000001
 "RmDpuForceFrameReleaseThresholdUs"=dword:000003e8
@@ -4822,7 +4822,7 @@ Windows Registry Editor Version 5.00
 "OSRestrictHardwareEncryptionAlgorithms"=dword:00000000
 "RequireActiveDirectoryBackup"=dword:00000000
 "TPMAutoReseal"=dword:00000000
-"UseAdvancedStartup"=dword:00000001
+"UseAdvancedStartup"=dword:00000000 ; 00000000/00000001
 "UsePartialEncryptionKey"=dword:00000000
 "UsePIN"=dword:00000000
 "UseTPM"=dword:00000000
@@ -4830,6 +4830,9 @@ Windows Registry Editor Version 5.00
 "UseTPMKeyPIN"=dword:00000000
 "UseTPMPIN"=dword:00000000
 "RDVDenyWriteAccess"=dword:00000000
+"OSRequireActiveDirectoryBackup"=dword:00000000
+"FDVActiveDirectoryBackup"=dword:00000000
+"RDVActiveDirectoryBackup"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Policies\Microsoft\FVE]
 "FDVDenyWriteAccess"=dword:00000000
@@ -8079,6 +8082,10 @@ Windows Registry Editor Version 5.00
 
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Edge]
 "SmartScreenEnabled"="0"
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\M365Copilot]
+"AutoStartDelayEnabled"=dword:00000000
+"IsCompanionWindowAvailable"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\EdgeUpdateDev]
 "AllowUninstall"=dword:00000001
@@ -16783,6 +16790,7 @@ Windows Registry Editor Version 5.00
 "UseDisplayChroma"=dword:00000000
 "UseGPU"=dword:00000000
 "veryfast"=dword:00000001
+"SoftwareMouse"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\KLCP]
 "NoOffers"=dword:00000001
