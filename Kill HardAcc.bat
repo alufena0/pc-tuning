@@ -1,6 +1,6 @@
 if "%~1" neq "running" (start "" /b cmd /c "%~f0" running & exit /b) else (cd /d "%~dp0")
 netsh interface set interface "Ethernet" disable & timeout /t 1 >nul & netsh interface set interface "Ethernet" enable
-reg import C:\Users\Administrator\Documents\Tweaks.reg >NUL 2>&1
+::reg import C:\Users\Administrator\Documents\Tweaks.reg >NUL 2>&1
 sc start TabletInputService >NUL 2>&1
 sc config TabletInputService start= auto >NUL 2>&1
 sc start TextInputManagementService >NUL 2>&1
@@ -15,7 +15,9 @@ sc config winmgmt start= auto >NUL 2>&1
 ::reg delete HKLM\SYSTEM\CurrentControlSet\Enum\DISPLAY\GSM60B2\5&2adb58f6&2&UID37124\Device Parameters /v EDID /f >NUL 2>&1
 ::reg delete HKLM\SYSTEM\CurrentControlSet\Enum\DISPLAY\GSM60B2\5&2adb58f6&3&UID37124\Device Parameters /v EDID /f >NUL 2>&1
 ::reg delete HKLM\SYSTEM\CurrentControlSet\Enum\DISPLAY\GSM60B2\5&2adb58f6&4&UID37124\Device Parameters /v EDID /f >NUL 2>&1
+"G:\Setups\patchciv.exe" "D:\SteamLibrary\steamapps\common\Sid Meier's Civilization V\CivilizationV.exe" >NUL 2>&1
 reg delete "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ShellServiceObjectDelayLoad" /f >NUL 2>&1 & reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ShellServiceObjectDelayLoad" /f >NUL 2>&1
+for /f "tokens=1" %%A in ('reg query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" ^| findstr /i "Mozilla-Firefox-"') do reg delete "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" /v "%%A" /f >NUL 2>&1
 reg delete HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\IrisService /f >NUL 2>&1
 reg delete HKEY_CURRENT_USER\Software\Spoon /f >NUL 2>&1
 ::reg delete HKLM\SOFTWARE\Microsoft\Windows\Dwm /v ShaderLinkingGPUBlacklist /f >NUL 2>&1
@@ -205,6 +207,8 @@ taskkill /f /t /im RazerCortex.Shell.exe >NUL 2>&1
 taskkill /f /fi "imagename eq Rz*.exe" >NUL 2>&1
 taskkill /f /fi "imagename eq Razer*.exe" >NUL 2>&1
 taskkill /f /t /im GoogleUpdate.exe >NUL 2>&1
+taskkill /f /t /im StartMenu.exe >NUL 2>&1
+taskkill /f /t /im CCleaner64.exe >NUL 2>&1
 sc stop ClickToRunSvc >NUL 2>&1
 sc stop NVDisplay.ContainerLocalSystem >NUL 2>&1
 sc config NVDisplay.ContainerLocalSystem start= disabled >NUL 2>&1
@@ -233,6 +237,7 @@ sc stop swprv >NUL 2>&1
 sc stop wuauserv >NUL 2>&1
 sc stop seclogon >NUL 2>&1
 sc stop InstallService >NUL 2>&1
+sc stop Volmgrx >NUL 2>&1
 bitsadmin.exe /reset /allusers >NUL 2>&1
 ie4uinit.exe -ClearIconCache >NUL 2>&1
 w32tm /resync >NUL 2>&1
@@ -451,15 +456,16 @@ for /f "tokens=*" %%i in ('powershell -NoProfile -Command "Get-PnpDevice | Where
 ::for /f "tokens=*" %%i in ('powershell -NoProfile -Command "Get-PnpDevice | Where-Object {$_.FriendlyName -eq 'AMD SMBus'} | Select-Object -ExpandProperty InstanceId"') do pnputil /disable-device "%%i" >nul 2>&1
 for /f "tokens=*" %%i in ('powershell -NoProfile -Command "Get-PnpDevice | Where-Object {$_.FriendlyName -eq 'Motherboard resources'} | Select-Object -ExpandProperty InstanceId"') do pnputil /disable-device "%%i" >nul 2>&1
 for /f "tokens=*" %%i in ('powershell -NoProfile -Command "Get-PnpDevice -PresentOnly:$false | Where-Object { $_.FriendlyName -eq 'Microsoft Device Association Root Enumerator' } | Select-Object -ExpandProperty InstanceId"') do pnputil /remove-device "%%i" >nul 2>&1
-net stop Audiosrv /y >nul 2>&1
-net stop AudioEndpointBuilder /y >nul 2>&1
+for /f "tokens=*" %%i in ('powershell -NoProfile -Command "Get-PnpDevice -PresentOnly:$false | Where-Object { $_.FriendlyName -eq 'Microsoft Streaming Service Proxy' } | Select-Object -ExpandProperty InstanceId"') do pnputil /remove-device "%%i" >nul 2>&1
+::net stop Audiosrv /y >nul 2>&1
+::net stop AudioEndpointBuilder /y >nul 2>&1
 powershell -NoProfile -Command "Get-PnpDevice | Where-Object {$_.FriendlyName -like '*Voice Clarity*'} | ForEach-Object { $inf = (pnputil /get-device-info $_.InstanceId | Select-String 'Driver Name').ToString().Split(': ')[-1]; if($inf) { pnputil /delete-driver $inf /uninstall /force } }" >nul 2>&1
 for /f "tokens=*" %%i in ('powershell -NoProfile -Command "Get-PnpDevice | Where-Object {$_.FriendlyName -like '*Voice Clarity*'} | Select-Object -ExpandProperty InstanceId"') do pnputil /remove-device "%%i" >nul 2>&1
 for /f "tokens=*" %%i in ('powershell -NoProfile -Command "Get-PnpDevice | Where-Object {$_.FriendlyName -like '*Audio Home*'} | Select-Object -ExpandProperty InstanceId"') do pnputil /remove-device "%%i" >nul 2>&1
 for /f "tokens=*" %%i in ('powershell -NoProfile -Command "Get-PnpDevice | Where-Object {$_.InstanceId -like '*VOCAEFFECTPACK*' -or $_.InstanceId -like '*AUDIOHOME*'} | Select-Object -ExpandProperty InstanceId"') do pnputil /remove-device "%%i" /subtree >nul 2>&1
 for /f "tokens=*" %%i in ('powershell -NoProfile -Command "(Get-ChildItem 'HKLM:\SYSTEM\CurrentControlSet\Enum\SWD\DRIVERENUM').Name | Where-Object {$_ -like '*VOCAEFFECTPACK*' -or $_ -like '*AUDIOHOME*'}"') do reg add "HKLM\SYSTEM\CurrentControlSet\Enum\SWD\DRIVERENUM\%%~nxi" /v "ConfigFlags" /t REG_DWORD /d 0x1 /f >nul 2>&1
-net start AudioEndpointBuilder >nul 2>&1
-net start Audiosrv >nul 2>&1
+::net start AudioEndpointBuilder >nul 2>&1
+::net start Audiosrv >nul 2>&1
 net stop ucpd >nul 2>&1
 taskkill /f /im "*UCPD*" >nul 2>&1
 taskkill /f /im "*UCPDMgr*" >nul 2>&1
@@ -579,6 +585,7 @@ sc stop dkkddkkk >nul 2>&1
 sc delete dkkddkkk >nul 2>&1
 del /q "%DKSys%" >nul 2>&1
 ( taskkill /f /t /im SearchHost.exe & takeown /s %computername% /u %username% /f C:\Windows\SystemApps\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\SearchHost.exe & icacls C:\Windows\SystemApps\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\SearchHost.exe /grant:r %username%:F & taskkill /im SearchHost.exe /f & del C:\Windows\SystemApps\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\SearchHost.exe /s /f /q ) >nul 2>&1
+( taskkill /f /t /im SearchApp.exe & takeown /s %computername% /u %username% /f C:\Windows\SystemApps\Microsoft.Windows.Search_cw5n1h2txyewy\SearchApp.exe & icacls C:\Windows\SystemApps\Microsoft.Windows.Search_cw5n1h2txyewy\SearchApp.exe /grant:r %username%:F & taskkill /im SearchApp.exe /f & del C:\Windows\SystemApps\Microsoft.Windows.Search_cw5n1h2txyewy\SearchApp.exe /s /f /q ) >nul 2>&1
 ( takeown /s %computername% /u %username% /f C:\Windows\SystemApps\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\CrossDeviceResumeView.dll & icacls C:\Windows\SystemApps\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\CrossDeviceResumeView.dll /grant:r %username%:F & taskkill /im CrossDeviceResume.exe /f & del C:\Windows\SystemApps\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\CrossDeviceResumeView.dll /s /f /q ) >nul 2>&1
 ( takeown /s %computername% /u %username% /f C:\Windows\System32\AggregatorHost.exe & icacls C:\Windows\System32\AggregatorHost.exe /grant:r %username%:F & taskkill /im AggregatorHost.exe /f & del C:\Windows\System32\AggregatorHost.exe /s /f /q ) >nul 2>&1
 sc config SecurityHealthService start= disabled >nul 2>&1
@@ -680,7 +687,7 @@ nvidia-smi.exe -e 0 >nul 2>&1
 nvidia-smi.exe -acp 0 >nul 2>&1
 c:\windows\system32\rundll32.exe AppxDeploymentClient.dll,AppxCleanupOrphanPackages >nul 2>&1
 mkdir "%USERPROFILE%\Desktop" "%USERPROFILE%\Documents" "%USERPROFILE%\Pictures" "%USERPROFILE%\Music" "%USERPROFILE%\Videos" "%USERPROFILE%\Favorites" "%USERPROFILE%\Downloads" "%USERPROFILE%\Pictures\Screenshots" 2>nul
-for /f "tokens=*" %%S in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services" /f "GoogleUpdaterInternalService" /k') do reg add "%%S" /v Start /t REG_DWORD /d 3 /f & for /f "tokens=*" %%S in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services" /f "GoogleUpdaterService" /k') do reg add "%%S" /v Start /t REG_DWORD /d 3 /f >NUL 2>&1
+for /f "delims=" %%i in ('reg query "HKLM\SYSTEM\CurrentControlSet\Services" /f "GoogleUpdater" /k /s') do reg add "%%i" /v Start /t REG_DWORD /d 3 /f >NUL 2>&1
 powershell -NoProfile -ExecutionPolicy Bypass -Command "Get-ChildItem 'HKCU:\Software\Classes\Local Settings\MrtCache' -Recurse -EA 0 | %%{ $k=$_; $k.GetValueNames() | ?{ $_ -like '*ShellNewDisplayName_Bmp*' } | %%{ if($k.GetValue($_) -ne ''){Set-ItemProperty $k.PSPath $_ ''} } }"
 for /d %%F in ("C:\Windows\System32\config\systemprofile\AppData\Local\tw-*.tmp") do rd /s /q "%%F" >NUL 2>&1
 ::for /F "tokens=*" %%i in ('wevtutil.exe el') do wevtutil.exe cl "%%i" >nul 2>&1
