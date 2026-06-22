@@ -588,7 +588,6 @@ Windows Registry Editor Version 5.00
 "XMMIZeroingEnable"=dword:00000000
 "XStateContextLookasidePerProcMaxDepth"=dword:00000000 ; 00000000/0000000a
 "ClearNonPagedPoolOnFree"=dword:00000000
-"BoostingPeriodMultiplier"=dword:00000003
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Kernel\RNG]
 "RNGAuxiliarySeed"=dword:2c48f2e3
@@ -3430,7 +3429,7 @@ Windows Registry Editor Version 5.00
 ; "HwSchTrimInterval"=dword:0000000a
 "MonitorLatencyTolerance"=dword:00000001
 "MonitorRefreshLatencyTolerance"=dword:00000001
-"ReduceStalls"=dword:00000001 
+"ReduceStalls"=dword:00000001
 "SwapChainBackBuffer"=dword:00000001
 "TdrResetFromTimeoutAsync"=dword:00000001
 
@@ -5092,8 +5091,6 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\WINEVT\Channels\Microsoft-User Experience Virtualization-IPC/Operational]
 "Enabled"=dword:00000000
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\WINEVT\Channels\Microsoft-User Experience Virtualization-SQM Uploader/Operational]
-"Enabled"=dword:00000000
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\WINEVT\Channels\Microsoft-Windows-UniversalTelemetryClient/Operational]
 "Enabled"=dword:00000000
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\WINEVT\Channels\Microsoft-Windows-AI-ModelContextProtocol/Operational]
 "Enabled"=dword:00000000
@@ -7646,7 +7643,7 @@ Windows Registry Editor Version 5.00
 "AmbientAuthenticationInPrivateModesEnabled"=dword:00000000
 "ImageEditorServiceEnabled"=dword:00000000
 "PasswordExportEnabled"=dword:00000000
-"BlockExternalExtensions"=dword:00000000
+"BlockExternalExtensions"=dword:00000000 ; 00000000/00000001
 "PasswordRevealEnabled"=dword:00000000
 "M365AuthPopupsInWorkEnabled"=dword:00000000
 "EdgeBlockSignInEnabled"=dword:00000001
@@ -7734,7 +7731,7 @@ Windows Registry Editor Version 5.00
 "BasicAuthOverHttpEnabled"=dword:00000001 ; 00000000/00000001
 "BeforeunloadEventCancelByPreventDefaultEnabled"=dword:00000001
 "BingAdsSuppression"=dword:00000001
-; "BlockThirdPartyCookies"=dword:00000001
+; "BlockThirdPartyCookies"=dword:00000001 ; 00000000/00000001
 "BlockTruncatedCookies"=dword:00000001
 "BrowserCodeIntegritySetting"=dword:00000001
 "BrowserGuestModeEnabled"=dword:00000000 ; 00000000/00000001
@@ -8932,7 +8929,7 @@ Windows Registry Editor Version 5.00
 "SigninAllowed"=dword:00000000
 "SitePerProcess"=dword:00000001
 "SpellcheckEnabled"=dword:00000001
-"SpellCheckServiceEnabled"=dword:00000001
+"SpellCheckServiceEnabled"=dword:00000001 ; 00000000/00000001
 "StandardizedBrowserZoomEnabled"=dword:00000001
 "StartupBoostEnabled"=dword:00000000
 "SuppressUnsupportedOSWarning"=dword:00000001
@@ -8957,9 +8954,17 @@ Windows Registry Editor Version 5.00
 "WindowOcclusionEnabled"=dword:00000000
 "WPADQuickCheckEnabled"=dword:00000000
 "ZstdContentEncodingEnabled"=dword:00000001
+"BlockExternalExtensions"=dword:00000000
+; "BlockThirdPartyCookies"=dword:00000001
+
+; [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\NativeMessagingBlocklist]
+; "1"="*"
 
 ; [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\PreciseGeolocationAllowedForUrls]
 ; "1"=""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\ExtensionInstallAllowlist]
+"1"="ddkjiahejlhfcafbddmgiahcphecmpfh"
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\ExtensionInstallForcelist]
 "1"="cjpalhdlnbpafiamejdnhcphjbkeiagm"
@@ -9091,7 +9096,6 @@ Windows Registry Editor Version 5.00
 ; "Default"="block-audio-video"
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\BraveSoftware\Brave]
-"PromotionsEnabled"=dword:00000000
 "BraveSyncUrl"=""
 "BraveWaybackMachineEnabled"=dword:00000000
 "BraveWebDiscoveryEnabled"=dword:00000000
@@ -20285,6 +20289,7 @@ Windows Registry Editor Version 5.00
 "PreventInstall"=dword:00000001
 
 [-HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\OneDrive]
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\OneDrive]
 "PreventNetworkTrafficPreUserSignIn"=dword:00000001
 "PreventInstall"=dword:00000001
 
@@ -20412,9 +20417,6 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\StartMenu]
 "PrelaunchOverride"=dword:00000001 ; 00000000/00000001
-
-[HKEY_USERS\.DEFAULT\Control Panel\Keyboard]
-"InitialKeyboardIndicators"="2147483650"
 
 [HKEY_CURRENT_USER\Control Panel\Keyboard]
 "InitialKeyboardIndicators"="2147483650" ; 2/00000002/2147483648/2147483650
