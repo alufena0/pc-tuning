@@ -8733,7 +8733,7 @@ Windows Registry Editor Version 5.00
 "AccessibilityImageLabelsEnabled"=dword:00000000
 "AdditionalDnsQueryTypesEnabled"=dword:00000000
 "AdsSettingForIntrusiveAdsSites"=dword:00000002
-"AdvancedProtectionAllowed"=dword:00000000f
+"AdvancedProtectionAllowed"=dword:00000000
 "AdvancedProtectionDeepScanningEnabled"=dword:00000000
 "AIModeSettings"=dword:00000001
 "AllowBackForwardCacheForCacheControlNoStorePageEnabled"=dword:00000000 ; 00000000/00000001
@@ -17680,7 +17680,7 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Input]
 "EnableExpressiveInputEmoji"=dword:00000001
-"EnableExpressiveInputShellHotkey"=dword:00000001
+"EnableExpressiveInputShellHotkey"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Input\Settings]
 "AllowEmojiPicker"=dword:00000001
@@ -17697,7 +17697,7 @@ Windows Registry Editor Version 5.00
 "AllowEmojiPicker"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Input\Settings]
-"EnableExpressiveInputShellHotkey"=dword:00000001
+"EnableExpressiveInputShellHotkey"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Skydrive]
 "DisableFileSync"=dword:00000001
@@ -17748,7 +17748,7 @@ Windows Registry Editor Version 5.00
 "EmojiTranslation"=dword:00000001
 "EnableExpressiveInputEmoji"=dword:00000001
 "EnableExpressiveInputEmojiMultipleSelection"=dword:00000001
-"EnableExpressiveInputShellHotkey"=dword:00000001
+"EnableExpressiveInputShellHotkey"=dword:00000000
 "EnableHwkbAutocorrection"=dword:00000000
 "EnableHwkbAutocorrection2"=dword:00000000
 "EnableHwkbMode"=dword:00000000
@@ -17794,7 +17794,7 @@ Windows Registry Editor Version 5.00
 "EmojiTranslation"=dword:00000001
 "EnableExpressiveInputEmoji"=dword:00000001
 "EnableExpressiveInputEmojiMultipleSelection"=dword:00000001
-"EnableExpressiveInputShellHotkey"=dword:00000001
+"EnableExpressiveInputShellHotkey"=dword:00000000
 "EnableHwkbAutocorrection"=dword:00000000
 "EnableHwkbAutocorrection2"=dword:00000000
 "EnableHwkbMode"=dword:00000000
