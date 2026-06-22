@@ -135,16 +135,16 @@ Windows Registry Editor Version 5.00
 "SFIO Priority"="Normal"
 
 [HKEY_CURRENT_USER\System\GameConfigStore]
-"GameDVR_DSEBehavior"=dword:00000002 ; =-, 00000000 fso w11/00000002 fse w10
-"GameDVR_DSEBehaviorMode"=dword:00000002 ; 00000001 w11/00000002 w10
+"GameDVR_DSEBehavior"=dword:00000002 ; =-, 00000000/00000002
+"GameDVR_DSEBehaviorMode"=dword:00000002 ; 00000001/00000002
 "GameDVR_DXGI_HDR_Enable"=dword:00000000
-"GameDVR_DXGIHonorFSEWindowsCompatible"=dword:00000001 ; 00000000 fso w11, 00000001 fse w10
+"GameDVR_DXGIHonorFSEWindowsCompatible"=dword:00000001 ; 00000000, 00000001
 "GameDVR_EFSEFeatureFlags"=dword:00000000
 "GameDVR_Enabled"=dword:00000000
-"GameDVR_FSEBehavior"=dword:00000002 ; 00000000 fso w11, 00000002 fse w10
-"GameDVR_FSEBehaviorMode"=dword:00000002 ; 00000001 w11, 00000000 fso/00000002 fse w10
-"GameDVR_HonorUserDSEBehaviorMode"=dword:00000001 ; 00000000 w11/00000001 w10
-"GameDVR_HonorUserFSEBehaviorMode"=dword:00000000 ; 00000000 w11, 00000000/00000001 w10
+"GameDVR_FSEBehavior"=dword:00000002 ; 00000000, 00000002
+"GameDVR_FSEBehaviorMode"=dword:00000002 ; 00000001 , 00000000/00000002
+"GameDVR_HonorUserDSEBehaviorMode"=dword:00000001 ; 00000000/00000001
+"GameDVR_HonorUserFSEBehaviorMode"=dword:00000000 ; 00000000, 00000001/00000002
 ; "Win32_AutoGameModeDefaultProfile"=dword:00000000
 "Win32_AutoGameModeDefaultProfile"=hex:00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
 ; "Win32_GameModeRelatedProcesses"=dword:00000000
@@ -871,7 +871,7 @@ Windows Registry Editor Version 5.00
 "NtfsDisableLfsUpgrade"=dword:00000001
 "NtfsDisableSpotCorruptionHandling"=dword:00000001
 "NtfsDisableTransactionMetoupdate"=dword:00000001 ; disables system restore
-"NtfsDisableVolsnapHints"=dword:00000001
+"NtfsDisableVolsnapHints"=dword:00000001 ; 00000000/00000001
 "NtfsEnableNonPagedPool"=dword:00000001
 "NtfsEncryptPagingFile"=dword:00000000
 "NtfsForceNonPagedPoolAllocation"=dword:00000001 ; 00000000/00000001
@@ -913,6 +913,9 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\ea062031-0e34-4ff1-9b6d-eb1059334029]
 "ValueMax"=dword:00000000 ; park 00000064 on, park 00000000 off
 "ValueMin"=dword:00000000
+
+; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\be337238-0d82-4146-a960-4f3749d470c7]
+; "Attributes"=dword:00000002
 
 [HKEY_USERS\.DEFAULT\Environment]
 "EnablePrefetcher"=dword:00000000
@@ -1775,7 +1778,7 @@ Windows Registry Editor Version 5.00
 "ECP_WhatIf"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Power]
-"FlushPolicy"=dword:00000000
+"FlushPolicy"=dword:00000000 ; 00000000/00000001
 "HBFlagsSwitch"=dword:00000001
 "HiberbootEnabled"=dword:00000000
 "HiberIoCpuTime"=dword:00000000
@@ -3847,7 +3850,7 @@ Windows Registry Editor Version 5.00
 "MUIVerb"="Cleanup"
 "Position"=""
 [HKEY_CLASSES_ROOT\DesktopBackground\Shell\Cleanup\command]
-@="powershell.exe -NoProfile -WindowStyle Hidden -Command \"Start-Process -FilePath powershell.exe -ArgumentList '-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -Command \"& { Stop-Process -Name dwm -Force -ErrorAction SilentlyContinue; Start-Sleep -Seconds 3; Stop-Process -Name explorer -Force -ErrorAction SilentlyContinue; Start-Sleep -Seconds 1; Start-Process explorer; netsh http flush logbuffer; netsh interface ip delete arpcache; ipconfig /flushdns; ipconfig /registerdns; & $env:windir\\system32\\lodctr.exe /R; & $env:windir\\syswow64\\lodctr.exe /R; & $env:windir\\syswow64\\wbem\\winmgmt.exe /RESYNCPERF; & $env:windir\\system32\\wbem\\winmgmt.exe /RESYNCPERF; & $env:windir\\system32\\lodctr.exe /e:PerfOS; winmgmt /salvagerepository; fsutil usn deletejournal /d /n C:; fsutil usn deletejournal /d /n D:; fsutil usn deletejournal /d /n E:; fsutil usn deletejournal /d /n F:; fsutil usn deletejournal /d /n G:; logman stop ''Steam Event Tracing'' -ets; logman stop UBPM -ets; logman stop NetCfgTrace -ets; logman stop WindowsUpdate_trace_log -ets; logman stop MoUxCoreWorker -ets; logman stop UpdateSessionOrchestration -ets; logman stop Diagtrack-Listener -ets; logman stop Microsoft-Windows-Rdp-Graphics-RdpIdd-Trace -ets; logman stop SleepStudyTraceSession -ets; logman stop UserNotPresentTraceSession -ets; logman stop NVIDIA-NVTOPPS-FILTER -ets; logman stop NVIDIA-NVTOPPS-NOCAT -ets; logman stop Admin_PS_Provider -ets; logman stop 8696EAC4-1288-4288-A4EE-49EE431B0AD9 -ets; logman stop Microsoft.Windows.UpdateHealthTools -ets; logman stop SiPresentTraceSession -ets; logman stop SiKernelTraceSession -ets; logman stop ''NT Kernel Logger'' -ets; Stop-Process -Name acrotray,adb,''Adobe Crash Processor'',AdobeIPCBroker,Agent,AggregatorHost,ai,alg,ApplicationFrameHost,AppVShNotify,armsvc,attrib,backgroundTaskHost,calculator,CalculatorApp,CCLibrary,CCXProcess,CEPHtmlEngine,cfbackd.w32,CHXSmartScreen,CompPkgSrv,CoreSync,crashhelper,CrashMailer_64,CrashReportClient,CredentialEnrollmentManager,CrossDeviceResume,DashboardNotificationManager,DataExchangeHost,dllhost,drvinst,StartMenu,EABackgroundService,elevation_service,EpicOnlineServicesUserHelper,CCleaner64,EpicWebHelper,fdm,FESearchHost,FileCoAuth,gamebar,GameBarPresFenceWriter,GameInputSvc,GameManagerService,helperservice,HelpPane,hxaccounts,hxoutlook,TrackerUpdate,WindowsCamera,GoogleUpdate,HxTsr,identity_helper,steamservice,provtool,JackettConsole,jcef_helper,UpdateHub,Locator,lockapp,Popcorn-Time,Node,MeasureSleep,MBAMService,memBoost,Microsoft.Photos,MicrosoftEdgeUpdate,MoUsoCoreWorker,MpCmdRun,MpDefenderCoreService,msdtc,msedgewebview2,msiexec,MsMpEng,NisSrv,nvcplui,NVDisplay.Container,nvidia-smi,officeclicktorun,OneDrive,OSE,PerceptionSimulationService,perfhost,PerfWatson2,CortexLauncherService,RazerCortex,RegWorkshopPortable,RegWorkshopX64,RazerCortex.Shell,PhoneExperienceHost,PhotosService,PickerHost,razer_elevation_service,RzAppManager,RzBTLEManager,RzChromaConnectManager,RzChromaConnectServer,RzChromaStreamServer,RzDeviceManager,RzDeviceManagerEx,RzDiagnosticService,RzEngineMon,RzIoTDeviceManager,RzSDKServer,provtool,RzSDKService,RzSmartlightingDeviceManager,RzWDLDeviceManager,razerwdl,RazerAppEngine,HapticService,GameManagerService3,PresentationFontCache,prevhost,''Razer Central'',''Razer Synapse 3'',''Razer Synapse Service'',''Razer Synapse Service Process'',RazerCentralService,RtkAudUService64,RtkNGUI64,RuntimeBroker,findstr,RRCsrv,SDXHelper,SearchApp,SearchFilterHost,SearchHost,SearchIndexer,SearchProtocolHost,SecurityHealthHost,SecurityHealthService,crashpad_handler,TeamViewer_Service,tv_w32,tv_x64,TeamViewer,java,SelectiveToolApp,aimgr,set-up,setup,ShellExperienceHost,ShellHost,SkypeApp,SkypeBackgroundHost,smartscreen,wevtutil,PnPUtil,AppActions,smss,SMSvcHost,SndVol,SnippingTool,snmptrap,splwow64,spoolsv,SppExtComObj,sppsvc,sqlwriter,ssh,ssh-agent,python,StartMenuExperienceHost,steamerrorreporter,StoreDesktopExtension,SystemSettings,SystemSettingsAdminFlows,SystemSettingsBroker,TabTip,taskhostw,Taskmgr,textinputhost,TieringEngineService,TiWorker,TrustedInstaller,uhssvc,UnityCrashHandler64,upfc,userinit,UserOOBEBroker,vds,vdsldr,video.ui,vssadmin,DismHost,Dism,VSSVC,wbengine,werfault,Widgets,WidgetService,wimserv,fireshot-chrome-plugin,WindowsPackageManagerServer,WinStore.App,WinUpdateHelper,WMIADAP,WmiApSrv,WmiPrvSE,WmiPrvSvc,wowreg32,wuauclt,wuaucltcore,WUDFHost,WWAHost,yourphone -Force -ErrorAction SilentlyContinue; Start-Sleep -Seconds 2; Get-Process audiodg,winlogon | ForEach-Object { $_.PriorityClass = ''Idle'' }; Get-Process ctfmon,svchost,ShellHost,RuntimeBroker | ForEach-Object { $_.PriorityClass = ''BelowNormal'' }; & \"$env:windir\\system32\\regsvr32.exe\" /s atl.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s atl.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s urlmon.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s urlmon.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s mshtml.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s mshtml.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s shdocvw.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s shdocvw.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s browseui.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s browseui.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s jscript.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s jscript.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s vbscript.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s vbscript.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s scrrun.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s scrrun.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s msxml.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s msxml.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s msxml2.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s msxml2.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s msxml3.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s msxml3.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s msxml6.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s msxml6.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s actxprxy.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s actxprxy.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s softpub.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s softpub.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s wintrust.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s wintrust.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s dssenh.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s dssenh.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s rsaenh.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s rsaenh.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s gpkcsp.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s gpkcsp.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s sccbase.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s sccbase.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s slbcsp.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s slbcsp.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s cryptdlg.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s cryptdlg.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s oleaut32.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s oleaut32.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s ole32.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s ole32.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s shell32.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s shell32.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s initpki.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s initpki.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s wuapi.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s wuapi.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s wuaueng.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s wuaueng.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s wuaueng1.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s wuaueng1.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s wucltui.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s wucltui.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s wups.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s wups.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s wups2.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s wups2.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s wuweb.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s wuweb.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s qmgr.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s qmgr.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s qmgrprxy.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s qmgrprxy.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s wucltux.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s wucltux.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s muweb.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s muweb.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s wuwebv.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s wuwebv.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s quartz.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s quartz.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s msimtf.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s msimtf.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s msctf.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s msctf.dll; & \"$env:windir\\system32\\rundll32.exe\" \"user32.dll,UpdatePerUserSystemParameters ,1 ,True\"; & \"$env:windir\\sysWOW64\\rundll32.exe\" \"user32.dll,UpdatePerUserSystemParameters ,1 ,True\"; @(''HID\\VID_1532&PID_008A&MI_02\\8&1C8C0C5F&0&0000'',''HID\\VID_1B1C&PID_1B15&MI_00&COL01\\8&12AB0AA0&0&0000'',''HID\\VID_0D8C&PID_000C&MI_03\\8&E0E3017&0&0000'',''HID\\VID_1532&PID_008A&MI_00&COL03\\9&2DBD5052&0&0000'',''HID\\VID_1532&PID_008A&MI_01&COL02\\8&4C8801A&0&0001'',''HID\\VID_1B1C&PID_1B15&MI_00&COL02\\8&12AB0AA0&0&0001'',''HID\\VID_1532&PID_008A&MI_01&COL04\\8&4C8801A&0&0003'',''HID\\VID_1532&PID_008A&MI_01&COL05\\8&4C8801A&0&0004'',''HID\\VID_1532&PID_008A&MI_01&COL03\\8&4C8801A&0&0002'',''HID\\VID_1B1C&PID_1B15&MI_00&COL03\\8&12AB0AA0&0&0002'',''HID\\VID_1B1C&PID_1B15&MI_00&COL04\\8&12AB0AA0&0&0003'',''HID\\VID_1B1C&PID_1B15&MI_01\\8&36824862&0&0000'',''HID\\VID_1532&PID_008A&MI_00\\8&289FBDDC&0&0000'',''HID\\VID_1532&PID_008A&MI_01&COL01\\8&4C8801A&0&0000'',''USB\\VID_0D8C&PID_000C&MI_00\\7&995C93B&0&0000'',''USB\\VID_32E6&PID_9221&MI_00\\7&2D495844&0&0000'',''USB\\VID_32E6&PID_9221&MI_02\\7&2D495844&0&0002'',''USB\\VID_32E6&PID_9221\\2024120914230143508'',''USB\\VID_1532&PID_008A&MI_01\\7&36E435ED&0&0001'',''USB\\VID_1532&PID_008A&MI_02\\7&36E435ED&0&0002'',''USB\\VID_0D8C&PID_000C\\6&C1A2E2F&0&1'',''USB\\VID_1532&PID_008A\\6&C1A2E2F&0&2'',''USB\\VID_1B1C&PID_1B15\\15027002AEA7A44454E1DF3EF5001940'',''USB\\VID_0D8C&PID_000C&MI_03\\7&995C93B&0&0003'',''USB\\VID_1532&PID_008A&MI_00\\7&36E435ED&0&0000'',''USB\\VID_1B1C&PID_1B15&MI_00\\7&30365890&0&0000'',''USB\\VID_1B1C&PID_1B15&MI_01\\7&30365890&0&0001'',''USB\\ROOT_HUB30\\5&2C35141&0&0'',''USB\\ROOT_HUB30\\5&2F66366D&0&0'',''USB\\ROOT_HUB30\\5&4087D53&0&0'',''USB\\VID_045E&PID_028E\\20492BE'') | ForEach-Object { pnputil /restart-device $_ }; Start-Sleep -Seconds 2; @(''{4d36e96f-e325-11ce-bfc1-08002be10318}'',''{4d36e96b-e325-11ce-bfc1-08002be10318}'') | ForEach-Object { Get-ChildItem \"HKLM:\\SYSTEM\\CurrentControlSet\\Control\\Class\\$_\" -EA SilentlyContinue | Where-Object { $_.PSChildName -match ''^\\d{4}$'' } | ForEach-Object { try { $p=$_.PSPath; $d=(Get-ItemProperty $p DriverDateData -EA Stop).DriverDateData; $d[$d.Length-1]=0x00; Set-ItemProperty $p DriverDateData $d -Type Binary -Force } catch {} } }; Start-Job { Stop-Service -Name EABackgroundService,ClickToRunSvc,vds,HapticService,''Razer Synapse Service'',''Razer Game Manager Service 3'',''Razer Elevation Service'',''Razer Chroma Stream Server'',''Razer Chroma SDK Service'',''Razer Chroma SDK Server'',''Razer Chroma SDK Diagnostic Service'',NVDisplay.ContainerLocalSystem,EpicGamesUpdater,GoogleUpdaterInternalService*,GoogleUpdaterService*,MBAMService,mbamchameleon,MbamElam,MBAMSwissArmy,MBAMWebProtection,TeamViewer,npcap,InstallService,wuauserv,seclogon,BITS,swprv -Force -ErrorAction SilentlyContinue } | Out-Null; & ''C:\\Program Files (x86)\\Rainmeter\\Rainmeter.exe'' ''!RefreshApp''; & ''C:\\Program Files (x86)\\CCleaner\\CCleaner64.exe'' ''/AUTO''; & ''C:\\Program Files (x86)\\Device Cleanup\\DeviceCleanupCmd.exe'' * -e:''*C-Media*''; $exe=''C:\\Program Files (x86)\\WinMemoryCleaner\\WinMemoryCleaner.exe''; & $exe /CombinedPageList /SystemFileCache /RegistryCache /WorkingSet /ModifiedPageList /ModifiedFileCache /StandbyList; & ''C:\\Users\\Administrator\\Documents\\Set DWM Threads.ps1''; $killList = ''rundll32.exe'',''WindowsTerminal.exe'',''taskkill.exe'',''officeclicktorun.exe'',''vds.exe'',''bitsadmin.exe'',''lodctr.exe'',''WUDFHost.exe'',''fsutil.exe'',''bcdedit.exe'',''VSSVC.exe'',''sc.exe'',''netsh.exe'',''gpupdate.exe'',''msiexec.exe'',''msedgewebview2.exe'',''winget.exe'',''WMIADAP.exe'',''DeviceCleanupCmd.exe'',''WmiPrvSE.exe'',''sppsvc.exe'',''PnPUtil.exe'',''WMIC.exe'',''TiWorker.exe'',''Taskmgr.exe'',''TrustedInstaller.exe'',''powershell_ise.exe'',''OpenConsole.exe'',''conhost.exe'',''cmd.exe'',''powershell.exe''; foreach ($proc in $killList) { try { taskkill /f /t /im $proc } catch { } } }\"' -Verb RunAs; exit\""
+@="powershell.exe -NoProfile -WindowStyle Hidden -Command \"Start-Process -FilePath powershell.exe -ArgumentList '-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -Command \"& { Stop-Process -Name dwm -Force -ErrorAction SilentlyContinue; Start-Sleep -Seconds 3; Stop-Process -Name explorer -Force -ErrorAction SilentlyContinue; Start-Sleep -Seconds 1; Start-Process explorer; netsh http flush logbuffer; netsh interface ip delete arpcache; ipconfig /flushdns; ipconfig /registerdns; & $env:windir\\system32\\lodctr.exe /R; & $env:windir\\syswow64\\lodctr.exe /R; & $env:windir\\syswow64\\wbem\\winmgmt.exe /RESYNCPERF; & $env:windir\\system32\\wbem\\winmgmt.exe /RESYNCPERF; & $env:windir\\system32\\lodctr.exe /e:PerfOS; winmgmt /salvagerepository; fsutil usn deletejournal /d /n C:; fsutil usn deletejournal /d /n D:; fsutil usn deletejournal /d /n E:; fsutil usn deletejournal /d /n F:; fsutil usn deletejournal /d /n G:; logman stop ''Steam Event Tracing'' -ets; logman stop UBPM -ets; logman stop NetCfgTrace -ets; logman stop WindowsUpdate_trace_log -ets; logman stop MoUxCoreWorker -ets; logman stop UpdateSessionOrchestration -ets; logman stop Diagtrack-Listener -ets; logman stop Microsoft-Windows-Rdp-Graphics-RdpIdd-Trace -ets; logman stop SleepStudyTraceSession -ets; logman stop UserNotPresentTraceSession -ets; logman stop NVIDIA-NVTOPPS-FILTER -ets; logman stop NVIDIA-NVTOPPS-NOCAT -ets; logman stop Admin_PS_Provider -ets; logman stop 8696EAC4-1288-4288-A4EE-49EE431B0AD9 -ets; logman stop Microsoft.Windows.UpdateHealthTools -ets; logman stop SiPresentTraceSession -ets; logman stop SiKernelTraceSession -ets; logman stop ''NT Kernel Logger'' -ets; Stop-Process -Name acrotray,adb,''Adobe Crash Processor'',AdobeIPCBroker,Agent,AggregatorHost,ai,alg,ApplicationFrameHost,AppVShNotify,armsvc,attrib,backgroundTaskHost,calculator,CalculatorApp,CCLibrary,CCXProcess,CEPHtmlEngine,cfbackd.w32,CHXSmartScreen,CompPkgSrv,CoreSync,crashhelper,CrashMailer_64,CrashReportClient,CredentialEnrollmentManager,CrossDeviceResume,DashboardNotificationManager,DataExchangeHost,dllhost,drvinst,StartMenu,EABackgroundService,elevation_service,EpicOnlineServicesUserHelper,CCleaner64,EpicWebHelper,fdm,FESearchHost,FileCoAuth,gamebar,GameBarPresFenceWriter,GameInputSvc,GameManagerService,helperservice,HelpPane,hxaccounts,hxoutlook,TrackerUpdate,WindowsCamera,GoogleUpdate,HxTsr,identity_helper,steamservice,provtool,JackettConsole,jcef_helper,UpdateHub,Locator,lockapp,Popcorn-Time,Node,MeasureSleep,MBAMService,memBoost,Microsoft.Photos,MicrosoftEdgeUpdate,MoUsoCoreWorker,MpCmdRun,MpDefenderCoreService,WinaeroTweakerHelper,msdtc,msedgewebview2,msiexec,MsMpEng,NisSrv,nvcplui,NVDisplay.Container,nvidia-smi,officeclicktorun,OneDrive,OSE,PerceptionSimulationService,perfhost,PerfWatson2,CortexLauncherService,GameInputRedistService,RazerCortex,RegWorkshopPortable,RegWorkshopX64,RazerCortex.Shell,PhoneExperienceHost,PhotosService,PickerHost,razer_elevation_service,RzAppManager,RzBTLEManager,RzChromaConnectManager,RzChromaConnectServer,RzChromaStreamServer,RzDeviceManager,RzDeviceManagerEx,RzDiagnosticService,RzEngineMon,RzIoTDeviceManager,RzSDKServer,provtool,RzSDKService,RzSmartlightingDeviceManager,RzWDLDeviceManager,razerwdl,RazerAppEngine,HapticService,GameManagerService3,PresentationFontCache,prevhost,''Razer Central'',''Razer Synapse 3'',''Razer Synapse Service'',''Razer Synapse Service Process'',RazerCentralService,RtkAudUService64,RtkNGUI64,RuntimeBroker,findstr,RRCsrv,SDXHelper,SearchApp,SearchFilterHost,SearchHost,SearchIndexer,SearchProtocolHost,SecurityHealthHost,SecurityHealthService,crashpad_handler,TeamViewer_Service,tv_w32,tv_x64,TeamViewer,java,SelectiveToolApp,aimgr,set-up,setup,ShellExperienceHost,ShellHost,SkypeApp,SkypeBackgroundHost,smartscreen,wevtutil,PnPUtil,AppActions,smss,SMSvcHost,SndVol,SnippingTool,snmptrap,splwow64,spoolsv,SppExtComObj,sppsvc,sqlwriter,ssh,ssh-agent,python,StartMenuExperienceHost,steamerrorreporter,StoreDesktopExtension,SystemSettings,SystemSettingsAdminFlows,SystemSettingsBroker,TabTip,taskhostw,Taskmgr,textinputhost,TieringEngineService,TiWorker,TrustedInstaller,uhssvc,UnityCrashHandler64,upfc,userinit,UserOOBEBroker,vds,vdsldr,video.ui,vssadmin,DismHost,Dism,VSSVC,wbengine,werfault,Widgets,WidgetService,wimserv,fireshot-chrome-plugin,WindowsPackageManagerServer,WinStore.App,WinUpdateHelper,WMIADAP,WmiApSrv,WmiPrvSE,WmiPrvSvc,wowreg32,wuauclt,wuaucltcore,WUDFHost,WWAHost,yourphone -Force -ErrorAction SilentlyContinue; Start-Sleep -Seconds 2; Get-Process audiodg,winlogon | ForEach-Object { $_.PriorityClass = ''Idle'' }; Get-Process ctfmon,svchost,ShellHost,RuntimeBroker | ForEach-Object { $_.PriorityClass = ''BelowNormal'' }; & \"$env:windir\\system32\\regsvr32.exe\" /s atl.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s atl.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s urlmon.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s urlmon.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s mshtml.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s mshtml.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s shdocvw.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s shdocvw.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s browseui.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s browseui.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s jscript.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s jscript.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s vbscript.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s vbscript.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s scrrun.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s scrrun.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s msxml.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s msxml.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s msxml2.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s msxml2.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s msxml3.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s msxml3.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s msxml6.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s msxml6.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s actxprxy.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s actxprxy.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s softpub.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s softpub.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s wintrust.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s wintrust.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s dssenh.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s dssenh.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s rsaenh.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s rsaenh.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s gpkcsp.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s gpkcsp.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s sccbase.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s sccbase.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s slbcsp.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s slbcsp.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s cryptdlg.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s cryptdlg.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s oleaut32.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s oleaut32.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s ole32.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s ole32.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s shell32.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s shell32.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s initpki.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s initpki.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s wuapi.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s wuapi.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s wuaueng.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s wuaueng.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s wuaueng1.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s wuaueng1.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s wucltui.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s wucltui.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s wups.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s wups.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s wups2.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s wups2.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s wuweb.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s wuweb.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s qmgr.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s qmgr.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s qmgrprxy.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s qmgrprxy.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s wucltux.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s wucltux.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s muweb.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s muweb.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s wuwebv.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s wuwebv.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s quartz.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s quartz.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s msimtf.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s msimtf.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s msctf.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s msctf.dll; & \"$env:windir\\system32\\rundll32.exe\" \"user32.dll,UpdatePerUserSystemParameters ,1 ,True\"; & \"$env:windir\\sysWOW64\\rundll32.exe\" \"user32.dll,UpdatePerUserSystemParameters ,1 ,True\"; @(''HID\\VID_1532&PID_008A&MI_02\\8&1C8C0C5F&0&0000'',''HID\\VID_1B1C&PID_1B15&MI_00&COL01\\8&12AB0AA0&0&0000'',''HID\\VID_0D8C&PID_000C&MI_03\\8&E0E3017&0&0000'',''HID\\VID_1532&PID_008A&MI_00&COL03\\9&2DBD5052&0&0000'',''HID\\VID_1532&PID_008A&MI_01&COL02\\8&4C8801A&0&0001'',''HID\\VID_1B1C&PID_1B15&MI_00&COL02\\8&12AB0AA0&0&0001'',''HID\\VID_1532&PID_008A&MI_01&COL04\\8&4C8801A&0&0003'',''HID\\VID_1532&PID_008A&MI_01&COL05\\8&4C8801A&0&0004'',''HID\\VID_1532&PID_008A&MI_01&COL03\\8&4C8801A&0&0002'',''HID\\VID_1B1C&PID_1B15&MI_00&COL03\\8&12AB0AA0&0&0002'',''HID\\VID_1B1C&PID_1B15&MI_00&COL04\\8&12AB0AA0&0&0003'',''HID\\VID_1B1C&PID_1B15&MI_01\\8&36824862&0&0000'',''HID\\VID_1532&PID_008A&MI_00\\8&289FBDDC&0&0000'',''HID\\VID_1532&PID_008A&MI_01&COL01\\8&4C8801A&0&0000'',''USB\\VID_0D8C&PID_000C&MI_00\\7&995C93B&0&0000'',''USB\\VID_32E6&PID_9221&MI_00\\7&2D495844&0&0000'',''USB\\VID_32E6&PID_9221&MI_02\\7&2D495844&0&0002'',''USB\\VID_32E6&PID_9221\\2024120914230143508'',''USB\\VID_1532&PID_008A&MI_01\\7&36E435ED&0&0001'',''USB\\VID_1532&PID_008A&MI_02\\7&36E435ED&0&0002'',''USB\\VID_0D8C&PID_000C\\6&C1A2E2F&0&1'',''USB\\VID_1532&PID_008A\\6&C1A2E2F&0&2'',''USB\\VID_1B1C&PID_1B15\\15027002AEA7A44454E1DF3EF5001940'',''USB\\VID_0D8C&PID_000C&MI_03\\7&995C93B&0&0003'',''USB\\VID_1532&PID_008A&MI_00\\7&36E435ED&0&0000'',''USB\\VID_1B1C&PID_1B15&MI_00\\7&30365890&0&0000'',''USB\\VID_1B1C&PID_1B15&MI_01\\7&30365890&0&0001'',''USB\\ROOT_HUB30\\5&2C35141&0&0'',''USB\\ROOT_HUB30\\5&2F66366D&0&0'',''USB\\ROOT_HUB30\\5&4087D53&0&0'',''USB\\VID_045E&PID_028E\\20492BE'') | ForEach-Object { pnputil /restart-device $_ }; Start-Sleep -Seconds 2; @(''{4d36e96f-e325-11ce-bfc1-08002be10318}'',''{4d36e96b-e325-11ce-bfc1-08002be10318}'') | ForEach-Object { Get-ChildItem \"HKLM:\\SYSTEM\\CurrentControlSet\\Control\\Class\\$_\" -EA SilentlyContinue | Where-Object { $_.PSChildName -match ''^\\d{4}$'' } | ForEach-Object { try { $p=$_.PSPath; $d=(Get-ItemProperty $p DriverDateData -EA Stop).DriverDateData; $d[$d.Length-1]=0x00; Set-ItemProperty $p DriverDateData $d -Type Binary -Force } catch {} } }; Start-Job { Stop-Service -Name EABackgroundService,ClickToRunSvc,vds,HapticService,''Razer Synapse Service'',''Razer Game Manager Service 3'',''Razer Elevation Service'',''Razer Chroma Stream Server'',''Razer Chroma SDK Service'',''Razer Chroma SDK Server'',''Razer Chroma SDK Diagnostic Service'',NVDisplay.ContainerLocalSystem,EpicGamesUpdater,GoogleUpdaterInternalService*,GoogleUpdaterService*,MBAMService,mbamchameleon,MbamElam,MBAMSwissArmy,MBAMWebProtection,TeamViewer,npcap,InstallService,wuauserv,seclogon,BITS,swprv -Force -ErrorAction SilentlyContinue } | Out-Null; & ''C:\\Program Files (x86)\\Rainmeter\\Rainmeter.exe'' ''!RefreshApp''; & ''C:\\Program Files (x86)\\CCleaner\\CCleaner64.exe'' ''/AUTO''; & ''C:\\Program Files (x86)\\Device Cleanup\\DeviceCleanupCmd.exe'' * -e:''*C-Media*''; $exe=''C:\\Program Files (x86)\\WinMemoryCleaner\\WinMemoryCleaner.exe''; & $exe /CombinedPageList /SystemFileCache /RegistryCache /WorkingSet /ModifiedPageList /ModifiedFileCache /StandbyList; & ''C:\\Users\\Administrator\\Documents\\Set DWM Threads.ps1''; $killList = ''rundll32.exe'',''WindowsTerminal.exe'',''taskkill.exe'',''officeclicktorun.exe'',''vds.exe'',''bitsadmin.exe'',''lodctr.exe'',''WUDFHost.exe'',''fsutil.exe'',''bcdedit.exe'',''VSSVC.exe'',''sc.exe'',''netsh.exe'',''gpupdate.exe'',''msiexec.exe'',''msedgewebview2.exe'',''winget.exe'',''WMIADAP.exe'',''DeviceCleanupCmd.exe'',''WmiPrvSE.exe'',''sppsvc.exe'',''PnPUtil.exe'',''WMIC.exe'',''TiWorker.exe'',''Taskmgr.exe'',''TrustedInstaller.exe'',''powershell_ise.exe'',''OpenConsole.exe'',''conhost.exe'',''cmd.exe'',''powershell.exe''; foreach ($proc in $killList) { try { taskkill /f /t /im $proc } catch { } } }\"' -Verb RunAs; exit\""
 
 ; netsh branchcache reset; gpupdate /force /wait:0; $p = Get-Process | Where-Object { $_.ProcessName -notin ''System'',''Idle'',''firefox'',''explorer'',''Obsidian'',''EpicWebHelper'',''steamwebhelper'' -and $_.Id -ne 0 } | Sort-Object WorkingSet -Descending | Select-Object -First 1; if ($p) { try { $p.PriorityClass = ''AboveNormal'' } catch { } }; Get-Process audiodg -ErrorAction SilentlyContinue | ForEach-Object { $_.ProcessorAffinity = 1 }; $exe=''C:\\Windows\\System32\\EmptyStandbyList.exe''; & $exe workingsets; & $exe standbylist; Start-Process -FilePath \"$env:USERPROFILE\\AppData\\Local\\FluxSoftware\\Flux\\flux.exe\" -ArgumentList ''/noshow''
 
@@ -4399,6 +4402,7 @@ Windows Registry Editor Version 5.00
 "RestartApps"=dword:00000000
 "Shell"="explorer.exe"
 "Userinit"="C:\\Windows\\system32\\userinit.exe,"
+"AutoRestartShell"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\PassportForWork\SecurityKey]
 "UseSecurityKeyForSignin"=dword:00000000
@@ -4436,6 +4440,17 @@ Windows Registry Editor Version 5.00
 "ShowGoButton"="no"
 "Start Page"="https://www.google.com/"
 "UseSWRender"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Microsoft\Internet Explorer\Main\WindowsSearch]
+"Version"="WS not running"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\HTML Help]
+"IMTCTC14.CHM"=-
+"IMTCEN14.CHM"=-
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\HTML Help]
+"IMTCTC14.CHM"=-
+"IMTCEN14.CHM"=-
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Internet Explorer\Security]
 "DisableSecuritySettingsCheck"=dword:00000001
@@ -5637,6 +5652,11 @@ Windows Registry Editor Version 5.00
 "SkipNetworkShieldCheck"=dword:00000001
 "TelemetrySalt"=dword:00000000
 
+[HKEY_USERS\.DEFAULT\SOFTWARE\Policies\Microsoft\Windows\Explorer]
+"DisableNotificationCenter"=dword:00000001
+"NoBalloonFeatureAdvertisements"=dword:00000001
+"HidePeopleBar"=dword:00000001
+
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\AutoplayHandlers]
 "DisableAutoplay"=dword:00000001
 
@@ -5875,6 +5895,7 @@ Windows Registry Editor Version 5.00
 
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\SystemSettings\AccountNotifications]
 "EnableAccountNotifications"=dword:00000000
+"DisableAccountNotifications"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\SystemSettings\AccountNotifications]
 "EnableAccountNotifications"=dword:00000000
@@ -6922,6 +6943,9 @@ Windows Registry Editor Version 5.00
 "AllowWidgets"=dword:00000000
 "LockScreenWidgetsDisallowed"=dword:00000001
 
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Widgets]
+"AllowWidgets"=dword:00000000
+
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Feeds\FeedRepositoryState]
 "webView2EnabledV1"=dword:00000000
 
@@ -7565,6 +7589,9 @@ Windows Registry Editor Version 5.00
 "EnableExtendedBooksTelemetry"=dword:00000000
 "AllowConfigurationUpdateForBooksLibrary"=dword:00000000
 
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\BrowserEmulation]
+"MSCompatibilityMode"=dword:00000000
+
 [HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\MicrosoftEdge\BooksLibrary]
 "EnableExtendedBooksTelemetry"=dword:00000000
 "AllowConfigurationUpdateForBooksLibrary"=dword:00000000
@@ -7752,7 +7779,7 @@ Windows Registry Editor Version 5.00
 "DefaultJavaScriptJitSetting"=dword:00000000
 "DefaultJavaScriptSetting"=dword:00000001
 "DefaultLocalFontsSetting"=dword:00000002 ; 00000002/00000003
-"DefaultNotificationsSetting"=dword:00000003
+"DefaultNotificationsSetting"=dword:00000002 ; 00000002/00000003
 "DefaultPluginsSetting"=dword:00000003
 "DefaultPopupsSetting"=dword:00000002
 "DefaultSearchProviderContextMenuAccessAllowed"=dword:00000001
@@ -8118,6 +8145,7 @@ Windows Registry Editor Version 5.00
 "AutoStartDelayEnabled"=dword:00000000
 "IsCompanionWindowAvailable"=dword:00000000
 
+[-HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\EdgeUpdateDev]
 [HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\EdgeUpdateDev]
 "AllowUninstall"=dword:00000001
 
@@ -8196,6 +8224,8 @@ Windows Registry Editor Version 5.00
 "PreventFirstRunPage"=dword:00000001
 "PreventLiveTileDataCollection"=dword:00000001
 "AlwaysEnableBooksLibrary"=dword:00000000
+"Use FormSuggest"="no"
+"FormSuggest Passwords"="no"
 
 [HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\MicrosoftEdge\SearchScopes]
 "ShowSearchSuggestionsGlobal"=dword:00000000
@@ -8216,14 +8246,308 @@ Windows Registry Editor Version 5.00
 ; "DoNotUpdateToEdgeWebView2"=dword:00000001
 ; "InstallMicrosoftEdgeWebView2"=dword:00000000
 "RemoveDesktopShortcutDefault"=dword:00000001
-"UpdateDefault"=dword:00000000
-"Update{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}"=dword:00000000
-"Update{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}"=dword:00000000
+"DoNotUpdateToEdgeWithChromium"=dword:00000001
+"UpdaterExperimentationAndConfigurationServiceControl"=dword:00000000
+"EdgePreview{56EB18F8-B008-4CBD-B6D2-8C97FE7E9062}"=dword:00000000
+"EdgePreview{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}"=dword:00000000
+"EdgePreview{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}"=dword:00000000
+"UpdateDefault"=dword:00000002 ; 00000000/00000002
+"Update{56EB18F8-B008-4CBD-B6D2-8C97FE7E9062}"=dword:00000002 ; 00000000/00000002
+"Update{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}"=dword:00000002
+"Update{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}"=dword:00000002 ; 00000000/00000002
+"UpdatesSuppressedStartHour"=dword:00000006
+"UpdatesSuppressedStartMin"=dword:00000000
+"UpdatesSuppressedDurationMin"=dword:000003c0
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Policies\Microsoft\EdgeUpdate]
+"DoNotUpdateToEdgeWithChromium"=dword:00000001
+"CreateDesktopShortcutDefault"=dword:00000000
+"AutoUpdateCheckPeriodMinutes"=dword:00000000
+"UpdaterExperimentationAndConfigurationServiceControl"=dword:00000000
+"EdgePreview{56EB18F8-B008-4CBD-B6D2-8C97FE7E9062}"=dword:00000000
+"EdgePreview{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}"=dword:00000000
+"EdgePreview{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}"=dword:00000000
+"UpdateDefault"=dword:00000002
+"Update{56EB18F8-B008-4CBD-B6D2-8C97FE7E9062}"=dword:00000002
+"Update{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}"=dword:00000002
+"Update{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}"=dword:00000002
+"UpdatesSuppressedStartHour"=dword:00000006
+"UpdatesSuppressedStartMin"=dword:00000000
+"UpdatesSuppressedDurationMin"=dword:000003c0
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\EdgeUpdate]
 "CopilotUpdatePath"=-
+"DoNotUpdateToEdgeWithChromium"=dword:00000001
+"CreateDesktopShortcutDefault"=dword:00000000
+"AutoUpdateCheckPeriodMinutes"=dword:00000000
+"UpdaterExperimentationAndConfigurationServiceControl"=dword:00000000
+"EdgePreview{56EB18F8-B008-4CBD-B6D2-8C97FE7E9062}"=dword:00000000
+"EdgePreview{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}"=dword:00000000
+"EdgePreview{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}"=dword:00000000
+"UpdateDefault"=dword:00000002
+"Update{56EB18F8-B008-4CBD-B6D2-8C97FE7E9062}"=dword:00000002
+"Update{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}"=dword:00000002
+"Update{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}"=dword:00000002
+"UpdatesSuppressedStartHour"=dword:00000006
+"UpdatesSuppressedStartMin"=dword:00000000
+"UpdatesSuppressedDurationMin"=dword:000003c0
+
 [HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\EdgeUpdate]
 "CopilotUpdatePath"=-
+"DoNotUpdateToEdgeWithChromium"=dword:00000001
+"CreateDesktopShortcutDefault"=dword:00000000
+"AutoUpdateCheckPeriodMinutes"=dword:00000000
+"UpdaterExperimentationAndConfigurationServiceControl"=dword:00000000
+"EdgePreview{56EB18F8-B008-4CBD-B6D2-8C97FE7E9062}"=dword:00000000
+"EdgePreview{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}"=dword:00000000
+"EdgePreview{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}"=dword:00000000
+"UpdateDefault"=dword:00000002
+"Update{56EB18F8-B008-4CBD-B6D2-8C97FE7E9062}"=dword:00000002
+"Update{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}"=dword:00000002
+"Update{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}"=dword:00000002
+"UpdatesSuppressedStartHour"=dword:00000006
+"UpdatesSuppressedStartMin"=dword:00000000
+"UpdatesSuppressedDurationMin"=dword:000003c0
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\EdgeUpdate\Clients\{56EB18F8-B008-4CBD-B6D2-8C97FE7E9062}\Commands\on-logon]
+"AutoRunOnLogon"=dword:00000000
+"AutoRunOnOSUpgrade"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\EdgeUpdate\Clients\{56EB18F8-B008-4CBD-B6D2-8C97FE7E9062}\Commands\on-logon-autolaunch]
+"AutoRunOnLogon"=dword:00000000
+"AutoRunOnOSUpgrade"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\EdgeUpdate\Clients\{56EB18F8-B008-4CBD-B6D2-8C97FE7E9062}\Commands\on-logon-startup-boost]
+"AutoRunOnLogon"=dword:00000000
+"AutoRunOnOSUpgrade"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\EdgeUpdate\Clients\{56EB18F8-B008-4CBD-B6D2-8C97FE7E9062}\Commands\on-os-upgrade]
+"AutoRunOnLogon"=dword:00000000
+"AutoRunOnOSUpgrade"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\EdgeUpdate\Clients\{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}\Commands\on-logon]
+"AutoRunOnLogon"=dword:00000000
+"AutoRunOnOSUpgrade"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\EdgeUpdate\Clients\{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}\Commands\on-logon-autolaunch]
+"AutoRunOnLogon"=dword:00000000
+"AutoRunOnOSUpgrade"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\EdgeUpdate\Clients\{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}\Commands\on-logon-startup-boost]
+"AutoRunOnLogon"=dword:00000000
+"AutoRunOnOSUpgrade"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\EdgeUpdate\Clients\{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}\Commands\on-os-upgrade]
+"AutoRunOnLogon"=dword:00000000
+"AutoRunOnOSUpgrade"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\EdgeUpdate\Clients\{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}\Commands\on-logon]
+"AutoRunOnLogon"=dword:00000000
+"AutoRunOnOSUpgrade"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\EdgeUpdate\Clients\{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}\Commands\on-logon-autolaunch]
+"AutoRunOnLogon"=dword:00000000
+"AutoRunOnOSUpgrade"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\EdgeUpdate\Clients\{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}\Commands\on-logon-startup-boost]
+"AutoRunOnLogon"=dword:00000000
+"AutoRunOnOSUpgrade"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\EdgeUpdate\Clients\{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}\Commands\on-os-upgrade]
+"AutoRunOnLogon"=dword:00000000
+"AutoRunOnOSUpgrade"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\EdgeUpdate\Clients\{56EB18F8-B008-4CBD-B6D2-8C97FE7E9062}\Commands\on-logon]
+"AutoRunOnLogon"=dword:00000000
+"AutoRunOnOSUpgrade"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\EdgeUpdate\Clients\{56EB18F8-B008-4CBD-B6D2-8C97FE7E9062}\Commands\on-logon-autolaunch]
+"AutoRunOnLogon"=dword:00000000
+"AutoRunOnOSUpgrade"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\EdgeUpdate\Clients\{56EB18F8-B008-4CBD-B6D2-8C97FE7E9062}\Commands\on-logon-startup-boost]
+"AutoRunOnLogon"=dword:00000000
+"AutoRunOnOSUpgrade"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\EdgeUpdate\Clients\{56EB18F8-B008-4CBD-B6D2-8C97FE7E9062}\Commands\on-os-upgrade]
+"AutoRunOnLogon"=dword:00000000
+"AutoRunOnOSUpgrade"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\EdgeUpdate\Clients\{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}\Commands\on-logon]
+"AutoRunOnLogon"=dword:00000000
+"AutoRunOnOSUpgrade"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\EdgeUpdate\Clients\{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}\Commands\on-logon-autolaunch]
+"AutoRunOnLogon"=dword:00000000
+"AutoRunOnOSUpgrade"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\EdgeUpdate\Clients\{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}\Commands\on-logon-startup-boost]
+"AutoRunOnLogon"=dword:00000000
+"AutoRunOnOSUpgrade"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\EdgeUpdate\Clients\{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}\Commands\on-os-upgrade]
+"AutoRunOnLogon"=dword:00000000
+"AutoRunOnOSUpgrade"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\EdgeUpdate\Clients\{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}\Commands\on-logon]
+"AutoRunOnLogon"=dword:00000000
+"AutoRunOnOSUpgrade"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\EdgeUpdate\Clients\{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}\Commands\on-logon-autolaunch]
+"AutoRunOnLogon"=dword:00000000
+"AutoRunOnOSUpgrade"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\EdgeUpdate\Clients\{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}\Commands\on-logon-startup-boost]
+"AutoRunOnLogon"=dword:00000000
+"AutoRunOnOSUpgrade"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\EdgeUpdate\Clients\{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}\Commands\on-os-upgrade]
+"AutoRunOnLogon"=dword:00000000
+"AutoRunOnOSUpgrade"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\EdgeUpdate\Clients\{56EB18F8-B008-4CBD-B6D2-8C97FE7E9062}\Commands\on-logon]
+"AutoRunOnLogon"=dword:00000000
+"AutoRunOnOSUpgrade"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\EdgeUpdate\Clients\{56EB18F8-B008-4CBD-B6D2-8C97FE7E9062}\Commands\on-logon-autolaunch]
+"AutoRunOnLogon"=dword:00000000
+"AutoRunOnOSUpgrade"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\EdgeUpdate\Clients\{56EB18F8-B008-4CBD-B6D2-8C97FE7E9062}\Commands\on-logon-startup-boost]
+"AutoRunOnLogon"=dword:00000000
+"AutoRunOnOSUpgrade"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\EdgeUpdate\Clients\{56EB18F8-B008-4CBD-B6D2-8C97FE7E9062}\Commands\on-os-upgrade]
+"AutoRunOnLogon"=dword:00000000
+"AutoRunOnOSUpgrade"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\EdgeUpdate\Clients\{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}\Commands\on-logon]
+"AutoRunOnLogon"=dword:00000000
+"AutoRunOnOSUpgrade"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\EdgeUpdate\Clients\{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}\Commands\on-logon-autolaunch]
+"AutoRunOnLogon"=dword:00000000
+"AutoRunOnOSUpgrade"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\EdgeUpdate\Clients\{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}\Commands\on-logon-startup-boost]
+"AutoRunOnLogon"=dword:00000000
+"AutoRunOnOSUpgrade"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\EdgeUpdate\Clients\{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}\Commands\on-os-upgrade]
+"AutoRunOnLogon"=dword:00000000
+"AutoRunOnOSUpgrade"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\EdgeUpdate\Clients\{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}\Commands\on-logon]
+"AutoRunOnLogon"=dword:00000000
+"AutoRunOnOSUpgrade"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\EdgeUpdate\Clients\{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}\Commands\on-logon-autolaunch]
+"AutoRunOnLogon"=dword:00000000
+"AutoRunOnOSUpgrade"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\EdgeUpdate\Clients\{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}\Commands\on-logon-startup-boost]
+"AutoRunOnLogon"=dword:00000000
+"AutoRunOnOSUpgrade"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\EdgeUpdate\Clients\{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}\Commands\on-os-upgrade]
+"AutoRunOnLogon"=dword:00000000
+"AutoRunOnOSUpgrade"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Policies\Microsoft\EdgeUpdate\Clients\{56EB18F8-B008-4CBD-B6D2-8C97FE7E9062}\Commands\on-logon]
+"AutoRunOnLogon"=dword:00000000
+"AutoRunOnOSUpgrade"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Policies\Microsoft\EdgeUpdate\Clients\{56EB18F8-B008-4CBD-B6D2-8C97FE7E9062}\Commands\on-logon-autolaunch]
+"AutoRunOnLogon"=dword:00000000
+"AutoRunOnOSUpgrade"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Policies\Microsoft\EdgeUpdate\Clients\{56EB18F8-B008-4CBD-B6D2-8C97FE7E9062}\Commands\on-logon-startup-boost]
+"AutoRunOnLogon"=dword:00000000
+"AutoRunOnOSUpgrade"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Policies\Microsoft\EdgeUpdate\Clients\{56EB18F8-B008-4CBD-B6D2-8C97FE7E9062}\Commands\on-os-upgrade]
+"AutoRunOnLogon"=dword:00000000
+"AutoRunOnOSUpgrade"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Policies\Microsoft\EdgeUpdate\Clients\{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}\Commands\on-logon]
+"AutoRunOnLogon"=dword:00000000
+"AutoRunOnOSUpgrade"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Policies\Microsoft\EdgeUpdate\Clients\{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}\Commands\on-logon-autolaunch]
+"AutoRunOnLogon"=dword:00000000
+"AutoRunOnOSUpgrade"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Policies\Microsoft\EdgeUpdate\Clients\{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}\Commands\on-logon-startup-boost]
+"AutoRunOnLogon"=dword:00000000
+"AutoRunOnOSUpgrade"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Policies\Microsoft\EdgeUpdate\Clients\{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}\Commands\on-os-upgrade]
+"AutoRunOnLogon"=dword:00000000
+"AutoRunOnOSUpgrade"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Policies\Microsoft\EdgeUpdate\Clients\{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}\Commands\on-logon]
+"AutoRunOnLogon"=dword:00000000
+"AutoRunOnOSUpgrade"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Policies\Microsoft\EdgeUpdate\Clients\{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}\Commands\on-logon-autolaunch]
+"AutoRunOnLogon"=dword:00000000
+"AutoRunOnOSUpgrade"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Policies\Microsoft\EdgeUpdate\Clients\{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}\Commands\on-logon-startup-boost]
+"AutoRunOnLogon"=dword:00000000
+"AutoRunOnOSUpgrade"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Policies\Microsoft\EdgeUpdate\Clients\{F3C4FE00-EFD5-403B-9569-398A20F1BA4A}\Commands\on-os-upgrade]
+"AutoRunOnLogon"=dword:00000000
+"AutoRunOnOSUpgrade"=dword:00000000
+"Enabled"=dword:00000000
 
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ImmersiveShell\EdgeUi]
 "DisableTLCorner"=dword:00000001
@@ -8387,6 +8711,7 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\ServiceUI]
 "AllowWebContentOnNewTabPage"=dword:00000000
+"ShowOneBox"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome]
 "QuickAnswersDefinitionEnabled"=dword:00000000
@@ -8408,7 +8733,7 @@ Windows Registry Editor Version 5.00
 "AccessibilityImageLabelsEnabled"=dword:00000000
 "AdditionalDnsQueryTypesEnabled"=dword:00000000
 "AdsSettingForIntrusiveAdsSites"=dword:00000002
-"AdvancedProtectionAllowed"=dword:00000000
+"AdvancedProtectionAllowed"=dword:00000000f
 "AdvancedProtectionDeepScanningEnabled"=dword:00000000
 "AIModeSettings"=dword:00000001
 "AllowBackForwardCacheForCacheControlNoStorePageEnabled"=dword:00000000 ; 00000000/00000001
@@ -8459,7 +8784,7 @@ Windows Registry Editor Version 5.00
 "DefaultInsecureContentSetting"=dword:00000003
 ; "DefaultJavaScriptOptimizersSetting"=dword:00000002
 "DefaultLocalFontsSetting"=dword:00000002
-"DefaultNotificationsSetting"=dword:00000003
+"DefaultNotificationsSetting"=dword:00000002
 "DefaultPluginsSetting"=dword:00000003
 "DefaultSearchProviderEnabled"=dword:00000001
 "DefaultSearchProviderImageURLPostParams"="content={google:imageThumbnail},url={google:imageURL},sbisrc={google:imageSearchSource}"
@@ -8693,7 +9018,7 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Update]
 "AutoUpdateCheckPeriodMinutes"=dword:00000000
 "DisableAutoUpdateChecksCheckboxValue"=dword:00000001
-"UpdateDefault"=dword:00000001
+"UpdateDefault"=dword:00000002 ; 00000001/00000002
 
 [HKEY_CURRENT_USER\SOFTWARE\Google\Chrome\Callbacks]
 "CollectStatsConsent"=dword:00000000
@@ -8839,7 +9164,7 @@ Windows Registry Editor Version 5.00
 "DefaultJavaScriptJitSetting"=dword:00000000 ; 00000000/00000002
 "DefaultLocalFontsSetting"=dword:00000002
 "DefaultMediaStreamSetting"=dword:00000003
-"DefaultNotificationsSetting"=dword:00000003
+"DefaultNotificationsSetting"=dword:00000002
 "DefaultPluginsSetting"=dword:00000003
 "DefaultSearchProviderEnabled"=dword:00000001
 "DefaultSearchProviderImageURLPostParams"="content={google:imageThumbnail},url={google:imageURL},sbisrc={google:imageSearchSource}"
@@ -9008,15 +9333,23 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Software\Policies\BraveSoftware\Brave]
 "SuppressUnsupportedOSWarning"=dword:00000001
 
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Vivaldi]
+"ExtensionManifestV2Availability"=dword:00000002
+"DefaultNotificationsSetting"=dword:00000002
+
 [HKEY_CURRENT_USER\Software\Policies\Chromium]
 "SuppressUnsupportedOSWarning"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Chromium]
 "ExtensionManifestV2Availability"=dword:00000002
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Vivaldi]
-"ExtensionManifestV2Availability"=dword:00000002
+
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\YandexBrowser]
 "ExtensionManifestV2Availability"=dword:00000002
+
+; [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\LocalNetworkAccessAllowedForUrls]
+; "1"="https://vpn.companyname.com"
+; [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Edge\LocalNetworkAccessAllowedForUrls]
+; "1"="https://vpn.companyname.com"
 
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Start\Companions\Microsoft.YourPhone_8wekyb3d8bbwe]
 "IsAvailable"=dword:00000000
@@ -10406,8 +10739,9 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\FTHSVC]
 "Start"=dword:00000004
 
-; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\CaptureService]
-; "UserServiceFlags"=dword:00000000
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\CaptureService]
+"UserServiceFlags"=dword:00000003 ; 00000003, 00000000
+"Start"=dword:00000003
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\SAVService]
 "Start"=dword:00000004
@@ -10434,6 +10768,12 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\MSKSSRV]
 "Start"=dword:00000004
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\360SelfProtection]
+"Start"=dword:00000004
+
+[-HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\GameInputRedistService]
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\GameInputRedistService]
+"Start"=dword:00000004 ; 00000003, 00000004
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\BrokerInfrastructure\Parameters]
 "ActivityCheckTimerLowPowerPeriodMs"=dword:00000000
@@ -12521,6 +12861,10 @@ Windows Registry Editor Version 5.00
 "ShowCopilotNudges"=dword:00000000
 "CopilotPWAPin"=dword:00000000
 "RecallPin"=dword:00000000
+"JumpListItems_Maximum"=dword:00000000 ; 00000000/0000001e
+"StoreAppsOnTaskbar"=dword:00000001
+"DesktopLivePreviewHoverTimes"=dword:00000000
+"HideStartButton"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
 "DisableThumbnailCache"=dword:00000001
@@ -12710,7 +13054,7 @@ Windows Registry Editor Version 5.00
 "MaximumTransferLength"=dword:00200000
 "PollingInterval"=dword:00000000
 
-[HKEY_CURRENT_USER\Software\Software\Microsoft\Windows\CurrentVersion\SystemSettings\AccountNotifications]
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\AccountNotifications]
 "DisableAccountNotifications"=dword:00000001
 
 [HKEY_CURRENT_USER\Software\Microsoft\Multimedia\Audio]
@@ -12728,6 +13072,9 @@ Windows Registry Editor Version 5.00
 "Hotkey"="3"
 "Language Hotkey"="3"
 "Layout Hotkey"="3"
+
+[HKEY_CURRENT_USER\Keyboard Layout\ShowToast]
+"Show"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout]
 "IgnoreRemoteKeyboardLayout"=dword:00000001
@@ -12775,6 +13122,13 @@ Windows Registry Editor Version 5.00
 "ShowShiftLock"=dword:00000000
 "ShowTextPrediction"=dword:00000000
 "InputMethodOverride"="0409:00010416" ; abnt2
+"UserLocaleFromLanguageProfileOptOut"=dword:00000001
+
+[HKEY_CURRENT_USER\Control Panel\International\User Profile System Backup]
+"ShowAutoCorrection"=dword:00000000
+"ShowTextPrediction"=dword:00000000
+"ShowCasing"=dword:00000000
+"ShowShiftLock"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Gwx]
 "DisableGwx"=dword:00000001
@@ -12845,6 +13199,11 @@ Windows Registry Editor Version 5.00
 "Transparency"=dword:000000ff
 "Label"=dword:00000000
 "ExtraIconsOnITN"=dword:00000000
+
+[HKEY_USERS\.DEFAULT\Software\Microsoft\CTF\LangBar]
+"ShowStatus"=dword:00000003
+"ExtraIconsOnMinimized"=dword:00000000
+"Label"=dword:00000001
 
 ; wushowhide & MicrosoftProgram_Install_and_Uninstall.meta.diagcab
 [HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\ScriptedDiagnostics]
@@ -13814,14 +14173,14 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\TextInput]
 "AllowEmojiInput"=dword:00000001
 "AllowLinguisticDataCollection"=dword:00000000
-"DisableExpressiveInputShellHotkey"=dword:00000000 ; 00000000/00000001
-"EnableExpressiveInputShellHotkey"=dword:00000001
+"DisableExpressiveInputShellHotkey"=dword:00000001 ; 00000000/00000001
+"EnableExpressiveInputShellHotkey"=dword:00000000 ; 00000000/00000001 emoji picker
 
 [HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\TextInput]
 "AllowEmojiInput"=dword:00000001
 "AllowLinguisticDataCollection"=dword:00000000
-"DisableExpressiveInputShellHotkey"=dword:00000000
-"EnableExpressiveInputShellHotkey"=dword:00000001
+"DisableExpressiveInputShellHotkey"=dword:00000001
+"EnableExpressiveInputShellHotkey"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\InputPersonalization]
 "RestrictImplicitTextCollection"=dword:00000001
@@ -15063,7 +15422,7 @@ Windows Registry Editor Version 5.00
 "GestureExecutionDelay"=dword:00000000
 "HungAppTimeout"="1000"
 "JPEGImportQuality"=dword:00000064
-"KeyboardSpeed"="31" ; 0/31
+"KeyboardSpeed"="31" ; 0/31/48
 "LockScreenAutoLockActive"="0"
 "LogPixels"=dword:00000060 ; =-/00000060/00000073/00000096
 "LowLevelHooksTimeout"=dword:000003e8
@@ -15312,21 +15671,21 @@ Windows Registry Editor Version 5.00
 "AutoSuggest"="no"
 
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer]
-"AltTabSettings"=dword:00000000 ; 00000000 w11/00000001 w10
+"AltTabSettings"=dword:00000001 ; 00000000 w11/00000001 w10
 "CaseSensitive"=dword:00000000
 "DesktopProcess"=dword:00000000 ; 00000000/00000001
 "DesktopReadyTimeout"=dword:00000000
 "EnableAutoTray"=dword:00000000
 "ExcludedFromStableAnaheimDownloadPromotionSL"=dword:00000001
 "ExplorerStartupTraceRecorded"=dword:00000001
-"FirstRunTelemetryComplete"=dword:00000001
+"FirstRunTelemetryComplete"=dword:00000001 ; 00000000/00000001
 "HoverSelectDesktops"=dword:00000000
 "IncludeSubFolders"=dword:00000001
 "IrisClientRefresh"=dword:00000000
 "link"=hex:00,00,00,00
 "MaxCachedIcons"="4096"
 "Max Cached Icons"="4096"
-"MultipleInvokePromptMinimum"=- ; =-/00000064
+"MultipleInvokePromptMinimum"=dword:000000c8 ; =-/00000064/000000c8
 "NoHelpKey"=-
 "Reason Setting"=dword:00000000 ; 00000000/000000ff
 "ScreenshotIndex"=dword:00000000 ; 00000000/00000001
@@ -15474,6 +15833,7 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32]
 "msacm.l3acm"=""
+"vidc.iv50"="ir50_32.dll"
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\SettingSync]
 "DisableAccessibilitySettingSync"=dword:00000002
@@ -16249,6 +16609,7 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Internet Explorer\Feeds]
 "AllowBasicAuthInClear"=dword:00000000
 "BackgroundSyncStatus"=dword:00000000
+"DisableEnclosureDownload"=dword:00000001
 
 [HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Internet Explorer\Feeds]
 "BackgroundSyncStatus"=dword:00000000
@@ -16291,6 +16652,10 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\Software\WOW6432Node\Microsoft\Windows NT\CurrentVersion\Schedule\Maintenance]
 "MaintenanceDisabled"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\iZotope]
+"EnableAnalytics"=dword:00000000
+"LastChangedOptInDaysSinceEpoch"=dword:0000ffff
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\Maintenance]
 "DisableRpcOver"=dword:00000001
@@ -17215,6 +17580,7 @@ Windows Registry Editor Version 5.00
 "Defender_TamperProtectionDisabled"=dword:00000001
 "DisableAVCheck"=dword:00000001
 "HealthState"=dword:00000000
+"AppAndBrowser_StoreAppsSmartScreenOff"=dword:00000001 ; 00000000/00000001
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Security Health\Platform]
 "Registered"=dword:00000000
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Security Health\Health Advisor]
@@ -17344,7 +17710,7 @@ Windows Registry Editor Version 5.00
 "AUTOCORRECTIONTRIGGERS"=dword:00000000
 "AUTOCORRECTSUPPRESSPREVCHARS"=dword:00000000
 "BluebirdDTWMultiplier"=dword:00000000
-"DisableExpressiveInputShellHotkey"=dword:00000000
+"DisableExpressiveInputShellHotkey"=dword:00000001
 "DynamicAutocorrectionAllowed"=dword:00000000
 "PERIODSHORTCUTCHARS"=dword:00000000
 "PERIODSHORTCUTDELAY"=dword:00000000
@@ -17356,7 +17722,7 @@ Windows Registry Editor Version 5.00
 "BluebirdDTWMultiplier"=dword:00000000
 "COMMONEMOJIPRETERMINATORS"=dword:00000000
 "COMMONEMOJITERMINATORS"=dword:00000000
-"DisableExpressiveInputShellHotkey"=dword:00000000
+"DisableExpressiveInputShellHotkey"=dword:00000001
 "DynamicAutocorrectionAllowed"=dword:00000000
 "PERIODSHORTCUTCHARS"=dword:00000000
 "PERIODSHORTCUTDELAY"=dword:00000000
@@ -17374,7 +17740,7 @@ Windows Registry Editor Version 5.00
 "BluebirdDTWMultiplier"=dword:00000000
 "ContactPenalty"=dword:00000000
 "DictationEnabled"=dword:00000000
-"DisableExpressiveInputShellHotkey"=dword:00000000
+"DisableExpressiveInputShellHotkey"=dword:00000001
 "DisablePersonalization"=dword:00000001
 "DisablePersonalizationGTKM"=dword:00000001
 "DynamicAutocorrectionAllowed"=dword:00000000
@@ -17639,6 +18005,7 @@ Windows Registry Editor Version 5.00
 "NoThumbnailCache"=dword:00000001
 "NoWinKeys"=-
 "TurnOffSPIAnimations"=dword:00000001
+"RecycleBinDrives"=dword:ffffffff
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Internet Explorer\Restrictions]
 "NoHelpItemNetscapeHelp"=dword:00000001
@@ -17913,16 +18280,32 @@ Windows Registry Editor Version 5.00
 
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Office\16.0\Outlook\Preferences]
 "UseNewOutlook"=dword:00000000
+"EnablePreviewPlace"=dword:00000000
 
 [HKEY_CURRENT_USER\Software\Microsoft\Office\16.0\Outlook\Options\General]
 "HideNewOutlookToggle"=dword:00000001
+"DoNewOutlookAutoMigration"=dword:00000000
+"DisablePreviewPlace"=dword:00000001
 
 [HKEY_CURRENT_USER\Software\Microsoft\Office\16.0\Outlook\AutoDiscover]
 "ExcludeExplicitO365Endpoint"=dword:00000001
 
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Office\16.0\Outlook\AutoDiscover\RedirectServers]
+"autodiscover-s.outlook.com"=hex(0):
+"autodiscover.hotmail.com"=hex(0):
+"autodiscover-s.partner.outlook.cn"=hex(0):
+"autodiscover-s.outlook.de"=hex(0):
+"autodiscover-s.office365.us"=hex(0):
+
+[HKEY_CURRENT_USER\Software\Microsoft\Office\16.0\Outlook\Preferences]
+"DelegateSentItemsStyle"=dword:00000001
+
 [HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\16.0\Outlook\Options\General]
 "DoNewOutlookAutoMigration"=dword:00000000
 "DisableOutlookMobileHyperlink"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\16.0\Outlook\Options]
+"HideNewOutlookToggle"=dword:00000001
 
 [HKEY_CURRENT_USER\Software\Policies\Microsoft\office\16.0\outlook\preferences]
 "NewOutlookMigrationUserSetting"=dword:00000000
@@ -17939,6 +18322,7 @@ Windows Registry Editor Version 5.00
 
 [HKEY_CURRENT_USER\Software\Microsoft\Office\16.0\PowerPoint\Options]
 "DisableBootToOfficeStart"=dword:00000001
+"Enable Copilot in Settings"=dword:00000000
 
 [HKEY_CURRENT_USER\Software\Microsoft\Office\16.0\OneNote\Options\Copilot]
 "CopilotEnabled"=dword:00000000
@@ -17988,6 +18372,9 @@ Windows Registry Editor Version 5.00
 
 [HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\15.0\Common\clienttelemetry]
 "sendtelemetry"=dword:00000003
+
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\Common\ClientTelemetry]
+"SendTelemetry"=dword:00000003
 
 [HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\15.0\Common\ptwatson]
 "ptwoptin"=dword:00000000
@@ -18362,6 +18749,9 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Office\16.0\Common\OfficeExperiments]
 "OfficeCopilotDisabled"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Microsoft\Office\16.0\Common\MailSettings]
+"InlineTextPrediction"=dword:00000000
 
 [HKEY_CURRENT_USER\Software\Microsoft\Office\16.0\OneNote\Options\Other]
 "EnableCopilotSkittle"=dword:00000000
@@ -18884,6 +19274,16 @@ Windows Registry Editor Version 5.00
 "AllUpView"=dword:00000000
 "Remove TaskView"=dword:00000001
 "Enabled"=-
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\MultitaskingView\AltTabViewHost]
+"Grid_backgroundPercent"=dword:00000014
+"BackgroundDimmingLayer_percent"=dword:00000014
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SafeBoot\Network\MSIServer]
+@="Service"
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SafeBoot\Minimal\MSIServer]
+@="Service"
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Progress]
 "FadeIn"=dword:00000001
@@ -19687,6 +20087,8 @@ Windows Registry Editor Version 5.00
 "NoToastApplicationNotification"=dword:00000001
 "NoToastApplicationNotificationOnLockScreen"=dword:00000001
 "WnsEndpoint"=""
+"EnableExpandedToastNotifications"=dword:00000000
+"WnsEndpoint_Policy"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\TouchPrediction]
 "Latency"=dword:00000001 ; 00000000/00000001
@@ -19765,6 +20167,12 @@ Windows Registry Editor Version 5.00
 "ShowStoreBanner"=dword:00000000
 "StatusBar"=dword:00000001
 "TabsEnabled"=dword:00000000
+"fPasteOriginalEOL"=dword:00000001
+"fWindowsOnlyEOL"=dword:00000000 ; 00000000/00000001
+
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ImmersiveShell\StateStore]
+"ResetCache"=dword:00000001
+"ResetCacheCount"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Notepad]
 "DisableRewrite"=dword:00000001
@@ -19783,6 +20191,9 @@ Windows Registry Editor Version 5.00
 "NearShareChannelUserAuthzPolicy"=dword:00000000
 "RomeSdkChannelUserAuthzPolicy"=dword:00000000
 "WifiLastDisabledNearShare"=-
+
+[HKEY_USERS\.DEFAULT\SOFTWARE\Microsoft\Windows\CurrentVersion\CDP\SettingsPage]
+"BluetoothLastDisabledNearShare"=dword:00000000
 
 [HKEY_CURRENT_USER\Control Panel\Accessibility\SoundSentry]
 "Flags"="0"
@@ -19907,8 +20318,8 @@ Windows Registry Editor Version 5.00
 "DeviceRegion"=dword:0000005e ; 00000020, 0000005e
 
 ; syslistview32
-; [HKEY_CURRENT_USER\Software\Classes\CLSID\{1eeb5b5a-06fb-4732-96b3-975c0194eb39}\InprocServer32]
-; @=- ; =- default, "" tweak
+[HKEY_CURRENT_USER\Software\Classes\CLSID\{1eeb5b5a-06fb-4732-96b3-975c0194eb39}\InprocServer32]
+@="" ; =- default, "" tweak
 
 ; restore old w10 explorer (w11 only) #1
 ; [HKEY_CURRENT_USER\Software\Classes\CLSID\{2aa9162e-c906-4dd9-ad0b-3d24a8eef5a0}\InProcServer32]
@@ -19966,6 +20377,7 @@ Windows Registry Editor Version 5.00
 "TCMinput"=dword:000000ff
 "Teclado_DelayRepeat"=dword:0000dde4
 "Wsa_D3s"=dword:00000000
+"Modify"="1" ; 0/1/2/3
 
 [HKEY_CURRENT_USER\Software\Microsoft\Osk]
 "BounceTime"=dword:00000000
@@ -20011,6 +20423,11 @@ Windows Registry Editor Version 5.00
 "PrintScreenKeyForSnippingEnabled"=dword:00000000
 "TypematicDelay"=dword:00000000
 
+[HKEY_USERS\.DEFAULT\Control Panel\Keyboard]
+"KeyboardSpeed"="31"
+"KeyboardDelay"="0"
+"InitialKeyboardIndicators"="2147483650"
+
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\kbdhid\Parameters]
 "CrashOnCtrlScroll"=dword:00000000
 "FilterClass"=""
@@ -20034,6 +20451,8 @@ Windows Registry Editor Version 5.00
 "IsMSACloudEnabled"=dword:00000000
 "IsMSACloudSearchEnabled"=dword:00000000
 "SafeSearchMode"=dword:00000000
+"IsStoreSuggestionsEnabled"=dword:00000000
+"IsWebSuggestionsEnabled"=dword:00000000
 
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Start]
 "RightCompanionToggledOpen"=dword:00000000
@@ -20113,6 +20532,9 @@ Windows Registry Editor Version 5.00
 "WebControlStatus"=dword:00000000
 "SearchboxTaskbarModeCache"=dword:00000000
 "CloudSearch"=dword:00000000
+
+[HKEY_USERS\.DEFAULT\SOFTWARE\Microsoft\Windows\CurrentVersion\Search]
+"SearchboxTaskbarMode"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Search]
 "BackgroundAppGlobalToggle"=dword:00000000
@@ -20956,6 +21378,8 @@ Windows Registry Editor Version 5.00
 "SignatureUpdateInterval"=dword:00000018
 "UpdateOnStartUp"=dword:00000000
 "MeteredConnectionUpdates"=dword:00000000
+"FallbackOrder"="FileShares"
+"DefinitionUpdateFileSharesSources"=-
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Microsoft Antimalware\Signature Updates]
 "SignatureDisableNotification"=dword:00000001
@@ -21071,13 +21495,17 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppContainer\Storage\microsoft.microsoftedge_8wekyb3d8bbwe\MicrosoftEdge\PhishingFilter]
 "EnabledV9"=dword:00000000
 "PreventOverride"=dword:00000000 ; 00000000/00000001
+
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Internet Explorer\PhishingFilter]
 "EnabledV9"=dword:00000000
+
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\PhishingFilter]
 "DontReportInfectionInformation"=dword:00000001
 "Enabled"=dword:00000000
 "EnabledV9"=dword:00000000
 "PreventOverride"=dword:00000000
+"PreventOverrideAppRepUnknown"=dword:00000000 ; 00000000/00000001
+
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Internet Explorer\PhishingFilter]
 "Enabled"=dword:00000000
 "EnabledV8"=dword:00000000
@@ -21214,6 +21642,11 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People]
 "PeopleBand"=dword:00000000
 "TaskbarCapacity"=dword:00000000
+"CapacityOfPeopleBar"=dword:00000000
+
+[HKEY_USERS\.DEFAULT\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People]
+"PeopleBand"=dword:00000000
+"CapacityOfPeopleBar"=dword:00000000
 
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People\ShoulderTap]
 "ShoulderTapAudio"=dword:00000000
@@ -22902,6 +23335,9 @@ Windows Registry Editor Version 5.00
 "FolderType"="NotSpecified"
 "Logo"="imageres.dll,-3"
 
+[HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\Windows\Shell]
+"BagMRU Size"=dword:00004e20
+
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\HwReqChk]
 "HwReqChkVars"=hex(7):53,00,51,00,5f,00,53,00,65,00,63,00,75,00,72,00,65,00,42,00,6f,00,6f,00,74,00,43,00,61,00,70,00,61,00,62,00,6c,00,65,00,3d,00,54,00,52,00,55,00,45,00,00,00,53,00,51,00,5f,00,53,00,65,00,63,00,75,00,72,00,65,00,42,00,6f,00,6f,00,74,00,45,00,6e,00,61,00,62,00,6c,00,65,00,64,00,3d,00,54,00,52,00,55,00,45,00,00,00,53,00,51,00,5f,00,54,00,70,00,6d,00,56,00,65,00,72,00,73,00,69,00,6f,00,6e,00,3d,00,32,00,00,00,53,00,51,00,5f,00,52,00,61,00,6d,00,4d,00,42,00,3d,00,38,00,31,00,39,00,32,00,00,00,00,00,00,00
 
@@ -22926,6 +23362,28 @@ Windows Registry Editor Version 5.00
 "Version"="3369"
 "WRONG_DISC"="Wrong disc in drive. Please insert the disc labelled 'Unreal Tournament 2004 Play Disc' to continue."
 "YEAR"="2004"
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\.jnt\jntfile\ShellNew]
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\.contact\ShellNew]
+
+[-HKEY_CLASSES_ROOT\.zip\CompressedFolder]
+
+[-HKEY_CLASSES_ROOT\jpgfile\Shell\print]
+
+[-HKEY_CLASSES_ROOT\giffile\Shell\printto]
+
+[-HKEY_CLASSES_ROOT\jpegfile\Shell\printto]
+
+[-HKEY_CLASSES_ROOT\bmpfile\Shell\printto]
+
+[-HKEY_CLASSES_ROOT\pngfile\Shell\printto]
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\EdgeUpdateDev]
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\EdgeUpdateDev]
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Policies\Microsoft\EdgeUpdateDev]
 
 [-HKEY_USERS\.DEFAULT\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\Subscriptions]
 
@@ -23046,7 +23504,7 @@ Windows Registry Editor Version 5.00
 [-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\TypedPaths]
 
 [-HKEY_CLASSES_ROOT\MIME\Database\Content Type\application/hta]
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\MIME\Database\Content Type\application/hta] 
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\MIME\Database\Content Type\application/hta]
 
 [-HKEY_CLASSES_ROOT\CLSID\{E88DCCE0-B7B3-11d1-A9F0-00AA0060FA31}]
 [-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CompressedFolder]
@@ -23882,7 +24340,7 @@ Windows Registry Editor Version 5.00
 
 [-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\WOW6432Node\CLSID\{F80FC80C-6A04-46FB-8555-D769E334E9FC}]
 
-[-HKEY_CLASSES_ROOT\.zip\CompressedFolder\ShellNew]
+; [-HKEY_CLASSES_ROOT\.zip\CompressedFolder\ShellNew]
 
 [-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\PowerShell\ModuleLogging\ModuleNames]
 
