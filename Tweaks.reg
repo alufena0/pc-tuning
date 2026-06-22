@@ -916,6 +916,10 @@ Windows Registry Editor Version 5.00
 ; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\be337238-0d82-4146-a960-4f3749d470c7]
 ; "Attributes"=dword:00000002
 
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\PowerSettings\0e796bdb-100d-47d6-a2d5-f7d2daa51f51]
+"ACSettingIndex"=dword:00000000
+"DCSettingIndex"=dword:00000000
+
 [HKEY_USERS\.DEFAULT\Environment]
 "EnablePrefetcher"=dword:00000000
 "EnableSuperfetch"=dword:00000000
@@ -1301,7 +1305,7 @@ Windows Registry Editor Version 5.00
 "Beamforming"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanWorkstation\Parameters]
-"AllowInsecureGuestAuth"=dword:00000000
+"AllowInsecureGuestAuth"=dword:00000000 ; 00000000/00000001
 "DirectoryCacheEntriesMax"=dword:00000400
 "DirectoryCacheLifetime"=dword:00000000
 "DisableBandwidthThrottling"=dword:00000001
@@ -4472,6 +4476,16 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Software\Microsoft\Internet Explorer\Suggested Sites]
 "Enabled"=dword:00000000
 
+[HKEY_CURRENT_USER\Software\Microsoft\Internet Explorer\TabbedBrowsing]
+"PopupsUseNewWindow"=dword:00000002
+"NewTabPageShow"=dword:00000002
+"WarnOnClose"=dword:00000000
+"ShowTabsWelcome"=dword:00000000
+"OpenInForeground"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Microsoft\Internet Explorer\ContinuousBrowsing]
+"Enabled"=dword:00000001
+
 [HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Internet Explorer\Suggested Sites]
 "Enabled"=dword:00000000
 
@@ -4739,6 +4753,9 @@ Windows Registry Editor Version 5.00
 "DisableWindowsSpotlightOnSettings"=dword:00000001
 "DisableWindowsSpotlightWindowsWelcomeExperience"=dword:00000001
 "IncludeEnterpriseSpotlight"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Cloud Content]
+"DisableWindowsConsumerFeatures"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\CloudContent]
 "DisableSoftLanding"=dword:00000001
@@ -5339,6 +5356,8 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\WINEVT\Channels\Microsoft-Windows-OOBE-Machine-DUI/Operational]
 "Enabled"=dword:00000000
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\WINEVT\Channels\Microsoft-Windows-WindowsBackup/ActionCenter]
+"Enabled"=dword:00000000
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Notifications\Settings\Windows.SystemToast.MobilityExperience]
 "Enabled"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\SystemSettings]
@@ -6558,6 +6577,8 @@ Windows Registry Editor Version 5.00
 "debugger"="Blocked"
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\crashpad_handler.exe]
 "debugger"="Blocked"
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\OneDriveStandaloneUpdater.exe]
+"debugger"="Blocked"
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer\DisallowRun]
 "1"="wlms.exe"
@@ -6710,6 +6731,7 @@ Windows Registry Editor Version 5.00
 "148"="SenseCE.exe"
 "149"="SenseSampleUploader.exe"
 "150"="crashpad_handler.exe"
+"151"="OneDriveStandaloneUpdater.exe"
 
 [HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\8\2283032206]
 "EnabledState"=dword:00000001
@@ -9408,7 +9430,7 @@ Windows Registry Editor Version 5.00
 "DoubleClickSpeed"="400" ; 00000001/400/500/900
 "DoubleClickWidth"="2" ; 2/4
 "ExtendedSounds"="No"
-"LowLevelHooksTimeout"=dword:000003e8 ; 00000001/500/1000/000003e8
+"LowLevelHooksTimeout"=dword:000003e8 ; 00000001/500/1000/3000/000003e8
 "MouseAccel"="0"
 "MouseAccel_Max"="0"
 "MouseAccel_Scale"="0"
@@ -9901,6 +9923,7 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\BthLEEnum]
 "Start"=dword:00000004 ; 00000003, 00000004
 
+[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DiagTrack]
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DiagTrack]
 "Start"=dword:00000004 ; 00000002, 00000004
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\msisadrv]
@@ -10792,6 +10815,9 @@ Windows Registry Editor Version 5.00
 "EnergyBudgetInfiniteOnFg"=dword:00000001
 "GlobalCoalesceMaxAdditionalTasksPerWake"=dword:00000000
 "GlobalCoalesceMaxEarlyFireWindowMs"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\FsDepends\Parameters]
+"VirtualDiskExpandOnMount"=dword:00000004
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\WMIContextLog]
 "Start"=dword:00000000
@@ -13487,6 +13513,62 @@ Windows Registry Editor Version 5.00
 "Value"="Deny"
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\documentsLibrary\Microsoft.WindowsFeedbackHub_8wekyb3d8bbwe]
 "Value"="Deny"
+
+; camera
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{E5323777-F976-4f5b-9B55-B94699C46E44}]
+"Value"="Allow"
+"Type"="InterfaceClass"
+"InitialAppValue"="Unspecified"
+; microphone
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{2EEF81BE-33FA-4800-9670-1CD474972C3F}]
+"Value"="Allow"
+"Type"="InterfaceClass"
+"InitialAppValue"="Unspecified"
+; notifications
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{52079E78-A92B-413F-B213-E8FE35712E72}]
+"Value"="Deny"
+"Type"="InterfaceClass"
+"InitialAppValue"="Unspecified"
+; account
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{C1D23ACC-752B-43E5-8448-8D0E519CD6D6}]
+"Value"="Deny"
+"Type"="InterfaceClass"
+"InitialAppValue"="Unspecified"
+; contacts
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{7D7E8402-7C54-4821-A34E-AEEFD62DED93}]
+"Value"="Deny"
+"Type"="InterfaceClass"
+"InitialAppValue"="Unspecified"
+; calendar
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{D89823BA-7180-4B81-B50C-7E471E6121A3}]
+"Value"="Deny"
+"Type"="InterfaceClass"
+"InitialAppValue"="Unspecified"
+; call log
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{8BC668CF-7728-45BD-93F8-CF2B3B41D7AB}]
+"Value"="Deny"
+"Type"="InterfaceClass"
+"InitialAppValue"="Unspecified"
+; email
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{9231CB4C-BF57-4AF3-8C55-FDA7BFCC04C5}]
+"Value"="Deny"
+"Type"="InterfaceClass"
+"InitialAppValue"="Unspecified"
+; tasks
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{E390DF20-07DF-446D-B962-F5C953062741}]
+"Value"="Deny"
+"Type"="InterfaceClass"
+"InitialAppValue"="Unspecified"
+; messages
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{992AFA70-6F47-4148-B3E9-3003349C1548}]
+"Value"="Deny"
+"Type"="InterfaceClass"
+"InitialAppValue"="Unspecified"
+; radio modules
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\{A8804298-2D5F-42E3-9531-9C8C39EB29CE}]
+"Value"="Deny"
+"Type"="InterfaceClass"
+"InitialAppValue"="Unspecified"
 
 [HKEY_CURRENT_USER\Software\Microsoft\Passkeys]
 "AccessConsent"=dword:00000000
@@ -16759,6 +16841,7 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\ScheduledDiagnostics]
 "EnabledExecution"=dword:00000000
 "EnabledExecutionLevel"=-
+
 [HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\ScheduledDiagnostics]
 "EnabledExecution"=dword:00000000
 "EnabledExecutionLevel"=-
@@ -19583,8 +19666,8 @@ Windows Registry Editor Version 5.00
 "LetAppsUseTextAndImageGeneration"=dword:00000002
 
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\TabletPC\Snipping Tool]
-"DisplaySnipInstructions"=dword:00000001
-"IsScreenSketchBannerExpanded"=dword:00000001
+"DisplaySnipInstructions"=dword:00000001 ; 00000000/00000001
+"IsScreenSketchBannerExpanded"=dword:00000001 ; 00000000/00000001
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\CloudFiles]
 "AutomaticDownloads"=dword:00000002
@@ -21388,7 +21471,7 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\SmartScreen]
 "ConfigureAppInstallControl"="Anywhere"
-"ConfigureAppInstallControlEnabled"=dword:00000000 ; 00000000/00000001
+"ConfigureAppInstallControlEnabled"=dword:00000001 ; 00000000/00000001
 "DontReportInfectionInformation"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\SmartScreen]
@@ -23364,6 +23447,19 @@ Windows Registry Editor Version 5.00
 "Version"="3369"
 "WRONG_DISC"="Wrong disc in drive. Please insert the disc labelled 'Unreal Tournament 2004 Play Disc' to continue."
 "YEAR"="2004"
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\SystemFileAssociations\Directory.Audio\shellex\ContextMenuHandlers\WMPShopMusic]
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\SystemFileAssociations\.3ds\Shell\3D Edit]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\SystemFileAssociations\.glb\Shell\3D Edit]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\SystemFileAssociations\.obj\Shell\3D Edit]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\SystemFileAssociations\.ply\Shell\3D Edit]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\SystemFileAssociations\.stl\Shell\3D Edit]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\SystemFileAssociations\.wrl\Shell\3D Edit]
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\ControlPanel\NameSpace\{87D66A43-7B11-4A28-9811-C86EE395ACF7}]
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Explorer\ControlPanel\NameSpace\{87D66A43-7B11-4A28-9811-C86EE395ACF7}]
 
 [-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\.jnt\jntfile\ShellNew]
 
