@@ -36,11 +36,13 @@ Write-Host "[4] APPX PROVISIONED  ($count4)" -ForegroundColor Yellow
 Write-Host "$sep`n" -ForegroundColor Cyan
 $section4 | Select-Object DisplayName | Format-Table -AutoSize
 
-# [5] ALL RUNNING SCHEDULED TASKS
-$section5 = Get-ScheduledTask | Where-Object { $_.State -ne 'Disabled' } | Sort-Object TaskPath, TaskName
+# [5] ALL SCHEDULED TASKS (non-disabled)
+$section5 = Get-ScheduledTask -ErrorAction SilentlyContinue |
+    Where-Object { $_.State -ne 'Disabled' } |
+    Sort-Object TaskPath, TaskName
 $count5 = ($section5 | Measure-Object).Count
 Write-Host "`n$sep" -ForegroundColor Cyan
-Write-Host "[5] ALL RUNNING SCHEDULED TASKS  ($count5)" -ForegroundColor Yellow
+Write-Host "[5] ALL SCHEDULED TASKS - NON-DISABLED  ($count5)" -ForegroundColor Yellow
 Write-Host "$sep`n" -ForegroundColor Cyan
 $section5 | Select-Object TaskName, TaskPath, State | Format-Table -AutoSize
 
