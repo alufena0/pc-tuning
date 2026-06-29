@@ -345,7 +345,6 @@ Windows Registry Editor Version 5.00
 "SystemMitigationAuditOptions"=hex:00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
 "KernelMitigationOptions"=hex:22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22
 "DisableHvci"=dword:00000001
-"HyperStartDisabled"=dword:00000001
 "DisableAcg"=dword:00000001
 "DisableArbitraryCodeGuard"=dword:00000001
 "DisableCfg"=dword:00000001
@@ -490,7 +489,7 @@ Windows Registry Editor Version 5.00
 "InterruptRequest"=dword:00000001
 "InterruptRequestRate"=dword:ffffffff ; 99999999/ffffffff
 "InterruptSteeringDisabled"=dword:00000001 ; 00000000/00000001
-"InterruptSteeringFlags"=dword:00000001 ; 00000000/00000001/00000003
+"InterruptSteeringFlags"=dword:00000001 ; 00000000, 00000001 off/00000002 on/00000003
 "InterruptTimeBias"=dword:00000001
 "IoEnqueueIrp"=dword:00000020
 "IoQueueThreadIrp"=dword:00000020
@@ -1111,7 +1110,7 @@ Windows Registry Editor Version 5.00
 "AffinityMask"=dword:00000000
 "CheckFwVersion"=dword:00000000
 "DebugLoggingMode"=dword:00000000
-"DefaultPnPCapabilities"=dword:00000024
+"DefaultPnPCapabilities"=dword:00000018 ; 00000018/00000024
 "DisableNaps"=dword:00000001
 "DisableNDISWatchDog"=dword:00000001
 "DisableReenumerationTimeoutBugcheck"=dword:00000001
@@ -1194,7 +1193,7 @@ Windows Registry Editor Version 5.00
 "EnableTCPChimney"=dword:00000000
 "EnableWsd"=dword:00000000
 "EnableWsh"=dword:00000000
-"FastSendDatagramThreshold"=dword:00000514
+"FastSendDatagramThreshold"=dword:000005dc
 "ForwardBroadcasts"=dword:00000000
 "GlobalMaxTcpWindowSize"=- ; =- autotuning on, 000016d0/0000ffff/0030d400/00002238/00065535/00200000/0005ae4c/00080000/00010000/00040000/0003ebc0 autotuning off
 "IdleTimeout"=dword:00000000
@@ -1521,6 +1520,7 @@ Windows Registry Editor Version 5.00
 "MinActivePowerState"=dword:00000000
 "QueueDepth"=dword:00000040 ; 00000020/00000040
 "IdleTimeoutInMS"=dword:00000000
+"NumberOfRequests"=dword:000000ff
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\iaStorVD\Parameters\Device]
 "Nvme0IgnoreFuaBit"=dword:00000001
@@ -2026,9 +2026,12 @@ Windows Registry Editor Version 5.00
 "EnableIdlePowerManagement"=dword:00000000
 "EnableL1"=dword:00000000
 "EnableNativePowerManagement"=dword:00000000
-"MaximumPayloadSize"=dword:00000100 ; 00000100/00000200/00000512
+"MaximumPayloadSize"=dword:00000200 ; 00000100/00000200/00000512
 "PnpAsyncNewDevice"=dword:00000001
 "PnpAsyncNewDevices"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\PCIBus\Parameters]
+"EnableASPM"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\pci]
 "EnableSelectiveSuspend"=dword:00000000
@@ -2221,7 +2224,7 @@ Windows Registry Editor Version 5.00
 "OptimizeForDirtyExpressions"=dword:00000001
 "OverlayDisqualifyCount"=dword:00000000
 "OverlayDisqualifyInterval"=dword:00000000
-"OverlayMinFPS"=dword:0000001e ; 00000000/0000270f/0000001e
+"OverlayMinFPS"=dword:00000000 ; 00000000/0000270f/0000001e
 "OverlayQualifyCount"=dword:00000000
 "OverlayQualifyInterval"=dword:00000000
 "OverrideMonitorRefreshRate"=dword:00000000
@@ -2317,7 +2320,7 @@ Windows Registry Editor Version 5.00
 "DisableDWM"=dword:00000001
 "EnableAeroPeek"=dword:00000000
 "EnableColorSeparation"=dword:00000000
-"ExclusiveModeFramerateAveragingPeriodMs"=dword:000003e8 ; 000003e8, 00000000/00000064/000000fa/000001f4/000002ee
+"ExclusiveModeFramerateAveragingPeriodMs"=dword:0000000a ; 000003e8, 00000000/00000064/000000fa/000001f4/000002ee
 "ExclusiveModeFramerateThresholdPercent"=dword:00000001 ; 0000002d, 00000000/00000001/00000064
 "ForwardOnlyOnly"=dword:00000000
 "RemoveSRMeshInShell"=dword:00000000
@@ -2359,7 +2362,7 @@ Windows Registry Editor Version 5.00
 "RITdemonTimerPowerSaveCoalescing"=dword:ffffffff ; 00000000/0000000a/ffffffff
 "RITdemonTimerPowerSaveElapse"=dword:0000000a ; 00000000/0000000a
 "ShutdownWarningDialogTimeout"=dword:00000001
-"TimerCoalescing"=dword:00000000
+"TimerCoalescing"=hex:00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
 "UseDx"=dword:00000000 ; 00000000/00000001
 "UseGpuForRender"=dword:00000000 ; 00000000/00000001
 "USERExtraInstrumentations"=dword:00000000
@@ -2391,7 +2394,7 @@ Windows Registry Editor Version 5.00
 "MaxOutstandingIORequests"=dword:00000100
 "MaxQueuedCommands"=dword:00000100
 "MaxSegmentsPerCommand"=dword:00000100
-"NumberOfRequests"=dword:000005dc
+"NumberOfRequests"=dword:000000ff ; 000005dc/000000ff
 "NvmeMaxReadSplit"=dword:00000004
 "NvmeMaxWriteSplit"=dword:00000004
 "QueueDepth"=dword:00000040
@@ -2403,7 +2406,7 @@ Windows Registry Editor Version 5.00
 "ArbitrationBurst"=dword:00000100
 "ForceEagerWrites"=dword:00000001
 "ForceFlush"=dword:00000001
-"HostMemoryBufferBytes"=dword:000005dc
+"HostMemoryBufferBytes"=dword:000000ff
 "ImmediateData"=dword:00000001
 "IoQueueDepth"=dword:00000040
 "IoSubmissionQueueCount"=dword:00000003
@@ -3457,7 +3460,7 @@ Windows Registry Editor Version 5.00
 "OptimizePerf"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DXGKrnl]
-"CreateGdiPrimaryOnSlaveGPU"=dword:00000000
+"CreateGdiPrimaryOnSlaveGPU"=dword:00000000 ; 00000000/00000001
 "DisableOverlay"=dword:00000000
 "DisableOverlays"=dword:00000000
 "DmaMaximumSegmentSize"=dword:00004000
@@ -3563,7 +3566,7 @@ Windows Registry Editor Version 5.00
 "RmGpsPsEnablePerCpuCoreDpc"=dword:00000000
 "SchedulingPolicy"=dword:00000002
 "UseSCGForRender"=dword:00000000
-"VsyncIdleTimeout"=dword:00000007 ; 00000007, 00000000/00000001
+"VsyncIdleTimeout"=dword:00000000 ; 0000000a, 00000000/00000001/00000007
 "VSyncOverrideMode"=dword:00000000 ; 00000000/00000001
 "YieldPercentage"=dword:00000001 ; 00000001/00000005/0000000a
 "InitDriverFenceId"=dword:00000000
@@ -6793,6 +6796,9 @@ Windows Registry Editor Version 5.00
 "150"="crashpad_handler.exe"
 "151"="OneDriveStandaloneUpdater.exe"
 
+[HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\8\3036241548]
+"EnabledState"=dword:00000001
+
 [HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\8\2283032206]
 "EnabledState"=dword:00000001
 [HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\8\502943886]
@@ -9496,7 +9502,7 @@ Windows Registry Editor Version 5.00
 "DoubleClickSpeed"="400" ; 00000001/400/500/900
 "DoubleClickWidth"="2" ; 2/4
 "ExtendedSounds"="No"
-"LowLevelHooksTimeout"=dword:000003e8 ; 00000001/500/1000/3000/000003e8
+"LowLevelHooksTimeout"=dword:000003e8 ; 00000001/500/1000/3000/0000000a/000003e8
 "MouseAccel"="0"
 "MouseAccel_Max"="0"
 "MouseAccel_Scale"="0"
@@ -9510,15 +9516,16 @@ Windows Registry Editor Version 5.00
 "MouseTrails"="0"
 "RawInput"="1"
 "RawMouseThrottleDuration"=dword:00000014 ; 00000008, 00000001/00000003/00000014
-"RawMouseThrottleEnabled"=dword:00000001 ; 00000001, 00000000
+"RawMouseThrottleEnabled"=dword:00000000 ; 00000001, 00000000
 "RawMouseThrottleForced"=dword:00000001 ; 00000000, 00000001
 "RawMouseThrottleLeeway"=dword:00000000 ; 00000002, 00000000
 "SnapToDefaultButton"="0"
-"SwapMouseButton"="0"
 "SwapMouseButtons"="0"
-; "SmoothMouseXCurve"=hex:00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
-; "SmoothMouseYCurve"=hex:00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+"SmoothMouseXCurve"=hex:00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+"SmoothMouseYCurve"=hex:00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+; default X
 ; "SmoothMouseXCurve"=hex:00,00,00,00,00,00,00,00,15,6e,00,00,00,00,00,00,00,40,01,00,00,00,00,00,29,dc,03,00,00,00,00,00,00,00,28,00,00,00,00,00
+; default Y
 ; "SmoothMouseYCurve"=hex:00,00,00,00,00,00,00,00,fd,11,01,00,00,00,00,00,00,24,04,00,00,00,00,00,00,fc,12,00,00,00,00,00,00,c0,bb,01,00,00,00,00
 ; "SmoothMouseXCurve"=hex:00,00,00,00,00,00,00,00,00,00,40,00,00,00,00,00,00,00,80,00,00,00,00,00,00,00,C0,00,00,00,00,00,00,00,01,00,00,00,00
 ; "SmoothMouseYCurve"=hex:00,00,00,00,00,00,00,00,00,00,40,00,00,00,00,00,00,00,80,00,00,00,00,00,00,00,C0,00,00,00,00,00,00,00,01,00,00,00,00
@@ -9528,8 +9535,6 @@ Windows Registry Editor Version 5.00
 ; "SmoothMouseYCurve"=hex:00,00,00,00,00,00,00,00,66,a6,02,00,00,00,00,00,cd,4c,05,00,00,00,00,00,a0,99,0a,00,00,00,00,00,38,33,15,00,00,00,00,00
 ; "SmoothMouseXCurve"=hex:00,00,00,00,00,00,00,00,c0,cc,0c,00,00,00,00,00,80,99,19,00,00,00,00,00,40,66,26,00,00,00,00,00,00,33,33,00,00,00,00,00
 ; "SmoothMouseYCurve"=hex:00,00,00,00,00,00,00,00,00,00,38,00,00,00,00,00,00,00,70,00,00,00,00,00,00,00,a8,00,00,00,00,00,00,00,e0,00,00,00,00,00
-"SmoothMouseXCurve"=hex:00,00,00,00,00,00,00,00,00,00,40,00,00,00,00,00,00,00,80,00,00,00,00,00,00,00,C0,00,00,00,00,00,00,00,01,00,00,00,00,00
-"SmoothMouseYCurve"=hex:00,00,00,00,00,00,00,00,00,00,40,00,00,00,00,00,00,00,80,00,00,00,00,00,00,00,C0,00,00,00,00,00,00,00,01,00,00,00,00,00
 
 [HKEY_USERS\.DEFAULT\Control Panel\Mouse]
 "ActiveWindowTracking"=dword:00000000
@@ -9556,11 +9561,12 @@ Windows Registry Editor Version 5.00
 "RawMouseThrottleForced"=dword:00000001
 "RawMouseThrottleLeeway"=dword:00000000
 "SnapToDefaultButton"="0"
-"SwapMouseButton"="0"
 "SwapMouseButtons"="0"
-; "SmoothMouseXCurve"=hex:00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
-; "SmoothMouseYCurve"=hex:00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+"SmoothMouseXCurve"=hex:00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+"SmoothMouseYCurve"=hex:00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+; default X
 ; "SmoothMouseXCurve"=hex:00,00,00,00,00,00,00,00,15,6e,00,00,00,00,00,00,00,40,01,00,00,00,00,00,29,dc,03,00,00,00,00,00,00,00,28,00,00,00,00,00
+; default Y
 ; "SmoothMouseYCurve"=hex:00,00,00,00,00,00,00,00,fd,11,01,00,00,00,00,00,00,24,04,00,00,00,00,00,00,fc,12,00,00,00,00,00,00,c0,bb,01,00,00,00,00
 ; "SmoothMouseXCurve"=hex:00,00,00,00,00,00,00,00,00,00,40,00,00,00,00,00,00,00,80,00,00,00,00,00,00,00,C0,00,00,00,00,00,00,00,01,00,00,00,00
 ; "SmoothMouseYCurve"=hex:00,00,00,00,00,00,00,00,00,00,40,00,00,00,00,00,00,00,80,00,00,00,00,00,00,00,C0,00,00,00,00,00,00,00,01,00,00,00,00
@@ -9570,8 +9576,6 @@ Windows Registry Editor Version 5.00
 ; "SmoothMouseYCurve"=hex:00,00,00,00,00,00,00,00,66,a6,02,00,00,00,00,00,cd,4c,05,00,00,00,00,00,a0,99,0a,00,00,00,00,00,38,33,15,00,00,00,00,00
 ; "SmoothMouseXCurve"=hex:00,00,00,00,00,00,00,00,c0,cc,0c,00,00,00,00,00,80,99,19,00,00,00,00,00,40,66,26,00,00,00,00,00,00,33,33,00,00,00,00,00
 ; "SmoothMouseYCurve"=hex:00,00,00,00,00,00,00,00,00,00,38,00,00,00,00,00,00,00,70,00,00,00,00,00,00,00,a8,00,00,00,00,00,00,00,e0,00,00,00,00,00
-"SmoothMouseXCurve"=hex:00,00,00,00,00,00,00,00,00,00,40,00,00,00,00,00,00,00,80,00,00,00,00,00,00,00,C0,00,00,00,00,00,00,00,01,00,00,00,00,00
-"SmoothMouseYCurve"=hex:00,00,00,00,00,00,00,00,00,00,40,00,00,00,00,00,00,00,80,00,00,00,00,00,00,00,C0,00,00,00,00,00,00,00,01,00,00,00,00,00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Paint]
 "DisableCocreator"=dword:00000001
@@ -12682,6 +12686,12 @@ Windows Registry Editor Version 5.00
 "IsCensusDisabled"=dword:00000001
 "TaskEnableRun"=dword:00000001 ; 00000000/00000001
 
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Compatibility Assistant\Tracing]
+"InstallInfoCheck"=dword:00000000
+"ARPInfoCheck"=dword:00000000
+"MediaInfoCheck"=dword:00000000
+"FileInfoCheck"=dword:00000000
+
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\TabletPC]
 "EnableCursorLinearization"=dword:00000000
 "PreventHandwritingDataSharing"=dword:00000001
@@ -13755,8 +13765,8 @@ Windows Registry Editor Version 5.00
 "DoNotHoldNICBuffers"=dword:00000001
 "DynamicBacklogGrowthDelta"=dword:0000000a
 "DynamicSendBufferDisable"=dword:00000000 ; 00000000/00000001
-"FastCopyReceiveThreshold"=dword:00000514 ; 00000400/00000500/00000514/000005b8/000005dc/00004000/00010000 MTU
-"FastSendDatagramThreshold"=dword:00000514 ; 00000400/00000500/00000514/000005b8/000005dc/00004000/00010000/00064000 MTU
+"FastCopyReceiveThreshold"=dword:000005dc ; 00000400/00000500/00000514/000005b8/000005dc/00004000/00010000 MTU
+"FastSendDatagramThreshold"=dword:000005dc ; 00000400/00000500/00000514/000005b8/000005dc/00004000/00010000/00064000 MTU
 "IgnoreOrderlyRelease"=dword:00000001
 "IgnorePushBitOnReceives"=dword:00000001
 "NonBlockingSendSpecialBuffering"=dword:00000001
@@ -13908,6 +13918,10 @@ Windows Registry Editor Version 5.00
 "Active"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules]
+"Block-ICMPv4-Echo-In"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=1|ICMP4=8:*|Name=Block ICMPv4 Echo Requests|"
+"Block-ICMPv6-Echo-In"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=58|ICMP6=128:*|Name=Block ICMPv6 Echo Requests|"
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules]
 "RemoteDesktop-UserMode-In-TCP"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=6|LPort=3389|App=%SystemRoot%\\system32\\svchost.exe|Svc=termservice|Name=@FirewallAPI.dll,-28775|Desc=@FirewallAPI.dll,-28756|EmbedCtxt=@FirewallAPI.dll,-28752|"
 "RemoteDesktop-UserMode-In-UDP"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=17|LPort=3389|App=%SystemRoot%\\system32\\svchost.exe|Svc=termservice|Name=@FirewallAPI.dll,-28776|Desc=@FirewallAPI.dll,-28777|EmbedCtxt=@FirewallAPI.dll,-28752|"
 "RemoteDesktop-Shadow-In-TCP"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=6|App=%SystemRoot%\\system32\\RdpSa.exe|Name=@FirewallAPI.dll,-28778|Desc=@FirewallAPI.dll,-28779|EmbedCtxt=@FirewallAPI.dll,-28752|Edge=TRUE|Defer=App|"
@@ -13918,9 +13932,15 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules]
 "{2765E0F4-2918-4A46-B9C9-43CDD8FCBA2B}"="BlockCortana|Action=Block|Active=TRUE|Dir=Out|App=C:\\windows\\systemapps\\microsoft.windows.cortana_cw5n1h2txyewy\\searchui.exe|Name=Search and Cortana application|AppPkgId=S-1-15-2-1861897761-1695161497-2927542615-642690995-327840285-2659745135-2630312742|"
 
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules]
+"NETDIS-NB_Name-In-UDP-Active"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=17|LPort=137|Name=Block NetBIOS Name In UDP|"
+"NETDIS-NB_Name-Out-UDP-Active"="v2.33|Action=Block|Active=TRUE|Dir=Out|Protocol=17|RPort=137|Name=Block NetBIOS Name Out UDP|"
+"NETDIS-NB_Datagram-In-UDP-Active"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=17|LPort=138|Name=Block NetBIOS Datagram In UDP|"
+"NETDIS-NB_Datagram-Out-UDP-Active"="v2.33|Action=Block|Active=TRUE|Dir=Out|Protocol=17|RPort=138|Name=Block NetBIOS Datagram Out UDP|"
+"Block-NetBIOS-Session-In-TCP"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=6|LPort=139|Name=Block NetBIOS Session In TCP|"
+"Block-NetBIOS-Session-Out-TCP"="v2.33|Action=Block|Active=TRUE|Dir=Out|Protocol=6|RPort=139|Name=Block NetBIOS Session Out TCP|"
+
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules]
-"NETDIS-NB_Name-In-UDP-Active"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=17|Profile=Private|LPort=137|RA4=LocalSubnet|RA6=LocalSubnet|App=System|Name=@FirewallAPI.dll,-32769|Desc=@FirewallAPI.dll,-32772|EmbedCtxt=@FirewallAPI.dll,-32752|"
-"NETDIS-NB_Datagram-Out-UDP-Active"="v2.33|Action=Block|Active=TRUE|Dir=Out|Protocol=17|Profile=Private|RPort=138|RA4=LocalSubnet|RA6=LocalSubnet|App=System|Name=@FirewallAPI.dll,-32781|Desc=@FirewallAPI.dll,-32784|EmbedCtxt=@FirewallAPI.dll,-32752|"
 "{6cae16ee-61e4-439a-818e-1db16dc787ed}"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=17|LPort=5050|Name=Block Inbound Port 5050 UDP (CDP)|EmbedCtxt=!Custom block inbound port (CDP)|"
 "NVS-FrameServer-Out-TCP-NoScope"="v2.33|Action=Block|Active=TRUE|Dir=Out|Protocol=6|RPort=554|RPort2_10=8554-8558|RA4=LocalSubnet|RA6=LocalSubnet|App=%SystemRoot%\\system32\\svchost.exe|Svc=FrameServer|Name=@FirewallAPI.dll,-54004|Desc=@FirewallAPI.dll,-54005|EmbedCtxt=@FirewallAPI.dll,-54001|"
 "PlayTo-Out-UDP-LocalSubnetScope"="v2.33|Action=Block|Active=TRUE|Dir=Out|Protocol=17|Profile=Private|RA4=LocalSubnet|RA6=LocalSubnet|App=%SystemRoot%\\system32\\mdeserver.exe|Name=@FirewallAPI.dll,-36006|Desc=@FirewallAPI.dll,-36007|EmbedCtxt=@FirewallAPI.dll,-36001|"
@@ -13955,7 +13975,6 @@ Windows Registry Editor Version 5.00
 "NETDIS-WSDEVNTS-In-TCP-Active"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=6|Profile=Private|LPort=5358|RA4=LocalSubnet|RA6=LocalSubnet|App=System|Name=@FirewallAPI.dll,-32813|Desc=@FirewallAPI.dll,-32814|EmbedCtxt=@FirewallAPI.dll,-32752|"
 "NETDIS-UPnPHost-Out-TCP-Active"="v2.33|Action=Block|Active=TRUE|Dir=Out|Protocol=6|Profile=Private|RPort=2869|RA4=LocalSubnet|RA6=LocalSubnet|App=%SystemRoot%\\system32\\svchost.exe|Svc=fdphost|Name=@FirewallAPI.dll,-32765|Desc=@FirewallAPI.dll,-32768|EmbedCtxt=@FirewallAPI.dll,-32752|"
 "NETDIS-LLMNR-Out-UDP-Active"="v2.33|Action=Block|Active=TRUE|Dir=Out|Protocol=17|Profile=Private|RPort=5355|RA4=LocalSubnet|RA6=LocalSubnet|App=%SystemRoot%\\system32\\svchost.exe|Svc=dnscache|Name=@FirewallAPI.dll,-32805|Desc=@FirewallAPI.dll,-32808|EmbedCtxt=@FirewallAPI.dll,-32752|"
-"RemoteAssistance-DCOM-In-TCP-NoScope-Active"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=6|Profile=Domain|LPort=135|App=%SystemRoot%\\system32\\svchost.exe|Svc=rpcss|Name=@FirewallAPI.dll,-33035|Desc=@FirewallAPI.dll,-33036|EmbedCtxt=@FirewallAPI.dll,-33002|"
 "NETDIS-WSDEVNT-In-TCP-Active"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=6|Profile=Private|LPort=5357|RA4=LocalSubnet|RA6=LocalSubnet|App=System|Name=@FirewallAPI.dll,-32817|Desc=@FirewallAPI.dll,-32818|EmbedCtxt=@FirewallAPI.dll,-32752|"
 "RemoteAssistance-SSDPSrv-Out-TCP-Active"="v2.33|Action=Block|Active=TRUE|Dir=Out|Protocol=6|Profile=Domain|Profile=Private|RA4=LocalSubnet|RA6=LocalSubnet|App=System|Name=@FirewallAPI.dll,-33031|Desc=@FirewallAPI.dll,-33034|EmbedCtxt=@FirewallAPI.dll,-33002|"
 "RemoteAssistance-SSDPSrv-Out-UDP-Active"="v2.33|Action=Block|Active=TRUE|Dir=Out|Protocol=17|Profile=Domain|Profile=Private|RPort=1900|RA4=LocalSubnet|RA6=LocalSubnet|App=%SystemRoot%\\system32\\svchost.exe|Svc=Ssdpsrv|Name=@FirewallAPI.dll,-33023|Desc=@FirewallAPI.dll,-33026|EmbedCtxt=@FirewallAPI.dll,-33002|"
@@ -13966,7 +13985,6 @@ Windows Registry Editor Version 5.00
 "NETDIS-DAS-In-UDP-Active"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=17|Profile=Private|LPort=3702|RA4=LocalSubnet|RA6=LocalSubnet|App=%SystemRoot%\\system32\\dashost.exe|Name=@FirewallAPI.dll,-32825|Desc=@FirewallAPI.dll,-32826|EmbedCtxt=@FirewallAPI.dll,-32752|"
 "PlayTo-QWave-Out-TCP-PlayToScope"="v2.33|Action=Block|Active=TRUE|Dir=Out|Protocol=6|Profile=Private|Profile=Public|RPort=2177|RA42=Ply2Renders|RA62=Ply2Renders|App=%SystemRoot%\\system32\\svchost.exe|Svc=Qwave|Name=@FirewallAPI.dll,-36016|Desc=@FirewallAPI.dll,-36017|EmbedCtxt=@FirewallAPI.dll,-36001|"
 "PlayTo-Out-UDP-PlayToScope"="v2.33|Action=Block|Active=TRUE|Dir=Out|Protocol=17|Profile=Public|RA42=Ply2Renders|RA62=Ply2Renders|App=%SystemRoot%\\system32\\mdeserver.exe|Name=@FirewallAPI.dll,-36006|Desc=@FirewallAPI.dll,-36007|EmbedCtxt=@FirewallAPI.dll,-36001|"
-"NETDIS-NB_Name-Out-UDP-Active"="v2.33|Action=Block|Active=TRUE|Dir=Out|Protocol=17|Profile=Private|RPort=137|RA4=LocalSubnet|RA6=LocalSubnet|App=System|Name=@FirewallAPI.dll,-32773|Desc=@FirewallAPI.dll,-32776|EmbedCtxt=@FirewallAPI.dll,-32752|"
 "DeliveryOptimization-UDP-In"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=17|LPort=7680|App=%SystemRoot%\\system32\\svchost.exe|Svc=dosvc|Name=@%systemroot%\\system32\\dosvc.dll,-103|Desc=@%systemroot%\\system32\\dosvc.dll,-104|EmbedCtxt=@%systemroot%\\system32\\dosvc.dll,-100|Edge=TRUE|"
 "CDPSvc-WFD-Out-TCP"="v2.33|Action=Block|Active=TRUE|Dir=Out|Protocol=6|Profile=Public|App=%SystemRoot%\\system32\\svchost.exe|Svc=CDPSvc|Name=@FirewallAPI.dll,-37413|Desc=@FirewallAPI.dll,-37414|EmbedCtxt=@FirewallAPI.dll,-37402|TTK2_28=WFDCDPSvc|"
 "NETDIS-UPnP-Out-TCP-Active"="v2.33|Action=Block|Active=TRUE|Dir=Out|Protocol=6|Profile=Private|RPort=2869|RA4=LocalSubnet|RA6=LocalSubnet|App=%SystemRoot%\\system32\\svchost.exe|Svc=upnphost|Name=@FirewallAPI.dll,-32821|Desc=@FirewallAPI.dll,-32822|EmbedCtxt=@FirewallAPI.dll,-32752|"
@@ -13980,7 +13998,6 @@ Windows Registry Editor Version 5.00
 "CDPSvc-Out-UDP"="v2.33|Action=Block|Active=TRUE|Dir=Out|Protocol=17|Profile=Domain|Profile=Private|App=%SystemRoot%\\system32\\svchost.exe|Svc=CDPSvc|Name=@FirewallAPI.dll,-37409|Desc=@FirewallAPI.dll,-37410|EmbedCtxt=@FirewallAPI.dll,-37402|"
 "WiFiDirect-KM-Driver-In-UDP"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=17|App=System|Name=@wlansvc.dll,-37380|Desc=@wlansvc.dll,-37892|EmbedCtxt=@wlansvc.dll,-36865|TTK2_27=WFDKmDriver|"
 "CDPSvc-WFD-In-TCP"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=6|Profile=Public|App=%SystemRoot%\\system32\\svchost.exe|Svc=CDPSvc|Name=@FirewallAPI.dll,-37411|Desc=@FirewallAPI.dll,-37412|EmbedCtxt=@FirewallAPI.dll,-37402|TTK2_28=WFDCDPSvc|"
-"NETDIS-NB_Datagram-In-UDP-Active"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=17|Profile=Private|LPort=138|RA4=LocalSubnet|RA6=LocalSubnet|App=System|Name=@FirewallAPI.dll,-32777|Desc=@FirewallAPI.dll,-32780|EmbedCtxt=@FirewallAPI.dll,-32752|"
 "WiFiDirect-KM-Driver-Out-UDP"="v2.33|Action=Block|Active=TRUE|Dir=Out|Protocol=17|App=System|Name=@wlansvc.dll,-37381|Desc=@wlansvc.dll,-37893|EmbedCtxt=@wlansvc.dll,-36865|TTK2_27=WFDKmDriver|"
 "WFDPRINT-SCAN-Out-Active"="v2.33|Action=Block|Active=TRUE|Dir=Out|Profile=Public|App=%SystemRoot%\\system32\\svchost.exe|Svc=stisvc|Name=@FirewallAPI.dll,-36862|Desc=@FirewallAPI.dll,-36863|EmbedCtxt=@FirewallAPI.dll,-36851|TTK2_22=WFDPrint|"
 "RemoteAssistance-PnrpSvc-UDP-OUT-Active"="v2.33|Action=Block|Active=TRUE|Dir=Out|Protocol=17|Profile=Domain|Profile=Private|App=%systemroot%\\system32\\svchost.exe|Svc=pnrpsvc|Name=@FirewallAPI.dll,-33037|Desc=@FirewallAPI.dll,-33038|EmbedCtxt=@FirewallAPI.dll,-33002|"
@@ -15410,7 +15427,7 @@ Windows Registry Editor Version 5.00
 "ElevateNonAdmins"=dword:00000001
 "ExcludeWUDriversInQualityUpdate"=dword:00000001
 "IsActiveHoursEnabled"=-
-"ManagePreviewBuilds"=dword:00000001
+"ManagePreviewBuilds"=dword:00000001 ; 00000001/00000002
 "ManagePreviewBuildsPolicyValue"=dword:00000001
 "Pause"=- ; =-, 00000001
 "PauseDeferrals"=- ; =-, 00000001
@@ -27234,8 +27251,8 @@ Windows Registry Editor Version 5.00
 "EnergyEfficientEthernet"=dword:00000000
 "ENPWMode"="0"
 "EPSDRT"="0"
-"FastCopyReceiveThreshold"=dword:00000514
-"FastSendDatagramThreshold"=dword:00000514
+"FastCopyReceiveThreshold"=dword:000005dc
+"FastSendDatagramThreshold"=dword:000005dc
 "*FlowControl"="0"
 "FlowControlCap"="0"
 "ForcedUsbMode"="8"
