@@ -12,6 +12,7 @@ fsutil behavior set memoryusage 2
 fsutil behavior set mftzone 4
 fsutil behavior set quotanotify 4294967295
 fsutil behavior set enablenonpagedntfs 1
+fsutil behavior set disablewriteautotiering 1
 fsutil 8dot3name set 1
 fsutil repair set C: 0
 fsutil repair set D: 0
@@ -102,6 +103,12 @@ taskkill /f /t /im SearchHost.exe >NUL 2>&1
 takeown /F %windir%\System32\CompatTelRunner.exe > NUL 2>&1
 icacls %windir%\System32\CompatTelRunner.exe /grant %username%:F > NUL 2>&1
 del %windir%\System32\CompatTelRunner.exe /f > NUL 2>&1
+takeown /f "%ProgramFiles%\Microsoft GameInput" /r /d y >nul 2>&1
+icacls "%ProgramFiles%\Microsoft GameInput" /grant %username%:F /t >nul 2>&1
+rd /s /q "%ProgramFiles%\Microsoft GameInput" >nul 2>&1
+takeown /f "%SystemRoot%\System32\GameInputRedist.dll" >nul 2>&1
+icacls "%SystemRoot%\System32\GameInputRedist.dll" /grant %username%:F >nul 2>&1
+del /f /q "%SystemRoot%\System32\GameInputRedist.dll" >nul 2>&1
 cd /d "%~dp0"
 set "DKSys=%~dp0iamdrvd77hello.sys"
 "C:\Program Files\7-Zip\7z.exe" x -aoa -bso0 -bsp1 "%~dp0DKTT.zip" -p"DDK" "iamdrvd77hello.sys" >nul
@@ -178,15 +185,15 @@ takeown /f "%ProgramData%\Microsoft\Windows Defender" /r /d y >nul 2>&1 & icacls
 for %%F in (C:\Windows\WinSxS\FileMaps\wow64_windows-defender*.manifest C:\Windows\WinSxS\FileMaps\x86_windows-defender*.manifest C:\Windows\WinSxS\FileMaps\amd64_windows-defender*.manifest C:\Windows\System32\SecurityAndMaintenance_Error.png C:\Windows\System32\SecurityAndMaintenance.png C:\Windows\System32\SecurityHealthSystray.exe C:\Windows\System32\SecurityHealthService.exe C:\Windows\System32\SecurityHealthHost.exe C:\Windows\System32\MpSigStub.exe C:\Windows\System32\drivers\SgrmAgent.sys C:\Windows\System32\drivers\WdDevFlt.sys C:\Windows\System32\drivers\WdBoot.sys C:\Windows\System32\webthreatdefsvc.dll C:\Windows\System32\webthreatdefusersvc.dll C:\Windows\System32\webthreatdefsvc.dll.mui C:\Windows\System32\webthreatdefusersvc.dll.mui C:\Windows\System32\drivers\WdFilter.sys C:\Windows\System32\wscsvc.dll C:\Windows\System32\drivers\WdNisDrv.sys C:\Windows\System32\wscproxystub.dll C:\Windows\System32\wscisvif.dll C:\Windows\System32\SecurityHealthProxyStub.dll C:\Windows\System32\smartscreen.dll C:\Windows\SysWOW64\smartscreen.dll C:\Windows\System32\smartscreen.exe C:\Windows\SysWOW64\smartscreen.exe C:\Windows\System32\SmartScreenSettings.exe C:\Windows\SysWOW64\SmartScreenSettings.exe C:\Windows\System32\DWWIN.EXE C:\Windows\SysWOW64\smartscreenps.dll C:\Windows\System32\smartscreenps.dll C:\Windows\System32\SecurityHealthCore.dll C:\Windows\System32\SecurityHealthSsoUdk.dll C:\Windows\System32\SecurityHealthSSO.dll C:\Windows\System32\SecurityHealthSSO.dll.mui C:\Windows\System32\SecurityHealthUdk.dll C:\Windows\System32\SecurityHealthAgent.dll C:\Windows\System32\drivers\mssecwfp.sys C:\Windows\System32\drivers\mssecwfp.sys.mui C:\Windows\System32\winshfhc.dll C:\Windows\SysWOW64\winshfhc.dll C:\Windows\System32\mssecwfpu.dll C:\Windows\System32\wscapi.dll C:\Windows\System32\wscadminui.exe C:\Windows\System32\ieapfltr.dll C:\Windows\SysWOW64\ieapfltr.dll C:\Windows\System32\SgrmLpac.exe C:\Windows\System32\Sgrm\SgrmLpac.exe C:\Windows\System32\drivers\SgrmAgent.sys C:\Windows\System32\SgrmBroker.exe C:\Windows\System32\Sgrm\SgrmBroker.exe C:\Windows\System32\Sgrm\SgrmAssertions.bin C:\Windows\System32\Sgrm\SgrmAssertions.cat C:\Windows\System32\SgrmEnclave.dll C:\Windows\System32\Sgrm\SgrmEnclave.dll C:\Windows\System32\SgrmEnclave_secure.dll C:\Windows\System32\Sgrm\SgrmEnclave_secure.dll C:\Windows\ELAMBKUP\WdBoot.sys C:\Windows\System32\config\ELAM C:\Windows\System32\mssecuser.dll C:\Windows\System32\windowsdefenderapplicationguardcsp.dll C:\Windows\SysWOW64\windowsdefenderapplicationguardcsp.dll C:\Windows\SysWOW64\GameBarPresenceWriter.exe C:\Windows\System32\GameBarPresenceWriter.exe C:\Windows\SysWOW64\DeviceCensus.exe C:\Windows\SysWOW64\CompatTelRunner.exe C:\Windows\system32\drivers\msseccore.sys C:\Windows\system32\drivers\MsSecFltWfp.sys C:\Windows\system32\drivers\MsSecFlt.sys C:\Windows\System32\SecurityHealth\SecurityHealthSSO.dll C:\Windows\System32\SecurityHealth\SecurityHealthSSO.dll.mui) do if exist "%%~F" (takeown /f "%%~F" /a >nul 2>&1 & icacls "%%~F" /grant *S-1-5-32-544:F /c /l >nul 2>&1 & del /f /q "%%~F")
 for /d %%D in ("C:\Windows\WinSxS\amd64_security-octagon*" "C:\Windows\WinSxS\x86_windows-defender*" "C:\Windows\WinSxS\wow64_windows-defender*" "C:\Windows\WinSxS\amd64_windows-defender*" "C:\Windows\SystemApps\Microsoft.Windows.AppRep.ChxApp_cw5n1h2txyewy" "C:\ProgramData\Microsoft\Windows Defender" "C:\Program Files\Windows Defender Sleep" "C:\Program Files\Microsoft Update Health Tools" "C:\Windows\security\database" "C:\Program Files\Windows Security" "C:\Program Files\PCHealthCheck" "C:\ProgramData\Microsoft\Windows Defender Advanced Threat Protection" "C:\Program Files (x86)\Windows Defender Advanced Threat Protection" "C:\Program Files\Windows Defender Advanced Threat Protection" "C:\ProgramData\Microsoft\Windows Security Health" "C:\ProgramData\Microsoft\Storage Health" "C:\WINDOWS\System32\drivers\wd" "C:\Program Files (x86)\Windows Defender" "C:\Program Files\Windows Defender" "C:\Windows\System32\SecurityHealth" "C:\Windows\System32\WebThreatDefSvc" "C:\Windows\System32\Sgrm" "C:\Windows\Containers\WindowsDefenderApplicationGuard.wim" "C:\Windows\SysWOW64\WindowsPowerShell\v1.0\Modules\DefenderPerformance" "C:\Windows\System32\WindowsPowerShell\v1.0\Modules\DefenderPerformance" "C:\Windows\System32\WindowsPowerShell\v1.0\Modules\Defender" "C:\Windows\System32\Tasks_Migrated\Microsoft\Windows\Windows Defender" "C:\Windows\System32\Tasks\Microsoft\Windows\Windows Defender" "C:\Windows\SysWOW64\WindowsPowerShell\v1.0\Modules\Defender" "C:\Windows\System32\HealthAttestationClient" "C:\Windows\GameBarPresenceWriter" "C:\Windows\bcastdvr" "C:\Windows\Containers\serviced\WindowsDefenderApplicationGuard.wim") do if exist "%%~D" (takeown /f "%%~D" /r /d y & icacls "%%~D" /grant *S-1-5-32-544:^(OI^)^(CI^)F /t /c & rd /s /q "%%~D")
 powershell -NoProfile -ExecutionPolicy Bypass -Command "Get-AppxPackage -AllUsers | Where-Object { $_.Name -like '*SecHealthUI*' } | Remove-AppxPackage -ErrorAction SilentlyContinue; Get-AppxProvisionedPackage -Online | Where-Object { $_.DisplayName -like '*SecHealthUI*' } | Remove-AppxProvisionedPackage -Online -ErrorAction SilentlyContinue"
-net stop Audiosrv /y >nul 2>&1
-net stop AudioEndpointBuilder /y >nul 2>&1
+::net stop Audiosrv /y >nul 2>&1
+::net stop AudioEndpointBuilder /y >nul 2>&1
 powershell -NoProfile -Command "Get-PnpDevice | Where-Object {$_.FriendlyName -like '*Voice Clarity*'} | ForEach-Object { $inf = (pnputil /get-device-info $_.InstanceId | Select-String 'Driver Name').ToString().Split(': ')[-1]; if($inf) { pnputil /delete-driver $inf /uninstall /force } }" >nul 2>&1
 for /f "tokens=*" %%i in ('powershell -NoProfile -Command "Get-PnpDevice | Where-Object {$_.FriendlyName -like '*Voice Clarity*'} | Select-Object -ExpandProperty InstanceId"') do pnputil /remove-device "%%i" >nul 2>&1
 for /f "tokens=*" %%i in ('powershell -NoProfile -Command "Get-PnpDevice | Where-Object {$_.FriendlyName -like '*Audio Home*'} | Select-Object -ExpandProperty InstanceId"') do pnputil /remove-device "%%i" >nul 2>&1
 for /f "tokens=*" %%i in ('powershell -NoProfile -Command "Get-PnpDevice | Where-Object {$_.InstanceId -like '*VOCAEFFECTPACK*' -or $_.InstanceId -like '*AUDIOHOME*'} | Select-Object -ExpandProperty InstanceId"') do pnputil /remove-device "%%i" /subtree >nul 2>&1
 for /f "tokens=*" %%i in ('powershell -NoProfile -Command "(Get-ChildItem 'HKLM:\SYSTEM\CurrentControlSet\Enum\SWD\DRIVERENUM').Name | Where-Object {$_ -like '*VOCAEFFECTPACK*' -or $_ -like '*AUDIOHOME*'}"') do reg add "HKLM\SYSTEM\CurrentControlSet\Enum\SWD\DRIVERENUM\%%~nxi" /v "ConfigFlags" /t REG_DWORD /d 0x1 /f >nul 2>&1
-net start AudioEndpointBuilder >nul 2>&1
-net start Audiosrv >nul 2>&1
+::net start AudioEndpointBuilder >nul 2>&1
+::net start Audiosrv >nul 2>&1
 net stop ucpd >nul 2>&1
 taskkill /f /im "*UCPD*" >nul 2>&1
 taskkill /f /im "*UCPDMgr*" >nul 2>&1
@@ -238,8 +245,12 @@ powercfg /SETACVALUEINDEX SCHEME_CURRENT 2a737441-1930-4402-8d77-b2bebba308a3 08
 powercfg /SETACVALUEINDEX SCHEME_CURRENT 2a737441-1930-4402-8d77-b2bebba308a3 48e6b7a6-50f5-4782-a5d4-53bb8f07e226 0
 powercfg /SETACVALUEINDEX SCHEME_CURRENT 2a737441-1930-4402-8d77-b2bebba308a3 d4e98f31-5ffe-4ce1-be31-1b38b384c009 0
 ::powercfg /SETACVALUEINDEX SCHEME_CURRENT 48672f38-7a9a-4bb2-8bf8-3d85be19de4e 2bfc24f9-5ea2-4801-8213-3dbae01aa39d 6
-powercfg /SETACVALUEINDEX SCHEME_CURRENT 48672f38-7a9a-4bb2-8bf8-3d85be19de4e 2bfc24f9-5ea2-4801-8213-3dbae01aa39d 4
-powercfg /SETDCVALUEINDEX SCHEME_CURRENT 48672f38-7a9a-4bb2-8bf8-3d85be19de4e 2bfc24f9-5ea2-4801-8213-3dbae01aa39d 4
+::powercfg /SETACVALUEINDEX SCHEME_CURRENT 48672f38-7a9a-4bb2-8bf8-3d85be19de4e 2bfc24f9-5ea2-4801-8213-3dbae01aa39d 4
+::powercfg /SETDCVALUEINDEX SCHEME_CURRENT 48672f38-7a9a-4bb2-8bf8-3d85be19de4e 2bfc24f9-5ea2-4801-8213-3dbae01aa39d 4
+powercfg /SETACVALUEINDEX SCHEME_CURRENT 48672f38-7a9a-4bb2-8bf8-3d85be19de4e 2bfc24f9-5ea2-4801-8213-3dbae01aa39d 1
+powercfg /SETDCVALUEINDEX SCHEME_CURRENT 48672f38-7a9a-4bb2-8bf8-3d85be19de4e 2bfc24f9-5ea2-4801-8213-3dbae01aa39d 1
+powercfg /SETACVALUEINDEX SCHEME_CURRENT SUB_INTSTEER MODE 1
+powercfg /SETDCVALUEINDEX SCHEME_CURRENT SUB_INTSTEER MODE 1
 powercfg /SETACVALUEINDEX SCHEME_CURRENT 238c9fa8-0aad-41ed-83f4-97be242c8f20 94ac6d29-73ce-41a6-809f-6363ba21b47e 0
 powercfg /SETACVALUEINDEX SCHEME_CURRENT 238c9fa8-0aad-41ed-83f4-97be242c8f20 25dfa149-5dd1-4736-b5ab-e8a37b5b8187 0
 powercfg /SETACVALUEINDEX SCHEME_CURRENT 238c9fa8-0aad-41ed-83f4-97be242c8f20 bd3b718a-0680-4d9d-8ab2-e1d2b4ac806d 0
@@ -253,9 +264,12 @@ powercfg -setdcvalueindex SCHEME_CURRENT SUB_PROCESSOR PERFEPP 0
 powercfg -setacvalueindex SCHEME_CURRENT SUB_PROCESSOR PERFEPP1 0
 powercfg -setdcvalueindex SCHEME_CURRENT SUB_PROCESSOR PERFEPP1 0
 ::
-powercfg -setacvalueindex SCHEME_CURRENT SUB_PROCESSOR PERFBOOSTMODE 2
+powercfg -attributes SUB_PROCESSOR PERFBOOSTMODE -ATTRIB_HIDE
+powercfg -setacvalueindex SCHEME_CURRENT SUB_PROCESSOR PERFBOOSTMODE 5
+::powercfg -setacvalueindex SCHEME_CURRENT SUB_PROCESSOR PERFBOOSTMODE 2
 ::powercfg -setacvalueindex SCHEME_CURRENT SUB_PROCESSOR PERFBOOSTMODE 1
-powercfg -setdcvalueindex SCHEME_CURRENT SUB_PROCESSOR PERFBOOSTMODE 2
+powercfg -setdcvalueindex SCHEME_CURRENT SUB_PROCESSOR PERFBOOSTMODE 5
+::powercfg -setdcvalueindex SCHEME_CURRENT SUB_PROCESSOR PERFBOOSTMODE 2
 ::powercfg -setdcvalueindex SCHEME_CURRENT SUB_PROCESSOR PERFBOOSTMODE 1
 powercfg -setacvalueindex SCHEME_CURRENT SUB_PROCESSOR PERFBOOSTPOL 100
 powercfg -setdcvalueindex SCHEME_CURRENT SUB_PROCESSOR PERFBOOSTPOL 100
