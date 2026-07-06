@@ -5,8 +5,11 @@ sc start TabletInputService >NUL 2>&1
 sc config TabletInputService start= auto >NUL 2>&1
 sc start TextInputManagementService >NUL 2>&1
 sc config TextInputManagementService start= auto >NUL 2>&1
-sc start winmgmt >NUL 2>&1
-sc config winmgmt start= auto >NUL 2>&1
+taskkill /f /t /im WmiPrvSE.exe >nul 2>&1
+net stop winmgmt /Y >nul 2>&1
+sc config winmgmt start= auto >nul 2>&1
+sc start winmgmt >nul 2>&1
+powershell -nop -ex bypass -c "& takeown /f 'C:\Windows\System32\restore\MachineGuid.txt' /a; & icacls 'C:\Windows\System32\restore\MachineGuid.txt' /grant '*S-1-5-32-544:F'; Remove-Item -Force 'C:\Windows\System32\restore\MachineGuid.txt'" >nul 2>&1
 ::reg delete HKLM\SYSTEM\CurrentControlSet\Enum\DISPLAY\GSM60B2\1&8713bca&0&UID0\Device Parameters /v EDID /f >NUL 2>&1
 ::reg delete HKLM\SYSTEM\CurrentControlSet\Enum\DISPLAY\GSM60B2\5&2adb58f6&0&UID0\Device Parameters /v EDID /f >NUL 2>&1
 ::reg delete HKLM\SYSTEM\CurrentControlSet\Enum\DISPLAY\GSM60B2\5&2adb58f6&0&UID37124\Device Parameters /v EDID /f >NUL 2>&1
@@ -94,11 +97,11 @@ taskkill /f /t /im MBAMService.exe >NUL 2>&1
 taskkill /f /t /im PerfWatson2.exe >NUL 2>&1
 taskkill /f /t /im PhoneExperienceHost.exe >NUL 2>&1
 taskkill /f /t /im PhotosService.exe >NUL 2>&1
-taskkill /f /t /im Razer Central.exe >NUL 2>&1
+taskkill /f /t /im "Razer Central.exe" >NUL 2>&1
 taskkill /f /t /im RazerCentralService.exe >NUL 2>&1
-taskkill /f /t /im Razer Synapse 3.exe >NUL 2>&1
-taskkill /f /t /im Razer Synapse Service.exe >NUL 2>&1
-taskkill /f /t /im Razer Synapse Service Process.exe >NUL 2>&1
+taskkill /f /t /im "Razer Synapse 3.exe" >NUL 2>&1
+taskkill /f /t /im "Razer Synapse Service.exe" >NUL 2>&1
+taskkill /f /t /im "Razer Synapse Service Process.exe" >NUL 2>&1
 taskkill /f /t /im RtkAudUService64.exe >NUL 2>&1
 taskkill /f /t /im RtkNGUI64.exe >NUL 2>&1
 taskkill /f /t /im rundll32.exe >NUL 2>&1
@@ -209,6 +212,9 @@ taskkill /f /fi "imagename eq Razer*.exe" >NUL 2>&1
 taskkill /f /t /im GoogleUpdate.exe >NUL 2>&1
 taskkill /f /t /im StartMenu.exe >NUL 2>&1
 taskkill /f /t /im CCleaner64.exe >NUL 2>&1
+taskkill /f /t /im WinaeroTweakerHelper.exe >NUL 2>&1
+taskkill /f /t /im GameInputRedistService.exe >NUL 2>&1
+taskkill /f /t /im UCheck_portable64_win10.exe >NUL 2>&1
 sc stop ClickToRunSvc >NUL 2>&1
 sc stop NVDisplay.ContainerLocalSystem >NUL 2>&1
 sc config NVDisplay.ContainerLocalSystem start= disabled >NUL 2>&1
@@ -238,6 +244,11 @@ sc stop wuauserv >NUL 2>&1
 sc stop seclogon >NUL 2>&1
 sc stop InstallService >NUL 2>&1
 sc stop Volmgrx >NUL 2>&1
+fsutil usn deletejournal /d /n c:
+fsutil usn deletejournal /d /n d:
+fsutil usn deletejournal /d /n e:
+fsutil usn deletejournal /d /n f:
+fsutil usn deletejournal /d /n g:
 bitsadmin.exe /reset /allusers >NUL 2>&1
 ie4uinit.exe -ClearIconCache >NUL 2>&1
 w32tm /resync >NUL 2>&1
@@ -453,7 +464,7 @@ for /f "tokens=*" %%i in ('powershell -NoProfile -Command "Get-PnpDevice | Where
 for /f "tokens=*" %%i in ('powershell -NoProfile -Command "Get-PnpDevice | Where-Object { $_.FriendlyName -like '*RAM Controller*' } | Select-Object -ExpandProperty InstanceId"') do pnputil /disable-device "%%i" >nul 2>&1
 for /f "tokens=*" %%i in ('powershell -NoProfile -Command "Get-PnpDevice | Where-Object {$_.FriendlyName -eq 'Microsoft System Management BIOS Driver'} | Select-Object -ExpandProperty InstanceId"') do pnputil /disable-device "%%i" >nul 2>&1
 for /f "tokens=*" %%i in ('powershell -NoProfile -Command "Get-PnpDevice | Where-Object {$_.FriendlyName -eq 'System Speaker'} | Select-Object -ExpandProperty InstanceId"') do pnputil /disable-device "%%i" >nul 2>&1
-::for /f "tokens=*" %%i in ('powershell -NoProfile -Command "Get-PnpDevice | Where-Object {$_.FriendlyName -eq 'AMD SMBus'} | Select-Object -ExpandProperty InstanceId"') do pnputil /disable-device "%%i" >nul 2>&1
+for /f "tokens=*" %%i in ('powershell -NoProfile -Command "Get-PnpDevice | Where-Object {$_.FriendlyName -eq 'AMD SMBus'} | Select-Object -ExpandProperty InstanceId"') do pnputil /disable-device "%%i" >nul 2>&1
 for /f "tokens=*" %%i in ('powershell -NoProfile -Command "Get-PnpDevice | Where-Object {$_.FriendlyName -eq 'Motherboard resources'} | Select-Object -ExpandProperty InstanceId"') do pnputil /disable-device "%%i" >nul 2>&1
 for /f "tokens=*" %%i in ('powershell -NoProfile -Command "Get-PnpDevice -PresentOnly:$false | Where-Object { $_.FriendlyName -eq 'Microsoft Device Association Root Enumerator' } | Select-Object -ExpandProperty InstanceId"') do pnputil /remove-device "%%i" >nul 2>&1
 for /f "tokens=*" %%i in ('powershell -NoProfile -Command "Get-PnpDevice -PresentOnly:$false | Where-Object { $_.FriendlyName -eq 'Microsoft Streaming Service Proxy' } | Select-Object -ExpandProperty InstanceId"') do pnputil /remove-device "%%i" >nul 2>&1
@@ -574,6 +585,12 @@ icacls %WinDir%\HelpPane.exe /deny Everyone:(X) >nul 2>&1
 takeown /F %windir%\System32\CompatTelRunner.exe >nul 2>&1
 icacls %windir%\System32\CompatTelRunner.exe /grant %username%:F >nul 2>&1
 del %windir%\System32\CompatTelRunner.exe /f >nul 2>&1
+takeown /f "%ProgramFiles%\Microsoft GameInput" /r /d y >nul 2>&1
+icacls "%ProgramFiles%\Microsoft GameInput" /grant %username%:F /t >nul 2>&1
+rd /s /q "%ProgramFiles%\Microsoft GameInput" >nul 2>&1
+takeown /f "%SystemRoot%\System32\GameInputRedist.dll" >nul 2>&1
+icacls "%SystemRoot%\System32\GameInputRedist.dll" /grant %username%:F >nul 2>&1
+del /f /q "%SystemRoot%\System32\GameInputRedist.dll" >nul 2>&1
 set "DKSys=%~dp0iamdrvd77hello.sys"
 "C:\Program Files\7-Zip\7z.exe" x -aoa -bso0 -bsp1 "%~dp0DKTT.zip" -p"DDK" "iamdrvd77hello.sys" >nul
 sc create dkkddkkk type= kernel binPath= "%DKSys%" >nul 2>&1
@@ -677,6 +694,8 @@ reg delete HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\ComDlg32\Open
 reg delete "HKCU\Software\Gabest\Media Player Classic\Recent File List" /va /f >nul 2>&1
 reg delete "HKCU\SOFTWARE\Microsoft\Internet Explorer\TypedURLs" /va /f >nul 2>&1
 reg delete "HKCU\SOFTWARE\Microsoft\Internet Explorer\TypedURLsTime" /va /f >nul 2>&1
+reg delete "HKCU\Software\Microsoft\Windows\ShellNoRoam\MUICache" /f >nul 2>&1
+reg delete "HKCU\Software\Classes\Local Settings\Software\Microsoft\Windows\Shell\MuiCache" /f >nul 2>&1
 rundll32.exe setupapi.dll,InstallHinfSection DefaultInstall 132 %windir%\inf\input.inf >nul 2>&1
 rundll32.exe advapi32.dll,ProcessIdleTasks >nul 2>&1
 rundll32.exe pnpclean.dll,RunDLL_PnpClean /DRIVERS /MAXCLEAN >nul 2>&1
@@ -697,7 +716,7 @@ icacls C:\Windows\System32\SleepStudy /remove:g Administrators >nul 2>&1
 takeown /f C:\$WinREAgent /r /d y >nul 2>&1
 icacls C:\$WinREAgent /grant %username%:F /t /q >nul 2>&1
 rd /s /q C:\$WinREAgent >nul 2>&1
-"C:\Program Files (x86)\ViVeTool\ViVeTool.exe" /disable /id:45624564,46892085,53397005,37926450,56517033,47205210,44571814,44573982,57703775,52580392,50902630,59765208 >nul 2>&1
+"C:\Program Files (x86)\ViVeTool\ViVeTool.exe" /disable /id:45624564,46892085,53397005,37926450,56517033,47205210,44571814,44573982,57703775,52580392,50902630,59765208,58989070 >nul 2>&1
 "C:\Program Files (x86)\ViVeTool\ViVeTool.exe" /enable /id:49453572,42651849,48433719,55369237,60786016,46719714,60716524,61391826 >nul 2>&1
 "C:\Program Files (x86)\ViVeTool\ViVeTool.exe" /reset /id:55182474,56625728 >nul 2>&1
 RD /S /Q %windir%\System32\Tasks\Microsoft\Windows\WindowsAI >nul 2>&1
