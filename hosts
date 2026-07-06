@@ -21648,7 +21648,7 @@
 0.0.0.0 scorecardresearch.com
 0.0.0.0 www.scorecardresearch.com
 0.0.0.0 data.microsoft.com
-0.0.0.0 www.    data.microsoft.com
+0.0.0.0 www.data.microsoft.com
 0.0.0.0 azureedge.net
 0.0.0.0 www.azureedge.net
 0.0.0.0 bingapis.com
@@ -22782,9 +22782,6 @@
 0.0.0.0 dev-adt.skype.net
 0.0.0.0 dev.aisvc.visualstudio.com
 0.0.0.0 dev.api.microsoft.com
-0.0.0.0 dev.applicationinsights.io
-0.0.0.0 dev.applicationinsights.microsoft.com
-0.0.0.0 devblogs.microsoft.com
 0.0.0.0 dev.cortana.ai
 0.0.0.0 developer.microsoft.akadns.net
 0.0.0.0 developer.microsoft.com-c.edgekey.net.globalredir.akadns.net
@@ -22852,7 +22849,6 @@
 0.0.0.0 dns.microsoft.com
 0.0.0.0 docs.live.net
 0.0.0.0 docs.loganalytics.io
-0.0.0.0 docs.microsoft.com
 0.0.0.0 docs.microsoft.com-c.edgekey.net
 0.0.0.0 dod-mtis.cortana.ai
 0.0.0.0 do.dsp.mp.microsoft.com
@@ -24018,7 +24014,6 @@
 0.0.0.0 musicart.xboxlive.com.edgekey.net
 0.0.0.0 musicimage.xboxlive.com
 0.0.0.0 musicimage.xboxlive.com.edgekey.net
-0.0.0.0 mva.microsoft.com
 0.0.0.0 mvp.microsoft.com
 0.0.0.0 myanalytics.gcc.microsoft.com
 0.0.0.0 myanalytics.microsoft.com
@@ -34237,7 +34232,7 @@
 0.0.0.0 l6.zedo.com
 0.0.0.0 l8.zedo.com
 0.0.0.0 r1.zedo.com
-0.0.0.0 simg.zedo.com#
+0.0.0.0 simg.zedo.com
 0.0.0.0 ss1.zedo.com
 0.0.0.0 ss2.zedo.com
 0.0.0.0 ss7.zedo.com
@@ -34246,3 +34241,11 @@
 0.0.0.0 www.zedo.com
 0.0.0.0 rt.udmserve.net
 0.0.0.0 www.stickylogic.com
+#########################
+0.0.0.0 fd.dds.microsoft.com
+0.0.0.0 cdpcs.access.microsoft.com
+0.0.0.0 global.notify.windows.com
+0.0.0.0 sinnc-df.notify.windows.com
+0.0.0.0 bn2-df.notify.windows.com
+0.0.0.0 bn3p.notify.windows.com
+0.0.0.0 db3p.notify.windows.com
