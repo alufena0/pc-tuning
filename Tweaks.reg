@@ -226,7 +226,7 @@ Windows Registry Editor Version 5.00
 "EnableVirtualAddressSpaceRandomization"=dword:00000000
 "EnergyDriverPolicyVideo"=dword:00000001 ; 00000000/00000001
 "EnforceWriteProtection"=dword:00000000
-"FeatureSettings"=dword:00000001 ; 00000003, 00000003
+"FeatureSettings"=dword:00000003 ; 00000003, 00000001
 "FeatureSettingsOverride"=dword:02000003 ; 00000001, 00000003/00000048/02000000/02000003/07800003/0200000b security option for anticheats
 "FeatureSettingsOverrideMask"=dword:00000003 ; 00000001, 00000003/02000003/07800003/0200000b security option for anticheats
 "FirstLevelDataCache"=dword:00000020 ; 00000020/00000300
@@ -709,7 +709,7 @@ Windows Registry Editor Version 5.00
 "EnableExclusiveFullScreen"="1"
 "EnableGameMode"="1" ; 0/1
 "ENABLE_LOW_LATENCY_MODE"="1"
-"ENABLE_MEMORY_PREFETCH"="0" ; 0/1
+"ENABLE_MEMORY_PREFETCH"="1" ; 0/1
 "FAST_RESPONSE_MODE"="1"
 "FlipEx"="1"
 "FORCE_DISABLE_FULL_SCREEN_OPTIMIZATIONS"="1" ; 0 w11/1 w10
@@ -3061,7 +3061,7 @@ Windows Registry Editor Version 5.00
 "TurboQueue"=dword:00000001
 
 ; gpu
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0002]
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0000]
 "RMCtxswLogMaxRecordsPerIntr"=dword:00000001
 "RMAvoidBusyReadingTimer"=dword:00000001
 "RmDpuForceFrameReleaseThresholdUs"=dword:000003e8
@@ -6710,6 +6710,10 @@ Windows Registry Editor Version 5.00
 "debugger"="Blocked"
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\OneDriveStandaloneUpdater.exe]
 "debugger"="Blocked"
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\Webviewhost.exe]
+"debugger"="Blocked"
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\M365Copilot.exe]
+"debugger"="Blocked"
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer\DisallowRun]
 "1"="wlms.exe"
@@ -6863,6 +6867,8 @@ Windows Registry Editor Version 5.00
 "149"="SenseSampleUploader.exe"
 "150"="crashpad_handler.exe"
 "151"="OneDriveStandaloneUpdater.exe"
+"152"="Webviewhost.exe"
+"153"="M365Copilot.exe"
 
 [HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\8\3036241548]
 "EnabledState"=dword:00000001
@@ -10966,6 +10972,27 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\360SelfProtection]
 "Start"=dword:00000004
 
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WlanSvc]
+"Start"=dword:00000004 ; 00000003, 00000004 wifi
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\dot3svc]
+"Start"=dword:00000004 ; 00000003, 00000004
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\MRxDAV]
+"Start"=dword:00000004 ; 00000003, 00000004
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\buttonconverter]
+"Start"=dword:00000004 ; 00000003, 00000004
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\circlass]
+"Start"=dword:00000004 ; 00000003, 00000004
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SensorService]
+"Start"=dword:00000004 ; 00000003, 00000004
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\terminpt]
+"Start"=dword:00000004 ; 00000003, 00000004
+
 [-HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\GameInputRedistService]
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\GameInputRedistService]
 "Start"=dword:00000004 ; 00000003, 00000004
@@ -12851,6 +12878,30 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Speech]
 "AllowSpeechControls"=dword:00000000
+
+; LID, GDID
+; [-HKEY_CURRENT_USER\SOFTWARE\Microsoft\IdentityCRL]
+; [-HKEY_CURRENT_USER\SOFTWARE\WOW6432Node\Microsoft\IdentityCRL]
+; [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\IdentityCRL]
+; [-HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\IdentityCRL]
+; [-HKEY_USERS\.DEFAULT\SOFTWARE\Microsoft\IdentityCRL]
+; [-HKEY_USERS\S-1-5-18\SOFTWARE\Microsoft\IdentityCRL]
+; [-HKEY_USERS\S-1-5-19\SOFTWARE\Microsoft\IdentityCRL]
+; [-HKEY_USERS\S-1-5-20\SOFTWARE\Microsoft\IdentityCRL]
+; [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\IdentityStore]
+; [-HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\IdentityStore]
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\IdentityCRL]
+"GlobalDeviceUpdateTime"=hex(b):00,00,00,00,00,00,00,00
+[HKEY_USERS\.DEFAULT\SOFTWARE\Microsoft\IdentityCRL\ExtendedProperties]
+"LID"=""
+[HKEY_USERS\S-1-5-18\SOFTWARE\Microsoft\IdentityCRL\ExtendedProperties]
+"LID"=""
+[HKEY_USERS\S-1-5-19\SOFTWARE\Microsoft\IdentityCRL\ExtendedProperties]
+"LID"=""
+[HKEY_USERS\S-1-5-20\SOFTWARE\Microsoft\IdentityCRL\ExtendedProperties]
+"LID"=""
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\IdentityCRL\ExtendedProperties]
+"LID"=""
 
 [HKEY_CURRENT_USER\Software\Microsoft\Speech\SpeechRecognition]
 "HasAcceptedPrivacyPolicy"=dword:00000000
@@ -15862,6 +15913,7 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\TSFairShare\NetFS]
 "EnableFairShare"=dword:00000000
+
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\TSFairShare\Disk]
 "EnableFairShare"=dword:00000000
 
@@ -16049,7 +16101,7 @@ Windows Registry Editor Version 5.00
 "AutoSuggest"="no"
 
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer]
-"AltTabSettings"=dword:00000001 ; 00000000 w11/00000001 w10
+"AltTabSettings"=dword:00000000 ; 00000000 w11/00000001 w10
 "CaseSensitive"=dword:00000000
 "DesktopProcess"=dword:00000000 ; 00000000/00000001
 "DesktopReadyTimeout"=dword:00000000
@@ -20711,8 +20763,15 @@ Windows Registry Editor Version 5.00
 
 [HKEY_CURRENT_USER\Software\Microsoft\Windows NT\CurrentVersion\Accessibility]
 "Configuration"=""
+
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Accessibility]
 "Configuration"=""
+
+[HKEY_CURRENT_USER\Control Panel\NotifyIconSettings\1393818165748543931]
+"IsPromoted"=dword:00000000
+
+[HKEY_CURRENT_USER\Control Panel\NotifyIconSettings\9970533644875679773]
+"IsPromoted"=dword:00000000
 
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Ease of Access]
 "selfscan"=dword:00000000
@@ -23919,20 +23978,6 @@ Windows Registry Editor Version 5.00
 
 [-HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows NT\CurrentVersion\HostActivityManager\CommitHistory\Microsoft.WindowsCamera_8wekyb3d8bbwe!App]
 
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\IdentityStore]
-
-[-HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\IdentityStore]
-
-; LID, GDID
-[-HKEY_CURRENT_USER\SOFTWARE\Microsoft\IdentityCRL]
-[-HKEY_CURRENT_USER\SOFTWARE\WOW6432Node\Microsoft\IdentityCRL]
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\IdentityCRL]
-[-HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\IdentityCRL]
-[-HKEY_USERS\.DEFAULT\SOFTWARE\Microsoft\IdentityCRL]
-[-HKEY_USERS\S-1-5-18\SOFTWARE\Microsoft\IdentityCRL]
-[-HKEY_USERS\S-1-5-19\SOFTWARE\Microsoft\IdentityCRL]
-[-HKEY_USERS\S-1-5-20\SOFTWARE\Microsoft\IdentityCRL]
-
 [-HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft Copilot]
 
 [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tree\Microsoft\Office\Office Actions Server]
@@ -26177,6 +26222,11 @@ Windows Registry Editor Version 5.00
 "FrontEndHeapDebugOptions"=dword:00000004
 "MitigationAuditOptions"=hex:22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22
 "MitigationOptions"=hex:22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\TS3W.exe]
+"EAFModules"=" "
+"FrontEndHeapDebugOptions"=dword:00000004
+"MitigationAuditOptions"=hex:22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22
+"MitigationOptions"=hex:22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\DepthGame.exe\PerfOptions]
 "CpuPriorityClass"=dword:00000006
@@ -26630,6 +26680,10 @@ Windows Registry Editor Version 5.00
 "CpuPriorityClass"=dword:00000006
 "IoPriority"=dword:00000003
 "PagePriority"=dword:00000005
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\TS3W.exe\PerfOptions]
+"CpuPriorityClass"=dword:00000006
+"IoPriority"=dword:00000003
+"PagePriority"=dword:00000005
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\GalaxyClient Helper.exe\PerfOptions]
 "CpuPriorityClass"=dword:00000005
@@ -26665,6 +26719,7 @@ Windows Registry Editor Version 5.00
 "PagePriority"=dword:00000004
 
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\DirectX\UserGpuPreferences]
+"G:\\SteamLibrary\\steamapps\\common\\The Sims 3\\Game\\Bin\\TS3W.exe"="GpuPreference=2;"
 "D:\\SteamLibrary\\steamapps\\common\\GTA III - The Definitive Edition\\Gameface\\Binaries\\Win64\\LibertyCity.exe"="GpuPreference=2;"
 "D:\\SteamLibrary\\steamapps\\common\\Depth\\Binaries\\Win32\\DepthGame.exe"="GpuPreference=2;"
 "D:\\SteamLibrary\\steamapps\\common\\GTA Vice City - The Definitive Edition\\Gameface\\Binaries\\Win64\\ViceCity.exe"="GpuPreference=2;"
@@ -26813,6 +26868,7 @@ Windows Registry Editor Version 5.00
 
 ; [-HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers]
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers]
+"G:\\SteamLibrary\\steamapps\\common\\The Sims 3\\Game\\Bin\\TS3W.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "PreApproved"=""
 "D:\\SteamLibrary\\steamapps\\common\\GTA III - The Definitive Edition\\Gameface\\Binaries\\Win64\\LibertyCity.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "C:\\Program Files (x86)\\GOG Galaxy\\GalaxyClient.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
@@ -26967,6 +27023,7 @@ Windows Registry Editor Version 5.00
 "D:\\SteamLibrary\\steamapps\\common\\GTA Vice City - The Definitive Edition\\Gameface\\Binaries\\Win64\\ViceCity.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 
 [HKEY_CURRENT_USER\Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers]
+"G:\\SteamLibrary\\steamapps\\common\\The Sims 3\\Game\\Bin\\TS3W.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "D:\\SteamLibrary\\steamapps\\common\\GTA III - The Definitive Edition\\Gameface\\Binaries\\Win64\\LibertyCity.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "C:\\Program Files (x86)\\GOG Galaxy\\GalaxyClient.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "C:\\Program Files (x86)\\GOG Galaxy\\GalaxyClientService.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
@@ -27121,6 +27178,8 @@ Windows Registry Editor Version 5.00
 
 [HKEY_CURRENT_USER\System\GameConfigStore\Applications\UT2004.exe]
 "Flags"=dword:00000211 ; 00000011 w11, 00000111/00000200/00000211 w10/00000311/00000511/00000611/00000711/00000811
+[HKEY_CURRENT_USER\System\GameConfigStore\Applications\TS3W.exe]
+"Flags"=dword:00000211
 [HKEY_CURRENT_USER\System\GameConfigStore\Applications\LibertyCity.exe]
 "Flags"=dword:00000211
 [HKEY_CURRENT_USER\System\GameConfigStore\Applications\Empire Earth.exe]
@@ -27365,6 +27424,7 @@ Windows Registry Editor Version 5.00
 
 [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Defender\Exclusions\Processes]
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Defender\Exclusions\Processes]
+"TS3W.exe"=dword:00000000
 "LibertyCity.exe"=dword:00000000
 "Empire Earth.exe"=dword:00000000
 "DepthGame.exe"=dword:00000000
@@ -27703,7 +27763,7 @@ Windows Registry Editor Version 5.00
 "Version"="1.0"
 
 ; network (nic)
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\0000]
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\0001]
 "AdaptiveIFS"="0"
 "AdvancedEEE"="0"
 "AllowAllSpeedsLPLU"="0"
@@ -27911,27 +27971,27 @@ Windows Registry Editor Version 5.00
 "*MaxRssProcessors"=dword:00000001
 "BaseProcessorNumber"=dword:00000002
 "MaxProcessorNumber"=dword:00000002
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\0000\Ndi\Params\*NumRssQueues]
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\0001\Ndi\Params\*NumRssQueues]
 "ParamDesc"="Number of RSS Queues"
 "default"="1"
 "type"="enum"
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\0000\Ndi\Params\*NumRssQueues\Enum]
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\0001\Ndi\Params\*NumRssQueues\Enum]
 "1"="1 Queue"
 "2"="2 Queues"
 "3"="3 Queues"
 "4"="4 Queues"
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\0000\Ndi\Params\*RSS]
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\0001\Ndi\Params\*RSS]
 "ParamDesc"="Receive Side Scaling"
 "default"="1"
 "type"="enum"
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\0000\Ndi\Params\*RSS\Enum]
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\0001\Ndi\Params\*RSS\Enum]
 "0"="Disabled"
 "1"="Enabled"
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\0000\Ndi\Params\*RSSProfile]
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\0001\Ndi\Params\*RSSProfile]
 "ParamDesc"="RSS load balancing profile"
 "default"="4"
 "type"="enum"
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\0000\Ndi\Params\*RSSProfile\Enum]
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\0001\Ndi\Params\*RSSProfile\Enum]
 "1"="ClosestProcessor"
 "2"="ClosestProcessorStatic"
 "3"="NUMAScaling"
@@ -27939,7 +27999,7 @@ Windows Registry Editor Version 5.00
 "5"="ConservativeScaling"
 
 ; network (nic) guid
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces\{052807ec-ad86-4938-8ef6-c0e21a9d4a59}]
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces\{8c696aaf-8eeb-4972-bac7-32605ddf55c6}]
 "DisableAutoNegotiation"=dword:00000000
 "EnableJumboPackets"=dword:00000000
 "EnableTCPA"=dword:00000000
