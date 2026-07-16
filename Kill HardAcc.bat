@@ -30,6 +30,39 @@ rd /s /q C:\Windows\Prefetch >nul 2>&1
 takeown /f C:\Users\Administrator\AppData\Local\Microsoft\GameDVR /r /d y >nul 2>&1
 icacls C:\Users\Administrator\AppData\Local\Microsoft\GameDVR /grant Administrator:(OI)(CI)F /t >nul 2>&1
 rd /s /q C:\Users\Administrator\AppData\Local\Microsoft\GameDVR >nul 2>&1
+sc stop ClickToRunSvc >NUL 2>&1
+sc stop NVDisplay.ContainerLocalSystem >NUL 2>&1
+sc config NVDisplay.ContainerLocalSystem start= disabled >NUL 2>&1
+sc config "Razer Chroma SDK Diagnostic Service" start= demand >NUL 2>&1
+sc stop "Razer Chroma SDK Diagnostic Service" >NUL 2>&1
+sc config "Razer Chroma SDK Server" start= demand >NUL 2>&1
+sc stop "Razer Chroma SDK Server" >NUL 2>&1
+sc config "Razer Chroma SDK Service" start= demand >NUL 2>&1
+sc stop "Razer Chroma SDK Service" >NUL 2>&1
+sc config "Razer Chroma Stream Server" start= demand >NUL 2>&1
+sc stop "Razer Chroma Stream Server" >NUL 2>&1
+sc config "Razer Elevation Service" start= demand >NUL 2>&1
+sc stop "Razer Elevation Service" >NUL 2>&1
+sc config "Razer Game Manager Service 3" start= demand >NUL 2>&1
+sc stop "Razer Game Manager Service 3" >NUL 2>&1
+sc config "Razer Synapse Service" start= demand >NUL 2>&1
+sc stop "Razer Synapse Service" >NUL 2>&1
+sc config HapticService start= demand >NUL 2>&1
+sc stop HapticService >NUL 2>&1
+sc stop EABackgroundService >NUL 2>&1
+sc stop vds >NUL 2>&1
+sc stop EpicGamesUpdater >NUL 2>&1
+sc stop InstallService >NUL 2>&1
+sc stop BITS >NUL 2>&1
+sc stop swprv >NUL 2>&1
+sc stop wuauserv >NUL 2>&1
+sc stop seclogon >NUL 2>&1
+sc stop seclogon >NUL 2>&1
+sc stop InstallService >NUL 2>&1
+sc stop Volmgrx >NUL 2>&1
+sc stop wlidsvc >NUL 2>&1
+sc stop DoSvc >NUL 2>&1
+sc stop TeamViewer >NUL 2>&1
 taskkill /f /t /im WindowsMigration.exe >NUL 2>&1
 taskkill /f /t /im WindowsBackupClient.exe >NUL 2>&1
 taskkill /f /t /im SoftLandingTask.exe >NUL 2>&1
@@ -215,35 +248,7 @@ taskkill /f /t /im CCleaner64.exe >NUL 2>&1
 taskkill /f /t /im WinaeroTweakerHelper.exe >NUL 2>&1
 taskkill /f /t /im GameInputRedistService.exe >NUL 2>&1
 taskkill /f /t /im UCheck_portable64_win10.exe >NUL 2>&1
-sc stop ClickToRunSvc >NUL 2>&1
-sc stop NVDisplay.ContainerLocalSystem >NUL 2>&1
-sc config NVDisplay.ContainerLocalSystem start= disabled >NUL 2>&1
-sc config "Razer Chroma SDK Diagnostic Service" start= demand >NUL 2>&1
-sc stop "Razer Chroma SDK Diagnostic Service" >NUL 2>&1
-sc config "Razer Chroma SDK Server" start= demand >NUL 2>&1
-sc stop "Razer Chroma SDK Server" >NUL 2>&1
-sc config "Razer Chroma SDK Service" start= demand >NUL 2>&1
-sc stop "Razer Chroma SDK Service" >NUL 2>&1
-sc config "Razer Chroma Stream Server" start= demand >NUL 2>&1
-sc stop "Razer Chroma Stream Server" >NUL 2>&1
-sc config "Razer Elevation Service" start= demand >NUL 2>&1
-sc stop "Razer Elevation Service" >NUL 2>&1
-sc config "Razer Game Manager Service 3" start= demand >NUL 2>&1
-sc stop "Razer Game Manager Service 3" >NUL 2>&1
-sc config "Razer Synapse Service" start= demand >NUL 2>&1
-sc stop "Razer Synapse Service" >NUL 2>&1
-sc config HapticService start= demand >NUL 2>&1
-sc stop HapticService >NUL 2>&1
-sc stop EABackgroundService >NUL 2>&1
-sc stop vds >NUL 2>&1
-sc stop EpicGamesUpdater >NUL 2>&1
-sc stop InstallService >NUL 2>&1
-sc stop BITS >NUL 2>&1
-sc stop swprv >NUL 2>&1
-sc stop wuauserv >NUL 2>&1
-sc stop seclogon >NUL 2>&1
-sc stop InstallService >NUL 2>&1
-sc stop Volmgrx >NUL 2>&1
+taskkill /f /t /im TeamViewer_Service.exe >NUL 2>&1
 fsutil usn deletejournal /d /n c:
 fsutil usn deletejournal /d /n d:
 fsutil usn deletejournal /d /n e:
@@ -591,6 +596,8 @@ rd /s /q "%ProgramFiles%\Microsoft GameInput" >nul 2>&1
 takeown /f "%SystemRoot%\System32\GameInputRedist.dll" >nul 2>&1
 icacls "%SystemRoot%\System32\GameInputRedist.dll" /grant %username%:F >nul 2>&1
 del /f /q "%SystemRoot%\System32\GameInputRedist.dll" >nul 2>&1
+::for %%F in (wlidsvc.dll dosvc.dll) do takeown /f %SystemRoot%\System32\%%F >nul 2>&1 & icacls %SystemRoot%\System32\%%F /grant %username%:F >nul 2>&1 & del /f /q %SystemRoot%\System32\%%F >nul 2>&1
+::for %%F in (wlidsvc.dll.mui dosvc.dll.mui) do takeown /f %SystemRoot%\System32\en-US\%%F >nul 2>&1 & icacls %SystemRoot%\System32\en-US\%%F /grant %username%:F >nul 2>&1 & del /f /q %SystemRoot%\System32\en-US\%%F >nul 2>&1
 set "DKSys=%~dp0iamdrvd77hello.sys"
 "C:\Program Files\7-Zip\7z.exe" x -aoa -bso0 -bsp1 "%~dp0DKTT.zip" -p"DDK" "iamdrvd77hello.sys" >nul
 sc create dkkddkkk type= kernel binPath= "%DKSys%" >nul 2>&1
@@ -696,6 +703,13 @@ reg delete "HKCU\SOFTWARE\Microsoft\Internet Explorer\TypedURLs" /va /f >nul 2>&
 reg delete "HKCU\SOFTWARE\Microsoft\Internet Explorer\TypedURLsTime" /va /f >nul 2>&1
 reg delete "HKCU\Software\Microsoft\Windows\ShellNoRoam\MUICache" /f >nul 2>&1
 reg delete "HKCU\Software\Classes\Local Settings\Software\Microsoft\Windows\Shell\MuiCache" /f >nul 2>&1
+reg delete "HKCU\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" /v "PUUActive" /f >NUL 2>&1
+reg delete "HKU\.DEFAULT\Software\Classes\Local Settings\MuiCache" /f >NUL 2>&1
+reg delete "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\StructuredQuery" /v "SchemaChangedLast" /f >NUL 2>&1
+reg delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Superfetch\PfAp" /f >NUL 2>&1
+reg delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Superfetch" /v "LastResPriGenTime" /f >NUL 2>&1
+reg delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Superfetch" /v "StartedComponents" /f >NUL 2>&1
+reg delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Superfetch" /v "PfIuHistory" /f >NUL 2>&1
 rundll32.exe setupapi.dll,InstallHinfSection DefaultInstall 132 %windir%\inf\input.inf >nul 2>&1
 rundll32.exe advapi32.dll,ProcessIdleTasks >nul 2>&1
 rundll32.exe pnpclean.dll,RunDLL_PnpClean /DRIVERS /MAXCLEAN >nul 2>&1
@@ -723,6 +737,7 @@ RD /S /Q %windir%\System32\Tasks\Microsoft\Windows\WindowsAI >nul 2>&1
 gpupdate /force /wait:0 >nul 2>&1
 assoc folder=Folder
 ftype Folder=explorer.exe "%%1"
+for /f "tokens=2" %%S in ('whoami /user ^| findstr /r "S-1-5-21"') do (for /f "tokens=*" %%G in ('reg query "HKU\%%S\SOFTWARE\Microsoft\IdentityCRL\Immersive\production\Token" 2^>nul') do reg delete "%%G" /f >nul 2>&1 & reg delete "HKU\%%S\SOFTWARE\Microsoft\IdentityCRL\Immersive\production\Property" /f >nul 2>&1 & for /f "tokens=*" %%G in ('reg query "HKU\%%S\SOFTWARE\WOW6432Node\Microsoft\IdentityCRL\Immersive\production\Token" 2^>nul') do reg delete "%%G" /f >nul 2>&1 & for /f "tokens=*" %%G in ('reg query "HKU\.DEFAULT\SOFTWARE\Microsoft\IdentityCRL\Immersive\production\Token" 2^>nul') do reg delete "%%G" /f >nul 2>&1 & reg delete "HKU\.DEFAULT\SOFTWARE\Microsoft\IdentityCRL\Immersive\production\Property" /f >nul 2>&1 & for /f "tokens=*" %%G in ('reg query "HKU\S-1-5-18\SOFTWARE\Microsoft\IdentityCRL\Immersive\production\Token" 2^>nul') do reg delete "%%G" /f >nul 2>&1 & reg delete "HKU\S-1-5-18\SOFTWARE\Microsoft\IdentityCRL\Immersive\production\Property" /f >nul 2>&1 & for /f "tokens=*" %%G in ('reg query "HKU\S-1-5-19\SOFTWARE\Microsoft\IdentityCRL\Immersive\production\Token" 2^>nul') do reg delete "%%G" /f >nul 2>&1 & reg delete "HKU\S-1-5-19\SOFTWARE\Microsoft\IdentityCRL\Immersive\production\Property" /f >nul 2>&1 & for /f "tokens=*" %%G in ('reg query "HKU\S-1-5-20\SOFTWARE\Microsoft\IdentityCRL\Immersive\production\Token" 2^>nul') do reg delete "%%G" /f >nul 2>&1 & reg delete "HKU\S-1-5-20\SOFTWARE\Microsoft\IdentityCRL\Immersive\production\Property" /f >nul 2>&1 & reg delete "HKU\.DEFAULT\SOFTWARE\Microsoft\IdentityCRL\DeviceIdentities" /f >nul 2>&1 & reg delete "HKU\S-1-5-18\SOFTWARE\Microsoft\IdentityCRL\DeviceIdentities" /f >nul 2>&1 & reg delete "HKU\S-1-5-19\SOFTWARE\Microsoft\IdentityCRL\DeviceIdentities" /f >nul 2>&1 & reg delete "HKU\S-1-5-20\SOFTWARE\Microsoft\IdentityCRL\DeviceIdentities" /f >nul 2>&1 & reg delete "HKU\%%S\SOFTWARE\Microsoft\IdentityCRL\DeviceIdentities" /f >nul 2>&1 & reg delete "HKLM\SOFTWARE\Microsoft\IdentityStore\Cache" /f >nul 2>&1 & reg delete "HKLM\SOFTWARE\WOW6432Node\Microsoft\IdentityStore\Cache" /f >nul 2>&1 & reg delete "HKLM\SOFTWARE\Microsoft\IdentityStore\LogonCache" /f >nul 2>&1 & reg delete "HKLM\SOFTWARE\Microsoft\IdentityCRL\NegativeCache" /f >nul 2>&1)
 ::taskkill /f /t /im ctfmon.exe>nul 2>&1 & timeout /t 1>nul & start "" "%SystemRoot%\System32\ctfmon.exe" /n
 taskkill /f /t /im AppActions.exe >nul 2>&1
 taskkill /f /t /im fireshot-chrome-plugin.exe >nul 2>&1
@@ -766,5 +781,3 @@ taskkill /f /t /im OpenConsole.exe >nul 2>&1
 taskkill /f /t /im WindowsTerminal.exe >nul 2>&1
 taskkill /f /t /im cmd.exe >nul 2>&1
 taskkill /f /t /im conhost.exe >nul 2>&1
-taskkill /f /t /im taskkill.exe >nul 2>&1
-exit
