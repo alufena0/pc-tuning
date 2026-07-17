@@ -1,0 +1,46 @@
+@echo off
+for %%F in (
+    "%LOCALAPPDATA%\NVIDIA\DXCache"
+    "%LOCALAPPDATA%\NVIDIA\GLCache"
+    "%LOCALAPPDATA%\NVIDIA\D3DCache"
+    "%LOCALAPPDATA%\NVIDIA\VulkanCache"
+    "%LOCALAPPDATA%\NVIDIA Corporation\NV_Cache"
+    "%LOCALAPPDATA%\LocalLow\NVIDIA\DXCache"
+    "%LOCALAPPDATA%\LocalLow\NVIDIA\GLCache"
+    "%LOCALAPPDATA%\LocalLow\NVIDIA\PerDriverVersion\DXCache"
+    "%LOCALAPPDATA%\LocalLow\NVIDIA\PerDriverVersion\GLCache"
+    "%LOCALAPPDATA%\LocalLow\NVIDIA\PerDriverVersion\VkCache"
+    "%APPDATA%\NVIDIA\GLCache"
+    "%APPDATA%\NVIDIA\ComputeCache"
+    "%ProgramData%\NVIDIA Corporation\NV_Cache"
+    "%LOCALAPPDATA%\AMD\DxCache"
+    "%LOCALAPPDATA%\AMD\DxcCache"
+    "%LOCALAPPDATA%\AMD\VkCache"
+    "%LOCALAPPDATA%\AMD\OglCache"
+    "%LOCALAPPDATA%\AMD\GLCache"
+    "%LOCALAPPDATA%\AMD\DX9Cache"
+    "%LOCALAPPDATA%\AMD\AMDCache"
+    "%LOCALAPPDATA%\Intel\ShaderCache"
+    "%LOCALAPPDATA%\Intel\ShaderCacheGL"
+    "%LOCALAPPDATA%\Intel\DXCache"
+    "%LOCALAPPDATA%\Intel\GLCache"
+    "%LOCALAPPDATA%\D3DSCache"
+    "%LOCALAPPDATA%\Microsoft\D3DSCache"
+    "%LOCALAPPDATA%\VkCache"
+    "%ProgramFiles(x86)%\Steam\steamapps\shadercache"
+    "%ProgramFiles(x86)%\Steam\shader_cache_temp_dir_gl_64"
+    "%ProgramFiles(x86)%\Steam\shader_cache_temp_dir_gl_32"
+    "%ProgramFiles(x86)%\Steam\shader_cache_temp_dir_vk_64"
+    "D:\SteamLibrary\steamapps\shadercache"
+    "E:\SteamLibrary\steamapps\shadercache"
+    "F:\SteamLibrary\steamapps\shadercache"
+    "G:\SteamLibrary\steamapps\shadercache"
+) do (
+    if exist "%%~F\" (
+        pushd "%%~F"
+        for /d %%d in (*) do rd /s /q "%%d"
+        del /f /q /a "*.*"
+        popd
+    )
+)
+exit
