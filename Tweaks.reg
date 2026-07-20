@@ -60,7 +60,7 @@ Windows Registry Editor Version 5.00
 "Clock Rate"=dword:00002710
 "GPU Priority"=dword:00000008 ; 00000008, 00000012
 "Latency Sensitive"="False" ; True/False
-"Priority"=dword:00000001 ; 00000008, 00000001
+"Priority"=dword:00000001 ; 00000008, 00000001/00000006
 "Priority When Yielded"=dword:00000001
 "Scheduling Category"="Low" ; High, Low
 "SFIO Priority"="High" ; Normal, High
@@ -1159,11 +1159,11 @@ Windows Registry Editor Version 5.00
 "DeadGWDetectDefault"=dword:00000001
 "DefaultTOS"=dword:00000000 ; 00000000, 0000002e
 "DefaultTTL"=dword:00000040 ; 00000040/00000062/00000064
-"DelayedAckFrequency"=dword:00000000
+"DelayedAckFrequency"=dword:00000001 ; 00000000/00000001
 "DelayedAckTicks"=dword:00000000
 "DesktopTTL"=dword:00000040
 "DisableAutoTuning"=dword:00000000 ; 00000000/00000001
-"DisableDHCPMediaSense"=dword:00000001
+"DisableDHCPMediaSense"=dword:00000000 ; 00000000/00000001
 "DisableDynamicUpdate"=dword:00000000
 "DisablegTaskOffload"=dword:00000000
 "DisableIPSourceRouting"=dword:00000002
@@ -1310,6 +1310,7 @@ Windows Registry Editor Version 5.00
 "SMB2"=dword:00000000
 "SMBv1"=dword:00000000
 "hidden"=dword:00000001
+"EncryptData"=dword:00000000 ; 00000000/00000001
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Configuration Manager]
 "BugcheckRecoveryEnabled"=dword:00000000
@@ -1317,6 +1318,12 @@ Windows Registry Editor Version 5.00
 "FastBoot"=dword:00000000
 "SelfHealingEnabled"=dword:00000000
 "VirtualizationEnabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\SecurePipeServers\Winreg\AllowedExactPaths]
+"Machine"=hex(7):00,00,00,00
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\SecurePipeServers\Winreg\AllowedPaths]
+"Machine"=hex(7):00,00,00,00
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa\Kerberos\Parameters]
 "MaxTokenSize"="0000ffff"
@@ -1964,6 +1971,10 @@ Windows Registry Editor Version 5.00
 ; "EnableSvchostMitigationPolicy"=dword:00000000 ; 00000000/00000001
 "EnableSvchostMitigationPolicy"=hex(b):00,00,00,00,00,00,00,00
 "EnableSvchostMitigationsPolicy"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Policies\EarlyLaunch]
+"DriverLoadPolicy"=-
+"DriverLoadPolicy"=-
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\EventSystem]
 "ParallelFiringTimeoutEnabled"=dword:00000001
@@ -4420,6 +4431,8 @@ Windows Registry Editor Version 5.00
 "DoNotShowFeedbackNotifications"=dword:00000001
 "DontOfferThroughWUAU"=dword:00000001
 "DontReportInfectionInformation"=dword:00000001
+[HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\MRT]
+"DontReportInfectionInformation"=dword:00000001
 
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Serialize]
 "StartupDelayInMSec"=dword:00000000 ; 00000000/00000001
@@ -4707,6 +4720,10 @@ Windows Registry Editor Version 5.00
 "AutoDownloadAndUpdateMapData"=dword:00000000
 "EnableOfflineMapsAutoUpdate"=dword:00000000
 
+[HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\Maps]
+"AllowUntriggeredNetworkTrafficOnSettingsPage"=dword:00000000
+"AutoDownloadAndUpdateMapData"=dword:00000000
+
 [HKEY_LOCAL_MACHINE\SYSTEM\Maps]
 "AutoUpdateEnabled"=dword:00000000
 "MapUpdate"=dword:00000000
@@ -4953,6 +4970,11 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LanmanWorkstation]
 "AllowOfflineFilesforCAShares"=dword:00000000
+"RequireEncryption"=dword:00000001
+"MinSmb2Dialect"=dword:00000311
+"CipherSuiteOrder"=hex(7):41,00,45,00,53,00,5f,00,32,00,35,00,36,00,5f,00,47,00,43,00,4d,00,00,00,41,00,45,00,53,00,5f,00,32,00,35,00,36,00,5f,00,43,00,43,00,4d,00,00,00,41,00,45,00,53,00,5f,00,31,00,32,00,38,00,5f,00,47,00,43,00,4d,00,00,00,41,00,45,00,53,00,5f,00,31,00,32,00,38,00,5f,00,43,00,43,00,4d,00,00,00,00,00
+"EnableSMBQUIC"=dword:00000001
+"BlockNTLM"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\FVE]
 "DisableExternalDMAUnderLock"=dword:00000000 ; 00000000/00000001
@@ -4984,6 +5006,7 @@ Windows Registry Editor Version 5.00
 "OSRequireActiveDirectoryBackup"=dword:00000000
 "FDVActiveDirectoryBackup"=dword:00000000
 "RDVActiveDirectoryBackup"=dword:00000000
+"RDVDenyCrossOrg"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Policies\Microsoft\FVE]
 "FDVDenyWriteAccess"=dword:00000000
@@ -5183,6 +5206,7 @@ Windows Registry Editor Version 5.00
 "Enabled"=dword:00000000
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\IsoEnvBroker]
 "Enabled"=dword:00000000
+"Start"=dword:00000004
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\WINEVT\Channels\Microsoft-Windows-Application-Experience/Program-Compatibility-Assistant/Trace]
 "Enabled"=dword:00000000
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\WINEVT\Channels\Microsoft-Windows-Application-Experience/Program-Compatibility-Assistant/Compatibility-Infrastructure-Debug]
@@ -7813,6 +7837,10 @@ Windows Registry Editor Version 5.00
 "AddressBarMicrosoftSearchInBingProviderEnabled"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Edge]
+; "PreferSlowKexAlgorithms"="cnsa2"
+; "PreferSlowCiphers"="cnsa"
+"EncryptedClientHelloEnabled"=dword:00000001
+"LaunchEdgeOnWindowsStartupEnabled"=dword:00000000
 "EdgeReadingModeServiceBasedExtractionEnabled"=dword:00000000
 "AddressBarClipboardSuggestEnabled"=dword:00000000
 "NonMicrosoftAccountSignInEnabled"=dword:00000001 ; 00000000/00000001
@@ -7905,7 +7933,7 @@ Windows Registry Editor Version 5.00
 "AutoplayAllowed"=dword:00000001
 "BackgroundModeEnabled"=dword:00000000 ; 00000000/00000001
 "BackgroundTemplateListUpdatesEnabled"=dword:00000000
-"BasicAuthOverHttpEnabled"=dword:00000001 ; 00000000/00000001
+"BasicAuthOverHttpEnabled"=dword:00000000 ; 00000000/00000001
 "BeforeunloadEventCancelByPreventDefaultEnabled"=dword:00000001
 "BingAdsSuppression"=dword:00000001
 ; "BlockThirdPartyCookies"=dword:00000001 ; 00000000/00000001
@@ -8022,7 +8050,7 @@ Windows Registry Editor Version 5.00
 "EnhanceSecurityModeIndicatorUIEnabled"=dword:00000001
 "EnhanceSecurityModeOptOutUXEnabled"=dword:00000001
 "EnterpriseHardwarePlatformAPIEnabled"=dword:00000001
-"ExperimentationAndConfigurationServiceControl"=dword:00000000
+"ExperimentationAndConfigurationServiceControl"=dword:00000002 ; 00000000/00000002
 "ExtensionDeveloperModeSettings"=dword:00000001
 "ExtensionManifestV2Availability"=dword:00000002
 "ExtensionsPerformanceDetectorEnabled"=dword:00000000
@@ -8314,6 +8342,7 @@ Windows Registry Editor Version 5.00
 "ShowMicrosoftRewards"=dword:00000001
 "SyncDisabled"=dword:00000001
 "VisualSearchEnabled"=dword:00000000
+"DefaultShareAdditionalOSRegionSetting"=dword:00000002
 
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Edge]
 "SmartScreenEnabled"="0"
@@ -8468,6 +8497,13 @@ Windows Registry Editor Version 5.00
 "UpdatesSuppressedStartHour"=dword:00000006
 "UpdatesSuppressedStartMin"=dword:00000000
 "UpdatesSuppressedDurationMin"=dword:000003c0
+"mid"=""
+
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\EdgeUpdate]
+"mid"=""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Office\Common]
+"MID"=""
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\EdgeUpdate]
 "CopilotUpdatePath"=-
@@ -9236,6 +9272,7 @@ Windows Registry Editor Version 5.00
 "DisableFeedbackCommands"=dword:00000001
 "DontCheckDefaultBrowser"=dword:00000001
 "NoDefaultBookmarks"=dword:00000001
+; "IPProtectionAvailable"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Mozilla\Firefox\Preferences]
 ; "geo.enabled"=dword:00000000
@@ -9246,6 +9283,12 @@ Windows Registry Editor Version 5.00
 "network.IDN_show_punycode"=dword:00000001
 "extensions.htmlaboutaddons.recommendations.enabled"=dword:00000000
 "extensions.getAddons.showPane"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Mozilla\Firefox\EnableTrackingProtection]
+"Value"=dword:00000001
+"Locked"=dword:00000000
+"Cryptomining"=dword:00000001
+"Fingerprinting"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Mozilla\Firefox\UserMessaging]
 "FirefoxLabs"=dword:00000000
@@ -9265,6 +9308,46 @@ Windows Registry Editor Version 5.00
 "Pocket"=dword:00000000
 "SponsoredPocket"=dword:00000000
 "Snippets"=dword:00000000
+"Locked"=dword:00000001
+"SponsoredStories"=dword:00000000
+"Stories"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Mozilla\Firefox\GenerativeAI]
+"Enabled"=dword:00000000
+"Chatbot"=dword:00000000
+"LinkPreviews"=dword:00000000
+"TabGroups"=dword:00000000
+"Locked"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Mozilla\Firefox\SearchEngines\Remove]
+"1"="Perplexity"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Mozilla\Firefox\AIControls\Default]
+"Value"="blocked"
+"Locked"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Mozilla\Firefox\AIControls\Translations]
+"Value"="available"
+"Locked"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Mozilla\Firefox\AIControls\PDFAltText]
+"Value"="available"
+"Locked"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Mozilla\Firefox\AIControls\SmartTabGroups]
+"Value"="blocked"
+"Locked"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Mozilla\Firefox\AIControls\LinkPreviewKeyPoints]
+"Value"="blocked"
+"Locked"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Mozilla\Firefox\AIControls\SidebarChatbot]
+"Value"="blocked"
+"Locked"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Mozilla\Firefox\AIControls\SmartWindow]
+"Value"="blocked"
 "Locked"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Mozilla\Firefox\FirefoxSuggest]
@@ -13874,13 +13957,13 @@ Windows Registry Editor Version 5.00
 "bUpdater"=dword:00000000
 "cSharePoint"="1"
 "iFileAttachmentPerms"=dword:00000001
-"iProtectedView"=dword:00000002
+"iProtectedView"=dword:00000001 ; 00000001/00000002
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Policies\Adobe\Acrobat Reader\DC\FeatureLockDown]
 "bEnhancedSecurityStandalone"=dword:00000001
 "bEnhancedSecurityInBrowser"=dword:00000001
 "bProtectedMode"=dword:00000001
-"iProtectedView"=dword:00000002
+"iProtectedView"=dword:00000001
 "bEnableProtectedModeAppContainer"=dword:00000001
 "bDisableTrustedSites"=dword:00000001
 "iFileAttachmentPerms"=dword:00000001
@@ -13888,6 +13971,51 @@ Windows Registry Editor Version 5.00
 "bEnableFlash"=dword:00000000
 "bEnable3D"=dword:00000000
 "bUpdater"=dword:00000000
+
+[HKEY_CURRENT_USER\SOFTWARE\Adobe\Acrobat Reader\DC\TrustManager]
+"bEnhancedSecurityInBrowser"=dword:00000001
+"bEnhancedSecurityStandalone"=dword:00000001
+"iProtectedView"=dword:00000001
+
+[HKEY_CURRENT_USER\SOFTWARE\Adobe\Acrobat Reader\2020\TrustManager]
+"bEnhancedSecurityInBrowser"=dword:00000001
+"bEnhancedSecurityStandalone"=dword:00000001
+"iProtectedView"=dword:00000001
+
+[HKEY_CURRENT_USER\SOFTWARE\Adobe\Acrobat Reader\XI\TrustManager]
+"bEnhancedSecurityInBrowser"=dword:00000001
+"bEnhancedSecurityStandalone"=dword:00000001
+"iProtectedView"=dword:00000001
+
+[HKEY_CURRENT_USER\SOFTWARE\Adobe\Acrobat Reader\DC\Privileged]
+"bProtectedMode"=dword:00000001
+
+[HKEY_CURRENT_USER\SOFTWARE\Adobe\Acrobat Reader\2020\Privileged]
+"bProtectedMode"=dword:00000001
+
+[HKEY_CURRENT_USER\SOFTWARE\Adobe\Acrobat Reader\XI\Privileged]
+"bProtectedMode"=dword:00000001
+
+[HKEY_CURRENT_USER\SOFTWARE\Adobe\Acrobat Reader\DC\Originals]
+"bAllowOpenFile"=dword:00000000
+"bSecureOpenFile"=dword:00000001
+
+[HKEY_CURRENT_USER\SOFTWARE\Adobe\Acrobat Reader\2020\Originals]
+"bAllowOpenFile"=dword:00000000
+"bSecureOpenFile"=dword:00000001
+
+[HKEY_CURRENT_USER\SOFTWARE\Adobe\Acrobat Reader\XI\Originals]
+"bAllowOpenFile"=dword:00000000
+"bSecureOpenFile"=dword:00000001
+
+[HKEY_CURRENT_USER\SOFTWARE\Adobe\Acrobat Reader\DC\JSPrefs]
+"bEnableJS"=dword:00000000
+
+[HKEY_CURRENT_USER\SOFTWARE\Adobe\Acrobat Reader\2020\JSPrefs]
+"bEnableJS"=dword:00000000
+
+[HKEY_CURRENT_USER\SOFTWARE\Adobe\Acrobat Reader\XI\JSPrefs]
+"bEnableJS"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Policies\Adobe\Acrobat Reader\DC\FeatureLockDown\DefaultLaunchAttachmentPerms]
 "iUnlistedAttachmentTypePerm"=dword:00000003
@@ -14045,6 +14173,7 @@ Windows Registry Editor Version 5.00
 "ConfigStorageSenseDownloadsCleanupThreshold"=dword:00000000
 "ConfigStorageSenseGlobalCadence"=dword:00000000
 "ConfigStorageSenseRecycleBinCleanupThreshold"=dword:00000000
+"AllowStorageSense"=dword:00000000
 
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\StorageSense\Parameters]
 "StorageSenseEnabled"=dword:00000000
@@ -14053,7 +14182,8 @@ Windows Registry Editor Version 5.00
 "AllowStorageSenseGlobal"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Lsa\MSV1_0]
-"RestrictSendingNTLMTraffic"=dword:00000002
+"RestrictSendingNTLMTraffic"=dword:00000002 ; 00000000/00000002
+"RestrictReceivingNTLMTraffic"=dword:00000002 ; 00000000/00000002
 
 ; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4d36e96c-e325-11ce-bfc1-08002be10318}]
 ; "UpperFilters"=hex(7): ; ksthunk
@@ -15608,6 +15738,9 @@ Windows Registry Editor Version 5.00
 "UxOption"=dword:00000001
 "VisibilityBeforeUpdate"=dword:00000001
 
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Notifications\Settings\Windows.SystemToast.WindowsUpdate.Notification]
+"Enabled"=dword:00000000
+
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate\RealtimeMonitoring]
 "Enabled"=dword:00000000
 
@@ -15736,6 +15869,7 @@ Windows Registry Editor Version 5.00
 "ScheduledInstallTime"=-
 "UseWUServer"=dword:00000000 ; 00000000/00000001
 "AllowMUUpdateService"=dword:00000000
+"AlwaysAutoRebootAtScheduledTime"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\default\Update\DeferFeatureUpdatesPeriodInDays]
 "value"=- ; =-, 0000016d
@@ -15882,6 +16016,7 @@ Windows Registry Editor Version 5.00
 "Win8DpiScaling"=dword:00000001 ; 00000000/00000001
 "WindowArrangementActive"="0"
 "DstNotification"=dword:00000000
+"CaretWidth"=dword:00000001
 
 [-HKEY_CURRENT_USER\Control Panel\Desktop\PerMonitorSettings]
 [HKEY_CURRENT_USER\Control Panel\Desktop\PerMonitorSettings]
@@ -16141,14 +16276,27 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\IPSec\ICFv4]
 "BypassFirewall"=dword:00000001 ; 00000000/00000001
+"DisableNotifications"=dword:00000001
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\StandardProfile]
 "EnableFirewall"=dword:00000001 ; 00000000/00000001
+"DisableNotifications"=dword:00000001
+"AllowLocalPolicyMerge"=dword:00000001
+"AllowLocalIPsecPolicyMerge"=dword:00000001
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile]
 "EnableFirewall"=dword:00000001
+"DisableNotifications"=dword:00000001
+"AllowLocalPolicyMerge"=dword:00000001
+"AllowLocalIPsecPolicyMerge"=dword:00000001
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile]
 "EnableFirewall"=dword:00000001
+"DisableNotifications"=dword:00000001
+"AllowLocalPolicyMerge"=dword:00000001
+"AllowLocalIPsecPolicyMerge"=dword:00000001
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PrivateProfile]
 "EnableFirewall"=dword:00000001
+"DisableNotifications"=dword:00000001
+"AllowLocalPolicyMerge"=dword:00000001
+"AllowLocalIPsecPolicyMerge"=dword:00000001
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile]
 "DisableNotifications"=dword:00000001
 "DisableUnicastResponsesToMulticastBroadcast"=dword:00000001
@@ -16231,6 +16379,7 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Rpc]
 "RestrictRemoteClients"=dword:00000002 ; 00000001/00000002
+"EnableAuthEpResolution"=dword:00000000
 
 [HKEY_USERS\.DEFAULT\Control Panel\UnsupportedHardwareNotificationCache]
 "SV1"=dword:00000000
@@ -16524,6 +16673,9 @@ Windows Registry Editor Version 5.00
 "DetailsContainer"=hex:01,00,00,00,02,00,00,00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
+"MaxDevicePasswordFailedAttempts"=dword:00000000
+"DontDisplayLockedUserId"=dword:00000000
+"InactivityTimeoutSecs"=dword:00000000
 "ConsentPromptBehaviorAdmin"=dword:00000000
 "ConsentPromptBehaviorUser"=dword:00000003 ; 00000000/00000003
 "DelayedDesktopSwitchTimeout"=dword:00000000
@@ -16576,6 +16728,7 @@ Windows Registry Editor Version 5.00
 "ValidateAdminCodeSignatures"=dword:00000000
 "VerboseStatus"=dword:00000001
 "SupportUwpStartupTasks"=dword:00000001
+"ConsentPromptBehaviorEnhancedAdmin"=dword:00000000
 
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\RulesEngine\StateManager]
 "LastSuppressionTimes"="{\"settingshomealertbanner\":\"2099-01-01T00:00:00Z\",\"startmenu\":\"2099-01-01T00:00:00Z\"}"
@@ -16653,6 +16806,9 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\Audit]
 "ProcessCreationIncludeCmdLine_Enabled"=dword:00000000 ; 00000000/00000001
+
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\Kerberos\Parameters]
+"EnableCbacAndArmor"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\MEIx64\Parameters]
 "DisableD3"=dword:00000001
@@ -17740,11 +17896,15 @@ Windows Registry Editor Version 5.00
 "NoAcquireGT"=dword:00000001
 "NoGenTicket"=dword:00000001
 
+[HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows NT\CurrentVersion\Software Protection Platform]
+"NoGenTicket"=dword:00000001
+
 [HKEY_CURRENT_USER\Software\Microsoft\Shared Tools\MsConfig]
 "NoRebootUI"=dword:00000001
 
 [HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\AppCompat]
 "DisablePCA"=dword:00000001
+"DisableUAR"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\PCHealth\ErrorReporting]
 "AllOrNone"=dword:00000000
@@ -18013,6 +18173,10 @@ Windows Registry Editor Version 5.00
 "SubmitSamplesConsent"=dword:00000002
 "SpyNetReportingLocation"=hex(7):30,00,00,00,00,00
 
+[HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows Defender\Spynet]
+"SubmitSamplesConsent"=dword:00000002
+"SpyNetReporting"=dword:00000000
+
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Account protection]
 "UILockdown"=dword:00000001
 
@@ -18087,6 +18251,7 @@ Windows Registry Editor Version 5.00
 "ExploitGuard_ASR_Rules"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Windows Defender Exploit Guard\ASR\Rules]
+"a8f5898e-1dc8-49a9-9878-85004b8a61e6"="0"
 "be9ba2d9-53ea-4cdc-84e5-9b1eeee46550"="0"
 "d4f940ab-401b-4efc-aadc-ad5f3c50688a"="0"
 "3b576869-a4ec-4529-8536-b80a7769e899"="0"
@@ -18667,6 +18832,9 @@ Windows Registry Editor Version 5.00
 "ShellFeedsTaskbarOpenOnHover"=dword:00000000
 "ShellFeedsTaskbarViewMode"=dword:00000002
 
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Feeds]
+"ShellFeedsTaskbarViewMode"=dword:00000002
+
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\BootControl]
 "BootProgressAnimation"=dword:00000001 ; 00000000/00000001
 
@@ -18721,6 +18889,87 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Office\12.0\Outlook\Security]
 "ShowOLEPackageObj"=dword:00000000
 
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Office\12.0\onenote\Options]
+"DisableEmbeddedFiles"=dword:00000001
+
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Office\14.0\onenote\Options]
+"DisableEmbeddedFiles"=dword:00000001
+
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Office\15.0\onenote\Options]
+"DisableEmbeddedFiles"=dword:00000001
+
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Office\16.0\onenote\Options]
+"DisableEmbeddedFiles"=dword:00000001
+
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Office\14.0\Excel\Options]
+"DontUpdateLinks"=dword:00000001
+
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Office\14.0\Word\Options]
+"DontUpdateLinks"=dword:00000001
+
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Office\14.0\Word\Options\WordMail]
+"DontUpdateLinks"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Microsoft\Office\12.0\Excel\Security]
+"WorkbookLinkWarnings"=dword:00000002
+"PackagerPrompt"=dword:00000002
+"VBAWarnings"=dword:00000004
+
+[HKEY_CURRENT_USER\Software\Microsoft\Office\14.0\Excel\Security]
+"WorkbookLinkWarnings"=dword:00000002
+"PackagerPrompt"=dword:00000002
+"VBAWarnings"=dword:00000004
+
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Office\12.0\Word\Security]
+"PackagerPrompt"=dword:00000002
+"VBAWarnings"=dword:00000004
+
+[HKEY_CURRENT_USER\Software\Microsoft\Office\15.0\Excel\Security]
+"WorkbookLinkWarnings"=dword:00000002
+"PackagerPrompt"=dword:00000002
+"VBAWarnings"=dword:00000004
+
+[HKEY_CURRENT_USER\Software\Microsoft\Office\16.0\Excel\Security]
+"WorkbookLinkWarnings"=dword:00000002
+"PackagerPrompt"=dword:00000002
+"VBAWarnings"=dword:00000004
+
+[HKEY_CURRENT_USER\Software\Microsoft\Office\12.0\Word\Options\vpref]
+"fNoCalclinksOnopen_90_1"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Microsoft\Office\14.0\Word\Security]
+"AllowDDE"=dword:00000000
+"PackagerPrompt"=dword:00000002
+"VBAWarnings"=dword:00000004
+
+[HKEY_CURRENT_USER\Software\Microsoft\Office\15.0\Word\Security]
+"AllowDDE"=dword:00000000
+"PackagerPrompt"=dword:00000002
+"VBAWarnings"=dword:00000004
+
+[HKEY_CURRENT_USER\Software\Microsoft\Office\16.0\Word\Security]
+"AllowDDE"=dword:00000000
+"PackagerPrompt"=dword:00000002
+"VBAWarnings"=dword:00000004
+
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Office\16.0\PowerPoint\Security]
+"VBAWarnings"=dword:00000004
+
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Office\15.0\PowerPoint\Security]
+"PackagerPrompt"=dword:00000002
+"VBAWarnings"=dword:00000004
+
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Office\14.0\PowerPoint\Security]
+"PackagerPrompt"=dword:00000002
+"VBAWarnings"=dword:00000004
+
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Office\12.0\PowerPoint\Security]
+"PackagerPrompt"=dword:00000002
+"VBAWarnings"=dword:00000004
+
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Office\Common\Security]
+"DisableAllActiveX"=dword:00000001
+
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Office\15.0\ClickToRun\Configuration]
 "UpdatesEnabled"="False" ; True, False
 
@@ -18741,6 +18990,7 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Office\15.0\Word\Options]
 "EnableLogging"=dword:00000000
 "DisableBootToOfficeStart"=dword:00000001
+"DontUpdateLinks"=dword:00000001
 
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Office\16.0\Outlook\Preferences]
 "UseNewOutlook"=dword:00000000
@@ -18780,15 +19030,18 @@ Windows Registry Editor Version 5.00
 "DisableBootToOfficeStart"=dword:00000001
 "EnableCopilot"=dword:00000000
 "EnableLogging"=dword:00000000
+"DontUpdateLinks"=dword:00000001
 
 [HKEY_CURRENT_USER\Software\Microsoft\Office\16.0\Excel\Options]
 "DisableBootToOfficeStart"=dword:00000001
 "EnableCopilot"=dword:00000000
 "EnableLogging"=dword:00000000
+"DontUpdateLinks"=dword:00000001
 
 [HKEY_CURRENT_USER\Software\Microsoft\Office\16.0\PowerPoint\Options]
 "DisableBootToOfficeStart"=dword:00000001
 "Enable Copilot in Settings"=dword:00000000
+"EnableCopilot"=dword:00000000
 
 [HKEY_CURRENT_USER\Software\Microsoft\Office\16.0\OneNote\Options\Copilot]
 "CopilotEnabled"=dword:00000000
@@ -18903,6 +19156,7 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Software\Policies\Microsoft\office\16.0\powerpoint\security]
 "vbawarnings"=dword:00000004
 "blockcontentexecutionfrominternet"=dword:00000001
+"PackagerPrompt"=dword:00000002
 
 [HKEY_CURRENT_USER\Software\Policies\Microsoft\office\16.0\publisher\security]
 "vbawarnings"=dword:00000004
@@ -18968,7 +19222,7 @@ Windows Registry Editor Version 5.00
 "disablemovie"=dword:00000001
 
 [HKEY_CURRENT_USER\Software\Microsoft\Office\16.0\OSM]
-"EnableFileObfuscation"=dword:00000000
+"EnableFileObfuscation"=dword:00000001 ; 00000000/00000001
 "EnableLogging"=dword:00000000
 "EnableUpload"=dword:00000000
 
@@ -19029,7 +19283,7 @@ Windows Registry Editor Version 5.00
 "DisableUnsafeLocationsInPV"=dword:00000001
 
 [HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\16.0\OSM]
-"enablefileobfuscation"=dword:00000000
+"enablefileobfuscation"=dword:00000001
 "EnableLogging"=dword:00000000
 "EnableUpload"=dword:00000000
 
@@ -19120,7 +19374,7 @@ Windows Registry Editor Version 5.00
 "templatefiles"=dword:00000001
 
 [HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\15.0\osm]
-"enablefileobfuscation"=dword:00000000
+"enablefileobfuscation"=dword:00000001
 "EnableLogging"=dword:00000000
 "enableupload"=dword:00000000
 
@@ -19182,6 +19436,7 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Software\Microsoft\Office\15.0\Excel\Options]
 "DisableBootToOfficeStart"=dword:00000001
 "EnableLogging"=dword:00000000
+"DontUpdateLinks"=dword:00000001
 
 [HKEY_CURRENT_USER\Software\Microsoft\Office\15.0\PowerPoint\Options]
 "DisableBootToOfficeStart"=dword:00000001
@@ -20885,7 +21140,7 @@ Windows Registry Editor Version 5.00
 ; "ThreadingModel"="Apartment"
 
 [HKEY_CURRENT_USER\Control Panel\Accessibility\MouseKeys]
-"Flags"="0" ; 0/38/54/62/130/186
+"Flags"="0" ; 0/38/54/62/130/158/186
 "MaximumSpeed"="40" ; 39/40/80
 "TimeToMaximumSpeed"="3000"
 
@@ -20926,6 +21181,10 @@ Windows Registry Editor Version 5.00
 "LastBounceTime"=dword:00000000
 "KeystrokeDelay"=dword:00000000
 "LastKeystrokeDelay"=dword:00000000
+"FirstRepeatDelay"=dword:00000000
+"LastFirstRepeatDelay"=dword:00000000
+"NextRepeatDelay"=dword:00000000
+"LastNextRepeatDelay"=dword:00000000
 
 [HKEY_CURRENT_USER\Control Panel\Accessibility\ToggleKeys]
 "Flags"="58" ; 00000000/34/38/58
@@ -21337,8 +21596,17 @@ Windows Registry Editor Version 5.00
 "FollowFocus"=dword:00000000
 "FollowMouse"=dword:00000000
 "FollowNarrator"=dword:00000000
-"MagnificationMode"=dword:00000003
+"MagnificationMode"=dword:00000003 ; 00000002/00000003
 "UseBitmapSmoothing"=dword:00000000
+"Magnification"=dword:00000064
+"ZoomIncrement"=dword:00000019
+"FullScreenTrackingMode"=dword:00000000
+"CenterTextInsertionPoint"=dword:00000000
+"Invert"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Microsoft\ColorFiltering]
+"Active"=dword:00000000
+"HotkeyEnabled"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\Software\Microsoft\.NETFramework]
 "AllowStrongNameBypass"=dword:00000001 ; 00000000/00000001
@@ -21355,11 +21623,23 @@ Windows Registry Editor Version 5.00
 "OnlyUseLatestCLR"=dword:00000000
 "DbgManagedDebugger"=""
 
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Cryptography]
+"ForceKeyProtection"=dword:00000000 ; 00000000/00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AMSI]
+"FeatureBits"=dword:00000001 ; 00000000/00000001/00000002
+
 [HKEY_LOCAL_MACHINE\Software\Microsoft\Cryptography\Wintrust\Config]
 "EnableCertPaddingCheck"="0" ; 0/1
 
 [HKEY_LOCAL_MACHINE\Software\Wow6432Node\Microsoft\Cryptography\Wintrust\Config]
 "EnableCertPaddingCheck"="0"
+
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\PassportForWork\PINComplexity]
+"Digits"=dword:00000000
+"LowercaseLetters"=dword:00000000
+"Expiration"=dword:00000000
+"History"=dword:00000000
 
 ; [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Cryptography]
 ; "MachineGuid"="11111111-2222-3333-4444-555555555555"
@@ -23952,6 +24232,19 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\HwReqChk]
 "HwReqChkVars"=hex(7):53,00,51,00,5f,00,53,00,65,00,63,00,75,00,72,00,65,00,42,00,6f,00,6f,00,74,00,43,00,61,00,70,00,61,00,62,00,6c,00,65,00,3d,00,54,00,52,00,55,00,45,00,00,00,53,00,51,00,5f,00,53,00,65,00,63,00,75,00,72,00,65,00,42,00,6f,00,6f,00,74,00,45,00,6e,00,61,00,62,00,6c,00,65,00,64,00,3d,00,54,00,52,00,55,00,45,00,00,00,53,00,51,00,5f,00,54,00,70,00,6d,00,56,00,65,00,72,00,73,00,69,00,6f,00,6e,00,3d,00,32,00,00,00,53,00,51,00,5f,00,52,00,61,00,6d,00,4d,00,42,00,3d,00,38,00,31,00,39,00,32,00,00,00,00,00,00,00
 
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Electronic Arts\SPORE_EP1]
+"AddOnID"=dword:00000002
+"PackID"=dword:07a7f786
+"datadir"="F:\\SteamLibrary\\steamapps\\common\\Spore\\DataEP1\\"
+"ProductKey"="%CDKEY%"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Electronic Arts\SPORE]
+"appdir"="Spore"
+"DataDir"="F:\\SteamLibrary\\steamapps\\common\\Spore\\Data"
+"locale"="en-us"
+"InstallLoc"="F:\\SteamLibrary\\steamapps\\common\\Spore"
+"PlayerDir"="My Spore Creations"
+
 [HKEY_LOCAL_MACHINE\SOFTWARE\Unreal Technology\Installed Apps\UT2004]
 "ADMIN_RIGHTS"="You need to run this program as an administrator, not as a guest or limited user account."
 "CDKey"="PWCKV-BXNKH-AJC4H-QLJYA"
@@ -26227,6 +26520,11 @@ Windows Registry Editor Version 5.00
 "FrontEndHeapDebugOptions"=dword:00000004
 "MitigationAuditOptions"=hex:22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22
 "MitigationOptions"=hex:22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\TS4_x64_fpb.exe]
+"EAFModules"=" "
+"FrontEndHeapDebugOptions"=dword:00000004
+"MitigationAuditOptions"=hex:22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22
+"MitigationOptions"=hex:22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\DepthGame.exe\PerfOptions]
 "CpuPriorityClass"=dword:00000006
@@ -26684,6 +26982,10 @@ Windows Registry Editor Version 5.00
 "CpuPriorityClass"=dword:00000006
 "IoPriority"=dword:00000003
 "PagePriority"=dword:00000005
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\TS4_x64_fpb.exe\PerfOptions]
+"CpuPriorityClass"=dword:00000006
+"IoPriority"=dword:00000003
+"PagePriority"=dword:00000005
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\GalaxyClient Helper.exe\PerfOptions]
 "CpuPriorityClass"=dword:00000005
@@ -26717,8 +27019,37 @@ Windows Registry Editor Version 5.00
 "CpuPriorityClass"=dword:00000005
 "IoPriority"=dword:00000001
 "PagePriority"=dword:00000004
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\EpicOnlineServicesUserHelper.exe\PerfOptions]
+"CpuPriorityClass"=dword:00000005
+"IoPriority"=dword:00000001
+"PagePriority"=dword:00000004
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\EpicWebHelper.exe\PerfOptions]
+"CpuPriorityClass"=dword:00000005
+"IoPriority"=dword:00000001
+"PagePriority"=dword:00000004
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\steamwebhelper.exe\PerfOptions]
+"CpuPriorityClass"=dword:00000005
+"IoPriority"=dword:00000001
+"PagePriority"=dword:00000004
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\EABackgroundService.exe\PerfOptions]
+"CpuPriorityClass"=dword:00000005
+"IoPriority"=dword:00000001
+"PagePriority"=dword:00000004
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\EACefSubProcess.exe\PerfOptions]
+"CpuPriorityClass"=dword:00000005
+"IoPriority"=dword:00000001
+"PagePriority"=dword:00000004
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\EALocalHostSvc.exe\PerfOptions]
+"CpuPriorityClass"=dword:00000005
+"IoPriority"=dword:00000001
+"PagePriority"=dword:00000004
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\EASteamProxy.exe\PerfOptions]
+"CpuPriorityClass"=dword:00000005
+"IoPriority"=dword:00000001
+"PagePriority"=dword:00000004
 
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\DirectX\UserGpuPreferences]
+"F:\\SteamLibrary\\steamapps\\common\\The Sims 4\\Game\\Bin\\TS4_x64_fpb.exe"="GpuPreference=2;"
 "G:\\SteamLibrary\\steamapps\\common\\The Sims 3\\Game\\Bin\\TS3W.exe"="GpuPreference=2;"
 "D:\\SteamLibrary\\steamapps\\common\\GTA III - The Definitive Edition\\Gameface\\Binaries\\Win64\\LibertyCity.exe"="GpuPreference=2;"
 "D:\\SteamLibrary\\steamapps\\common\\Depth\\Binaries\\Win32\\DepthGame.exe"="GpuPreference=2;"
@@ -26868,173 +27199,181 @@ Windows Registry Editor Version 5.00
 
 ; [-HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers]
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers]
+"F:\\SteamLibrary\\steamapps\\common\\The Sims 4\\Game\\Bin\\TS4_x64_fpb.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"C:\\ProgramData\\Wargaming.net\\GameCenter for Steam\\wgc.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"C:\\Program Files\\All-About-PDF\\All-About-PDF.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"C:\\Program Files\\Epic Games\\Launcher\\Engine\\Binaries\\Win64\\EpicGamesLauncher.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"C:\\Program Files\\Epic Games\\Launcher\\Engine\\Binaries\\Win64\\EpicWebHelper.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"C:\\Program Files\\Epic Games\\Launcher\\Engine\\Binaries\\Win64\\UnrealEngineLauncher.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"C:\\Program Files\\Epic Games\\Launcher\\Engine\\Binaries\\Win64\\UnrealVersionSelector.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"C:\\Program Files\\Epic Games\\Launcher\\Portal\\Binaries\\Win32\\EpicGamesLauncher.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"C:\\Program Files\\Epic Games\\Launcher\\Portal\\Binaries\\Win64\\EpicGamesLauncher.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"C:\\Program Files\\Epic Games\\Launcher\\Portal\\Binaries\\Win64\\EpicGamesUpdater.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"C:\\Program Files\\Epic Games\\Launcher\\Portal\\Extras\\EOSBootStrapper\\EOSBootStrapper.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"C:\\Program Files\\Epic Games\\Launcher\\Portal\\Extras\\EOS\\EpicOnlineServicesInstaller.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"C:\\Program Files\\Epic Games\\Launcher\\Portal\\Extras\\EOS\\InstallChainer.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"C:\\Program Files\\Epic Games\\Launcher\\SelfUpdateStage\\Install\\Engine\\Binaries\\Win64\\EpicGamesLauncher.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"C:\\Program Files\\Epic Games\\Launcher\\SelfUpdateStage\\Install\\Portal\\Binaries\\Win32\\EpicGamesLauncher.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"C:\\Program Files\\Rockstar Games\\Launcher\\Launcher.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"C:\\Program Files\\Rockstar Games\\Launcher\\LauncherPatcher.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"C:\\Program Files\\Rockstar Games\\Launcher\\RockstarService.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"C:\\Program Files\\Rockstar Games\\Launcher\\RockstarSteamHelper.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"C:\\Program Files\\Rockstar Games\\Social Club\\SocialClubHelper.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"C:\\Program Files\\RW-Everything\\Rw.exe"="~ RUNASADMIN"
+"C:\\Program Files\\Topaz Labs LLC\\Topaz Video AI\\ffmpeg.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"C:\\Program Files\\Topaz Labs LLC\\Topaz Video AI\\Topaz Video AI.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"C:\\Program Files (x86)\\Battle.net\\World of Warcraft\\_classic_\\WowClassic.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"C:\\Program Files (x86)\\Battle.net\\World of Warcraft\\_retail_\\Wow.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"C:\\Program Files (x86)\\Battle.net\\World of Warcraft\\World of Warcraft Launcher.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"C:\\Program Files (x86)\\Click Fix\\clickfix.exe"="~ RUNASADMIN"
+"C:\\Program Files (x86)\\DPC Latency Checker\\a.exe"="~ RUNASADMIN"
+"C:\\Program Files (x86)\\Epic Games\\Epic Online Services\\EpicOnlineServicesInstallHelper.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"C:\\Program Files (x86)\\Epic Games\\Epic Online Services\\EpicOnlineServicesUIHelper.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"C:\\Program Files (x86)\\Epic Games\\Epic Online Services\\EpicOnlineServicesUserHelper.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"C:\\Program Files (x86)\\Epic Games\\Epic Online Services\\service\\EpicOnlineServicesHost.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"C:\\Program Files (x86)\\Epic Games\\Fortnite\\FortniteGame\\Binaries\\Win64\\FortniteClient-Win64-Shipping.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"C:\\Program Files (x86)\\Epic Games\\Fortnite\\FortniteGame\\Binaries\\Win64\\FortniteLauncher.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"C:\\Program Files (x86)\\Epic Games\\Launcher\\Portal\\Binaries\\Win32\\EpicGamesLauncher.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"C:\\Program Files (x86)\\Epic Games\\Launcher\\Portal\\Binaries\\Win64\\EpicGamesLauncher.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"C:\\Program Files (x86)\\GOG Galaxy\\GalaxyClient.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"C:\\Program Files (x86)\\GOG Galaxy\\GalaxyClientService.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"C:\\Program Files (x86)\\MAXIS\\The Sims\\Sims.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"C:\\Program Files (x86)\\memreduct\\memreduct.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"C:\\Program Files (x86)\\PBO2 Tuner\\PBO2Tuner.exe"="~ RUNASADMIN"
+"C:\\Program Files (x86)\\Rainmeter\\Rainmeter.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE WIN7RTM"
+"C:\\Program Files (x86)\\Steam\\steamapps\\common\\Back 4 Blood\\Gobi\\Binaries\\Win64\\Back4Blood.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"C:\\Program Files (x86)\\Steam\\steamapps\\common\\dota 2 beta\\game\\bin\\win64\\dota2.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"C:\\Program Files (x86)\\Steam\\steamapps\\common\\New World\\Bin64\\NewWorld.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"C:\\Program Files (x86)\\Steam\\steamapps\\common\\New World\\NewWorldLauncher.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"C:\\Program Files (x86)\\Steam\\steamapps\\common\\No Man's Sky\\Binaries\\NMS.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"C:\\Program Files (x86)\\Steam\\steamapps\\common\\Saints Row the Third\\game_launcher.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"C:\\Program Files (x86)\\Steam\\steamapps\\common\\Saints Row the Third\\SaintsRowTheThird_DX11.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"C:\\Program Files (x86)\\Steam\\steamapps\\common\\Saints Row the Third\\SaintsRowTheThird.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"C:\\Program Files (x86)\\Steam\\steamapps\\common\\The Witcher 3\\bin\\x64_dx12\\witcher3.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"C:\\Program Files (x86)\\Steam\\steamapps\\common\\The Witcher 3\\bin\\x64\\witcher3.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"C:\\Program Files (x86)\\Steam\\steamapps\\common\\Warhammer 40,000 DARKTIDE\\binaries\\Darktide.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"C:\\Program Files (x86)\\Topaz Video AI\\App\\ffmpeg.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"C:\\Program Files (x86)\\Topaz Video AI\\App\\Topaz Video AI.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"C:\\Users\\Administrator\\AppData\\Local\\Programs\\Obsidian\\Obsidian.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"C:\\Windows\\System32\\dwm.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"D:\\Epic Games\\GTAVEnhanced\\GTA5_Enhanced.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"D:\\SteamLibrary\\steamapps\\common\\Carmageddon Max Damage\\bin\\Carmageddon_Max_Damage.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"D:\\SteamLibrary\\steamapps\\common\\Cities_Skylines\\Cities.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"D:\\SteamLibrary\\steamapps\\common\\Deep Rock Survivor\\DRG Survivor.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"D:\\SteamLibrary\\steamapps\\common\\Depth\\Binaries\\Win32\\DepthGame.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"D:\\SteamLibrary\\steamapps\\common\\Dishonored\\Binaries\\Win32\\Dishonored.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"D:\\SteamLibrary\\steamapps\\common\\Dying Light\\DyingLightGame.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"D:\\SteamLibrary\\steamapps\\common\\Excalibur\\NeedForSpeedUnbound.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"D:\\SteamLibrary\\steamapps\\common\\Fallout76\\Fallout76.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"D:\\SteamLibrary\\steamapps\\common\\Gas Station Simulator\\GSS2\\Binaries\\Win64\\GSS2-Win64-Shipping.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"D:\\SteamLibrary\\steamapps\\common\\Grand Theft Auto IV\\GTAIV\\GTAIV.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"D:\\SteamLibrary\\steamapps\\common\\GTA III - The Definitive Edition\\Gameface\\Binaries\\Win64\\LibertyCity.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"D:\\SteamLibrary\\steamapps\\common\\GTA Vice City - The Definitive Edition\\Gameface\\Binaries\\Win64\\ViceCity.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"D:\\SteamLibrary\\steamapps\\common\\Guild Wars 2\\Gw2-64.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"D:\\SteamLibrary\\steamapps\\common\\House Flipper\\HouseFlipper.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"D:\\SteamLibrary\\steamapps\\common\\killingfloor2\\Binaries\\Win64\\KFGame.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"D:\\SteamLibrary\\steamapps\\common\\L.A.Noire\\LANoire.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"D:\\SteamLibrary\\steamapps\\common\\Left 4 Dead 2\\left4dead2.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"D:\\SteamLibrary\\steamapps\\common\\Lost Ark\\Binaries\\Win64\\LOSTARK.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"D:\\SteamLibrary\\steamapps\\common\\Overwatch\\Overwatch.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"D:\\SteamLibrary\\steamapps\\common\\Paladins\\Binaries\\Win64\\Paladins.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"D:\\SteamLibrary\\steamapps\\common\\POSTAL 4\\Postal4\\Binaries\\Win64\\Postal4-Win64-Shipping.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"D:\\SteamLibrary\\steamapps\\common\\POSTAL 4\\Postal4.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"D:\\SteamLibrary\\steamapps\\common\\PUBG\\TslGame\\Binaries\\Win64\\TslGame.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"D:\\SteamLibrary\\steamapps\\common\\Red Dead Redemption 2\\PlayRDR2.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"D:\\SteamLibrary\\steamapps\\common\\Red Dead Redemption 2\\RDR2.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"D:\\SteamLibrary\\steamapps\\common\\Sid Meier's Civilization V\\CivilizationV_DX11.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"D:\\SteamLibrary\\steamapps\\common\\Sid Meier's Civilization V\\CivilizationV.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"D:\\SteamLibrary\\steamapps\\common\\Sid Meier's Civilization V\\Launcher.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"D:\\SteamLibrary\\steamapps\\common\\The Finals\\Discovery.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"D:\\SteamLibrary\\steamapps\\common\\Unreal Tournament 2004\\System\\UT2004.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"D:\\SteamLibrary\\steamapps\\common\\VRising\\VRising.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"E:\\Starfield\\Starfield.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"E:\\SteamLibrary\\steamapps\\common\\American Truck Simulator\\bin\\win_x64\\amtrucks.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"E:\\SteamLibrary\\steamapps\\common\\AoE3DE\\AoE3DE_s.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"E:\\SteamLibrary\\steamapps\\common\\Battlefield 1\\bf1.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"E:\\SteamLibrary\\steamapps\\common\\Bloodhunt\\Tiger\\Binaries\\Win64\\Tiger-Win64-Shipping.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"E:\\SteamLibrary\\steamapps\\common\\BorderlandsGOTYEnhanced\\Binaries\\Win64\\BorderlandsGOTY.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"E:\\SteamLibrary\\steamapps\\common\\Counter-Strike Global Offensive\\game\\bin\\win64\\cs2.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"E:\\SteamLibrary\\steamapps\\common\\Crysis\\Bin32\\Crysis64.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE VISTASP2"
+"E:\\SteamLibrary\\steamapps\\common\\Crysis\\Bin32\\Crysis.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE VISTASP2"
+"E:\\SteamLibrary\\steamapps\\common\\Dead by Daylight\\DeadByDaylight\\Binaries\\Win64\\DeadByDaylight-Win64-Shipping.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"E:\\SteamLibrary\\steamapps\\common\\Destroy All Humans!\\DH\\Binaries\\Win64\\DH-Win64-Shipping.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"E:\\SteamLibrary\\steamapps\\common\\Diablo IV\\Diablo IV.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"E:\\SteamLibrary\\steamapps\\common\\Ghostrunner\\Ghostrunner\\Binaries\\Win64\\Ghostrunner-Win64-Shipping.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"E:\\SteamLibrary\\steamapps\\common\\Halo Infinite\\HaloInfinite.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"E:\\SteamLibrary\\steamapps\\common\\Mad Max\\MadMax.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"E:\\SteamLibrary\\steamapps\\common\\Mass Effect\\Binaries\\MassEffect.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"E:\\SteamLibrary\\steamapps\\common\\Mass Effect Legendary Edition\\Game\\ME1\\Binaries\\Win64\\MassEffect1.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"E:\\SteamLibrary\\steamapps\\common\\Nightfall\\Nightfall\\Binaries\\Win64\\NightfallClient-Win64-Shipping.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"E:\\SteamLibrary\\steamapps\\common\\Planet Coaster\\PlanetCoaster.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"E:\\SteamLibrary\\steamapps\\common\\quakechampions\\client\\bin\\pc\\QuakeChampions.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"E:\\SteamLibrary\\steamapps\\common\\Raft\\Raft.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"E:\\SteamLibrary\\steamapps\\common\\Rise of Nations\\riseofnations.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"E:\\SteamLibrary\\steamapps\\common\\Skyrim Special Edition\\SkyrimSE.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"E:\\SteamLibrary\\steamapps\\common\\Team Fortress 2\\hl2.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"E:\\SteamLibrary\\steamapps\\common\\Team Fortress 2\\tf_win64.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"E:\\SteamLibrary\\steamapps\\common\\TPH\\TPH.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"E:\\SteamLibrary\\steamapps\\common\\Warframe\\Warframe.x64.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"E:\\SteamLibrary\\steamapps\\common\\War Thunder\\win64\\aces.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"E:\\SteamLibrary\\steamapps\\common\\Wolfenstein.The.New.Order.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"E:\\SteamLibrary\\steamapps\\common\\World of Warships\\bin\\8517795\\bin64\\WorldOfWarships64.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"F:\\Alan Wake 2\\AlanWake2.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"F:\\Cyberpunk 2077\\bin\\x64\\Cyberpunk2077.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"F:\\Forza Horizon 5\\forzahorizon5.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"F:\\Forza Motorsport\\forza_gaming.desktop.x64_release_final.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"F:\\SteamLibrary\\steamapps\\common\\Crossout\\bin\\win64\\Crossout.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"F:\\SteamLibrary\\steamapps\\common\\Fallout 4\\Fallout4.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"F:\\SteamLibrary\\steamapps\\common\\FragPunk\\FragPunk\\Binaries\\Win64\\FragPunk.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"F:\\SteamLibrary\\steamapps\\common\\FragPunk\\FragPunk.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"F:\\SteamLibrary\\steamapps\\common\\GTA San Andreas - The Definitive Edition\\Gameface\\Binaries\\Win64\\SanAndreas.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"F:\\SteamLibrary\\steamapps\\common\\Resident Evil Village BIOHAZARD VILLAGE\\re8.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"F:\\SteamLibrary\\steamapps\\common\\Sid Meier's Civilization III Complete\\Conquests\\Civ3Conquests.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE WIN8RTM"
+"F:\\SteamLibrary\\steamapps\\common\\Sid Meier's Civilization VI\\Base\\Binaries\\Win64Steam\\CivilizationVI_DX12.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"F:\\SteamLibrary\\steamapps\\common\\Sons Of The Forest\\SonsOfTheForest.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"F:\\SteamLibrary\\steamapps\\common\\The Sims 4\\Game\\Bin\\TS4_x64.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"F:\\SteamLibrary\\steamapps\\common\\World of Tanks\\na\\win64\\WorldOfTanks.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"F:\\The Last of Us Part I\\tlou-i.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"F:\\Tropico 6\\Tropico6.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"G:\\DeadIsland2\\DeadIsland\\Binaries\\Win64\\DeadIsland-Win64-Shipping.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"G:\\DeadIsland2\\DeadIsland.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"G:\\Epic Games\\GTAVEnhanced\\PlayGTAV.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"G:\\Epic Games\\GTAV\\GTA5_BE.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"G:\\Epic Games\\GTAV\\GTA5.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"G:\\Epic Games\\GTAV\\PlayGTAV.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"G:\\S.T.A.L.K.E.R. 2\\Stalker2\\Binaries\\Win64\\Stalker2-Win64-Shipping.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"G:\\S.T.A.L.K.E.R. 2\\Stalker2.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"G:\\SteamLibrary\\steamapps\\common\\Apex Legends\\r5apex_dx12.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"G:\\SteamLibrary\\steamapps\\common\\Apex Legends\\r5apex.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"G:\\SteamLibrary\\steamapps\\common\\Battlefield 2042\\BF2042.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"G:\\SteamLibrary\\steamapps\\common\\Call of Duty HQ\\cod22\\cod22-cod.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"G:\\SteamLibrary\\steamapps\\common\\Call of Duty HQ\\cod.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"G:\\SteamLibrary\\steamapps\\common\\Cyberpunk 2077\\bin\\x64\\Cyberpunk2077.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"G:\\SteamLibrary\\steamapps\\common\\Dying Light 2\\ph\\work\\bin\\x64\\DyingLightGame_x64_rwdi.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"G:\\SteamLibrary\\steamapps\\common\\Empire Earth Gold Edition\\Empire Earth\\Empire Earth.exe"="~ DWM8And16BitMitigation HIGHDPIAWARE RUNASADMIN HeapClearAllocation WIN7RTM DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"G:\\SteamLibrary\\steamapps\\common\\Hunt Showdown 1896\\bin\\win_x64\\HuntGame.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"G:\\SteamLibrary\\steamapps\\common\\MarvelRivals\\MarvelGame\\Marvel\\Binaries\\Win64\\Marvel-Win64-Shipping.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"G:\\SteamLibrary\\steamapps\\common\\MarvelRivals\\MarvelGame\\Marvel.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"G:\\SteamLibrary\\steamapps\\common\\MarvelRivals\\MarvelRivals_Launcher.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"G:\\SteamLibrary\\steamapps\\common\\NARAKA BLADEPOINT\\NarakaBladepoint.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"G:\\SteamLibrary\\steamapps\\common\\Shadow Warrior 3\\SW3\\Binaries\\Win64\\SW3.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "G:\\SteamLibrary\\steamapps\\common\\The Sims 3\\Game\\Bin\\TS3W.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "PreApproved"=""
-"D:\\SteamLibrary\\steamapps\\common\\GTA III - The Definitive Edition\\Gameface\\Binaries\\Win64\\LibertyCity.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files (x86)\\GOG Galaxy\\GalaxyClient.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files (x86)\\GOG Galaxy\\GalaxyClientService.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"D:\\SteamLibrary\\steamapps\\common\\Depth\\Binaries\\Win32\\DepthGame.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\ProgramData\\Wargaming.net\\GameCenter for Steam\\wgc.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files\\All-About-PDF\\All-About-PDF.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files\\Epic Games\\Launcher\\Engine\\Binaries\\Win64\\EpicGamesLauncher.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files\\Epic Games\\Launcher\\Engine\\Binaries\\Win64\\EpicWebHelper.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files\\Epic Games\\Launcher\\Portal\\Binaries\\Win32\\EpicGamesLauncher.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files\\Epic Games\\Launcher\\Portal\\Binaries\\Win64\\EpicGamesLauncher.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files\\Epic Games\\Launcher\\Portal\\Binaries\\Win64\\EpicGamesUpdater.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files\\Epic Games\\Launcher\\SelfUpdateStage\\Install\\Engine\\Binaries\\Win64\\EpicGamesLauncher.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files\\Epic Games\\Launcher\\SelfUpdateStage\\Install\\Portal\\Binaries\\Win32\\EpicGamesLauncher.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files\\Rockstar Games\\Launcher\\Launcher.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files\\Rockstar Games\\Launcher\\LauncherPatcher.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files\\Rockstar Games\\Launcher\\RockstarService.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files\\Rockstar Games\\Launcher\\RockstarSteamHelper.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files\\Rockstar Games\\Social Club\\SocialClubHelper.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files\\RW-Everything\\Rw.exe"="~ RUNASADMIN"
-"C:\\Program Files\\Topaz Labs LLC\\Topaz Video AI\\ffmpeg.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files\\Topaz Labs LLC\\Topaz Video AI\\Topaz Video AI.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files (x86)\\Battle.net\\World of Warcraft\\_classic_\\WowClassic.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files (x86)\\Battle.net\\World of Warcraft\\_retail_\\Wow.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files (x86)\\Battle.net\\World of Warcraft\\World of Warcraft Launcher.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files (x86)\\Click Fix\\clickfix.exe"="~ RUNASADMIN"
-"C:\\Program Files (x86)\\DPC Latency Checker\\a.exe"="~ RUNASADMIN"
-"C:\\Program Files (x86)\\Epic Games\\Epic Online Services\\EpicOnlineServicesInstallHelper.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files (x86)\\Epic Games\\Epic Online Services\\EpicOnlineServicesUIHelper.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files (x86)\\Epic Games\\Epic Online Services\\service\\EpicOnlineServicesHost.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files (x86)\\Epic Games\\Fortnite\\FortniteGame\\Binaries\\Win64\\FortniteClient-Win64-Shipping.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files (x86)\\Epic Games\\Fortnite\\FortniteGame\\Binaries\\Win64\\FortniteLauncher.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files (x86)\\Epic Games\\Launcher\\Portal\\Binaries\\Win32\\EpicGamesLauncher.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files (x86)\\Epic Games\\Launcher\\Portal\\Binaries\\Win64\\EpicGamesLauncher.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files (x86)\\MAXIS\\The Sims\\Sims.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files (x86)\\memreduct\\memreduct.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files (x86)\\PBO2 Tuner\\PBO2Tuner.exe"="~ RUNASADMIN"
-"C:\\Program Files (x86)\\Rainmeter\\Rainmeter.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE WIN7RTM"
-"C:\\Program Files (x86)\\Steam\\steamapps\\common\\dota 2 beta\\game\\bin\\win64\\dota2.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files (x86)\\Steam\\steamapps\\common\\New World\\Bin64\\NewWorld.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files (x86)\\Steam\\steamapps\\common\\New World\\NewWorldLauncher.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files (x86)\\Steam\\steamapps\\common\\No Man's Sky\\Binaries\\NMS.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files (x86)\\Steam\\steamapps\\common\\The Witcher 3\\bin\\x64_dx12\\witcher3.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files (x86)\\Steam\\steamapps\\common\\The Witcher 3\\bin\\x64\\witcher3.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files (x86)\\Steam\\steamapps\\common\\Warhammer 40,000 DARKTIDE\\binaries\\Darktide.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files (x86)\\Topaz Video AI\\App\\ffmpeg.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files (x86)\\Topaz Video AI\\App\\Topaz Video AI.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Users\\Administrator\\AppData\\Local\\Programs\\Obsidian\\Obsidian.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Windows\\System32\\dwm.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"D:\\Epic Games\\GTAVEnhanced\\GTA5_Enhanced.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"G:\\Epic Games\\GTAVEnhanced\\PlayGTAV.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"G:\\Epic Games\\GTAV\\GTA5.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"G:\\Epic Games\\GTAV\\GTA5_BE.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"G:\\Epic Games\\GTAV\\PlayGTAV.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"D:\\SteamLibrary\\steamapps\\common\\Carmageddon Max Damage\\bin\\Carmageddon_Max_Damage.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"D:\\SteamLibrary\\steamapps\\common\\Cities_Skylines\\Cities.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"D:\\SteamLibrary\\steamapps\\common\\Deep Rock Survivor\\DRG Survivor.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"D:\\SteamLibrary\\steamapps\\common\\Dishonored\\Binaries\\Win32\\Dishonored.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"D:\\SteamLibrary\\steamapps\\common\\Dying Light\\DyingLightGame.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"D:\\SteamLibrary\\steamapps\\common\\Excalibur\\NeedForSpeedUnbound.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"D:\\SteamLibrary\\steamapps\\common\\Fallout76\\Fallout76.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"D:\\SteamLibrary\\steamapps\\common\\Gas Station Simulator\\GSS2\\Binaries\\Win64\\GSS2-Win64-Shipping.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"D:\\SteamLibrary\\steamapps\\common\\Grand Theft Auto IV\\GTAIV\\GTAIV.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"D:\\SteamLibrary\\steamapps\\common\\Guild Wars 2\\Gw2-64.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"D:\\SteamLibrary\\steamapps\\common\\House Flipper\\HouseFlipper.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"D:\\SteamLibrary\\steamapps\\common\\killingfloor2\\Binaries\\Win64\\KFGame.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"D:\\SteamLibrary\\steamapps\\common\\L.A.Noire\\LANoire.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"D:\\SteamLibrary\\steamapps\\common\\Left 4 Dead 2\\left4dead2.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"D:\\SteamLibrary\\steamapps\\common\\Lost Ark\\Binaries\\Win64\\LOSTARK.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"D:\\SteamLibrary\\steamapps\\common\\Overwatch\\Overwatch.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"D:\\SteamLibrary\\steamapps\\common\\Paladins\\Binaries\\Win64\\Paladins.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"D:\\SteamLibrary\\steamapps\\common\\POSTAL 4\\Postal4\\Binaries\\Win64\\Postal4-Win64-Shipping.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"D:\\SteamLibrary\\steamapps\\common\\POSTAL 4\\Postal4.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"D:\\SteamLibrary\\steamapps\\common\\PUBG\\TslGame\\Binaries\\Win64\\TslGame.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"D:\\SteamLibrary\\steamapps\\common\\Sid Meier's Civilization V\\CivilizationV_DX11.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"D:\\SteamLibrary\\steamapps\\common\\Sid Meier's Civilization V\\CivilizationV.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"D:\\SteamLibrary\\steamapps\\common\\Sid Meier's Civilization V\\Launcher.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"D:\\SteamLibrary\\steamapps\\common\\The Finals\\Discovery.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"D:\\SteamLibrary\\steamapps\\common\\Unreal Tournament 2004\\System\\UT2004.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"D:\\SteamLibrary\\steamapps\\common\\VRising\\VRising.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"E:\\Starfield\\Starfield.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"E:\\SteamLibrary\\steamapps\\common\\American Truck Simulator\\bin\\win_x64\\amtrucks.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"E:\\SteamLibrary\\steamapps\\common\\AoE3DE\\AoE3DE_s.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"E:\\SteamLibrary\\steamapps\\common\\Battlefield 1\\bf1.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"E:\\SteamLibrary\\steamapps\\common\\Bloodhunt\\Tiger\\Binaries\\Win64\\Tiger-Win64-Shipping.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"E:\\SteamLibrary\\steamapps\\common\\BorderlandsGOTYEnhanced\\Binaries\\Win64\\BorderlandsGOTY.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"E:\\SteamLibrary\\steamapps\\common\\Counter-Strike Global Offensive\\game\\bin\\win64\\cs2.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"E:\\SteamLibrary\\steamapps\\common\\Crysis\\Bin32\\Crysis64.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE VISTASP2"
-"E:\\SteamLibrary\\steamapps\\common\\Crysis\\Bin32\\Crysis.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE VISTASP2"
-"E:\\SteamLibrary\\steamapps\\common\\Dead by Daylight\\DeadByDaylight\\Binaries\\Win64\\DeadByDaylight-Win64-Shipping.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"E:\\SteamLibrary\\steamapps\\common\\Destroy All Humans!\\DH\\Binaries\\Win64\\DH-Win64-Shipping.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"E:\\SteamLibrary\\steamapps\\common\\Diablo IV\\Diablo IV.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"E:\\SteamLibrary\\steamapps\\common\\Ghostrunner\\Ghostrunner\\Binaries\\Win64\\Ghostrunner-Win64-Shipping.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"E:\\SteamLibrary\\steamapps\\common\\Halo Infinite\\HaloInfinite.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"E:\\SteamLibrary\\steamapps\\common\\Mad Max\\MadMax.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"E:\\SteamLibrary\\steamapps\\common\\Mass Effect\\Binaries\\MassEffect.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"E:\\SteamLibrary\\steamapps\\common\\Mass Effect Legendary Edition\\Game\\ME1\\Binaries\\Win64\\MassEffect1.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"E:\\SteamLibrary\\steamapps\\common\\Nightfall\\Nightfall\\Binaries\\Win64\\NightfallClient-Win64-Shipping.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"E:\\SteamLibrary\\steamapps\\common\\Planet Coaster\\PlanetCoaster.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"E:\\SteamLibrary\\steamapps\\common\\quakechampions\\client\\bin\\pc\\QuakeChampions.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"E:\\SteamLibrary\\steamapps\\common\\Raft\\Raft.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"E:\\SteamLibrary\\steamapps\\common\\Rise of Nations\\riseofnations.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"E:\\SteamLibrary\\steamapps\\common\\Skyrim Special Edition\\SkyrimSE.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"E:\\SteamLibrary\\steamapps\\common\\Team Fortress 2\\hl2.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"E:\\SteamLibrary\\steamapps\\common\\Team Fortress 2\\tf_win64.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"E:\\SteamLibrary\\steamapps\\common\\TPH\\TPH.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"E:\\SteamLibrary\\steamapps\\common\\Warframe\\Warframe.x64.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"E:\\SteamLibrary\\steamapps\\common\\War Thunder\\win64\\aces.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"E:\\SteamLibrary\\steamapps\\common\\Wolfenstein.The.New.Order.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"E:\\SteamLibrary\\steamapps\\common\\World of Warships\\bin\\8517795\\bin64\\WorldOfWarships64.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"F:\\Alan Wake 2\\AlanWake2.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"F:\\Cyberpunk 2077\\bin\\x64\\Cyberpunk2077.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"F:\\Forza Horizon 5\\forzahorizon5.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"F:\\Forza Motorsport\\forza_gaming.desktop.x64_release_final.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files (x86)\\Steam\\steamapps\\common\\Back 4 Blood\\Gobi\\Binaries\\Win64\\Back4Blood.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"F:\\SteamLibrary\\steamapps\\common\\Crossout\\bin\\win64\\Crossout.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"F:\\SteamLibrary\\steamapps\\common\\Fallout 4\\Fallout4.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"F:\\SteamLibrary\\steamapps\\common\\FragPunk\\FragPunk\\Binaries\\Win64\\FragPunk.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"F:\\SteamLibrary\\steamapps\\common\\FragPunk\\FragPunk.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"F:\\SteamLibrary\\steamapps\\common\\GTA San Andreas - The Definitive Edition\\Gameface\\Binaries\\Win64\\SanAndreas.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"F:\\SteamLibrary\\steamapps\\common\\Resident Evil Village BIOHAZARD VILLAGE\\re8.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"F:\\SteamLibrary\\steamapps\\common\\Sid Meier's Civilization III Complete\\Conquests\\Civ3Conquests.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE WIN8RTM"
-"F:\\SteamLibrary\\steamapps\\common\\Sid Meier's Civilization VI\\Base\\Binaries\\Win64Steam\\CivilizationVI_DX12.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"F:\\SteamLibrary\\steamapps\\common\\Sons Of The Forest\\SonsOfTheForest.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"F:\\SteamLibrary\\steamapps\\common\\The Sims 4\\Game\\Bin\\TS4_x64.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"F:\\SteamLibrary\\steamapps\\common\\World of Tanks\\na\\win64\\WorldOfTanks.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"F:\\The Last of Us Part I\\tlou-i.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"F:\\Tropico 6\\Tropico6.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"G:\\DeadIsland2\\DeadIsland\\Binaries\\Win64\\DeadIsland-Win64-Shipping.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"G:\\DeadIsland2\\DeadIsland.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"G:\\S.T.A.L.K.E.R. 2\\Stalker2\\Binaries\\Win64\\Stalker2-Win64-Shipping.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"G:\\S.T.A.L.K.E.R. 2\\Stalker2.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"G:\\SteamLibrary\\steamapps\\common\\Apex Legends\\r5apex_dx12.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"G:\\SteamLibrary\\steamapps\\common\\Apex Legends\\r5apex.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"G:\\SteamLibrary\\steamapps\\common\\Battlefield 2042\\BF2042.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"G:\\SteamLibrary\\steamapps\\common\\Call of Duty HQ\\cod22\\cod22-cod.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"G:\\SteamLibrary\\steamapps\\common\\Call of Duty HQ\\cod.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"G:\\SteamLibrary\\steamapps\\common\\Cyberpunk 2077\\bin\\x64\\Cyberpunk2077.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"G:\\SteamLibrary\\steamapps\\common\\Dying Light 2\\ph\\work\\bin\\x64\\DyingLightGame_x64_rwdi.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"G:\\SteamLibrary\\steamapps\\common\\Hunt Showdown 1896\\bin\\win_x64\\HuntGame.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"G:\\SteamLibrary\\steamapps\\common\\MarvelRivals\\MarvelGame\\Marvel\\Binaries\\Win64\\Marvel-Win64-Shipping.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"G:\\SteamLibrary\\steamapps\\common\\MarvelRivals\\MarvelGame\\Marvel.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"G:\\SteamLibrary\\steamapps\\common\\MarvelRivals\\MarvelRivals_Launcher.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"G:\\SteamLibrary\\steamapps\\common\\NARAKA BLADEPOINT\\NarakaBladepoint.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"D:\\SteamLibrary\\steamapps\\common\\Red Dead Redemption 2\\RDR2.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"D:\\SteamLibrary\\steamapps\\common\\Red Dead Redemption 2\\PlayRDR2.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"G:\\SteamLibrary\\steamapps\\common\\Shadow Warrior 3\\SW3\\Binaries\\Win64\\SW3.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"G:\\SteamLibrary\\steamapps\\common\\Empire Earth Gold Edition\\Empire Earth\\Empire Earth.exe"="~ DWM8And16BitMitigation HIGHDPIAWARE RUNASADMIN HeapClearAllocation WIN7RTM DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files (x86)\\Steam\\steamapps\\common\\Saints Row the Third\\game_launcher.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files (x86)\\Steam\\steamapps\\common\\Saints Row the Third\\SaintsRowTheThird.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files (x86)\\Steam\\steamapps\\common\\Saints Row the Third\\SaintsRowTheThird_DX11.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"D:\\SteamLibrary\\steamapps\\common\\GTA Vice City - The Definitive Edition\\Gameface\\Binaries\\Win64\\ViceCity.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 
 [HKEY_CURRENT_USER\Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers]
-"G:\\SteamLibrary\\steamapps\\common\\The Sims 3\\Game\\Bin\\TS3W.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"D:\\SteamLibrary\\steamapps\\common\\GTA III - The Definitive Edition\\Gameface\\Binaries\\Win64\\LibertyCity.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files (x86)\\GOG Galaxy\\GalaxyClient.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files (x86)\\GOG Galaxy\\GalaxyClientService.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"D:\\SteamLibrary\\steamapps\\common\\Depth\\Binaries\\Win32\\DepthGame.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"F:\\SteamLibrary\\steamapps\\common\\The Sims 4\\Game\\Bin\\TS4_x64_fpb.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "C:\\ProgramData\\Wargaming.net\\GameCenter for Steam\\wgc.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "C:\\Program Files\\All-About-PDF\\All-About-PDF.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "C:\\Program Files\\Epic Games\\Launcher\\Engine\\Binaries\\Win64\\EpicGamesLauncher.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "C:\\Program Files\\Epic Games\\Launcher\\Engine\\Binaries\\Win64\\EpicWebHelper.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"C:\\Program Files\\Epic Games\\Launcher\\Engine\\Binaries\\Win64\\UnrealEngineLauncher.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"C:\\Program Files\\Epic Games\\Launcher\\Engine\\Binaries\\Win64\\UnrealVersionSelector.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "C:\\Program Files\\Epic Games\\Launcher\\Portal\\Binaries\\Win32\\EpicGamesLauncher.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "C:\\Program Files\\Epic Games\\Launcher\\Portal\\Binaries\\Win64\\EpicGamesLauncher.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "C:\\Program Files\\Epic Games\\Launcher\\Portal\\Binaries\\Win64\\EpicGamesUpdater.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"C:\\Program Files\\Epic Games\\Launcher\\Portal\\Extras\\EOSBootStrapper\\EOSBootStrapper.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"C:\\Program Files\\Epic Games\\Launcher\\Portal\\Extras\\EOS\\EpicOnlineServicesInstaller.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"C:\\Program Files\\Epic Games\\Launcher\\Portal\\Extras\\EOS\\InstallChainer.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "C:\\Program Files\\Epic Games\\Launcher\\SelfUpdateStage\\Install\\Engine\\Binaries\\Win64\\EpicGamesLauncher.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "C:\\Program Files\\Epic Games\\Launcher\\SelfUpdateStage\\Install\\Portal\\Binaries\\Win32\\EpicGamesLauncher.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "C:\\Program Files\\Rockstar Games\\Launcher\\Launcher.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
@@ -27052,19 +27391,26 @@ Windows Registry Editor Version 5.00
 "C:\\Program Files (x86)\\DPC Latency Checker\\a.exe"="~ RUNASADMIN"
 "C:\\Program Files (x86)\\Epic Games\\Epic Online Services\\EpicOnlineServicesInstallHelper.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "C:\\Program Files (x86)\\Epic Games\\Epic Online Services\\EpicOnlineServicesUIHelper.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"C:\\Program Files (x86)\\Epic Games\\Epic Online Services\\EpicOnlineServicesUserHelper.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "C:\\Program Files (x86)\\Epic Games\\Epic Online Services\\service\\EpicOnlineServicesHost.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "C:\\Program Files (x86)\\Epic Games\\Fortnite\\FortniteGame\\Binaries\\Win64\\FortniteClient-Win64-Shipping.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "C:\\Program Files (x86)\\Epic Games\\Fortnite\\FortniteGame\\Binaries\\Win64\\FortniteLauncher.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "C:\\Program Files (x86)\\Epic Games\\Launcher\\Portal\\Binaries\\Win32\\EpicGamesLauncher.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "C:\\Program Files (x86)\\Epic Games\\Launcher\\Portal\\Binaries\\Win64\\EpicGamesLauncher.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"C:\\Program Files (x86)\\GOG Galaxy\\GalaxyClient.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"C:\\Program Files (x86)\\GOG Galaxy\\GalaxyClientService.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "C:\\Program Files (x86)\\MAXIS\\The Sims\\Sims.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "C:\\Program Files (x86)\\memreduct\\memreduct.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "C:\\Program Files (x86)\\PBO2 Tuner\\PBO2Tuner.exe"="~ RUNASADMIN"
 "C:\\Program Files (x86)\\Rainmeter\\Rainmeter.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE WIN7RTM"
+"C:\\Program Files (x86)\\Steam\\steamapps\\common\\Back 4 Blood\\Gobi\\Binaries\\Win64\\Back4Blood.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "C:\\Program Files (x86)\\Steam\\steamapps\\common\\dota 2 beta\\game\\bin\\win64\\dota2.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "C:\\Program Files (x86)\\Steam\\steamapps\\common\\New World\\Bin64\\NewWorld.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "C:\\Program Files (x86)\\Steam\\steamapps\\common\\New World\\NewWorldLauncher.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "C:\\Program Files (x86)\\Steam\\steamapps\\common\\No Man's Sky\\Binaries\\NMS.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"C:\\Program Files (x86)\\Steam\\steamapps\\common\\Saints Row the Third\\game_launcher.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"C:\\Program Files (x86)\\Steam\\steamapps\\common\\Saints Row the Third\\SaintsRowTheThird_DX11.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"C:\\Program Files (x86)\\Steam\\steamapps\\common\\Saints Row the Third\\SaintsRowTheThird.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "C:\\Program Files (x86)\\Steam\\steamapps\\common\\The Witcher 3\\bin\\x64_dx12\\witcher3.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "C:\\Program Files (x86)\\Steam\\steamapps\\common\\The Witcher 3\\bin\\x64\\witcher3.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Warhammer 40,000 DARKTIDE\\binaries\\Darktide.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
@@ -27073,19 +27419,18 @@ Windows Registry Editor Version 5.00
 "C:\\Users\\Administrator\\AppData\\Local\\Programs\\Obsidian\\Obsidian.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "C:\\Windows\\System32\\dwm.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "D:\\Epic Games\\GTAVEnhanced\\GTA5_Enhanced.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"G:\\Epic Games\\GTAVEnhanced\\PlayGTAV.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"G:\\Epic Games\\GTAV\\GTA5.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"G:\\Epic Games\\GTAV\\GTA5_BE.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"G:\\Epic Games\\GTAV\\PlayGTAV.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "D:\\SteamLibrary\\steamapps\\common\\Carmageddon Max Damage\\bin\\Carmageddon_Max_Damage.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "D:\\SteamLibrary\\steamapps\\common\\Cities_Skylines\\Cities.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "D:\\SteamLibrary\\steamapps\\common\\Deep Rock Survivor\\DRG Survivor.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"D:\\SteamLibrary\\steamapps\\common\\Depth\\Binaries\\Win32\\DepthGame.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "D:\\SteamLibrary\\steamapps\\common\\Dishonored\\Binaries\\Win32\\Dishonored.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "D:\\SteamLibrary\\steamapps\\common\\Dying Light\\DyingLightGame.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "D:\\SteamLibrary\\steamapps\\common\\Excalibur\\NeedForSpeedUnbound.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "D:\\SteamLibrary\\steamapps\\common\\Fallout76\\Fallout76.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "D:\\SteamLibrary\\steamapps\\common\\Gas Station Simulator\\GSS2\\Binaries\\Win64\\GSS2-Win64-Shipping.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "D:\\SteamLibrary\\steamapps\\common\\Grand Theft Auto IV\\GTAIV\\GTAIV.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"D:\\SteamLibrary\\steamapps\\common\\GTA III - The Definitive Edition\\Gameface\\Binaries\\Win64\\LibertyCity.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"D:\\SteamLibrary\\steamapps\\common\\GTA Vice City - The Definitive Edition\\Gameface\\Binaries\\Win64\\ViceCity.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "D:\\SteamLibrary\\steamapps\\common\\Guild Wars 2\\Gw2-64.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "D:\\SteamLibrary\\steamapps\\common\\House Flipper\\HouseFlipper.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "D:\\SteamLibrary\\steamapps\\common\\killingfloor2\\Binaries\\Win64\\KFGame.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
@@ -27097,6 +27442,8 @@ Windows Registry Editor Version 5.00
 "D:\\SteamLibrary\\steamapps\\common\\POSTAL 4\\Postal4\\Binaries\\Win64\\Postal4-Win64-Shipping.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "D:\\SteamLibrary\\steamapps\\common\\POSTAL 4\\Postal4.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "D:\\SteamLibrary\\steamapps\\common\\PUBG\\TslGame\\Binaries\\Win64\\TslGame.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"D:\\SteamLibrary\\steamapps\\common\\Red Dead Redemption 2\\PlayRDR2.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"D:\\SteamLibrary\\steamapps\\common\\Red Dead Redemption 2\\RDR2.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "D:\\SteamLibrary\\steamapps\\common\\Sid Meier's Civilization V\\CivilizationV_DX11.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "D:\\SteamLibrary\\steamapps\\common\\Sid Meier's Civilization V\\CivilizationV.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "D:\\SteamLibrary\\steamapps\\common\\Sid Meier's Civilization V\\Launcher.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
@@ -27137,7 +27484,6 @@ Windows Registry Editor Version 5.00
 "F:\\Cyberpunk 2077\\bin\\x64\\Cyberpunk2077.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "F:\\Forza Horizon 5\\forzahorizon5.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "F:\\Forza Motorsport\\forza_gaming.desktop.x64_release_final.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files (x86)\\Steam\\steamapps\\common\\Back 4 Blood\\Gobi\\Binaries\\Win64\\Back4Blood.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "F:\\SteamLibrary\\steamapps\\common\\Crossout\\bin\\win64\\Crossout.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "F:\\SteamLibrary\\steamapps\\common\\Fallout 4\\Fallout4.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "F:\\SteamLibrary\\steamapps\\common\\FragPunk\\FragPunk\\Binaries\\Win64\\FragPunk.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
@@ -27153,6 +27499,10 @@ Windows Registry Editor Version 5.00
 "F:\\Tropico 6\\Tropico6.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "G:\\DeadIsland2\\DeadIsland\\Binaries\\Win64\\DeadIsland-Win64-Shipping.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "G:\\DeadIsland2\\DeadIsland.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"G:\\Epic Games\\GTAVEnhanced\\PlayGTAV.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"G:\\Epic Games\\GTAV\\GTA5_BE.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"G:\\Epic Games\\GTAV\\GTA5.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"G:\\Epic Games\\GTAV\\PlayGTAV.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "G:\\S.T.A.L.K.E.R. 2\\Stalker2\\Binaries\\Win64\\Stalker2-Win64-Shipping.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "G:\\S.T.A.L.K.E.R. 2\\Stalker2.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "G:\\SteamLibrary\\steamapps\\common\\Apex Legends\\r5apex_dx12.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
@@ -27162,23 +27512,20 @@ Windows Registry Editor Version 5.00
 "G:\\SteamLibrary\\steamapps\\common\\Call of Duty HQ\\cod.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "G:\\SteamLibrary\\steamapps\\common\\Cyberpunk 2077\\bin\\x64\\Cyberpunk2077.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "G:\\SteamLibrary\\steamapps\\common\\Dying Light 2\\ph\\work\\bin\\x64\\DyingLightGame_x64_rwdi.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"G:\\SteamLibrary\\steamapps\\common\\Empire Earth Gold Edition\\Empire Earth\\Empire Earth.exe"="~ DWM8And16BitMitigation HIGHDPIAWARE RUNASADMIN HeapClearAllocation WIN7RTM DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "G:\\SteamLibrary\\steamapps\\common\\Hunt Showdown 1896\\bin\\win_x64\\HuntGame.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "G:\\SteamLibrary\\steamapps\\common\\MarvelRivals\\MarvelGame\\Marvel\\Binaries\\Win64\\Marvel-Win64-Shipping.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "G:\\SteamLibrary\\steamapps\\common\\MarvelRivals\\MarvelGame\\Marvel.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "G:\\SteamLibrary\\steamapps\\common\\MarvelRivals\\MarvelRivals_Launcher.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "G:\\SteamLibrary\\steamapps\\common\\NARAKA BLADEPOINT\\NarakaBladepoint.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"D:\\SteamLibrary\\steamapps\\common\\Red Dead Redemption 2\\RDR2.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"D:\\SteamLibrary\\steamapps\\common\\Red Dead Redemption 2\\PlayRDR2.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "G:\\SteamLibrary\\steamapps\\common\\Shadow Warrior 3\\SW3\\Binaries\\Win64\\SW3.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"G:\\SteamLibrary\\steamapps\\common\\Empire Earth Gold Edition\\Empire Earth\\Empire Earth.exe"="~ DWM8And16BitMitigation HIGHDPIAWARE RUNASADMIN HeapClearAllocation WIN7RTM DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files (x86)\\Steam\\steamapps\\common\\Saints Row the Third\\game_launcher.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files (x86)\\Steam\\steamapps\\common\\Saints Row the Third\\SaintsRowTheThird.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files (x86)\\Steam\\steamapps\\common\\Saints Row the Third\\SaintsRowTheThird_DX11.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"D:\\SteamLibrary\\steamapps\\common\\GTA Vice City - The Definitive Edition\\Gameface\\Binaries\\Win64\\ViceCity.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"G:\\SteamLibrary\\steamapps\\common\\The Sims 3\\Game\\Bin\\TS3W.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 
 [HKEY_CURRENT_USER\System\GameConfigStore\Applications\UT2004.exe]
 "Flags"=dword:00000211 ; 00000011 w11, 00000111/00000200/00000211 w10/00000311/00000511/00000611/00000711/00000811
 [HKEY_CURRENT_USER\System\GameConfigStore\Applications\TS3W.exe]
+"Flags"=dword:00000211
+[HKEY_CURRENT_USER\System\GameConfigStore\Applications\TS4_x64_fpb.exe]
 "Flags"=dword:00000211
 [HKEY_CURRENT_USER\System\GameConfigStore\Applications\LibertyCity.exe]
 "Flags"=dword:00000211
