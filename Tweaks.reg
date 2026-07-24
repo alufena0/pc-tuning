@@ -1304,7 +1304,6 @@ Windows Registry Editor Version 5.00
 "SharingViolationDelay"=dword:00000000
 "SharingViolationRetries"=dword:00000000
 "Size"=dword:00000003 ; 00000001/00000003
-"SizeReqBuf"=dword:00004000
 "SizReqBuf"=dword:00004000 ; 00001104/00004000/00004410/00017424
 "SMB1"=dword:00000000
 "SMB2"=dword:00000000
@@ -3997,6 +3996,43 @@ Windows Registry Editor Version 5.00
 ; "Icon"="\"C:\\Program Files\\Microsoft VS Code\\Code.exe\",0"
 ; [HKEY_CLASSES_ROOT\Directory\Background\shell\OpenWithCode\command]
 ; @="\"C:\\Program Files\\Microsoft VS Code\\Code.exe\" \"%V\""
+
+[HKEY_CLASSES_ROOT\*\shell\hash]
+"MUIVerb"="Hash value"
+"subCommands"=""
+[HKEY_CLASSES_ROOT\*\shell\hash\shell\01menu]
+"MUIVerb"="MD5"
+[HKEY_CLASSES_ROOT\*\shell\hash\shell\01menu\command]
+@="cmd /c echo \\\"%1\\\" | powershell -nop $file=[string]$input; get-filehash -literalpath $file.substring(2,$file.length - 5) -algorithm MD5 ^| format-list; Start-Sleep 3600"
+[HKEY_CLASSES_ROOT\*\shell\hash\shell\02menu]
+"MUIVerb"="SHA1"
+[HKEY_CLASSES_ROOT\*\shell\hash\shell\02menu\command]
+@="cmd /c echo \\\"%1\\\" | powershell -nop $file=[string]$input; get-filehash -literalpath $file.substring(2,$file.length - 5) -algorithm SHA1 ^| format-list; Start-Sleep 3600"
+[HKEY_CLASSES_ROOT\*\shell\hash\shell\03menu]
+"MUIVerb"="SHA256"
+[HKEY_CLASSES_ROOT\*\shell\hash\shell\03menu\command]
+@="cmd /c echo \\\"%1\\\" | powershell -nop $file=[string]$input; get-filehash -literalpath $file.substring(2,$file.length - 5) -algorithm SHA256 ^| format-list; Start-Sleep 3600"
+[HKEY_CLASSES_ROOT\*\shell\hash\shell\04menu]
+"MUIVerb"="SHA384"
+[HKEY_CLASSES_ROOT\*\shell\hash\shell\04menu\command]
+@="cmd /c echo \\\"%1\\\" | powershell -nop $file=[string]$input; get-filehash -literalpath $file.substring(2,$file.length - 5) -algorithm SHA384 ^| format-list; Start-Sleep 3600"
+[HKEY_CLASSES_ROOT\*\shell\hash\shell\05menu]
+"MUIVerb"="SHA512"
+[HKEY_CLASSES_ROOT\*\shell\hash\shell\05menu\command]
+@="cmd /c echo \\\"%1\\\" | powershell -nop $file=[string]$input; get-filehash -literalpath $file.substring(2,$file.length - 5) -algorithm SHA512 ^| format-list; Start-Sleep 3600"
+[HKEY_CLASSES_ROOT\*\shell\hash\shell\06menu]
+"MUIVerb"="MACTripleDES"
+[HKEY_CLASSES_ROOT\*\shell\hash\shell\06menu\command]
+@="cmd /c echo \\\"%1\\\" | powershell -nop $file=[string]$input; get-filehash -literalpath $file.substring(2,$file.length - 5) -algorithm MACTripleDES ^| format-list; Start-Sleep 3600"
+[HKEY_CLASSES_ROOT\*\shell\hash\shell\07menu]
+"MUIVerb"="RIPEMD160"
+[HKEY_CLASSES_ROOT\*\shell\hash\shell\07menu\command]
+@="cmd /c echo \\\"%1\\\" | powershell -nop $file=[string]$input; get-filehash -literalpath $file.substring(2,$file.length - 5) -algorithm RIPEMD160 ^| format-list; Start-Sleep 3600"
+[HKEY_CLASSES_ROOT\*\shell\hash\shell\08menu]
+"CommandFlags"=dword:00000020
+"MUIVerb"="Show all"
+[HKEY_CLASSES_ROOT\*\shell\hash\shell\08menu\command]
+@="cmd /c echo \\\"%1\\\" | powershell -nop $raw=[string]$input; $file=$raw.substring(2,$raw.length - 5); \\\"Path:`n$file`n\\\"; @(foreach ($a in @('MD5','SHA1','SHA256','SHA384','SHA512','MACTripleDES','RIPEMD160')) { get-filehash -literalpath $file -algorithm $a }) ^| foreach { \\\"$($_.Algorithm):`n$($_.Hash)`n\\\" }; Start-Sleep 3600"
 
 [HKEY_CLASSES_ROOT\DesktopBackground\Shell\SafeMode]
 "icon"="bootux.dll,-1032"
@@ -6929,6 +6965,7 @@ Windows Registry Editor Version 5.00
 "3244671118"=dword:00000001
 "4011992206"=dword:00000002
 "1387020943"=dword:00000000
+"1517186191"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FeatureManagement\Overrides\8\2216818319]
 "EnabledState"=dword:00000001
@@ -7837,6 +7874,7 @@ Windows Registry Editor Version 5.00
 "AddressBarMicrosoftSearchInBingProviderEnabled"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Edge]
+"ProcessIsolationEnabled"=dword:00000001
 ; "PreferSlowKexAlgorithms"="cnsa2"
 ; "PreferSlowCiphers"="cnsa"
 "EncryptedClientHelloEnabled"=dword:00000001
@@ -9680,7 +9718,7 @@ Windows Registry Editor Version 5.00
 "ActiveWindowTracking"=dword:00000000
 "Beep"="No"
 "DoubleClickHeight"="2" ; 2/4
-"DoubleClickSpeed"="400" ; 00000001/200/400/500/900
+"DoubleClickSpeed"="900" ; 00000001/200/400/500/900
 "DoubleClickWidth"="2" ; 2/4
 "ExtendedSounds"="No"
 "LowLevelHooksTimeout"=dword:000003e8 ; 00000001/500/1000/3000/0000000a/000003e8
@@ -9722,7 +9760,7 @@ Windows Registry Editor Version 5.00
 "ActiveWindowTracking"=dword:00000000
 "Beep"="No"
 "DoubleClickHeight"="2"
-"DoubleClickSpeed"="400"
+"DoubleClickSpeed"="900"
 "DoubleClickWidth"="2"
 "ExtendedSounds"="No"
 "LowLevelHooksTimeout"=dword:000003e8
@@ -11079,6 +11117,12 @@ Windows Registry Editor Version 5.00
 [-HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\GameInputRedistService]
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\GameInputRedistService]
 "Start"=dword:00000004 ; 00000003, 00000004
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\CmitClientSVC]
+"Start"=dword:00000004
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\CmitUpdateAgent]
+"Start"=dword:00000004
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\EventLog\System\Microsoft-Antimalware-ShieldProvider]
 "Start"=dword:00000004
@@ -12985,6 +13029,8 @@ Windows Registry Editor Version 5.00
 "LID"=""
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\IdentityCRL\ExtendedProperties]
 "LID"=""
+[-HKEY_USERS\.DEFAULT\Software\Microsoft\Windows\CurrentVersion\PushNotifications\DeviceInfo]
+[-HKEY_USERS\S-1-5-18\Software\Microsoft\Windows\CurrentVersion\PushNotifications\DeviceInfo]
 
 [HKEY_CURRENT_USER\Software\Microsoft\Speech\SpeechRecognition]
 "HasAcceptedPrivacyPolicy"=dword:00000000
@@ -14184,6 +14230,9 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Lsa\MSV1_0]
 "RestrictSendingNTLMTraffic"=dword:00000002 ; 00000000/00000002
 "RestrictReceivingNTLMTraffic"=dword:00000002 ; 00000000/00000002
+"NtlmMinServerSec"=dword:20000000
+"NtlmMinClientSec"=dword:20000000
+"BlockNtlmv1SSO"=dword:00000000 ; 00000000/00000001
 
 ; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4d36e96c-e325-11ce-bfc1-08002be10318}]
 ; "UpperFilters"=hex(7): ; ksthunk
@@ -15052,8 +15101,14 @@ Windows Registry Editor Version 5.00
 "UserDict"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\PasswordLess\Device]
-"DevicePasswordLessBuildVersion"=dword:00000002
+"DevicePasswordLessBuildVersion"=dword:00000002 ; 00000000/00000002
 "DevicePasswordLessUpdateType"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Printers\PointAndPrint]
+"RestrictDriverInstallationToAdministrators"=dword:00000000 ; 00000000/00000001
+"UpdatePromptSettings"=dword:00000000
+"InprocInstallPromptSettings"=dword:00000000
+"NoWarningNoElevationOnInstall"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Messaging]
 "AllowMessageSync"=dword:00000000 ; 00000000/00000002
@@ -15840,6 +15895,8 @@ Windows Registry Editor Version 5.00
 "WUStatusServer"=- ; =-, 127.0.0.1
 "AllowAutoWindowsUpdateDownloadOverMeteredNetwork"=dword:00000000
 "DeferQualityUpdatesPeriodInDays"=-
+"AcceptTrustedPublisherCerts"=dword:00000001
+"UpdateServiceUrlAlternate"=-
 
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Notifications\Settings\Windows.SystemToast.WindowsUpdate]
 "Enabled"=dword:00000000
@@ -16112,11 +16169,13 @@ Windows Registry Editor Version 5.00
 "DisablePrinterMapping"=dword:00000001
 "DisableWebPrinting"=dword:00000001
 "RpcAuthnLevelPrivacyEnabled"=dword:00000000
+"ThrowDriverException"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Printers\RPC]
 "RpcUseNamedPipeProtocol"=dword:00000001
 "RpcProtocols"=dword:00000007
-"ForceKerberosForRpc"=dword:00000001
+"ForceKerberosForRpc"=dword:00000000
+"RpcTcpPort"=dword:00000259
 
 [HKEY_LOCAL_MACHINE\Software\Microsoft\Command Processor]
 "LockBatchFilesWhenInUse"=dword:00000000 ; 00000000/00000001
@@ -16349,7 +16408,7 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa]
 "SCENoApplyLegacyAuditPolicy"=dword:00000001 ; 00000000/00000001
 "AnonymousNameLookup"=dword:00000000
-"DisableDomainCreds"=dword:00000001
+"DisableDomainCreds"=dword:00000000 ; 00000000/00000001
 "DisableRestrictedAdmin"=dword:00000000
 "DisableRestrictedAdminOutboundCreds"=dword:00000001
 "everyoneincludeanonymous"=dword:00000000
@@ -16357,12 +16416,12 @@ Windows Registry Editor Version 5.00
 "forceguest"=dword:00000000
 "IsPplAutoEnabled"=dword:00000000
 "LimitBlankPasswordUse"=dword:00000000 ; 00000000/00000001
-"LmCompatibilityLevel"=- ; =-, 00000001/00000005
+"LmCompatibilityLevel"=dword:00000000 ; =-, 00000000/00000001/00000003/00000005
 "LsaCfgFlags"=dword:00000000
 "LsaConfigFlags"=dword:00000000
 "LsaLookupRestrictIsolatedNameLevel"=dword:00000001
 "NoLMHash"=dword:00000001
-"RestrictAnonymous"=dword:00000001 ; 00000001/00000002
+"RestrictAnonymous"=dword:00000001 ; 00000000/00000001/00000002
 "RestrictAnonymousSAM"=dword:00000001
 "RestrictRemoteSAM"="O:BAG:BAD:(A;;RC;;;BA)"
 "RunAsPPL"=dword:00000000
@@ -18708,6 +18767,7 @@ Windows Registry Editor Version 5.00
 "MPEG: {1E589E9D-8A8D-46d9-A2F9-E6D4F8161EE9}"=""
 "MPEG-4: {f81b1b56-7613-4ee4-bc05-1fab5de5c07e}"=""
 "WAV: {e46787a1-4629-4423-a693-be1f003b2742}"=""
+"{1E1F2315-7C3C-4603-BE7B-D2F2117D6DFF}"="Open in Intelligent Terminal"
 
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Shell Extensions\Blocked]
 "{02DB545A-3E20-46DE-83A5-1329B1E88B6B}"=""
@@ -25800,8 +25860,8 @@ Windows Registry Editor Version 5.00
 
 [-HKEY_CLASSES_ROOT\UserLibraryFolder\shellex\ContextMenuHandlers\SendTo]
 
-[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\taskmgr.exe]
-"Debugger"="\"C:\\Program Files (x86)\\System Informer\\SystemInformer.exe\""
+; [HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\taskmgr.exe]
+; "Debugger"="\"C:\\Program Files (x86)\\System Informer\\SystemInformer.exe\""
 "UseLargePages"=dword:00000000
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\explorer.exe]
 "EAFModules"=" "
@@ -26525,6 +26585,11 @@ Windows Registry Editor Version 5.00
 "FrontEndHeapDebugOptions"=dword:00000004
 "MitigationAuditOptions"=hex:22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22
 "MitigationOptions"=hex:22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\qemu-system-x86_64.exe]
+"EAFModules"=" "
+"FrontEndHeapDebugOptions"=dword:00000004
+"MitigationAuditOptions"=hex:22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22
+"MitigationOptions"=hex:22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\DepthGame.exe\PerfOptions]
 "CpuPriorityClass"=dword:00000006
@@ -26986,6 +27051,10 @@ Windows Registry Editor Version 5.00
 "CpuPriorityClass"=dword:00000006
 "IoPriority"=dword:00000003
 "PagePriority"=dword:00000005
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\qemu-system-x86_64.exe\PerfOptions]
+"CpuPriorityClass"=dword:00000006
+"IoPriority"=dword:00000003
+"PagePriority"=dword:00000005
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\GalaxyClient Helper.exe\PerfOptions]
 "CpuPriorityClass"=dword:00000005
@@ -27049,12 +27118,6 @@ Windows Registry Editor Version 5.00
 "PagePriority"=dword:00000004
 
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\DirectX\UserGpuPreferences]
-"F:\\SteamLibrary\\steamapps\\common\\The Sims 4\\Game\\Bin\\TS4_x64_fpb.exe"="GpuPreference=2;"
-"G:\\SteamLibrary\\steamapps\\common\\The Sims 3\\Game\\Bin\\TS3W.exe"="GpuPreference=2;"
-"D:\\SteamLibrary\\steamapps\\common\\GTA III - The Definitive Edition\\Gameface\\Binaries\\Win64\\LibertyCity.exe"="GpuPreference=2;"
-"D:\\SteamLibrary\\steamapps\\common\\Depth\\Binaries\\Win32\\DepthGame.exe"="GpuPreference=2;"
-"D:\\SteamLibrary\\steamapps\\common\\GTA Vice City - The Definitive Edition\\Gameface\\Binaries\\Win64\\ViceCity.exe"="GpuPreference=2;"
-"C:\\Program Files (x86)\\GOG Galaxy\\GalaxyClient Helper.exe"="GpuPreference=1;"
 "C:\\ProgramData\\Adobe Photoshop 2022\\Photoshop\\PROG\\%Program Files%\\Adobe\\Adobe Photoshop 2022\\Photoshop.exe"="GpuPreference=1;"
 "C:\\ProgramData\\Wargaming.net\\GameCenter for Steam\\wgc.exe"="GpuPreference=2;"
 "C:\\Program Files\\Electronic Arts\\EA Desktop\\EA Desktop\\EACefSubProcess.exe"="GpuPreference=1;"
@@ -27065,6 +27128,7 @@ Windows Registry Editor Version 5.00
 "C:\\Program Files\\Rockstar Games\\Social Club\\SocialClubHelper.exe"="GpuPreference=1;"
 "C:\\Program Files\\Topaz Labs LLC\\Topaz Video AI\\ffmpeg.exe"="GpuPreference=2;"
 "C:\\Program Files\\Topaz Labs LLC\\Topaz Video AI\\Topaz Video AI.exe"="GpuPreference=2;"
+"C:\\Program Files\\WindowsApps\\Microsoft.WindowsCalculator_11.2508.4.0_x64__8wekyb3d8bbwe\\CalculatorApp.exe"="GpuPreference=1;"
 "C:\\Program Files\\WindowsApps\\Microsoft.WindowsNotepad_11.2510.14.0_x64__8wekyb3d8bbwe\\Notepad\\Notepad.exe"="GpuPreference=1;"
 "C:\\Program Files\\WindowsApps\\Microsoft.WindowsNotepad_*\\Notepad\\Notepad.exe"="GpuPreference=1;"
 "C:\\Program Files (x86)\\Battle.net\\World of Warcraft\\_classic_\\WowClassic.exe"="GpuPreference=2;"
@@ -27074,12 +27138,15 @@ Windows Registry Editor Version 5.00
 "C:\\Program Files (x86)\\Epic Games\\Fortnite\\FortniteGame\\Binaries\\Win64\\FortniteLauncher.exe"="GpuPreference=2;"
 "C:\\Program Files (x86)\\Epic Games\\Launcher\\Engine\\Binaries\\Win64\\EpicWebHelper.exe"="GpuPreference=1;"
 "C:\\Program Files (x86)\\Epic Games\\Launcher\\Portal\\Binaries\\Win64\\EpicGamesLauncher.exe"="GpuPreference=1;"
+"C:\\Program Files (x86)\\GOG Galaxy\\GalaxyClient Helper.exe"="GpuPreference=1;"
 "C:\\Program Files (x86)\\Okular\\okular.exe"="GpuPreference=1;"
 "C:\\Program Files (x86)\\Steam\\bin\\cef\\cef.win7x64\\steamwebhelper.exe"="GpuPreference=1;"
+"C:\\Program Files (x86)\\Steam\\steamapps\\common\\Back 4 Blood\\Gobi\\Binaries\\Win64\\Back4Blood.exe"="GpuPreference=2;"
 "C:\\Program Files (x86)\\Steam\\steamapps\\common\\dota 2 beta\\game\\bin\\win64\\dota2.exe"="GpuPreference=2;"
 "C:\\Program Files (x86)\\Steam\\steamapps\\common\\New World\\Bin64\\NewWorld.exe"="GpuPreference=2;"
 "C:\\Program Files (x86)\\Steam\\steamapps\\common\\New World\\NewWorldLauncher.exe"="GpuPreference=2;"
 "C:\\Program Files (x86)\\Steam\\steamapps\\common\\No Man's Sky\\Binaries\\NMS.exe"="GpuPreference=2;"
+"C:\\Program Files (x86)\\Steam\\steamapps\\common\\Saints Row the Third\\saintsrowthethird_dx11.exe"="GpuPreference=2;"
 "C:\\Program Files (x86)\\Steam\\steamapps\\common\\The Witcher 3\\bin\\x64_dx12\\witcher3.exe"="GpuPreference=2;"
 "C:\\Program Files (x86)\\Steam\\steamapps\\common\\The Witcher 3\\bin\\x64\\witcher3.exe"="GpuPreference=2;"
 "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Warhammer 40,000 DARKTIDE\\binaries\\Darktide.exe"="GpuPreference=2;"
@@ -27087,34 +27154,34 @@ Windows Registry Editor Version 5.00
 "C:\\Program Files (x86)\\Topaz Video AI\\App\\ffmpeg.exe"="GpuPreference=2;"
 "C:\\Program Files (x86)\\Topaz Video AI\\App\\Topaz Video AI.exe"="GpuPreference=2;"
 "C:\\Windows\\explorer.exe"="GpuPreference=1;"
+"C:\\Windows\\System32\\csrss.exe"="GpuPreference=1;"
 "C:\\Windows\\System32\\dwm.exe"="GpuPreference=1;"
+"C:\\Windows\\System32\\ntoskrnl.exe"="GpuPreference=1;"
 "C:\\Windows\\System32\\ShellHost.exe"="GpuPreference=1;"
 "C:\\Windows\\System32\\Taskmgr.exe"="GpuPreference=1;"
 "C:\\Windows\\SystemApps\\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\\SearchHost.exe"="GpuPreference=1;"
 "C:\\Windows\\SystemApps\\MicrosoftWindows.Client.CBS_cw5n1h2txyewy\\TextInputHost.exe"="GpuPreference=1;"
 "C:\\Windows\\SystemApps\\MicrosoftWindows.Client.CBS_*\\SearchHost.exe"="GpuPreference=1;"
 "C:\\Windows\\SystemApps\\MicrosoftWindows.Client.CBS_*\\TextInputHost.exe"="GpuPreference=1;"
-"C:\\Windows\\SystemApps\\Microsoft.Windows.Search_*\\SearchApp.exe"="GpuPreference=1;"
 "C:\\Windows\\SystemApps\\Microsoft.Windows.Search_cw5n1h2txyewy\\SearchApp.exe"="GpuPreference=1;"
-"C:\\Program Files\\WindowsApps\\Microsoft.WindowsCalculator_11.2508.4.0_x64__8wekyb3d8bbwe\\CalculatorApp.exe"="GpuPreference=1;"
-"C:\\Windows\\System32\\csrss.exe"="GpuPreference=1;"
-"C:\\Windows\\System32\\ntoskrnl.exe"="GpuPreference=1;"
+"C:\\Windows\\SystemApps\\Microsoft.Windows.Search_*\\SearchApp.exe"="GpuPreference=1;"
 "C:\\Windows\\SystemApps\\ShellExperienceHost_cw5n1h2txyewy\\ShellExperienceHost.exe"="GpuPreference=1;"
 "C:\\Windows\\SystemApps\\ShellExperienceHost_cw5n1h2txyewy\\StartMenuExperienceHost.exe"="GpuPreference=1;"
 "C:\\Windows\\SystemApps\\ShellExperienceHost_*\\ShellExperienceHost.exe"="GpuPreference=1;"
 "C:\\Windows\\SystemApps\\ShellExperienceHost_*\\StartMenuExperienceHost.exe"="GpuPreference=1;"
 "D:\\Epic Games\\GTAVEnhanced\\GTA5_Enhanced.exe"="GpuPreference=2;"
-"G:\\Epic Games\\GTAVEnhanced\\PlayGTAV.exe"="GpuPreference=2;"
-"G:\\Epic Games\\GTAV\\GTA5.exe"="GpuPreference=2;"
 "D:\\SteamLibrary\\steamapps\\common\\Carmageddon Max Damage\\bin\\Carmageddon_Max_Damage.exe"="GpuPreference=2;"
 "D:\\SteamLibrary\\steamapps\\common\\Cities_Skylines\\Cities.exe"="GpuPreference=2;"
 "D:\\SteamLibrary\\steamapps\\common\\Deep Rock Survivor\\DRG Survivor.exe"="GpuPreference=2;"
+"D:\\SteamLibrary\\steamapps\\common\\Depth\\Binaries\\Win32\\DepthGame.exe"="GpuPreference=2;"
 "D:\\SteamLibrary\\steamapps\\common\\Dishonored\\Binaries\\Win32\\Dishonored.exe"="GpuPreference=2;"
 "D:\\SteamLibrary\\steamapps\\common\\Dying Light\\DyingLightGame.exe"="GpuPreference=2;"
 "D:\\SteamLibrary\\steamapps\\common\\Excalibur\\NeedForSpeedUnbound.exe"="GpuPreference=2;"
 "D:\\SteamLibrary\\steamapps\\common\\Fallout76\\Fallout76.exe"="GpuPreference=2;"
 "D:\\SteamLibrary\\steamapps\\common\\Gas Station Simulator\\GSS2\\Binaries\\Win64\\GSS2-Win64-Shipping.exe"="GpuPreference=2;"
 "D:\\SteamLibrary\\steamapps\\common\\Grand Theft Auto IV\\GTAIV\\GTAIV.exe"="GpuPreference=2;"
+"D:\\SteamLibrary\\steamapps\\common\\GTA III - The Definitive Edition\\Gameface\\Binaries\\Win64\\LibertyCity.exe"="GpuPreference=2;"
+"D:\\SteamLibrary\\steamapps\\common\\GTA Vice City - The Definitive Edition\\Gameface\\Binaries\\Win64\\ViceCity.exe"="GpuPreference=2;"
 "D:\\SteamLibrary\\steamapps\\common\\Guild Wars 2\\Gw2-64.exe"="GpuPreference=2;"
 "D:\\SteamLibrary\\steamapps\\common\\House Flipper\\HouseFlipper.exe"="GpuPreference=2;"
 "D:\\SteamLibrary\\steamapps\\common\\killingfloor2\\Binaries\\Win64\\KFGame.exe"="GpuPreference=2;"
@@ -27126,6 +27193,8 @@ Windows Registry Editor Version 5.00
 "D:\\SteamLibrary\\steamapps\\common\\POSTAL 4\\Postal4\\Binaries\\Win64\\Postal4-Win64-Shipping.exe"="GpuPreference=2;"
 "D:\\SteamLibrary\\steamapps\\common\\POSTAL 4\\Postal4.exe"="GpuPreference=2;"
 "D:\\SteamLibrary\\steamapps\\common\\PUBG\\TslGame\\Binaries\\Win64\\TslGame.exe"="GpuPreference=2;"
+"D:\\SteamLibrary\\steamapps\\common\\Red Dead Redemption 2\\PlayRDR2.exe"="GpuPreference=2;"
+"D:\\SteamLibrary\\steamapps\\common\\Red Dead Redemption 2\\RDR2.exe"="GpuPreference=2;"
 "D:\\SteamLibrary\\steamapps\\common\\Sid Meier's Civilization V\\CivilizationV_DX11.exe"="GpuPreference=2;"
 "D:\\SteamLibrary\\steamapps\\common\\Sid Meier's Civilization V\\CivilizationV.exe"="GpuPreference=2;"
 "D:\\SteamLibrary\\steamapps\\common\\The Finals\\Discovery.exe"="GpuPreference=2;"
@@ -27163,7 +27232,6 @@ Windows Registry Editor Version 5.00
 "F:\\Cyberpunk 2077\\bin\\x64\\Cyberpunk2077.exe"="GpuPreference=2;"
 "F:\\Forza Horizon 5\\forzahorizon5.exe"="GpuPreference=2;"
 "F:\\Forza Motorsport\\forza_gaming.desktop.x64_release_final.exe"="GpuPreference=2;"
-"C:\\Program Files (x86)\\Steam\\steamapps\\common\\Back 4 Blood\\Gobi\\Binaries\\Win64\\Back4Blood.exe"="GpuPreference=2;"
 "F:\\SteamLibrary\\steamapps\\common\\Crossout\\bin\\win64\\Crossout.exe"="GpuPreference=2;"
 "F:\\SteamLibrary\\steamapps\\common\\Fallout 4\\Fallout4.exe"="GpuPreference=2;"
 "F:\\SteamLibrary\\steamapps\\common\\FragPunk\\FragPunk\\Binaries\\Win64\\FragPunk.exe"="GpuPreference=2;"
@@ -27173,11 +27241,14 @@ Windows Registry Editor Version 5.00
 "F:\\SteamLibrary\\steamapps\\common\\Sid Meier's Civilization VI\\Base\\Binaries\\Win64Steam\\CivilizationVI_DX12.exe"="GpuPreference=2;"
 "F:\\SteamLibrary\\steamapps\\common\\Sons Of The Forest\\SonsOfTheForest.exe"="GpuPreference=2;"
 "F:\\SteamLibrary\\steamapps\\common\\The Sims 4\\Game\\Bin\\TS4_x64.exe"="GpuPreference=2;"
+"F:\\SteamLibrary\\steamapps\\common\\The Sims 4\\Game\\Bin\\TS4_x64_fpb.exe"="GpuPreference=2;"
 "F:\\SteamLibrary\\steamapps\\common\\World of Tanks\\na\\win64\\WorldOfTanks.exe"="GpuPreference=2;"
 "F:\\The Last of Us Part I\\tlou-i.exe"="GpuPreference=2;"
 "F:\\Tropico 6\\Tropico6.exe"="GpuPreference=2;"
 "G:\\DeadIsland2\\DeadIsland\\Binaries\\Win64\\DeadIsland-Win64-Shipping.exe"="GpuPreference=2;"
 "G:\\DeadIsland2\\DeadIsland.exe"="GpuPreference=2;"
+"G:\\Epic Games\\GTAVEnhanced\\PlayGTAV.exe"="GpuPreference=2;"
+"G:\\Epic Games\\GTAV\\GTA5.exe"="GpuPreference=2;"
 "G:\\S.T.A.L.K.E.R. 2\\Stalker2\\Binaries\\Win64\\Stalker2-Win64-Shipping.exe"="GpuPreference=2;"
 "G:\\S.T.A.L.K.E.R. 2\\Stalker2.exe"="GpuPreference=2;"
 "G:\\SteamLibrary\\steamapps\\common\\Apex Legends\\r5apex_dx12.exe"="GpuPreference=2;"
@@ -27186,39 +27257,22 @@ Windows Registry Editor Version 5.00
 "G:\\SteamLibrary\\steamapps\\common\\Call of Duty HQ\\cod.exe"="GpuPreference=2;"
 "G:\\SteamLibrary\\steamapps\\common\\Cyberpunk 2077\\bin\\x64\\Cyberpunk2077.exe"="GpuPreference=2;"
 "G:\\SteamLibrary\\steamapps\\common\\Dying Light 2\\ph\\work\\bin\\x64\\DyingLightGame_x64_rwdi.exe"="GpuPreference=2;"
+"G:\\SteamLibrary\\steamapps\\common\\Empire Earth Gold Edition\\Empire Earth\\Empire Earth.exe"="GpuPreference=2;"
 "G:\\SteamLibrary\\steamapps\\common\\Hunt Showdown 1896\\bin\\win_x64\\HuntGame.exe"="GpuPreference=2;"
 "G:\\SteamLibrary\\steamapps\\common\\MarvelRivals\\MarvelGame\\Marvel\\Binaries\\Win64\\Marvel-Win64-Shipping.exe"="GpuPreference=2;"
 "G:\\SteamLibrary\\steamapps\\common\\MarvelRivals\\MarvelGame\\Marvel.exe"="GpuPreference=2;"
 "G:\\SteamLibrary\\steamapps\\common\\MarvelRivals\\MarvelRivals_Launcher.exe"="GpuPreference=2;"
 "G:\\SteamLibrary\\steamapps\\common\\NARAKA BLADEPOINT\\NarakaBladepoint.exe"="GpuPreference=2;"
-"D:\\SteamLibrary\\steamapps\\common\\Red Dead Redemption 2\\RDR2.exe"="GpuPreference=2;"
-"D:\\SteamLibrary\\steamapps\\common\\Red Dead Redemption 2\\PlayRDR2.exe"="GpuPreference=2;"
 "G:\\SteamLibrary\\steamapps\\common\\Shadow Warrior 3\\SW3\\Binaries\\Win64\\SW3.exe"="GpuPreference=2;"
-"C:\\Program Files (x86)\\Steam\\steamapps\\common\\Saints Row the Third\\saintsrowthethird_dx11.exe"="GpuPreference=2;"
-"G:\\SteamLibrary\\steamapps\\common\\Empire Earth Gold Edition\\Empire Earth\\Empire Earth.exe"="GpuPreference=2;"
+"G:\\SteamLibrary\\steamapps\\common\\The Sims 3\\Game\\Bin\\TS3W.exe"="GpuPreference=2;"
 
 ; [-HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers]
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers]
-"F:\\SteamLibrary\\steamapps\\common\\The Sims 4\\Game\\Bin\\TS4_x64_fpb.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "C:\\ProgramData\\Wargaming.net\\GameCenter for Steam\\wgc.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "C:\\Program Files\\All-About-PDF\\All-About-PDF.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files\\Epic Games\\Launcher\\Engine\\Binaries\\Win64\\EpicGamesLauncher.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files\\Epic Games\\Launcher\\Engine\\Binaries\\Win64\\EpicWebHelper.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files\\Epic Games\\Launcher\\Engine\\Binaries\\Win64\\UnrealEngineLauncher.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files\\Epic Games\\Launcher\\Engine\\Binaries\\Win64\\UnrealVersionSelector.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files\\Epic Games\\Launcher\\Portal\\Binaries\\Win32\\EpicGamesLauncher.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "C:\\Program Files\\Epic Games\\Launcher\\Portal\\Binaries\\Win64\\EpicGamesLauncher.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files\\Epic Games\\Launcher\\Portal\\Binaries\\Win64\\EpicGamesUpdater.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files\\Epic Games\\Launcher\\Portal\\Extras\\EOSBootStrapper\\EOSBootStrapper.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files\\Epic Games\\Launcher\\Portal\\Extras\\EOS\\EpicOnlineServicesInstaller.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files\\Epic Games\\Launcher\\Portal\\Extras\\EOS\\InstallChainer.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files\\Epic Games\\Launcher\\SelfUpdateStage\\Install\\Engine\\Binaries\\Win64\\EpicGamesLauncher.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files\\Epic Games\\Launcher\\SelfUpdateStage\\Install\\Portal\\Binaries\\Win32\\EpicGamesLauncher.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files\\Rockstar Games\\Launcher\\Launcher.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"C:\\Program Files\\qemu\\qemu-system-x86_64.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "C:\\Program Files\\Rockstar Games\\Launcher\\LauncherPatcher.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files\\Rockstar Games\\Launcher\\RockstarService.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files\\Rockstar Games\\Launcher\\RockstarSteamHelper.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files\\Rockstar Games\\Social Club\\SocialClubHelper.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "C:\\Program Files\\RW-Everything\\Rw.exe"="~ RUNASADMIN"
 "C:\\Program Files\\Topaz Labs LLC\\Topaz Video AI\\ffmpeg.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "C:\\Program Files\\Topaz Labs LLC\\Topaz Video AI\\Topaz Video AI.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
@@ -27227,16 +27281,7 @@ Windows Registry Editor Version 5.00
 "C:\\Program Files (x86)\\Battle.net\\World of Warcraft\\World of Warcraft Launcher.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "C:\\Program Files (x86)\\Click Fix\\clickfix.exe"="~ RUNASADMIN"
 "C:\\Program Files (x86)\\DPC Latency Checker\\a.exe"="~ RUNASADMIN"
-"C:\\Program Files (x86)\\Epic Games\\Epic Online Services\\EpicOnlineServicesInstallHelper.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files (x86)\\Epic Games\\Epic Online Services\\EpicOnlineServicesUIHelper.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files (x86)\\Epic Games\\Epic Online Services\\EpicOnlineServicesUserHelper.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files (x86)\\Epic Games\\Epic Online Services\\service\\EpicOnlineServicesHost.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files (x86)\\Epic Games\\Fortnite\\FortniteGame\\Binaries\\Win64\\FortniteClient-Win64-Shipping.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files (x86)\\Epic Games\\Fortnite\\FortniteGame\\Binaries\\Win64\\FortniteLauncher.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files (x86)\\Epic Games\\Launcher\\Portal\\Binaries\\Win32\\EpicGamesLauncher.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files (x86)\\Epic Games\\Launcher\\Portal\\Binaries\\Win64\\EpicGamesLauncher.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "C:\\Program Files (x86)\\GOG Galaxy\\GalaxyClient.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files (x86)\\GOG Galaxy\\GalaxyClientService.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "C:\\Program Files (x86)\\MAXIS\\The Sims\\Sims.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "C:\\Program Files (x86)\\memreduct\\memreduct.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "C:\\Program Files (x86)\\PBO2 Tuner\\PBO2Tuner.exe"="~ RUNASADMIN"
@@ -27332,6 +27377,7 @@ Windows Registry Editor Version 5.00
 "F:\\SteamLibrary\\steamapps\\common\\Sid Meier's Civilization VI\\Base\\Binaries\\Win64Steam\\CivilizationVI_DX12.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "F:\\SteamLibrary\\steamapps\\common\\Sons Of The Forest\\SonsOfTheForest.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "F:\\SteamLibrary\\steamapps\\common\\The Sims 4\\Game\\Bin\\TS4_x64.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"F:\\SteamLibrary\\steamapps\\common\\The Sims 4\\Game\\Bin\\TS4_x64_fpb.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "F:\\SteamLibrary\\steamapps\\common\\World of Tanks\\na\\win64\\WorldOfTanks.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "F:\\The Last of Us Part I\\tlou-i.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "F:\\Tropico 6\\Tropico6.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
@@ -27361,26 +27407,11 @@ Windows Registry Editor Version 5.00
 "PreApproved"=""
 
 [HKEY_CURRENT_USER\Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers]
-"F:\\SteamLibrary\\steamapps\\common\\The Sims 4\\Game\\Bin\\TS4_x64_fpb.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "C:\\ProgramData\\Wargaming.net\\GameCenter for Steam\\wgc.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "C:\\Program Files\\All-About-PDF\\All-About-PDF.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files\\Epic Games\\Launcher\\Engine\\Binaries\\Win64\\EpicGamesLauncher.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files\\Epic Games\\Launcher\\Engine\\Binaries\\Win64\\EpicWebHelper.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files\\Epic Games\\Launcher\\Engine\\Binaries\\Win64\\UnrealEngineLauncher.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files\\Epic Games\\Launcher\\Engine\\Binaries\\Win64\\UnrealVersionSelector.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files\\Epic Games\\Launcher\\Portal\\Binaries\\Win32\\EpicGamesLauncher.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "C:\\Program Files\\Epic Games\\Launcher\\Portal\\Binaries\\Win64\\EpicGamesLauncher.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files\\Epic Games\\Launcher\\Portal\\Binaries\\Win64\\EpicGamesUpdater.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files\\Epic Games\\Launcher\\Portal\\Extras\\EOSBootStrapper\\EOSBootStrapper.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files\\Epic Games\\Launcher\\Portal\\Extras\\EOS\\EpicOnlineServicesInstaller.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files\\Epic Games\\Launcher\\Portal\\Extras\\EOS\\InstallChainer.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files\\Epic Games\\Launcher\\SelfUpdateStage\\Install\\Engine\\Binaries\\Win64\\EpicGamesLauncher.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files\\Epic Games\\Launcher\\SelfUpdateStage\\Install\\Portal\\Binaries\\Win32\\EpicGamesLauncher.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files\\Rockstar Games\\Launcher\\Launcher.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"C:\\Program Files\\qemu\\qemu-system-x86_64.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "C:\\Program Files\\Rockstar Games\\Launcher\\LauncherPatcher.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files\\Rockstar Games\\Launcher\\RockstarService.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files\\Rockstar Games\\Launcher\\RockstarSteamHelper.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files\\Rockstar Games\\Social Club\\SocialClubHelper.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "C:\\Program Files\\RW-Everything\\Rw.exe"="~ RUNASADMIN"
 "C:\\Program Files\\Topaz Labs LLC\\Topaz Video AI\\ffmpeg.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "C:\\Program Files\\Topaz Labs LLC\\Topaz Video AI\\Topaz Video AI.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
@@ -27389,16 +27420,7 @@ Windows Registry Editor Version 5.00
 "C:\\Program Files (x86)\\Battle.net\\World of Warcraft\\World of Warcraft Launcher.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "C:\\Program Files (x86)\\Click Fix\\clickfix.exe"="~ RUNASADMIN"
 "C:\\Program Files (x86)\\DPC Latency Checker\\a.exe"="~ RUNASADMIN"
-"C:\\Program Files (x86)\\Epic Games\\Epic Online Services\\EpicOnlineServicesInstallHelper.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files (x86)\\Epic Games\\Epic Online Services\\EpicOnlineServicesUIHelper.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files (x86)\\Epic Games\\Epic Online Services\\EpicOnlineServicesUserHelper.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files (x86)\\Epic Games\\Epic Online Services\\service\\EpicOnlineServicesHost.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files (x86)\\Epic Games\\Fortnite\\FortniteGame\\Binaries\\Win64\\FortniteClient-Win64-Shipping.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files (x86)\\Epic Games\\Fortnite\\FortniteGame\\Binaries\\Win64\\FortniteLauncher.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files (x86)\\Epic Games\\Launcher\\Portal\\Binaries\\Win32\\EpicGamesLauncher.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files (x86)\\Epic Games\\Launcher\\Portal\\Binaries\\Win64\\EpicGamesLauncher.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "C:\\Program Files (x86)\\GOG Galaxy\\GalaxyClient.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
-"C:\\Program Files (x86)\\GOG Galaxy\\GalaxyClientService.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "C:\\Program Files (x86)\\MAXIS\\The Sims\\Sims.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "C:\\Program Files (x86)\\memreduct\\memreduct.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "C:\\Program Files (x86)\\PBO2 Tuner\\PBO2Tuner.exe"="~ RUNASADMIN"
@@ -27494,6 +27516,7 @@ Windows Registry Editor Version 5.00
 "F:\\SteamLibrary\\steamapps\\common\\Sid Meier's Civilization VI\\Base\\Binaries\\Win64Steam\\CivilizationVI_DX12.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "F:\\SteamLibrary\\steamapps\\common\\Sons Of The Forest\\SonsOfTheForest.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "F:\\SteamLibrary\\steamapps\\common\\The Sims 4\\Game\\Bin\\TS4_x64.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"F:\\SteamLibrary\\steamapps\\common\\The Sims 4\\Game\\Bin\\TS4_x64_fpb.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "F:\\SteamLibrary\\steamapps\\common\\World of Tanks\\na\\win64\\WorldOfTanks.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "F:\\The Last of Us Part I\\tlou-i.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "F:\\Tropico 6\\Tropico6.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
@@ -27520,6 +27543,7 @@ Windows Registry Editor Version 5.00
 "G:\\SteamLibrary\\steamapps\\common\\NARAKA BLADEPOINT\\NarakaBladepoint.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "G:\\SteamLibrary\\steamapps\\common\\Shadow Warrior 3\\SW3\\Binaries\\Win64\\SW3.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
 "G:\\SteamLibrary\\steamapps\\common\\The Sims 3\\Game\\Bin\\TS3W.exe"="~ HIGHDPIAWARE RUNASADMIN DISABLEDXMAXIMIZEDWINDOWEDMODE"
+"PreApproved"=""
 
 [HKEY_CURRENT_USER\System\GameConfigStore\Applications\UT2004.exe]
 "Flags"=dword:00000211 ; 00000011 w11, 00000111/00000200/00000211 w10/00000311/00000511/00000611/00000711/00000811
@@ -27771,6 +27795,7 @@ Windows Registry Editor Version 5.00
 
 [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Defender\Exclusions\Processes]
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Defender\Exclusions\Processes]
+"qemu-system-x86_64.exe"=dword:00000000
 "TS3W.exe"=dword:00000000
 "LibertyCity.exe"=dword:00000000
 "Empire Earth.exe"=dword:00000000
@@ -28110,7 +28135,7 @@ Windows Registry Editor Version 5.00
 "Version"="1.0"
 
 ; network (nic)
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\0001]
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\0000]
 "AdaptiveIFS"="0"
 "AdvancedEEE"="0"
 "AllowAllSpeedsLPLU"="0"
@@ -28318,27 +28343,27 @@ Windows Registry Editor Version 5.00
 "*MaxRssProcessors"=dword:00000001
 "BaseProcessorNumber"=dword:00000002
 "MaxProcessorNumber"=dword:00000002
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\0001\Ndi\Params\*NumRssQueues]
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\0000\Ndi\Params\*NumRssQueues]
 "ParamDesc"="Number of RSS Queues"
 "default"="1"
 "type"="enum"
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\0001\Ndi\Params\*NumRssQueues\Enum]
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\0000\Ndi\Params\*NumRssQueues\Enum]
 "1"="1 Queue"
 "2"="2 Queues"
 "3"="3 Queues"
 "4"="4 Queues"
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\0001\Ndi\Params\*RSS]
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\0000\Ndi\Params\*RSS]
 "ParamDesc"="Receive Side Scaling"
 "default"="1"
 "type"="enum"
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\0001\Ndi\Params\*RSS\Enum]
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\0000\Ndi\Params\*RSS\Enum]
 "0"="Disabled"
 "1"="Enabled"
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\0001\Ndi\Params\*RSSProfile]
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\0000\Ndi\Params\*RSSProfile]
 "ParamDesc"="RSS load balancing profile"
 "default"="4"
 "type"="enum"
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\0001\Ndi\Params\*RSSProfile\Enum]
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\0000\Ndi\Params\*RSSProfile\Enum]
 "1"="ClosestProcessor"
 "2"="ClosestProcessorStatic"
 "3"="NUMAScaling"
@@ -28346,7 +28371,7 @@ Windows Registry Editor Version 5.00
 "5"="ConservativeScaling"
 
 ; network (nic) guid
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces\{8c696aaf-8eeb-4972-bac7-32605ddf55c6}]
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces\{494f01f7-1583-4647-87e8-51bcc437b858}]
 "DisableAutoNegotiation"=dword:00000000
 "EnableJumboPackets"=dword:00000000
 "EnableTCPA"=dword:00000000
