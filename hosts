@@ -5315,8 +5315,8 @@
 0.0.0.0 www.spclient.wg.spotify.com
 0.0.0.0 speccy.piriform.com
 0.0.0.0 www.speccy.piriform.com
-0.0.0.0 speech.platform.bing.com
-0.0.0.0 www.speech.platform.bing.com
+#0.0.0.0 speech.platform.bing.com
+#0.0.0.0 www.speech.platform.bing.com
 0.0.0.0 spocs.mozilla.net
 0.0.0.0 www.spocs.mozilla.net
 0.0.0.0 spoprod-a-akamaihd.net
@@ -24147,7 +24147,7 @@
 0.0.0.0 officeonline.com
 0.0.0.0 officepreviewredir.microsoft.com
 0.0.0.0 officeredir.microsoft.com
-0.0.0.0 officespeech.platform.bing.com
+#0.0.0.0 officespeech.platform.bing.com
 0.0.0.0 officeupdates.microsoft.com
 0.0.0.0 ogma.osi.office.net
 0.0.0.0 ohlloyla.mshome.net
@@ -34248,3 +34248,4 @@
 0.0.0.0 bn2-df.notify.windows.com
 0.0.0.0 bn3p.notify.windows.com
 0.0.0.0 db3p.notify.windows.com
+0.0.0.0 cdn.activity.windows.com
