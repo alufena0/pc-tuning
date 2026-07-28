@@ -16,6 +16,9 @@ schtasks /delete /tn "\Microsoft\Windows\HelloFace\FODCleanupTask" /f
 schtasks /delete /tn "RazerCortexScheduleClean" /f
 schtasks /delete /tn "PDFXChangeAutoUpdate" /f
 schtasks /delete /tn "CCleanerSkipUAC - Administrator" /f
+schtasks /Delete /TN "\Microsoft\Windows\Deduplication\BackgroundOptimization" /F
+schtasks /Delete /TN "\Microsoft\Windows\Deduplication\WeeklyGarbageCollection" /F
+schtasks /Delete /TN "\Microsoft\Windows\Deduplication\WeeklyScrubbing" /F
 schtasks /Change /TN "\Microsoft\Windows\UpdateOrchestrator\Schedule Wake To Work" /Disable
 schtasks /Change /TN "\Microsoft\OneDrive\OneDrive Reporting Task" /Disable
 schtasks /Change /TN "\Microsoft\OneDrive\OneDrive Standalone Update Task" /Disable
@@ -327,6 +330,9 @@ schtasks /Change /TN "\Microsoft\Windows\Workplace Join\Recovery-Check" /Disable
 ::schtasks /Change /TN "\Microsoft\Windows\WS\Sync Licenses" /Disable
 ::schtasks /Change /TN "\Microsoft\Windows\WS\WSRefreshBannedAppsListTask" /Disable
 ::schtasks /Change /TN "\Microsoft\Windows\WS\WSTask" /Disable
+schtasks /change /tn "\Microsoft\Windows\WindowsAI\ClickToDo\ModelCachingIdle" /disable
+schtasks /change /tn "\Microsoft\Windows\WindowsAI\ClickToDo\ModelCachingLimit" /disable
+schtasks /change /tn "\Microsoft\Windows\WindowsAI\ClickToDo\ModelCachingUpdate" /disable
 schtasks /Change /TN "\Microsoft\Windows\WwanSvc\NotificationTask" /Disable
 schtasks /Change /TN "\Microsoft\Windows\WwanSvc\OobeDiscovery" /Disable
 schtasks /Change /TN "\Microsoft\XblGameSave\XblGameSaveTask" /Disable
