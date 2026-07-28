@@ -1,7 +1,7 @@
 Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\PriorityControl]
-"Win32PrioritySeparation"=dword:00000026 ; 00000002, 00000016/00000018/00000024/00000026/00000028/0000002a
+"Win32PrioritySeparation"=dword:00000024 ; 00000002, 00000016/00000018/00000024/00000026/00000028/0000002a
 
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\GameBar]
 "AllowAutoGameMode"=dword:00000000 ; game mode 00000001, 00000000
@@ -167,24 +167,57 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\mouclass\Parameters]
 "ConnectMultiplePorts"=dword:00000000
 "LayeredLatency"=dword:00000000
-"MaximumPortsServiced"=dword:00000000 ; 00000000/00000001/00000010
-"MouseDataQueueSize"=dword:00000064 ; 00000064, 00000010/00000014/00000016/00000032/00000036/00000100
+"MaximumPortsServiced"=dword:00000000 ; 00000000/00000001/00000003/00000010
+"MouseDataQueueSize"=dword:00000064 ; 00000064, 00000010/00000014/00000015/00000016/00000032/00000036/00000100
 "MouseReportBufferCount"=dword:00000004 ; 00000001/00000004
 "MouseTransmitTimeout"=dword:00000000
 "SendOutputToAllPorts"=dword:00000000
 "ThreadPriority"=dword:0000001f
 "WppRecorder_UseTimeStamp"=dword:00000000
+"DisableEtwEvents"=dword:00000001
+"EnableLowLatencyRead"=dword:00000001
+"EnableDirectInputDelivery"=dword:00000001
+"DisableTelemetry"=dword:00000001
+"InputProcessingPriority"=dword:00000001
+"DisableInputBatching"=dword:00000001
+"DisableInputBuffering"=dword:00000001
+"DisableInputCoalescing"=dword:00000001
+"EnableImmediateInputDelivery"=dword:00000001
+"DisableWppTracing"=dword:00000001
+"PollStatusIterations"=dword:00000001
+"PointerDeviceBaseName"="PointerClass"
+"EnableInlineInputProcessing"=dword:00000001
+"DisablePerformanceCounters"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\ControlSet001\Services\mouclass\Performance]
+"Disable Performance Counters"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\kbdclass\Parameters]
 "ConnectMultiplePorts"=dword:00000000
-"KeyboardDataQueueSize"=dword:00000064 ; 00000064, 00000003/00000010/00000014/00000100
+"KeyboardDataQueueSize"=dword:00000064 ; 00000064, 00000003/00000010/00000014/00000015/00000100
 "KeyboardReportBufferCount"=dword:00000004 ; 00000001/00000004
 "KeyboardTransmitTimeout"=dword:00000000
 "LayeredLatency"=dword:00000000
-"MaximumPortsServiced"=dword:00000000 ; 00000000/00000001
+"MaximumPortsServiced"=dword:00000000 ; 00000000/00000001/00000003
 "SendOutputToAllPorts"=dword:00000000
 "ThreadPriority"=dword:0000001f
 "WppRecorder_UseTimeStamp"=dword:00000000
+"PollStatusIterations"=dword:00000001
+"EnableDirectInputDelivery"=dword:00000001
+"InputProcessingPriority"=dword:00000001
+"DisableInputBuffering"=dword:00000001
+"DisablePerformanceCounters"=dword:00000001
+"EnableImmediateInputDelivery"=dword:00000001
+"DisableEtwEvents"=dword:00000001
+"EnableInlineInputProcessing"=dword:00000001
+"DisableInputCoalescing"=dword:00000001
+"DisableWppTracing"=dword:00000001
+"DisableTelemetry"=dword:00000001
+"EnableLowLatencyRead"=dword:00000001
+"DisableInputBatching"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\ControlSet001\Services\kbdclass\Performance]
+"Disable Performance Counters"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management]
 "AllowUserHotPatchWithoutVbs"=dword:00000001
@@ -226,9 +259,9 @@ Windows Registry Editor Version 5.00
 "EnableVirtualAddressSpaceRandomization"=dword:00000000
 "EnergyDriverPolicyVideo"=dword:00000001 ; 00000000/00000001
 "EnforceWriteProtection"=dword:00000000
-"FeatureSettings"=dword:00000003 ; 00000003, 00000001
-"FeatureSettingsOverride"=dword:02000003 ; 00000001, 00000003/00000048/02000000/02000003/07800003/0200000b security option for anticheats
-"FeatureSettingsOverrideMask"=dword:00000003 ; 00000001, 00000003/02000003/07800003/0200000b security option for anticheats
+"FeatureSettings"=dword:00000001 ; 00000003, 00000001
+"FeatureSettingsOverride"=dword:20000003 ; 00000001, 00000003/00000048/02000000/02000003/07800003/0200000b/20000003 security option for anticheats
+"FeatureSettingsOverrideMask"=dword:20000003 ; 00000001, 00000003/02000003/07800003/0200000b/20000003 security option for anticheats
 "FirstLevelDataCache"=dword:00000020 ; 00000020/00000300
 "ForceSingleCoreAffinityForCriticalThreads"=dword:00000001
 ; "FsLazyWrite"=dword:00000001
@@ -405,7 +438,7 @@ Windows Registry Editor Version 5.00
 "DisablePrefetcher"=dword:00000001 ; 00000000/00000001
 "DisableSystemPTEWriteBack"=dword:00000001
 "DisableThreadBoost"=dword:00000001
-"DisableThreadPreemption"=dword:00000000 ; 00000000/00000001
+"DisableThreadPreemption"=dword:00000001 ; 00000000/00000001
 "DisableTsx"=dword:00000001 ; 00000000/00000001
 "DistributeTimers"=dword:00000001 ; 00000000/00000001
 "DpcCumulativeSoftTimeout"=dword:0001d4c0 ; 00000000/0001d4c0
@@ -500,7 +533,7 @@ Windows Registry Editor Version 5.00
 "KernelSEHOPByHandle"=dword:00000000
 "KernelSEHOPEnabled"=dword:00000000 ; =-, 00000000/00000001 security option for anticheats
 "KernelStackSize"=dword:00002000
-"KernelThreadPriorityFloor"=dword:00000008 ; 0000000f/00000008
+"KernelThreadPriorityFloor"=dword:0000000f ; 0000000f/00000008
 "KeSpinLockOrdering"=dword:00000001 ; 00000000/00000001
 "KiClockTimerAlwaysOnPresent"=dword:00000001
 "KiClockTimerHighLatency"=dword:00000000 ; 00000000/00000001
@@ -517,9 +550,9 @@ Windows Registry Editor Version 5.00
 "MaximumDpcRate"=dword:00000001
 "MaximumIncrement"=dword:00001388 ; 00000001/00001388
 "MaximumKernelWorkerThreads"=dword:000007d0 ; 000007d0/00002000
-"MaximumSharedReadyQueueSize"=dword:00000010 ; 00000000/00000001/00000004/00000010/00000080/00000104/000000ff
+"MaximumSharedReadyQueueSize"=dword:00000004 ; 00000000/00000001/00000004/00000010/00000080/00000104/000000ff
 "MinDynamicTickDuration"=dword:000003e8
-"MinimumDpcRate"=dword:00000001 ; 00000000/00000001/00000003/000186a0/99999999
+"MinimumDpcRate"=dword:000186a0 ; 00000000/00000001/00000003/000186a0/99999999
 "MinimumIncrement"=dword:00000004
 "MinTimerResolution"=dword:00001388
 ; "MitigationAuditOptions"=dword:00000000
@@ -528,6 +561,7 @@ Windows Registry Editor Version 5.00
 ; "MitigationAuditOptions"=hex:20,00,00,00,20,20,20,22,22,00,00,00,00,00,00,00,00,00,00,00
 ; "MitigationAuditOptions"=hex:20,00,00,20,20,20,22,22,00,00,00,00,00,00,00,00
 "MitigationAuditOptions"=hex:22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22
+; "MitigationAuditOptions"=hex(3):02,22,22,02,02,02,20,22,22,22,22,22,22,22,22,22,00,22,22,20,22,22,22,22
 ; "MitigationOptions"=dword:00000000
 ; "MitigationOptions"=hex:00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
 ; "MitigationOptions"=hex:22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22
@@ -536,6 +570,7 @@ Windows Registry Editor Version 5.00
 ; "MitigationOptions"=hex:22,22,22,22,22,22,22,22,20,02,00,00,00,20,00,00
 ; "MitigationOptions"=hex:22,22,22,22,22,22,22,22,20,02,00,00,00,20,00,00,00
 ; "MitigationOptions"=hex:22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22
+; "MitigationOptions"=hex(3):00,22,22,20,22,20,22,22,22,20,22,22,22,22,22,22,00,22,22,22,22,22,22,22
 "obcaseinsensitive"=dword:00000001
 "ObObjectSecurityInheritance"=dword:00000000
 "Obsolete"=dword:00000001
@@ -573,7 +608,7 @@ Windows Registry Editor Version 5.00
 "SeCompatFlags"=dword:00000000
 "SeLpacEnableWatsonReporting"=dword:00000000 ; 00000000/00000001
 "SeLpacEnableWatsonThrottling"=dword:00000001
-"SerializeTimerExpiration"=dword:00000001 ; 00000000/00000001/00000002
+"SerializeTimerExpiration"=dword:00000002 ; 00000000/00000001/00000002
 "SeTokenDoesNotTrackSessionObject"=dword:00000000
 "SeTokenLeakDiag"=dword:00000000
 "SeTokenSingletonAttributesConfig"=dword:00000003
@@ -993,12 +1028,12 @@ Windows Registry Editor Version 5.00
 "AlwaysUseDirectFlip"=dword:00000001
 "GPU Priority"=dword:00000008
 "IdleDetectionCycles"=dword:00000001 ; 00000000/00000001/00000002/00000005
-"LazyModeTimeout"=dword:00002710 ; 00002710/000061a8/000f4240/ffffffff
-"MaxThreadsPerProcess"=dword:0000000a ; 00000020/00000080/0000000a
+"LazyModeTimeout"=dword:000f4240 ; 00002710/000061a8/000f4240/ffffffff
+"MaxThreadsPerProcess"=dword:00000020 ; 00000020, 00000080/0000000a
 "MaxThreadsTotal"=dword:00000080 ; 00000100/00000080/0000ffff
 "NetworkThrottlingIndex"=dword:ffffffff ; 0000000a mmcs on/00000014/0000004f/0000008f/ffffffff
 "NoLazyMode"=dword:00000001 ; 00000000/00000001
-"SchedulerPeriod"=dword:0000c350 ; 000186a0/000f4240/0000c350
+"SchedulerPeriod"=dword:000186a0 ; 000186a0, 000f4240/0000c350
 "SchedulerTimerResolution"=dword:00002710 ; 00002710/00001388
 "Scheduling Category"="High"
 "SystemResponsiveness"=dword:0000000a ; 00000014, 00000000/00000001/0000000a/00000064 mmcs off
@@ -1602,10 +1637,10 @@ Windows Registry Editor Version 5.00
 ; "ActiveIdleLevel"=dword:00000001
 ; "ActiveIdleThreshold"=dword:004c4b40
 ; "ActiveIdleTimeout"=dword:000003e8 ; 000003e8, 00000000/00000001 high cpu ntoskrnl.exe
-"AllowAudioToEnableExecutionRequiredPowerRequests"=dword:00000001 ; 00000000/00000001
+"AllowAudioToEnableExecutionRequiredPowerRequests"=dword:00000000 ; 00000000/00000001
 "AllowHibernate"=dword:00000000 ; 00000000/ffffffff
-"AllowSystemRequiredPowerRequests"=dword:00000001 ; 00000000/00000001
-"AlwaysComputeQosHints"=dword:00000000 ; 00000000/00000001
+"AllowSystemRequiredPowerRequests"=dword:00000000 ; 00000000/00000001
+"AlwaysComputeQosHints"=dword:00000001 ; 00000000/00000001
 "AwayModeEnabled"=dword:00000000
 "BootHeteroPolicyOverride"=dword:00000000
 "CheckpointSystemSleep"=dword:00000000
@@ -1653,7 +1688,7 @@ Windows Registry Editor Version 5.00
 "DisableInboxPepGeneratedConstraints"=dword:00000001 ; 00000001/ffffffff
 "DisableSensorWatchdog"=dword:00000001
 "DisableThrottlingDuringGaming"=dword:00000001
-"DisableVsyncLatencyUpdate"=dword:00000000 ; 00000000/00000001
+"DisableVsyncLatencyUpdate"=dword:00000001 ; 00000000/00000001
 "DozeDeferralChecksToIgnore"=dword:00000000
 "DozeDeferralMaxSeconds"=dword:0003f480
 "DripsCallbackInterval"=dword:00000023
@@ -1675,7 +1710,7 @@ Windows Registry Editor Version 5.00
 "EnergyEstimationDisabled"=dword:00000001 ; 00000000/00000001
 "EnergyEstimationEnabled"=dword:00000000
 "EnergySaverPolicy"=dword:00000000 ; 00000000/00000001/00000002
-"EnergySaverState"=dword:00000002
+"EnergySaverState"=dword:00000002 ; 00000000/00000002
 "EnergySaverStatus"=dword:00000000
 "EnforceAusterityMode"=dword:00000000
 "EnforceConsoleLockScreenTimeout"=dword:00000000
@@ -1852,6 +1887,160 @@ Windows Registry Editor Version 5.00
 "DisableOnSoftRemove"=dword:00000001
 "DisableSelectiveSuspendUI"=dword:00000001
 "EnableDiagnosticMode"=dword:00000000
+"EnumerationRetryCount"=dword:00000003
+"DisablePortIndicators"=dword:00000001
+"DisablePerformanceCounters"=dword:00000001
+"EnumerationDebounceMs"=dword:00000000
+"DisableOvercurrentProtectionDelay"=dword:00000000
+"HubDescriptorRetries"=dword:00000003
+"DisableOtherSpeedConfigQuery"=dword:00000001
+"DisablePortStateMachineTracing"=dword:00000001
+"DisablePortStatusChangeQueue"=dword:00000000
+"DisableMultiTTSupport"=dword:00000000
+"EnableZeroCopyTransfers"=dword:00000001
+"DisableMsOsDescriptorQuery"=dword:00000001
+"DisableManufacturerStringQuery"=dword:00000001
+"DisablePortSuspend"=dword:00000001
+"HubIdleTimeoutMs"=dword:00000000
+"EnableUrbCaching"=dword:00000001
+"HubResetOnResume"=dword:00000000
+"DisableLowSpeedBulk"=dword:00000000
+"UrbPoolSize"=dword:00000040
+"DisableLanguageIdQuery"=dword:00000001
+"DisablePortWake"=dword:00000001
+"HubStatusPollingIntervalMs"=dword:00000001
+"DisablePowerCycleOnError"=dword:00000000
+"DisablePowerEtwEvents"=dword:00000001
+"HubStatusRetries"=dword:00000003
+"IdleTimeoutMs"=dword:00000000
+"IgnoreHubErrors"=dword:00000000
+"EnableTransferCaching"=dword:00000001
+"InterEndpointDelayMs"=dword:00000000
+"DisableIfrTracing"=dword:00000001
+"DisablePowerManagement"=dword:00000001
+"InterruptTransferPriority"=dword:00000001
+"EnableTransferBatching"=dword:00000000
+"InterruptTransferTimeoutMs"=dword:00000000
+"EnableTimestampPassthrough"=dword:00000001
+"DisableIdleNotification"=dword:00000001
+"DisableHubWake"=dword:00000001
+"DisableProductStringQuery"=dword:00000001
+"DisableHubTestMode"=dword:00000001
+"DisableHubSuspend"=dword:00000001
+"DisableHubStatusPolling"=dword:00000000
+"IsochronousTransferPriority"=dword:00000000
+"DisableHubStateMachineTracing"=dword:00000001
+"DisableHubIdleDetection"=dword:00000001
+"DisableRemoteWakeup"=dword:00000001
+"DisableHubFeatureSelector"=dword:00000000
+"DisableResetOnResumeError"=dword:00000000
+"DisableHubEtwEvents"=dword:00000001
+"EnableSingleTTMode"=dword:00000000
+"DisableHubDescriptorCache"=dword:00000000
+"DisablePortEtwEvents"=dword:00000001
+"DisableHubBusyRetryDelay"=dword:00000001
+"DisableHighSpeedSplitIsoch"=dword:00000000
+"EnablePerPortPowerSwitching"=dword:00000000
+"EnableParallelEnumeration"=dword:00000001
+"DisableHighSpeedSplitInterrupt"=dword:00000000
+"IsochronousTransferTimeoutMs"=dword:00002710
+"DisableGlobalSuspend"=dword:00000001
+"EnableMinimalDescriptorParsing"=dword:00000001
+"DisableScatterGather"=dword:00000000
+"MaxCachedTransfers"=dword:00000040
+"EnableLowLatencyTransfers"=dword:00000001
+"MaxCachedUrbs"=dword:00000040
+"MaxDebounceTimeMs"=dword:00000000
+"DisableEnumerationDelay"=dword:00000001
+"MaxDescriptorQueryTimeMs"=dword:00001388
+"EnableInlineTransferCompletion"=dword:00000001
+"MaxParallelEnumerations"=dword:00000008
+"DisableDoubleBuffering"=dword:00000001
+"DisableSerialNumberQuery"=dword:00000000
+"WakeOnConnectUI"=dword:00000000
+"DisableSerialNumberStringQuery"=dword:00000000
+"MaxPendingTransfers"=dword:00000100
+"EnableImmediatePortStatusChange"=dword:00000001
+"DisableDeviceStateMachineTracing"=dword:00000001
+"DisableDeviceQualifierQuery"=dword:00000001
+"DisableStateMachineEtwEvents"=dword:00000001
+"DisableDeviceEtwEvents"=dword:00000001
+"DisableDeviceDescriptorCache"=dword:00000000
+"DisableDescriptorValidation"=dword:00000000
+"EnableFastPortStatusChange"=dword:00000001
+"MaxPendingUrbs"=dword:00000100
+"DisableDescriptorParsing"=dword:00000000
+"DisableDescriptorEtwEvents"=dword:00000001
+"MaxScatterGatherElements"=dword:00000040
+"MinDebounceTimeMs"=dword:00000000
+"MinimumDescriptorQueryTimeMs"=dword:00000000
+"MsOsDescriptorMode"=dword:00000000
+"OvercurrentDebounceMs"=dword:00000064
+"DisableContainerIdQuery"=dword:00000001
+"EnableFastEnumeration"=dword:00000001
+"DisableContainerIdGeneration"=dword:00000000
+"EnableFastDeviceRemoval"=dword:00000001
+"EnableFastDeviceArrival"=dword:00000001
+"DisableConfigurationStringQuery"=dword:00000001
+"DisableConfigDescriptorCache"=dword:00000000
+"EnableExtendedValidation"=dword:00000000
+"DisableCompoundDeviceSupport"=dword:00000000
+"PortIdleTimeoutMs"=dword:00000000
+"DisableTelemetry"=dword:00000001
+"DisableComplianceMode"=dword:00000001
+"EnableDirectTransferCompletion"=dword:00000001
+"DisableHubDepthCheck"=dword:00000000
+"PortResetTimeMs"=dword:0000000a
+"DisableTransferCoalescing"=dword:00000001
+"DisableBosDescriptorQuery"=dword:00000001
+"DisableBillboard"=dword:00000001
+"EnableDirectDmaMapping"=dword:00000001
+"PortStabilityTimeMs"=dword:00000000
+"DisableTransferCompletionDpc"=dword:00000000
+"PortStatusChangeQueueSize"=dword:00000010
+"DisableTransferEtwEvents"=dword:00000001
+"PortStatusPollingIntervalMs"=dword:00000001
+"PortStatusRetries"=dword:00000003
+"PostAddressDelayMs"=dword:00000000
+"DisableTransferMerging"=dword:00000001
+"DisablePortFeatureSelector"=dword:00000000
+"DisableTransferPooling"=dword:00000000
+"PostConfigurationDelayMs"=dword:00000000
+"EnableContinuousBuffers"=dword:00000001
+"PostResetDelayMs"=dword:0000000a
+"DisableTransferTimeoutCheck"=dword:00000000
+"DisableTransferTracing"=dword:00000001
+"PowerCycleDelayMs"=dword:00000064
+"DeviceEnumerationTimeoutMs"=dword:00002710
+"StringDescriptorRetries"=dword:00000003
+"DeviceDescriptorRetries"=dword:00000003
+"DescriptorQueryRetryIntervalMs"=dword:0000000a
+"TransferPoolSize"=dword:00000040
+"PowerOnToPowerGoodMs"=dword:00000032
+"PreventDebounceTimeForSuperSpeedDevices"=dword:00000001
+"DisableTTBufferTracking"=dword:00000001
+"SurpriseRemovalEnabled"=dword:00000001
+"ControlTransferTimeoutMs"=dword:00002710
+"ControlTransferPriority"=dword:00000000
+"ResetPortRetries"=dword:00000003
+"ConnectionDebounceMs"=dword:00000000
+"TransferBatchSize"=dword:00000001
+"ConfigurationDescriptorRetries"=dword:00000003
+"ResetRecoveryTimeMs"=dword:0000000a
+"DisableUrbPooling"=dword:00000000
+"SetAddressRetries"=dword:00000003
+"ClearTtBufferRetries"=dword:00000003
+"BusyRetryDelayMs"=dword:00000000
+"DisableUxdSupport"=dword:00000001
+"TransferBatchTimeoutUs"=dword:00000000
+"BulkTransferTimeoutMs"=dword:00002710
+"TransferCompletionPriority"=dword:00000001
+"BulkTransferPriority"=dword:00000000
+"SetConfigurationRetries"=dword:00000003
+"TransferTimeoutMs"=dword:00002710
+"DisableWaitWakeIrp"=dword:00000001
+"DisableInterfaceStringQuery"=dword:00000001
+"DisableWppTracing"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\usbhub]
 "IdleDisable"=dword:00000001
@@ -1874,10 +2063,200 @@ Windows Registry Editor Version 5.00
 "IoLatencyCap"=dword:00000000
 "IoQueueWorkItem"=dword:0000000a
 "LowLatencyMode"=dword:00000001
-"MaxTransferSize"=dword:00004000
+"MaxTransferSize"=dword:00100000 ; 00004000/00100000
 "SelectiveSuspendEnabled"=dword:00000000
 "ThreadPriority"=dword:0000001f ; 0000001f/0000000f
 "EnableSelectiveSuspend"=dword:00000000
+"EnableTransferCaching"=dword:00000001
+"DisablePowerManagement"=dword:00000001
+"DisablePowerGating"=dword:00000001
+"DisablePreallocatedEventRings"=dword:00000000
+"DisablePortTracing"=dword:00000001
+"UseMSIX"=dword:00000001
+"EnableTransferRingAlignment"=dword:00000001
+"EnableTRBCaching"=dword:00000001
+"EnableUrbCaching"=dword:00000001
+"DisablePreallocatedScratchpadBuffers"=dword:00000000
+"EnableTimestampPassthrough"=dword:00000001
+"UrbPoolSize"=dword:00000040
+"EnableZeroCopyTransfers"=dword:00000001
+"DisablePreallocatedTransferRings"=dword:00000000
+"DisablePortSuspend"=dword:00000001
+"DisablePortPowerCycling"=dword:00000001
+"EndpointPoolSize"=dword:00000040
+"DisableRegisterTracing"=dword:00000001
+"U2Timeout"=dword:00000000
+"DisablePollingLoopback"=dword:00000001
+"EnableStreams"=dword:00000001
+"DisablePeriodicListCaching"=dword:00000001
+"EvaluateContextTimeoutMs"=dword:00002710
+"EventRingAlignment"=dword:00001000
+"EventRingSize"=dword:00000100
+"EnableStopEndpointOnTransferCancel"=dword:00000001
+"EnableSlotTimeoutMs"=dword:00002710
+"DisableRootHubSuspend"=dword:00000001
+"EnableScratchpadAlignment"=dword:00000001
+"ForceD0"=dword:00000001
+"ForceEventDataTRB"=dword:00000000
+"DisableRootHubTracing"=dword:00000001
+"DisablePerformanceCounters"=dword:00000001
+"EnableNoOpTest"=dword:00000000
+"U2DeviceExitLatency"=dword:00000000
+"DisableRuntimePM"=dword:00000001
+"DisableRuntimePowerManagement"=dword:00000001
+"DisablePreallocatedCommandRing"=dword:00000000
+"DisablePCIePM"=dword:00000001
+"DisableScatterGather"=dword:00000000
+"HandoffDelayMs"=dword:00000000
+"DisableScratchpadPooling"=dword:00000000
+"EnableIsochScheduling"=dword:00000001
+"TransferCompletionPriority"=dword:00000001
+"DisableOutputContextPooling"=dword:00000000
+"DisableMSI"=dword:00000000
+"DisableLTM"=dword:00000001
+"DisableLPM"=dword:00000001
+"DisableLinkStateManagement"=dword:00000001
+"DisableL1SubStates"=dword:00000001
+"DisableL1"=dword:00000001
+"EnableIsochCatchup"=dword:00000001
+"DisableScratchpadTracing"=dword:00000001
+"DisableL0s"=dword:00000001
+"EnableInterruptModeration"=dword:00000000
+"EnableInterruptCoalescing"=dword:00000000
+"EnableInputContextAlignment"=dword:00000001
+"EnableInlineTransferCompletion"=dword:00000001
+"InputContextAlignment"=dword:00001000
+"InputContextPoolSize"=dword:00000020
+"DisableInterrupterTracing"=dword:00000001
+"DisableInputContextPooling"=dword:00000000
+"InterruptCoalescingInterval"=dword:00000000
+"InterruptCoalescingMaxCount"=dword:00000001
+"InterruptModerationInterval"=dword:00000000
+"DisableSlotTimeoutMs"=dword:00002710
+"InterruptThrottleRate"=dword:00000000
+"EnableImmediateData"=dword:00000001
+"DisableSlotTracing"=dword:00000001
+"DisableIfrTracing"=dword:00000001
+"InterruptTransferPriority"=dword:00000001
+"EnableForceResetOnResume"=dword:00000000
+"DisableStateMachineTracing"=dword:00000001
+"DisableSystemWake"=dword:00000001
+"DisableTelemetry"=dword:00000001
+"DisableIdlePowerManagement"=dword:00000001
+"ForceMaxPower"=dword:00000001
+"DisableHSRERetry"=dword:00000000
+"EnableEventRingAlignment"=dword:00000001
+"EnableEndpointCaching"=dword:00000001
+"IsochScheduleAheadFrames"=dword:00000002
+"IsochSchedulingLatency"=dword:00000000
+"U1Timeout"=dword:00000000
+"DisableForceEvent"=dword:00000000
+"MaxCachedDeviceSlots"=dword:00000020
+"MaxCachedEndpoints"=dword:00000040
+"DisableExtendedValidation"=dword:00000000
+"DisableEventTracing"=dword:00000001
+"MaxCachedTransfers"=dword:00000040
+"MaxCachedTRBs"=dword:00000100
+"DisableEventRingTracing"=dword:00000001
+"MaxCachedUrbs"=dword:00000040
+"DisableEtwEvents"=dword:00000001
+"DisableWppTracing"=dword:00000001
+"DisableTestMode"=dword:00000001
+"U1DeviceExitLatency"=dword:00000000
+"DisableEndpointTracing"=dword:00000001
+"MaxDeviceSlots"=dword:00000040
+"MaxEventRingSegments"=dword:00000002
+"MaxInterrupters"=dword:00000004
+"MaxInterruptInterval"=dword:00000000
+"DisableEndpointPooling"=dword:00000000
+"DisableTransferCoalescing"=dword:00000001
+"WakeOnConnect"=dword:00000000
+"TRBPoolSize"=dword:00000100
+"DisableDoubleBuffering"=dword:00000001
+"EnableDirectTransferCompletion"=dword:00000001
+"DisableDoorbellTracing"=dword:00000001
+"DisableDiagnostics"=dword:00000001
+"DisableDeviceSuspend"=dword:00000001
+"AddressDeviceTimeoutMs"=dword:00002710
+"DisableDeviceSlotTracing"=dword:00000001
+"DisableDeviceSlotPooling"=dword:00000000
+"WakeOnDisconnect"=dword:00000000
+"EnableDirectDmaMapping"=dword:00000001
+"DisableTransferCompletionDpc"=dword:00000000
+"DisableD3Cold"=dword:00000001
+"MaxResetRetries"=dword:00000003
+"MaxScatterGatherElements"=dword:00000040
+"SetTRDequeuePointerTimeoutMs"=dword:00002710
+"DisableTransferMerging"=dword:00000001
+"MaxScratchpadBuffers"=dword:00000020
+"MaxStallRetries"=dword:00000003
+"EnableDeviceSlotCaching"=dword:00000001
+"EnableDeviceContextAlignment"=dword:00000001
+"EnableDCBAAAlignment"=dword:00000001
+"EnableControllerReset"=dword:00000001
+"DisableTransferPooling"=dword:00000000
+"DisableD3"=dword:00000001
+"DisableD2"=dword:00000001
+"MinInterruptInterval"=dword:00000000
+"DisableD1"=dword:00000001
+"DisableControllerTracing"=dword:00000001
+"OutputContextPoolSize"=dword:00000020
+"DisableTransferRingTracing"=dword:00000001
+"EnableContinuousBuffers"=dword:00000001
+"DisableControllerSuspend"=dword:00000001
+"DisableControllerPowerGating"=dword:00000001
+"DisableContextTracing"=dword:00000001
+"EnableCommandRingAlignment"=dword:00000001
+"DisableComplianceModeTransition"=dword:00000001
+"DisableComplianceMode"=dword:00000001
+"DisableCommandTracing"=dword:00000001
+"DisableCommandTimeout"=dword:00000000
+"PortResetDelayMs"=dword:0000000a
+"EnableAsyncTransferProcessing"=dword:00000001
+"DisableCommandRingTracing"=dword:00000001
+"StopEndpointTimeoutMs"=dword:00002710
+"DisableTransferTracing"=dword:00000001
+"DisableTRBPooling"=dword:00000000
+"DisableClockGating"=dword:00000001
+"DisableTRBTracing"=dword:00000001
+"DisableU1"=dword:00000001
+"DisableBEI"=dword:00000001
+"DisableU1Timeout"=dword:00000001
+"DisableAsyncSchedulePark"=dword:00000001
+"DisableU2"=dword:00000001
+"DisableU2Timeout"=dword:00000001
+"DisableASPM"=dword:00000001
+"DisableArmForWake"=dword:00000001
+"DisableAddressDevice"=dword:00000000
+"TransferBatchSize"=dword:00000001
+"DisableUrbPooling"=dword:00000000
+"TransferRingSize"=dword:00000100
+"DisableWaitWakeIrp"=dword:00000001
+"CommandAbortTimeout"=dword:00002710
+"CommandRingAlignment"=dword:00001000
+"ScratchpadAlignment"=dword:00001000
+"EnableTransferBatching"=dword:00000000
+"DeviceSlotPoolSize"=dword:00000020
+"DeviceContextAlignment"=dword:00001000
+"DCBAAAlignment"=dword:00001000
+"PreallocatedEventRingCount"=dword:00000004
+"PreallocatedEventRingSize"=dword:00000100
+"PreallocatedTransferRingCount"=dword:00000020
+"PreallocatedTransferRingSize"=dword:00000100
+"TransferPoolSize"=dword:00000040
+"TransferRingAlignment"=dword:00001000
+"ResetDeviceTimeoutMs"=dword:00002710
+"ResetEndpointTimeoutMs"=dword:00002710
+"TransferBatchTimeoutUs"=dword:00000000
+"ControllerResetTimeoutMs"=dword:00002710
+"ConfigureEndpointTimeoutMs"=dword:00002710
+"CommandTimeoutMs"=dword:00002710
+"RuntimePMIdleTimeoutMs"=dword:00000000
+"CommandRingSize"=dword:00000040
+"DisableIsochLateDetection"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\ControlSet001\Services\USBXHCI\Performance]
+"Disable Performance Counters"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\USBXHCI\Parameters\Device]
 "InterruptThreshold"=dword:00000000
@@ -1902,6 +2281,38 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\USBXHCI\Parameters\Wdf]
 "NoExtraBufferRoom"=dword:00000001 ; 00000000/00000001
 
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\USB]
+"DisableLinkPowerManagement"=dword:00000001
+"DisableLPM"=dword:00000001
+"DisableIdlePowerManagement"=dword:00000001
+"DisableLinkStateManagement"=dword:00000001
+"DisableClockGating"=dword:00000001
+"EnableInterruptCoalescing"=dword:00000000
+"ForceMaxPower"=dword:00000001
+"DisableRemoteWakeup"=dword:00000001
+"SelectiveSuspendEnabled"=dword:00000000
+"DisableL0s"=dword:00000001
+"DisableASPM"=dword:00000001
+"EnhancedPowerManagementEnabled"=dword:00000000
+"DisableComplianceMode"=dword:00000001
+"DisableLTM"=dword:00000001
+"DisableSystemWake"=dword:00000001
+"DisableRuntimePM"=dword:00000001
+"DisableHubSuspend"=dword:00000001
+"InterruptCoalescingInterval"=dword:00000000
+"DisableU1"=dword:00000001
+"DisableSelectiveSuspend"=dword:00000001
+"fSS"=dword:00000000
+"DisableU2"=dword:00000001
+"ForceD0"=dword:00000001
+"DisablePortSuspend"=dword:00000001
+"DisableDeviceSuspend"=dword:00000001
+"InterruptModerationInterval"=dword:00000000
+"DisablePowerGating"=dword:00000001
+"DisableL1"=dword:00000001
+"DisableD3Cold"=dword:00000001
+"EnableInterruptModeration"=dword:00000000
+
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\usbflags]
 "Allow64KLowOrFullSpeedControlTransfers"=dword:00000001
 "DisableHCS0Idle"=dword:00000001
@@ -1912,6 +2323,32 @@ Windows Registry Editor Version 5.00
 "IgnoreHWSerNum"=dword:00000001
 "TestRunEsmInWorkItem"=dword:00000000
 "SkipContainerIdQuery"=dword:00000001
+"GlobalForceMaxPower"=dword:00000001
+"GlobalDisableD3Cold"=dword:00000001
+"GlobalDisableSystemWake"=dword:00000001
+"GlobalDisableSelectiveSuspend"=dword:00000001
+"GlobalForceD0"=dword:00000001
+"GlobalDisableDeviceSuspend"=dword:00000001
+"GlobalEnableInterruptModeration"=dword:00000000
+"GlobalEnableInterruptCoalescing"=dword:00000000
+"GlobalDisableHubSuspend"=dword:00000001
+"GlobalDisableComplianceMode"=dword:00000001
+"GlobalDisableClockGating"=dword:00000001
+"GlobalDisableIdlePowerManagement"=dword:00000001
+"GlobalDisableL0s"=dword:00000001
+"GlobalDisableL1"=dword:00000001
+"GlobalDisableRuntimePM"=dword:00000001
+"GlobalDisableLinkStateManagement"=dword:00000001
+"GlobalDisableASPM"=dword:00000001
+"GlobalDisableLPM"=dword:00000001
+"GlobalDisableLTM"=dword:00000001
+"GlobalDisableU1"=dword:00000001
+"GlobalDisablePortSuspend"=dword:00000001
+"GlobalInterruptModerationInterval"=dword:00000000
+"GlobalDisableU2"=dword:00000001
+"GlobalDisablePowerGating"=dword:00000001
+"GlobalInterruptCoalescingInterval"=dword:00000000
+"GlobalDisableRemoteWakeup"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SYSTEM\Input]
 "WakeOnInputDeviceTypes"=dword:00000000
@@ -2412,7 +2849,8 @@ Windows Registry Editor Version 5.00
 "RITdemonTimerPowerSaveCoalescing"=dword:ffffffff ; 00000000/0000000a/ffffffff
 "RITdemonTimerPowerSaveElapse"=dword:0000000a ; 00000000/0000000a
 "ShutdownWarningDialogTimeout"=dword:00000001
-"TimerCoalescing"=hex:00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+; "TimerCoalescing"=hex:00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+"TimerCoalescing"=hex(3):00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
 "UseDx"=dword:00000000 ; 00000000/00000001
 "UseGpuForRender"=dword:00000000 ; 00000000/00000001
 "USERExtraInstrumentations"=dword:00000000
@@ -2721,14 +3159,14 @@ Windows Registry Editor Version 5.00
 "SupportRuntimePowerManagement"=dword:00000000
 "SuspendAdapterTimerPeriod"=dword:0007a120 ; 001e8480/0007a120
 "SwapchainWaitTime"=dword:00000000
-"TdrDdiDelay"=dword:0000000a ; 00000000/00000005/0000000a/0000003c
-"TdrDebugMode"=dword:00000001 ; 00000002, 00000000/00000001/00000003
-"TdrDelay"=dword:0000000a ; 00000000/00000001/00000002/0000000a/0000003c
-"TdrDodPresentDelay"=dword:00000002 ; 00000000/00000002
-"TdrDodVSyncDelay"=dword:00000002 ; 00000000/00000002
-"TdrLevel"=dword:00000003 ; 00000000/00000001/00000003
-"TdrLimitCount"=dword:00000005 ; 00000000/00000005/0000003c
-"TdrLimitTime"=dword:0000003c ; 00000000/0000003c
+"TdrDdiDelay"=dword:00000000 ; 00000000/00000005/0000000a/0000003c
+"TdrDebugMode"=dword:00000000 ; 00000002, 00000000/00000001/00000003
+"TdrDelay"=dword:00000000 ; 00000000/00000001/00000002/0000000a/0000003c
+"TdrDodPresentDelay"=dword:00000000 ; 00000000/00000002
+"TdrDodVSyncDelay"=dword:00000000 ; 00000000/00000002
+"TdrLevel"=dword:00000000 ; 00000000/00000001/00000003
+"TdrLimitCount"=dword:00000000 ; 00000000/00000005/0000003c
+"TdrLimitTime"=dword:00000000 ; 00000000/0000003c
 "TdrTestMode"=dword:00000000 ; =-, 00000000
 "TerminationListSizeLimit"=dword:04000000
 "TreatUsb4MonitorAsNormal"=dword:00000000
@@ -3611,7 +4049,7 @@ Windows Registry Editor Version 5.00
 "PreemptionLevel"=dword:00000001
 "PreemptionQuantumUnit"=dword:0000c350 ; 00000001/0000c350
 "ProfileLevel"=dword:00000002
-"QuantumUnit"=dword:000061a8 ; 00000001/000061a8/0003d090/000009c4
+"QuantumUnit"=dword:000009c4 ; 00000001/000061a8/0003d090/000009c4
 "QueuedPresentLimit"=dword:00000002 ; 00000003, 00000001/00000002
 "RMDisablePostL2Compression"=dword:00000001
 "RmDisableRegistryCaching"=dword:0000000f
@@ -3619,7 +4057,7 @@ Windows Registry Editor Version 5.00
 "SchedulingPolicy"=dword:00000002
 "UseSCGForRender"=dword:00000000
 "VsyncIdleTimeout"=dword:00000000 ; 0000000a, 00000000/00000001/00000007
-"VSyncOverrideMode"=dword:00000000 ; 00000000/00000001
+"VSyncOverrideMode"=dword:00000001 ; 00000000/00000001
 "YieldPercentage"=dword:00000001 ; 00000001/00000005/0000000a
 "InitDriverFenceId"=dword:00000000
 "DdiSuspendMode"=dword:00000000
@@ -3738,9 +4176,9 @@ Windows Registry Editor Version 5.00
 "LogEventEntries"=dword:00000000
 "LogPagingEntries"=dword:00000000
 "LogWarningEntries"=dword:00000000
-"TdrDdiDelay"=dword:0000000a
-"TdrDelay"=dword:0000000a
-"TdrLevel"=dword:00000003
+"TdrDdiDelay"=dword:00000000
+"TdrDelay"=dword:00000000
+"TdrLevel"=dword:00000000
 "ThreadPriority"=dword:0000000f ; 0000000f/0000001f
 "checkForIsrBufferIDProgressAtDpc"=dword:00000000
 "UseDpcForGpuWatchdogCallback"=dword:00000000
@@ -3960,7 +4398,7 @@ Windows Registry Editor Version 5.00
 "MUIVerb"="Cleanup"
 "Position"=""
 [HKEY_CLASSES_ROOT\DesktopBackground\Shell\Cleanup\command]
-@="powershell.exe -NoProfile -WindowStyle Hidden -Command \"Start-Process -FilePath powershell.exe -ArgumentList '-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -Command \"& { Stop-Process -Name dwm -Force -ErrorAction SilentlyContinue; Start-Sleep -Seconds 3; Stop-Process -Name explorer -Force -ErrorAction SilentlyContinue; Start-Sleep -Seconds 1; Start-Process explorer; netsh http flush logbuffer; netsh interface ip delete arpcache; ipconfig /flushdns; ipconfig /registerdns; & $env:windir\\system32\\lodctr.exe /R; & $env:windir\\syswow64\\lodctr.exe /R; & $env:windir\\syswow64\\wbem\\winmgmt.exe /RESYNCPERF; & $env:windir\\system32\\wbem\\winmgmt.exe /RESYNCPERF; & $env:windir\\system32\\lodctr.exe /e:PerfOS; winmgmt /salvagerepository; fsutil usn deletejournal /d /n C:; fsutil usn deletejournal /d /n D:; fsutil usn deletejournal /d /n E:; fsutil usn deletejournal /d /n F:; fsutil usn deletejournal /d /n G:; logman stop ''Steam Event Tracing'' -ets; logman stop UBPM -ets; logman stop NetCfgTrace -ets; logman stop WindowsUpdate_trace_log -ets; logman stop MoUxCoreWorker -ets; logman stop UpdateSessionOrchestration -ets; logman stop Diagtrack-Listener -ets; logman stop Microsoft-Windows-Rdp-Graphics-RdpIdd-Trace -ets; logman stop SleepStudyTraceSession -ets; logman stop UserNotPresentTraceSession -ets; logman stop NVIDIA-NVTOPPS-FILTER -ets; logman stop NVIDIA-NVTOPPS-NOCAT -ets; logman stop Admin_PS_Provider -ets; logman stop 8696EAC4-1288-4288-A4EE-49EE431B0AD9 -ets; logman stop Microsoft.Windows.UpdateHealthTools -ets; logman stop SiPresentTraceSession -ets; logman stop SiKernelTraceSession -ets; logman stop ''NT Kernel Logger'' -ets; Stop-Process -Name acrotray,adb,''Adobe Crash Processor'',AdobeIPCBroker,Agent,AggregatorHost,ai,alg,ApplicationFrameHost,AppVShNotify,armsvc,attrib,backgroundTaskHost,calculator,CalculatorApp,CCLibrary,CCXProcess,CEPHtmlEngine,cfbackd.w32,CHXSmartScreen,CompPkgSrv,CoreSync,crashhelper,CrashMailer_64,CrashReportClient,CredentialEnrollmentManager,CrossDeviceResume,DashboardNotificationManager,DataExchangeHost,dllhost,drvinst,StartMenu,EABackgroundService,elevation_service,EpicOnlineServicesUserHelper,CCleaner64,EpicWebHelper,fdm,FESearchHost,FileCoAuth,gamebar,GameBarPresFenceWriter,GameInputSvc,GameManagerService,helperservice,HelpPane,hxaccounts,hxoutlook,TrackerUpdate,WindowsCamera,GoogleUpdate,HxTsr,identity_helper,steamservice,provtool,JackettConsole,jcef_helper,UpdateHub,Locator,lockapp,Popcorn-Time,Node,MeasureSleep,MBAMService,memBoost,Microsoft.Photos,MicrosoftEdgeUpdate,MoUsoCoreWorker,MpCmdRun,MpDefenderCoreService,WinaeroTweakerHelper,msdtc,msedgewebview2,UCheck_portable64_win10,msiexec,MsMpEng,NisSrv,nvcplui,NVDisplay.Container,nvidia-smi,officeclicktorun,OneDrive,OSE,PerceptionSimulationService,perfhost,PerfWatson2,CortexLauncherService,GameInputRedistService,RazerCortex,RegWorkshopPortable,RegWorkshopX64,RazerCortex.Shell,PhoneExperienceHost,PhotosService,PickerHost,razer_elevation_service,RzAppManager,RzBTLEManager,RzChromaConnectManager,RzChromaConnectServer,RzChromaStreamServer,RzDeviceManager,RzDeviceManagerEx,RzDiagnosticService,RzEngineMon,RzIoTDeviceManager,RzSDKServer,provtool,RzSDKService,RzSmartlightingDeviceManager,RzWDLDeviceManager,razerwdl,RazerAppEngine,HapticService,GameManagerService3,PresentationFontCache,prevhost,''Razer Central'',''Razer Synapse 3'',''Razer Synapse Service'',''Razer Synapse Service Process'',RazerCentralService,RtkAudUService64,RtkNGUI64,RuntimeBroker,findstr,RRCsrv,SDXHelper,SearchApp,SearchFilterHost,SearchHost,SearchIndexer,SearchProtocolHost,SecurityHealthHost,SecurityHealthService,crashpad_handler,TeamViewer_Service,tv_w32,tv_x64,TeamViewer,java,SelectiveToolApp,aimgr,set-up,setup,ShellExperienceHost,ShellHost,SkypeApp,SkypeBackgroundHost,smartscreen,wevtutil,PnPUtil,AppActions,smss,SMSvcHost,SndVol,SnippingTool,snmptrap,splwow64,spoolsv,SppExtComObj,sppsvc,sqlwriter,ssh,ssh-agent,python,StartMenuExperienceHost,steamerrorreporter,StoreDesktopExtension,SystemSettings,SystemSettingsAdminFlows,SystemSettingsBroker,TabTip,taskhostw,Taskmgr,textinputhost,TieringEngineService,TiWorker,TrustedInstaller,uhssvc,UnityCrashHandler64,upfc,userinit,UserOOBEBroker,vds,vdsldr,video.ui,vssadmin,DismHost,Dism,VSSVC,wbengine,werfault,Widgets,WidgetService,wimserv,fireshot-chrome-plugin,WindowsPackageManagerServer,WinStore.App,WinUpdateHelper,WMIADAP,WmiApSrv,WmiPrvSE,WmiPrvSvc,wowreg32,wuauclt,wuaucltcore,WUDFHost,WWAHost,yourphone -Force -ErrorAction SilentlyContinue; Start-Sleep -Seconds 2; Get-Process audiodg,winlogon | ForEach-Object { $_.PriorityClass = ''Idle'' }; Get-Process ctfmon,svchost,ShellHost,RuntimeBroker | ForEach-Object { $_.PriorityClass = ''BelowNormal'' }; & \"$env:windir\\system32\\regsvr32.exe\" /s atl.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s atl.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s urlmon.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s urlmon.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s mshtml.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s mshtml.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s shdocvw.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s shdocvw.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s browseui.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s browseui.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s jscript.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s jscript.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s vbscript.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s vbscript.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s scrrun.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s scrrun.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s msxml.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s msxml.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s msxml2.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s msxml2.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s msxml3.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s msxml3.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s msxml6.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s msxml6.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s actxprxy.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s actxprxy.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s softpub.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s softpub.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s wintrust.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s wintrust.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s dssenh.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s dssenh.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s rsaenh.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s rsaenh.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s gpkcsp.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s gpkcsp.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s sccbase.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s sccbase.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s slbcsp.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s slbcsp.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s cryptdlg.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s cryptdlg.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s oleaut32.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s oleaut32.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s ole32.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s ole32.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s shell32.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s shell32.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s initpki.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s initpki.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s wuapi.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s wuapi.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s wuaueng.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s wuaueng.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s wuaueng1.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s wuaueng1.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s wucltui.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s wucltui.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s wups.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s wups.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s wups2.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s wups2.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s wuweb.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s wuweb.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s qmgr.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s qmgr.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s qmgrprxy.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s qmgrprxy.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s wucltux.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s wucltux.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s muweb.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s muweb.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s wuwebv.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s wuwebv.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s quartz.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s quartz.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s msimtf.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s msimtf.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s msctf.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s msctf.dll; & \"$env:windir\\system32\\rundll32.exe\" \"user32.dll,UpdatePerUserSystemParameters ,1 ,True\"; & \"$env:windir\\sysWOW64\\rundll32.exe\" \"user32.dll,UpdatePerUserSystemParameters ,1 ,True\"; @(''HID\\VID_1532&PID_008A&MI_02\\8&2233E4E3&0&0000'',''HID\\VID_1B1C&PID_1B15&MI_00&COL01\\8&12AB0AA0&0&0000'',''HID\\VID_0D8C&PID_000C&MI_03\\8&E0E3017&0&0000'',''HID\\VID_1532&PID_008A&MI_00&COL03\\9&1131C131&0&0000'',''HID\\VID_1532&PID_008A&MI_01&COL02\\8&39F77128&0&0001'',''HID\\VID_1B1C&PID_1B15&MI_00&COL02\\8&12AB0AA0&0&0001'',''HID\\VID_1532&PID_008A&MI_01&COL04\\8&39F77128&0&0003'',''HID\\VID_1532&PID_008A&MI_01&COL05\\8&39F77128&0&0004'',''HID\\VID_1532&PID_008A&MI_01&COL03\\8&39F77128&0&0002'',''HID\\VID_1B1C&PID_1B15&MI_00&COL03\\8&12AB0AA0&0&0002'',''HID\\VID_1B1C&PID_1B15&MI_00&COL04\\8&12AB0AA0&0&0003'',''HID\\VID_1B1C&PID_1B15&MI_01\\8&36824862&0&0000'',''HID\\VID_1532&PID_008A&MI_00\\8&16203366&0&0000'',''HID\\VID_1532&PID_008A&MI_01&COL01\\8&39F77128&0&0000'',''USB\\VID_0D8C&PID_000C&MI_00\\7&995C93B&0&0000'',''USB\\VID_32E6&PID_9221&MI_00\\7&2D495844&0&0000'',''USB\\VID_32E6&PID_9221&MI_02\\7&2D495844&0&0002'',''USB\\VID_32E6&PID_9221\\2024120914230143508'',''USB\\VID_1532&PID_008A&MI_01\\7&36E435ED&1&0001'',''USB\\VID_1532&PID_008A&MI_02\\7&36E435ED&1&0002'',''USB\\VID_0D8C&PID_000C\\6&C1A2E2F&0&1'',''USB\\VID_1532&PID_008A\\6&C1A2E2F&0&2'',''USB\\VID_1B1C&PID_1B15\\15027002AEA7A44454E1DF3EF5001940'',''USB\\VID_0D8C&PID_000C&MI_03\\7&995C93B&0&0003'',''USB\\VID_1532&PID_008A&MI_00\\7&36E435ED&1&0000'',''USB\\VID_1B1C&PID_1B15&MI_00\\7&30365890&0&0000'',''USB\\VID_1B1C&PID_1B15&MI_01\\7&30365890&0&0001'',''USB\\ROOT_HUB30\\5&2C35141&0&0'',''USB\\ROOT_HUB30\\5&2F66366D&0&0'',''USB\\ROOT_HUB30\\5&4087D53&0&0'',''USB\\VID_045E&PID_028E\\20492BE'') | ForEach-Object { pnputil /restart-device $_ }; Start-Sleep -Seconds 2; @(''{4d36e96f-e325-11ce-bfc1-08002be10318}'',''{4d36e96b-e325-11ce-bfc1-08002be10318}'') | ForEach-Object { Get-ChildItem \"HKLM:\\SYSTEM\\CurrentControlSet\\Control\\Class\\$_\" -EA SilentlyContinue | Where-Object { $_.PSChildName -match ''^\\d{4}$'' } | ForEach-Object { try { $p=$_.PSPath; $d=(Get-ItemProperty $p DriverDateData -EA Stop).DriverDateData; $d[$d.Length-1]=0x00; Set-ItemProperty $p DriverDateData $d -Type Binary -Force } catch {} } }; Start-Job { Stop-Service -Name EABackgroundService,ClickToRunSvc,vds,HapticService,''Razer Synapse Service'',''Razer Game Manager Service 3'',''Razer Elevation Service'',''Razer Chroma Stream Server'',''Razer Chroma SDK Service'',''Razer Chroma SDK Server'',''Razer Chroma SDK Diagnostic Service'',NVDisplay.ContainerLocalSystem,EpicGamesUpdater,GoogleUpdaterInternalService*,GoogleUpdaterService*,MBAMService,mbamchameleon,MbamElam,MBAMSwissArmy,MBAMWebProtection,TeamViewer,npcap,InstallService,wuauserv,seclogon,BITS,swprv,wlidsvc,DoSvc,camsvc -Force -ErrorAction SilentlyContinue } | Out-Null; & ''C:\\Program Files (x86)\\Rainmeter\\Rainmeter.exe'' ''!RefreshApp''; & ''C:\\Program Files (x86)\\CCleaner\\CCleaner64.exe'' ''/AUTO''; & ''C:\\Program Files (x86)\\Device Cleanup\\DeviceCleanupCmd.exe'' * -e:''*C-Media*''; $exe=''C:\\Program Files (x86)\\WinMemoryCleaner\\WinMemoryCleaner.exe''; & $exe /CombinedPageList /SystemFileCache /RegistryCache /WorkingSet /ModifiedPageList /ModifiedFileCache /StandbyList; & ''C:\\Users\\Administrator\\Documents\\Set DWM Threads.ps1''; $killList = ''rundll32.exe'',''WindowsTerminal.exe'',''taskkill.exe'',''officeclicktorun.exe'',''vds.exe'',''bitsadmin.exe'',''lodctr.exe'',''WUDFHost.exe'',''fsutil.exe'',''bcdedit.exe'',''VSSVC.exe'',''sc.exe'',''netsh.exe'',''gpupdate.exe'',''msiexec.exe'',''msedgewebview2.exe'',''winget.exe'',''WMIADAP.exe'',''DeviceCleanupCmd.exe'',''WmiPrvSE.exe'',''sppsvc.exe'',''PnPUtil.exe'',''WMIC.exe'',''TiWorker.exe'',''Taskmgr.exe'',''TrustedInstaller.exe'',''powershell_ise.exe'',''OpenConsole.exe'',''conhost.exe'',''cmd.exe'',''powershell.exe''; foreach ($proc in $killList) { try { taskkill /f /t /im $proc } catch { } } }\"' -Verb RunAs; exit\""
+@="powershell.exe -NoProfile -WindowStyle Hidden -Command \"Start-Process -FilePath powershell.exe -ArgumentList '-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -Command \"& { Stop-Process -Name dwm -Force -ErrorAction SilentlyContinue; Start-Sleep -Seconds 3; Stop-Process -Name explorer -Force -ErrorAction SilentlyContinue; Start-Sleep -Seconds 1; Start-Process explorer; netsh http flush logbuffer; netsh interface ip delete arpcache; ipconfig /flushdns; ipconfig /registerdns; & $env:windir\\system32\\lodctr.exe /R; & $env:windir\\syswow64\\lodctr.exe /R; & $env:windir\\syswow64\\wbem\\winmgmt.exe /RESYNCPERF; & $env:windir\\system32\\wbem\\winmgmt.exe /RESYNCPERF; & $env:windir\\system32\\lodctr.exe /e:PerfOS; winmgmt /salvagerepository; fsutil usn deletejournal /d /n C:; fsutil usn deletejournal /d /n D:; fsutil usn deletejournal /d /n E:; fsutil usn deletejournal /d /n F:; fsutil usn deletejournal /d /n G:; logman stop ''Steam Event Tracing'' -ets; logman stop UBPM -ets; logman stop NetCfgTrace -ets; logman stop WindowsUpdate_trace_log -ets; logman stop MoUxCoreWorker -ets; logman stop UpdateSessionOrchestration -ets; logman stop Diagtrack-Listener -ets; logman stop Microsoft-Windows-Rdp-Graphics-RdpIdd-Trace -ets; logman stop SleepStudyTraceSession -ets; logman stop UserNotPresentTraceSession -ets; logman stop NVIDIA-NVTOPPS-FILTER -ets; logman stop NVIDIA-NVTOPPS-NOCAT -ets; logman stop Admin_PS_Provider -ets; logman stop 8696EAC4-1288-4288-A4EE-49EE431B0AD9 -ets; logman stop Microsoft.Windows.UpdateHealthTools -ets; logman stop SiPresentTraceSession -ets; logman stop SiKernelTraceSession -ets; logman stop ''NT Kernel Logger'' -ets; Stop-Process -Name acrotray,adb,''Adobe Crash Processor'',AdobeIPCBroker,Agent,AggregatorHost,ai,alg,ApplicationFrameHost,AppVShNotify,armsvc,attrib,backgroundTaskHost,calculator,CalculatorApp,CCLibrary,CCXProcess,CEPHtmlEngine,cfbackd.w32,CHXSmartScreen,CompPkgSrv,CoreSync,crashhelper,CrashMailer_64,CrashReportClient,CredentialEnrollmentManager,CrossDeviceResume,DashboardNotificationManager,DataExchangeHost,dllhost,drvinst,StartMenu,EABackgroundService,elevation_service,EpicOnlineServicesUserHelper,CCleaner64,EpicWebHelper,fdm,FESearchHost,FileCoAuth,gamebar,GameBarPresFenceWriter,GameInputSvc,GameManagerService,helperservice,HelpPane,hxaccounts,hxoutlook,TrackerUpdate,WindowsCamera,GoogleUpdate,HxTsr,identity_helper,steamservice,provtool,JackettConsole,jcef_helper,UpdateHub,Locator,lockapp,Popcorn-Time,Node,MeasureSleep,MBAMService,memBoost,Microsoft.Photos,MicrosoftEdgeUpdate,MoUsoCoreWorker,MpCmdRun,MpDefenderCoreService,WinaeroTweakerHelper,msdtc,msedgewebview2,UCheck_portable64_win10,msiexec,MsMpEng,NisSrv,nvcplui,NVDisplay.Container,nvidia-smi,officeclicktorun,OneDrive,OSE,PerceptionSimulationService,perfhost,PerfWatson2,CortexLauncherService,GameInputRedistService,RazerCortex,RegWorkshopPortable,RegWorkshopX64,RazerCortex.Shell,PhoneExperienceHost,PhotosService,PickerHost,razer_elevation_service,RzAppManager,RzBTLEManager,RzChromaConnectManager,RzChromaConnectServer,RzChromaStreamServer,RzDeviceManager,RzDeviceManagerEx,RzDiagnosticService,RzEngineMon,RzIoTDeviceManager,RzSDKServer,provtool,RzSDKService,RzSmartlightingDeviceManager,RzWDLDeviceManager,razerwdl,RazerAppEngine,HapticService,GameManagerService3,PresentationFontCache,prevhost,''Razer Central'',''Razer Synapse 3'',''Razer Synapse Service'',''Razer Synapse Service Process'',RazerCentralService,RtkAudUService64,RtkNGUI64,RuntimeBroker,findstr,RRCsrv,SDXHelper,SearchApp,SearchFilterHost,SearchHost,SearchIndexer,SearchProtocolHost,SecurityHealthHost,SecurityHealthService,crashpad_handler,TeamViewer_Service,tv_w32,tv_x64,TeamViewer,java,SelectiveToolApp,aimgr,set-up,setup,ShellExperienceHost,ShellHost,SkypeApp,SkypeBackgroundHost,smartscreen,wevtutil,PnPUtil,AppActions,smss,SMSvcHost,SndVol,SnippingTool,snmptrap,splwow64,spoolsv,SppExtComObj,sppsvc,sqlwriter,ssh,ssh-agent,python,StartMenuExperienceHost,steamerrorreporter,StoreDesktopExtension,RGSUpdater,RGSUpdaterAgent,SystemSettings,SystemSettingsAdminFlows,SystemSettingsBroker,TabTip,taskhostw,Taskmgr,textinputhost,TieringEngineService,TiWorker,TrustedInstaller,uhssvc,UnityCrashHandler64,upfc,userinit,UserOOBEBroker,vds,vdsldr,video.ui,vssadmin,DismHost,Dism,VSSVC,wbengine,werfault,Widgets,WidgetService,wimserv,fireshot-chrome-plugin,WindowsPackageManagerServer,WinStore.App,WinUpdateHelper,WMIADAP,WmiApSrv,WmiPrvSE,WmiPrvSvc,wowreg32,wuauclt,wuaucltcore,WUDFHost,WWAHost,yourphone -Force -ErrorAction SilentlyContinue; Start-Sleep -Seconds 2; Get-Process audiodg,winlogon | ForEach-Object { $_.PriorityClass = ''Idle'' }; Get-Process ctfmon,svchost,ShellHost,RuntimeBroker | ForEach-Object { $_.PriorityClass = ''BelowNormal'' }; & \"$env:windir\\system32\\regsvr32.exe\" /s atl.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s atl.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s urlmon.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s urlmon.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s mshtml.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s mshtml.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s shdocvw.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s shdocvw.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s browseui.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s browseui.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s jscript.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s jscript.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s vbscript.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s vbscript.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s scrrun.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s scrrun.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s msxml.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s msxml.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s msxml2.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s msxml2.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s msxml3.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s msxml3.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s msxml6.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s msxml6.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s actxprxy.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s actxprxy.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s softpub.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s softpub.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s wintrust.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s wintrust.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s dssenh.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s dssenh.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s rsaenh.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s rsaenh.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s gpkcsp.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s gpkcsp.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s sccbase.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s sccbase.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s slbcsp.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s slbcsp.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s cryptdlg.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s cryptdlg.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s oleaut32.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s oleaut32.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s ole32.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s ole32.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s shell32.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s shell32.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s initpki.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s initpki.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s wuapi.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s wuapi.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s wuaueng.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s wuaueng.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s wuaueng1.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s wuaueng1.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s wucltui.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s wucltui.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s wups.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s wups.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s wups2.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s wups2.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s wuweb.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s wuweb.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s qmgr.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s qmgr.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s qmgrprxy.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s qmgrprxy.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s wucltux.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s wucltux.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s muweb.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s muweb.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s wuwebv.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s wuwebv.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s quartz.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s quartz.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s msimtf.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s msimtf.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s msctf.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s msctf.dll; & \"$env:windir\\system32\\rundll32.exe\" \"user32.dll,UpdatePerUserSystemParameters ,1 ,True\"; & \"$env:windir\\sysWOW64\\rundll32.exe\" \"user32.dll,UpdatePerUserSystemParameters ,1 ,True\"; @(''HID\\VID_1532&PID_008A&MI_02\\8&2233E4E3&0&0000'',''HID\\VID_1B1C&PID_1B15&MI_00&COL01\\8&12AB0AA0&0&0000'',''HID\\VID_0D8C&PID_000C&MI_03\\8&E0E3017&0&0000'',''HID\\VID_1532&PID_008A&MI_00&COL03\\9&1131C131&0&0000'',''HID\\VID_1532&PID_008A&MI_01&COL02\\8&39F77128&0&0001'',''HID\\VID_1B1C&PID_1B15&MI_00&COL02\\8&12AB0AA0&0&0001'',''HID\\VID_1532&PID_008A&MI_01&COL04\\8&39F77128&0&0003'',''HID\\VID_1532&PID_008A&MI_01&COL05\\8&39F77128&0&0004'',''HID\\VID_1532&PID_008A&MI_01&COL03\\8&39F77128&0&0002'',''HID\\VID_1B1C&PID_1B15&MI_00&COL03\\8&12AB0AA0&0&0002'',''HID\\VID_1B1C&PID_1B15&MI_00&COL04\\8&12AB0AA0&0&0003'',''HID\\VID_1B1C&PID_1B15&MI_01\\8&36824862&0&0000'',''HID\\VID_1532&PID_008A&MI_00\\8&16203366&0&0000'',''HID\\VID_1532&PID_008A&MI_01&COL01\\8&39F77128&0&0000'',''USB\\VID_0D8C&PID_000C&MI_00\\7&995C93B&0&0000'',''USB\\VID_32E6&PID_9221&MI_00\\7&2D495844&0&0000'',''USB\\VID_32E6&PID_9221&MI_02\\7&2D495844&0&0002'',''USB\\VID_32E6&PID_9221\\2024120914230143508'',''USB\\VID_1532&PID_008A&MI_01\\7&36E435ED&1&0001'',''USB\\VID_1532&PID_008A&MI_02\\7&36E435ED&1&0002'',''USB\\VID_0D8C&PID_000C\\6&C1A2E2F&0&1'',''USB\\VID_1532&PID_008A\\6&C1A2E2F&0&2'',''USB\\VID_1B1C&PID_1B15\\15027002AEA7A44454E1DF3EF5001940'',''USB\\VID_0D8C&PID_000C&MI_03\\7&995C93B&0&0003'',''USB\\VID_1532&PID_008A&MI_00\\7&36E435ED&1&0000'',''USB\\VID_1B1C&PID_1B15&MI_00\\7&30365890&0&0000'',''USB\\VID_1B1C&PID_1B15&MI_01\\7&30365890&0&0001'',''USB\\ROOT_HUB30\\5&2C35141&0&0'',''USB\\ROOT_HUB30\\5&2F66366D&0&0'',''USB\\ROOT_HUB30\\5&4087D53&0&0'',''USB\\VID_045E&PID_028E\\20492BE'') | ForEach-Object { pnputil /restart-device $_ }; Start-Sleep -Seconds 2; @(''{4d36e96f-e325-11ce-bfc1-08002be10318}'',''{4d36e96b-e325-11ce-bfc1-08002be10318}'') | ForEach-Object { Get-ChildItem \"HKLM:\\SYSTEM\\CurrentControlSet\\Control\\Class\\$_\" -EA SilentlyContinue | Where-Object { $_.PSChildName -match ''^\\d{4}$'' } | ForEach-Object { try { $p=$_.PSPath; $d=(Get-ItemProperty $p DriverDateData -EA Stop).DriverDateData; $d[$d.Length-1]=0x00; Set-ItemProperty $p DriverDateData $d -Type Binary -Force } catch {} } }; Start-Job { Stop-Service -Name EABackgroundService,ClickToRunSvc,vds,HapticService,''Razer Synapse Service'',''Razer Game Manager Service 3'',''Razer Elevation Service'',''Razer Chroma Stream Server'',''Razer Chroma SDK Service'',''Razer Chroma SDK Server'',''Razer Chroma SDK Diagnostic Service'',NVDisplay.ContainerLocalSystem,EpicGamesUpdater,GoogleUpdaterInternalService*,GoogleUpdaterService*,MBAMService,mbamchameleon,MbamElam,MBAMSwissArmy,MBAMWebProtection,TeamViewer,npcap,InstallService,wuauserv,seclogon,BITS,swprv,wlidsvc,DoSvc,camsvc -Force -ErrorAction SilentlyContinue } | Out-Null; & ''C:\\Program Files (x86)\\Rainmeter\\Rainmeter.exe'' ''!RefreshApp''; & ''C:\\Program Files (x86)\\CCleaner\\CCleaner64.exe'' ''/AUTO''; & ''C:\\Program Files (x86)\\Device Cleanup\\DeviceCleanupCmd.exe'' * -e:''*C-Media*''; $exe=''C:\\Program Files (x86)\\WinMemoryCleaner\\WinMemoryCleaner.exe''; & $exe /CombinedPageList /SystemFileCache /RegistryCache /WorkingSet /ModifiedPageList /ModifiedFileCache /StandbyList; & ''C:\\Users\\Administrator\\Documents\\Set DWM Threads.ps1''; $killList = ''rundll32.exe'',''WindowsTerminal.exe'',''taskkill.exe'',''officeclicktorun.exe'',''vds.exe'',''bitsadmin.exe'',''lodctr.exe'',''WUDFHost.exe'',''fsutil.exe'',''bcdedit.exe'',''VSSVC.exe'',''sc.exe'',''netsh.exe'',''gpupdate.exe'',''msiexec.exe'',''msedgewebview2.exe'',''winget.exe'',''WMIADAP.exe'',''DeviceCleanupCmd.exe'',''WmiPrvSE.exe'',''sppsvc.exe'',''PnPUtil.exe'',''WMIC.exe'',''TiWorker.exe'',''Taskmgr.exe'',''TrustedInstaller.exe'',''powershell_ise.exe'',''OpenConsole.exe'',''conhost.exe'',''cmd.exe'',''powershell.exe''; foreach ($proc in $killList) { try { taskkill /f /t /im $proc } catch { } } }\"' -Verb RunAs; exit\""
 
 ; netsh branchcache reset; gpupdate /force /wait:0; $p = Get-Process | Where-Object { $_.ProcessName -notin ''System'',''Idle'',''firefox'',''explorer'',''Obsidian'',''EpicWebHelper'',''steamwebhelper'' -and $_.Id -ne 0 } | Sort-Object WorkingSet -Descending | Select-Object -First 1; if ($p) { try { $p.PriorityClass = ''AboveNormal'' } catch { } }; Get-Process audiodg -ErrorAction SilentlyContinue | ForEach-Object { $_.ProcessorAffinity = 1 }; $exe=''C:\\Windows\\System32\\EmptyStandbyList.exe''; & $exe workingsets; & $exe standbylist; Start-Process -FilePath \"$env:USERPROFILE\\AppData\\Local\\FluxSoftware\\Flux\\flux.exe\" -ArgumentList ''/noshow''
 
@@ -4286,6 +4724,17 @@ Windows Registry Editor Version 5.00
 "MUIVerb"="Copy Contents to Clipboard"
 [HKEY_LOCAL_MACHINE\SOFTWARE\Classes\*\shell\CopyContents\command]
 @="powershell.exe -NoProfile -NonInteractive -WindowStyle Hidden -Command \"$p='\"%1\"'; $b=[System.IO.File]::ReadAllBytes($p); $e=if($b.Length -ge 3 -and $b[0] -eq 0xEF -and $b[1] -eq 0xBB -and $b[2] -eq 0xBF){'UTF8'}elseif($b.Length -ge 2 -and $b[0] -eq 0xFF -and $b[1] -eq 0xFE){'Unicode'}elseif($b.Length -ge 2 -and $b[0] -eq 0xFE -and $b[1] -eq 0xFF){'BigEndianUnicode'}else{'UTF8'}; Get-Content -LiteralPath $p -Raw -Encoding $e | Set-Clipboard\""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\DumpProject]
+"MUIVerb"="Save Contents"
+"Icon"="shell32.dll,-258"
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\DumpProject\command]
+@="powershell.exe -NoProfile -NonInteractive -WindowStyle Normal -ExecutionPolicy Bypass -File \"C:\\Users\\Administrator\\Documents\\Set Save Contents.ps1\" -TargetPath \"%1\""
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\Background\shell\DumpProject]
+"MUIVerb"="Save Contents"
+"Icon"="shell32.dll,-258"
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\Background\shell\DumpProject\command]
+@="powershell.exe -NoProfile -NonInteractive -WindowStyle Normal -ExecutionPolicy Bypass -File \"C:\\Users\\Administrator\\Documents\\Set Save Contents.ps1\" -TargetPath \"%V\""
 
 [HKEY_CLASSES_ROOT\*\shell\copyaspath]
 @="Copy as path"
@@ -4802,6 +5251,36 @@ Windows Registry Editor Version 5.00
 "WorkNicely"=dword:00000001
 "WppRecorder_UseTimeStamp"=dword:00000000
 "CursorUpdateInterval"=dword:00000000
+"DisablePointerBallistics"=dword:00000001
+"DisableMousePrediction"=dword:00000001
+"DisableMouseAcceleration"=dword:00000000
+"DisableRuntimePM"=dword:00000001
+"ForceD0"=dword:00000001
+"WheelScrollLines"=dword:00000003
+"MaxReportQueueSize"=dword:00000020
+"DisableReportBatching"=dword:00000001
+"EnableRawInput"=dword:00000001
+"DisableReportBuffering"=dword:00000001
+"DisableWaitWakeIrp"=dword:00000001
+"EnableLowLatencyRead"=dword:00000001
+"DisableReportCoalescing"=dword:00000001
+"DisableEtwEvents"=dword:00000001
+"DisableSelectiveSuspend"=dword:00000001
+"FlipFlopHScroll"=dword:00000000
+"DisableEnhancedPointerPrecision"=dword:00000001
+"DisableD3Cold"=dword:00000001
+"DisablePerformanceCounters"=dword:00000001
+"FlipFlopWheel"=dword:00000000
+"EnableDirectReportProcessing"=dword:00000001
+"DisableTelemetry"=dword:00000001
+"EnableImmediateInputReportDelivery"=dword:00000001
+"DisableMouseSmoothing"=dword:00000001
+"EnableInlineReportProcessing"=dword:00000001
+"DisableWppTracing"=dword:00000001
+"ForceMaxPower"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\ControlSet001\Services\mouhid\Performance]
+"Disable Performance Counters"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Input]
 "AllowRawInputExclusive"=dword:00000001
@@ -5814,6 +6293,7 @@ Windows Registry Editor Version 5.00
 "ShowOrHideMostUsedApps"=dword:00000002
 
 [HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\Explorer]
+"TaskbarNoThumbnail"=dword:00000001
 "ToastEnabled"=dword:00000000
 "AlwaysShowNotificationIcon"=dword:00000000
 "CheckSameSourceAndTargetForFRAndDFS"=dword:00000000
@@ -6774,6 +7254,10 @@ Windows Registry Editor Version 5.00
 "debugger"="Blocked"
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\M365Copilot.exe]
 "debugger"="Blocked"
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\RGSUpdater.exe]
+"debugger"="Blocked"
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\RGSUpdaterAgent.exe]
+"debugger"="Blocked"
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer\DisallowRun]
 "1"="wlms.exe"
@@ -6929,6 +7413,8 @@ Windows Registry Editor Version 5.00
 "151"="OneDriveStandaloneUpdater.exe"
 "152"="Webviewhost.exe"
 "153"="M365Copilot.exe"
+"154"="RGSUpdater.exe" ; razer
+"155"="RGSUpdaterAgent.exe" ; razer
 
 [HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\8\3036241548]
 "EnabledState"=dword:00000001
@@ -9755,6 +10241,8 @@ Windows Registry Editor Version 5.00
 ; "SmoothMouseYCurve"=hex:00,00,00,00,00,00,00,00,66,a6,02,00,00,00,00,00,cd,4c,05,00,00,00,00,00,a0,99,0a,00,00,00,00,00,38,33,15,00,00,00,00,00
 ; "SmoothMouseXCurve"=hex:00,00,00,00,00,00,00,00,c0,cc,0c,00,00,00,00,00,80,99,19,00,00,00,00,00,40,66,26,00,00,00,00,00,00,33,33,00,00,00,00,00
 ; "SmoothMouseYCurve"=hex:00,00,00,00,00,00,00,00,00,00,38,00,00,00,00,00,00,00,70,00,00,00,00,00,00,00,a8,00,00,00,00,00,00,00,e0,00,00,00,00,00
+; "SmoothMouseYCurve"=hex(3):00,00,00,00,00,00,00,00,66,A6,02,00,00,00,00,00,CD,4C,05,00,00,00,00,00,A0,99,0A,00,00,00,00,00,38,33,15,00,00,00,00,00
+; "SmoothMouseXCurve"=hex(3):00,00,00,00,00,00,00,00,00,A0,00,00,00,00,00,00,00,40,01,00,00,00,00,00,00,80,02,00,00,00,00,00,00,00,05,00,00,00,00,00
 
 [HKEY_USERS\.DEFAULT\Control Panel\Mouse]
 "ActiveWindowTracking"=dword:00000000
@@ -9797,6 +10285,8 @@ Windows Registry Editor Version 5.00
 ; "SmoothMouseYCurve"=hex:00,00,00,00,00,00,00,00,66,a6,02,00,00,00,00,00,cd,4c,05,00,00,00,00,00,a0,99,0a,00,00,00,00,00,38,33,15,00,00,00,00,00
 ; "SmoothMouseXCurve"=hex:00,00,00,00,00,00,00,00,c0,cc,0c,00,00,00,00,00,80,99,19,00,00,00,00,00,40,66,26,00,00,00,00,00,00,33,33,00,00,00,00,00
 ; "SmoothMouseYCurve"=hex:00,00,00,00,00,00,00,00,00,00,38,00,00,00,00,00,00,00,70,00,00,00,00,00,00,00,a8,00,00,00,00,00,00,00,e0,00,00,00,00,00
+; "SmoothMouseYCurve"=hex(3):00,00,00,00,00,00,00,00,66,A6,02,00,00,00,00,00,CD,4C,05,00,00,00,00,00,A0,99,0A,00,00,00,00,00,38,33,15,00,00,00,00,00
+; "SmoothMouseXCurve"=hex(3):00,00,00,00,00,00,00,00,00,A0,00,00,00,00,00,00,00,40,01,00,00,00,00,00,00,80,02,00,00,00,00,00,00,00,05,00,00,00,00,00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Paint]
 "DisableCocreator"=dword:00000001
@@ -11021,6 +11511,8 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\EpicGamesUpdater]
 "Start"=dword:00000003 ; 00000002, 00000003
+[HKEY_LOCAL_MACHINE\System\ControlSet001\Services\EpicOnlineServices]
+"Start"=dword:00000002
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\FvSvc]
 "Start"=dword:00000004
@@ -11123,6 +11615,53 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\CmitUpdateAgent]
 "Start"=dword:00000004
+
+[HKEY_LOCAL_MACHINE\System\ControlSet001\Services\hidclass]
+"Start"=dword:00000003
+
+[HKEY_LOCAL_MACHINE\System\ControlSet001\Services\hidclass\Parameters]
+"DisableReportBuffering"=dword:00000001
+"DisableReportCoalescing"=dword:00000001
+"EnableImmediateInputReportDelivery"=dword:00000001
+"EnableInlineReportProcessing"=dword:00000001
+"ForceMaxPower"=dword:00000001
+"DisableReportDescriptorValidation"=dword:00000000
+"DisableSelectiveSuspend"=dword:00000001
+"ForceD0"=dword:00000001
+"IdleTimeoutMs"=dword:00000000
+"EnableFastCollectionLookup"=dword:00000001
+"DisableReportBatching"=dword:00000001
+"EnableDirectReportProcessing"=dword:00000001
+"DisablePreparsedDataCaching"=dword:00000000
+"DisablePowerTracing"=dword:00000001
+"DisablePowerPolicyOwnership"=dword:00000001
+"InputReportQueueDepth"=dword:00000020
+"DisableCollectionCaching"=dword:00000000
+"DisableCollectionTracing"=dword:00000001
+"DisableReportTracing"=dword:00000001
+"ReportProcessingPriority"=dword:00000001
+"DisableWaitWakeIrp"=dword:00000001
+"DisableWppTracing"=dword:00000001
+"DisablePerformanceCounters"=dword:00000001
+"DisableD3Cold"=dword:00000001
+"DisableOutputReportBuffering"=dword:00000001
+"DisableActivityDetection"=dword:00000001
+"DisableTelemetry"=dword:00000001
+"DisableSystemWake"=dword:00000001
+"DisableInputReportQueue"=dword:00000000
+"DisableEtwEvents"=dword:00000001
+"EnableMinimalReportParsing"=dword:00000001
+"DisableRuntimePM"=dword:00000001
+"MaxReportQueueSize"=dword:00000020
+"EnableLowLatencyRead"=dword:00000001
+"DisableIfrTracing"=dword:00000001
+"MaxCachedCollections"=dword:00000020
+"DisableIdlePowerManagement"=dword:00000001
+"DisableIdleDetection"=dword:00000001
+"DisableFeatureReportCaching"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\ControlSet001\Services\hidclass\Performance]
+"Disable Performance Counters"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\EventLog\System\Microsoft-Antimalware-ShieldProvider]
 "Start"=dword:00000004
@@ -11301,7 +11840,8 @@ Windows Registry Editor Version 5.00
 "Enabled"=dword:00000000
 ; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\Eventlog-Security]
 ; "Start"=dword:00000000
-; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-Application]
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-Application]
+"Status"=-
 ; "Start"=dword:00000000
 ; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System]
 ; "Start"=dword:00000000
@@ -11385,6 +11925,18 @@ Windows Registry Editor Version 5.00
 "Start"=dword:00000000
 "Enabled"=dword:00000000
 
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\WMI\Autologger\EventLog-Application\{13b197bd-7cee-4b4e-8dd0-59314ce374ce}]
+"Start"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\System\ControlSet001\Control\WMI\Autologger\EventLog-Application\{1bd672b8-445e-53fc-35ef-09f53672c385}]
+"Start"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\System\ControlSet001\Control\WMI\Autologger\EventLog-Application\{23f0f2c7-c77c-51ee-0ac1-5ac7796a85df}]
+"Start"=dword:00000000
+"Enabled"=dword:00000000
+
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\8696EAC4-1288-4288-A4EE-49EE431B0AD9]
 "Start"=dword:00000000
 "Enabled"=dword:00000000
@@ -11401,6 +11953,7 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-Application\{06edcfeb-0fd0-4e53-acca-a6f8bbf81bcb}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-Application\{08466062-aed4-4834-8b04-cddb414504e5}]
 "Enabled"=dword:00000000
@@ -11481,6 +12034,119 @@ Windows Registry Editor Version 5.00
 "Enabled"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-Application\{2a45d52e-bbf3-4843-8e18-b356ed5f6a65}]
+"Enabled"=dword:00000000
+"Status"=-
+
+[HKEY_LOCAL_MACHINE\System\ControlSet001\Control\WMI\Autologger\EventLog-Application\{34b02aa4-be24-55e0-4eb1-d29469a2d79c}]
+"Start"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\System\ControlSet001\Control\WMI\Autologger\EventLog-Application\{3e5ac668-af52-4c15-b99b-a3e7a6616ebd}]
+"Start"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\System\ControlSet001\Control\WMI\Autologger\EventLog-Application\{4053fada-178b-5aa8-746b-7cf8538b5118}]
+"Start"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\System\ControlSet001\Control\WMI\Autologger\EventLog-Application\{43833e12-078d-4d7d-8aaf-ae8c8520f18c}]
+"Start"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\System\ControlSet001\Control\WMI\Autologger\EventLog-Application\{47ae8351-b61a-51d1-0ad0-9d870c38f53a}]
+"Start"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\System\ControlSet001\Control\WMI\Autologger\EventLog-Application\{4969de67-439c-516f-f805-a82a4f905730}]
+"Start"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\System\ControlSet001\Control\WMI\Autologger\EventLog-Application\{4afddfde-002d-51ac-c109-c3b7897858d0}]
+"Start"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\System\ControlSet001\Control\WMI\Autologger\EventLog-Application\{5909c524-5e57-5275-803f-ddb7b74c52f2}]
+"Start"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\System\ControlSet001\Control\WMI\Autologger\EventLog-Application\{63dd5dfb-2488-5e1f-7895-d49ff5bc7125}]
+"Start"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\System\ControlSet001\Control\WMI\Autologger\EventLog-Application\{6e0df32c-7f11-54f7-e8ee-5ad4032727ce}]
+"Start"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\System\ControlSet001\Control\WMI\Autologger\EventLog-Application\{7d44233d-3055-4b9c-ba64-0d47ca40a232}]
+"Start"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\System\ControlSet001\Control\WMI\Autologger\EventLog-Application\{7f9d83de-8abb-457f-98e8-4ad161449ecc}]
+"Start"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\System\ControlSet001\Control\WMI\Autologger\EventLog-Application\{9ae87b12-a014-5288-92df-e3030981ebab}]
+"Start"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\System\ControlSet001\Control\WMI\Autologger\EventLog-Application\{a70ff94f-570b-4979-ba5c-e59c9feab61b}]
+"Start"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\System\ControlSet001\Control\WMI\Autologger\EventLog-Application\{aa018a01-3747-532b-94ec-5d87dc3a5085}]
+"Start"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\System\ControlSet001\Control\WMI\Autologger\EventLog-Application\{b714b892-f158-5534-4459-c019aff66d48}]
+"Start"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\System\ControlSet001\Control\WMI\Autologger\EventLog-Application\{bab3ad92-fb96-5902-450b-b8421bdec7bd}]
+"Start"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\System\ControlSet001\Control\WMI\Autologger\EventLog-Application\{bc1bdb57-71a2-581a-147b-e0b49474a2d4}]
+"Start"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\System\ControlSet001\Control\WMI\Autologger\EventLog-Application\{cffb980e-327c-5b87-19c6-62c4c3be2290}]
+"Start"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\System\ControlSet001\Control\WMI\Autologger\EventLog-Application\{d3610dca-4501-5a5d-21a7-30ca91130711}]
+"Start"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\System\ControlSet001\Control\WMI\Autologger\EventLog-Application\{d67fbb76-d18a-5ae3-24a3-8c1db52d6c62}]
+"Start"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\System\ControlSet001\Control\WMI\Autologger\EventLog-Application\{dc327e90-7748-58ed-f39c-8a8987cfac58}]
+"Start"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\System\ControlSet001\Control\WMI\Autologger\EventLog-Application\{dc84bbf4-cded-56ef-bf3b-e2051d5589d5}]
+"Start"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\System\ControlSet001\Control\WMI\Autologger\EventLog-Application\{e23b33b0-c8c9-472c-a5f9-f2bdfea0f156}]
+"Start"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\System\ControlSet001\Control\WMI\Autologger\EventLog-Application\{e8ed09dc-100c-45e2-9fc8-b53399ec1f70}]
+"Start"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\System\ControlSet001\Control\WMI\Autologger\EventLog-Application\{e934e6dd-62be-55d8-1cc8-416d0039498b}]
+"Start"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\System\ControlSet001\Control\WMI\Autologger\EventLog-Application\{eb65a492-86c0-406a-bace-9912d595bd69}]
+"Start"=dword:00000000
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\System\ControlSet001\Control\WMI\Autologger\EventLog-Application\{fa9b1e85-670b-55a0-1d42-74ccaa1c85e3}]
+"Start"=dword:00000000
 "Enabled"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-Application\{2a576b87-09a7-520e-c21a-4942f0271d67}]
@@ -12112,384 +12778,534 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{04268430-d489-424d-b914-0cff741d6684}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{059f0f37-910e-4ff0-a7ee-ae8d49dd319b}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{05f02597-fe85-4e67-8542-69567ab8fd4f}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{06edcfeb-0fd0-4e53-acca-a6f8bbf81bcb}]
 "Enabled"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{0b886108-1899-4d3a-9c0d-42d8fc4b9108}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{0b9fdccc-451c-449c-9bd8-6756fcc6091a}]
 "Enabled"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{0bf2fb94-7b60-4b4d-9766-e82f658df540}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{0c478c5b-0351-41b1-8c58-4a6737da32e3}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{0d4fdc09-8c27-494a-bda0-505e4fd8adae}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{0f67e49f-fe51-4e9f-b490-6f2948cc6027}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{0fa2ee03-1feb-5057-3bb3-eb25521b8482}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{11c5d8ad-756a-42c2-8087-eb1b4a72a846}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{11cd958a-c507-4ef3-b3f2-5fd9dfbd2c78}]
 "Enabled"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{125f2cf1-2768-4d33-976e-527137d080f8}]
 "Enabled"=dword:00000000
+"Status"=-
+
+[HKEY_LOCAL_MACHINE\System\ControlSet001\Control\WMI\Autologger\EventLog-System\{152fbe4b-c7ad-4f68-bada-a4fcc1464f6c}]
+"Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{15a7a4f8-0072-4eab-abad-f98a4d666aed}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{15ca44ff-4d7a-4baa-bba5-0998955e531e}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{199fe037-2b82-40a9-82ac-e1d46c792b99}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{1b562e86-b7aa-4131-badc-b6f3a001407e}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{1b6b0772-251b-4d42-917d-faca166bc059}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{1c95126e-7eea-49a9-a3fe-a378b03ddb4d}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{1db28f2e-8f80-4027-8c5a-a11f7f10f62d}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{1e9a4978-78c2-441e-8858-75b5d1326bc5}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{1f678132-5938-4686-9fdc-c8ff68f15c85}]
 "Enabled"=dword:00000000
+"Status"=-
+
+[HKEY_LOCAL_MACHINE\System\ControlSet001\Control\WMI\Autologger\EventLog-System\{1f7a6c55-5532-573b-35b7-2107e43a6ef5}]
+"Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{206f6dea-d3c5-4d10-bc72-989f03c8b84b}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{21b7c16e-c5af-4a69-a74a-7245481c1b97}]
 "Enabled"=dword:00000000
+"Status"=-
+
+[HKEY_LOCAL_MACHINE\System\ControlSet001\Control\WMI\Autologger\EventLog-System\{2bef5442-d402-5a72-58e1-cb7e491bf179}]
+"Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{2a274310-42d5-4019-b816-e4b8c7abe95c}]
 "Enabled"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{2e35aaeb-857f-4beb-a418-2e6c0e54d988}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{2e6cb42e-161d-413b-a6c1-84ca4c1e5890}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{2f07e2ee-15db-40f1-90ef-9d7ba282188a}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{2ff3e6b7-cb90-4700-9621-443f389734ed}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{306c4e0b-e148-543d-315b-c618eb93157c}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{30e1d284-5d88-459c-83fd-6345b39b19ec}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{331c3b3a-2005-44c2-ac5e-77220c37d6b4}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{355c44fe-0c8e-4bf8-be28-8bc7b5a42720}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{3629dd4d-d6f1-4302-a623-0768b51501c7}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{36c23e18-0e66-11d9-bbeb-505054503030}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{3903d5b9-988d-4c31-9ccd-4022f96703f0}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{3cb2a168-fe19-4a4e-bdad-dcf422f13473}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{3e59a529-b0b3-4a11-8129-9ffe6bb46eb9}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{3f471139-acb7-4a01-b7a7-ff5da4ba2d43}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{3ff37a1c-a68d-4d6e-8c9b-f79e8b16c482}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{40783728-8921-45d0-b231-919037b4b4fd}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{412bdff2-a8c4-470d-8f33-63fe0d8c20e2}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{43e63da5-41d1-4fbf-aded-1bbed98fdd1d}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{45eec9e5-4a1b-5446-7ad8-a4ab1313c437}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{46c78e5c-a213-46a8-8a6b-622f6916201d}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{47bc9477-a8ba-452e-b951-4f2ed3593cf9}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{47bfa2b7-bd54-4fac-b70b-29021084ca8f}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{494e7a3d-8db9-4ec4-b43e-2844af6e38d6}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{4af188ac-e9c4-4c11-b07b-1fabc07dfeb2}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{4cb314df-c11f-47d7-9c04-65fb0051561b}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{4cec9c95-a65f-4591-b5c4-30100e51d870}]
 "Enabled"=dword:00000000
+"Status"=-
+
+[HKEY_LOCAL_MACHINE\System\ControlSet001\Control\WMI\Autologger\EventLog-System\{4fcc72a9-d7ca-5dd2-8d34-6f41a0cdb7e0}]
+"Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{4ee76bd8-3cf4-44a0-a0ac-3937643e37a3}]
 "Enabled"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{52fc89f8-995e-434c-a91e-199986449890}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{530fb9b9-c515-4472-9313-fb346f9255e3}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{538cbbad-4877-4eb2-b26e-7caee8f0f8cb}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{54cb22ff-26b4-4393-a8c2-6b0715912c5f}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{555908d1-a6d7-4695-8e1e-26931d2012f4}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{55ab77f6-fa04-43ef-af45-688fbf500482}]
 "Enabled"=dword:00000000
+"Status"=-
+
+[HKEY_LOCAL_MACHINE\System\ControlSet001\Control\WMI\Autologger\EventLog-System\{5909c524-5e57-5275-803f-ddb7b74c52f2}]
+"Enabled"=dword:00000000
+"Status"=-
+
+[HKEY_LOCAL_MACHINE\System\ControlSet001\Control\WMI\Autologger\EventLog-System\{5931d877-4860-4ee7-a95c-610a5f0d1407}]
+"Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{595f7f52-c90a-4026-a125-8eb5e083f15e}]
 "Enabled"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{5d674230-ca9f-11da-a94d-0800200c9a66}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{5d896912-022d-40aa-a3a8-4fa5515c76d7}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{5f92bc59-248f-4111-86a9-e393e12c6139}]
 "Enabled"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{62de9e48-90c6-4755-8813-6a7d655b0802}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{632f767e-0ec3-47b9-ba1c-a0e62a74728a}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{63d1e632-95cc-4443-9312-af927761d52a}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{64ef2b1c-4ae1-4e64-8599-1636e441ec88}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{651df93b-5053-4d1e-94c5-f6e6d25908d0}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{66a5c15c-4f8e-4044-bf6e-71d896038977}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{67fe2216-727a-40cb-94b2-c02211edb34a}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{6a1f2b00-6a90-4c38-95a5-5cab3b056778}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{6b93bf66-a922-4c11-a617-cf60d95c133d}]
 "Enabled"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{6bba3851-2c7e-4dea-8f54-31e5afd029e3}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{7237fff9-a08a-4804-9c79-4a8704b70b87}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{72cd9ff7-4af8-4b89-aede-5f26fda13567}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{73a33ab2-1966-4999-8add-868c41415269}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{73e9c9de-a148-41f7-b1db-4da051fdc327}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{74c2135f-cc76-45c3-879a-ef3bb1eeaf86}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{75ebc33e-997f-49cf-b49f-ecc50184b75d}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{7725b5f9-1f2e-4e21-baeb-b2af4690bc87}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{7b563579-53c8-44e7-8236-0f87b9fe6594}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{7b6bc78c-898b-4170-bbf8-1a469ea43fc5}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{7d5387b0-cbe0-11da-a94d-0800200c9a66}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{7da4fe0e-fd42-4708-9aa5-89b77a224885}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{85a62a0d-7e17-485f-9d4f-749a287193a6}]
+"Enabled"=dword:00000000
+"Status"=-
+
+[HKEY_LOCAL_MACHINE\System\ControlSet001\Control\WMI\Autologger\EventLog-System\{84de80eb-86e8-4ff6-85a6-9319abd578a4}]
 "Enabled"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{89203471-d554-47d4-bde4-7552ec219999}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{89592015-d996-4636-8f61-066b5d4dd739}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{89fe8f40-cdce-464e-8217-15ef97d4c7c3}]
 "Enabled"=dword:00000000
+"Status"=-
+
+[HKEY_LOCAL_MACHINE\System\ControlSet001\Control\WMI\Autologger\EventLog-System\{928f7d29-0577-5be5-3bd3-b6bdab9ab307}]
+"Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{8c416c79-d49b-4f01-a467-e56d3aa8234c}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{8e6a5303-a4ce-498f-afdb-e03a8a82b077}]
 "Enabled"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{945a8954-c147-4acd-923f-40c45405a658}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{951b41ea-c830-44dc-a671-e2c9958809b8}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{95353826-4fbe-41d4-9c42-f521c6e86360}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{9580d7dd-0379-4658-9870-d5be7d52d6de}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{96f4a050-7e31-453c-88be-9634f4e02139}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{9741fd4e-3757-479f-a3c6-fc49f6d5edd0}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{988c59c5-0a1c-45b6-a555-0c62276e327d}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{991f8fe6-249d-44d6-b93d-5a3060c1dedb}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{9988748e-c2e8-4054-85f6-0c3e1cad2470}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{9c205a39-1250-487d-abd7-e831c6290539}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{9f650c63-9409-453c-a652-83d7185a2e83}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{9f7b5df4-b902-48bc-bc94-95068c6c7d26}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{a0e3d8ea-c34f-4419-a1db-90435b8b21d0}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{a4445c76-ed85-c8a3-02c1-532a38614a9e}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{a67075c2-3e39-4109-b6cd-6d750058a731}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{a68ca8b7-004f-d7b6-a698-07e2de0f1f5d}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{a6ad76e3-867a-4635-91b3-4904ba6374d7}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{a7f2235f-be51-51ed-decf-f4498812a9a2}]
 "Enabled"=dword:00000000
+"Status"=-
+
+[HKEY_LOCAL_MACHINE\System\ControlSet001\Control\WMI\Autologger\EventLog-System\{a82fda5d-745f-409c-b0fe-18ae0678a0e0}]
+"Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{a8a1f2f6-a13a-45e9-b1fe-3419569e5ef2}]
+"Enabled"=dword:00000000
+"Status"=-
+
+[HKEY_LOCAL_MACHINE\System\ControlSet001\Control\WMI\Autologger\EventLog-System\{a963a23c-0058-521d-71ec-a1cce6173f21}]
+"Status"=-
 "Enabled"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{aa3aa23b-bb6d-425a-b58c-1d7e37f5d02a}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{abf1f586-2e50-4ba8-928d-49044e6f0db7}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{ac43300d-5fcc-4800-8e99-1bd3f85f0320}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{ac52ad17-cc01-4f85-8df5-4dce4333c99b}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{ad5162d8-daf0-4a25-88a7-01cbeb33902e}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{ae4bd3be-f36f-45b6-8d21-bdd6fb832853}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{aea1b4fa-97d1-45f2-a64c-4d69fffd92c9}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{aec5c129-7c10-407d-be97-91a042c61aaa}]
 "Enabled"=dword:00000000
-
+"Status"=-
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{b0aa8734-56f7-41cc-b2f4-de228e98b946}]
 "Enabled"=dword:00000000
-
+"Status"=-
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{b2fcd41f-9a40-4150-8c92-b224b7d8c8aa}]
 "Enabled"=dword:00000000
-
+"Status"=-
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{b675ec37-bdb6-4648-bc92-f3fdc74d3ca2}]
 "Enabled"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{b977cf02-76f6-df84-cc1a-6a4b232322b6}]
 "Enabled"=dword:00000000
-
+"Status"=-
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{b99317e5-89b7-4c0d-abd1-6e705f7912dc}]
 "Enabled"=dword:00000000
-
+"Status"=-
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{ba093605-3909-4345-990b-26b746adee0a}]
 "Enabled"=dword:00000000
-
+"Status"=-
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{ba2ffb5c-e20a-4fb9-91b4-45f61b4b66a0}]
 "Enabled"=dword:00000000
-
+"Status"=-
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{babda89a-4d5e-48eb-af3d-e0e8410207c0}]
 "Enabled"=dword:00000000
-
+"Status"=-
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{bc0669e1-a10d-4a78-834e-1ca3c806c93b}]
 "Enabled"=dword:00000000
-
+"Status"=-
+[HKEY_LOCAL_MACHINE\System\ControlSet001\Control\WMI\Autologger\EventLog-System\{bef2aa8e-81cd-11e2-a7bb-5eac6188709b}]
+"Enabled"=dword:00000000
+"Status"=-
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{c02afc2b-e24e-4449-ad76-bcc2c2575ead}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{c03715ce-ea6f-5b67-4449-da1d1e1afeb8}]
 "Enabled"=dword:00000000
@@ -12499,56 +13315,86 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{c26c4f3c-3f66-4e99-8f8a-39405cfed220}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{c4636a1e-7986-4646-bf10-7bc3b4a76e8e}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{c76baa63-ae81-421c-b425-340b4b24157f}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{c914f0df-835a-4a22-8c70-732c9a80c634}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{cb017cd2-1f37-4e65-82bc-3e91f6a37559}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{cbda4dbf-8d5d-4f69-9578-be14aa540d22}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{cd9c6198-bf73-4106-803b-c17d26559018}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{cdc05e28-c449-49c6-b9d2-88cf761644df}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{cdead503-17f5-4a3e-b7ae-df8cc2902eb9}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{ce8dee0b-d539-4000-b0f8-77bed049c590}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{cfc18ec0-96b1-4eba-961b-622caee05b0a}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{d0e22efc-ac66-4b25-a72d-382736b5e940}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{d1bc9aff-2abf-4d71-9146-ecb2a986eb85}]
 "Enabled"=dword:00000000
+"Status"=-
+
+[HKEY_LOCAL_MACHINE\System\ControlSet001\Control\WMI\Autologger\EventLog-System\{d386cc7a-620a-41c1-abf5-55018c6c699a}]
+"Enabled"=dword:00000000
+"EnableLevel"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{d48ce617-33a2-4bc3-a5c7-11aa4f29619e}]
 "Enabled"=dword:00000000
+"Status"=-
+
+[HKEY_LOCAL_MACHINE\System\ControlSet001\Control\WMI\Autologger\EventLog-System\{d4aeac44-ad44-456e-9c90-33f8cdced6af}]
+"EnableProperty"=dword:00000000
+"EnableLevel"=dword:00000000
+"Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{d5c25f9a-4d47-493e-9184-40dd397a004d}]
 "Enabled"=dword:00000000
-
+"Status"=-
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{d6f68875-cdf5-43a5-a3e3-53ffd683311c}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{dbe9b383-7cf3-4331-91cc-a3cb16a3b538}]
 "Enabled"=dword:00000000
-
+"Status"=-
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{dd70bc80-ef44-421b-8ac3-cd31da613a4e}]
+"Enabled"=dword:00000000
+"Status"=-
+
+[HKEY_LOCAL_MACHINE\System\ControlSet001\Control\WMI\Autologger\EventLog-System\{dd5ef90a-6398-47a4-ad34-4dcecdef795f}]
+"Status"=-
 "Enabled"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{de29cf61-5ee6-43ff-9aac-959c4e13cc6c}]
@@ -12556,61 +13402,76 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{de7b24ea-73c8-4a09-985d-5bdadcfa9017}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{dea07764-0790-44de-b9c4-49677b17174f}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{e104fb41-6b04-4f3a-b47d-f0df2f02b954}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{e2816346-87f4-4f85-95c3-0c79409aa89d}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{e3bac9f8-27be-4823-8d7f-1cc320c05fa7}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{e4480490-85b6-11dd-ad8b-0800200c9a66}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{e4f68870-5ae8-4e5b-9ce7-ca9ed75b0245}]
 "Enabled"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{e595f735-b42a-494b-afcd-b68666945cd3}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{e5ba83f6-07d0-46b1-8bc7-7e669a1d31dc}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{e670a5a2-ce74-4ab4-9347-61b815319f4c}]
+"Enabled"=dword:00000000
+"Status"=-
+
+[HKEY_LOCAL_MACHINE\System\ControlSet001\Control\WMI\Autologger\EventLog-System\{ed8cc261-2123-567e-063e-75fc5f8e8a48}]
+"Status"=-
 "Enabled"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{e8f9af91-afbe-5a03-dfec-5d591686326c}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{ea216962-877b-5b73-f7c5-8aef5375959e}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{eee173ef-7ed2-45de-9877-01c70a852fbd}]
 "Enabled"=dword:00000000
-
+"Status"=-
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{ef1cc15b-46c1-414e-bb95-e76b077bd51e}]
 "Enabled"=dword:00000000
-
+"Status"=-
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{f029ac39-38f0-4a40-b7de-404d244004cb}]
 "Enabled"=dword:00000000
-
+"Status"=-
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{f2e2ce31-0e8a-4e46-a03b-2e0fe97e93c2}]
 "Enabled"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{f3c5e28e-63f6-49c7-a204-e48a1bc4b09d}]
 "Enabled"=dword:00000000
-
+"Status"=-
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{f5d05b38-80a6-4653-825d-c414e4ab3c68}]
 "Enabled"=dword:00000000
-
+"Status"=-
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{f708c483-4880-11e6-9121-5cf37068b67b}]
 "Enabled"=dword:00000000
-
+"Status"=-
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{f717d024-f5b4-4f03-9ab9-331b2dc38ffb}]
 "Enabled"=dword:00000000
 
@@ -12622,9 +13483,16 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{fc4e8f51-7a04-4bab-8b91-6321416f72ab}]
 "Enabled"=dword:00000000
+"Status"=-
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{fc65ddd8-d6ef-4962-83d5-6e5cfe9ce148}]
 "Enabled"=dword:00000000
+"Status"=-
+[-HKEY_LOCAL_MACHINE\System\ControlSet001\Control\WMI\Autologger\OCUSBVID]
+
+[-HKEY_LOCAL_MACHINE\System\ControlSet001\Control\WMI\Autologger\Microsoft-Windows-Dedup-Filter-Log]
+[-HKEY_LOCAL_MACHINE\System\ControlSet001\Control\WMI\Autologger\Microsoft-Windows-Dedup-Filter-Trace]
+
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-System\{fcbb06bb-6a2a-46e3-abaa-246cb4e508b2}]
 "Enabled"=dword:00000000
@@ -12987,6 +13855,10 @@ Windows Registry Editor Version 5.00
 "DCSettingIndex"=dword:00000000
 "ACSettingIndex"=dword:00000000
 
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\abfc2519-3608-4c2a-94ea-171b0ed546ab]
+"ACSettingIndex"=dword:00000000
+"DCSettingIndex"=dword:00000000
+
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\238C9FA8-0AAD-41ED-83F4-97BE242C8F20]
 "BD3B718A-0680-4D9D-8AB2-E1D2B4AC806D"="0"
 "F15576E8-98B7-4186-B944-EAFA664402D9"="0"
@@ -13066,7 +13938,7 @@ Windows Registry Editor Version 5.00
 "AlwaysHibernateThumbnails"=dword:00000000
 "EnableAeroPeek"=dword:00000000
 "MinAnimate"=dword:00000000
-"VisualFXSetting"=dword:00000003
+"VisualFXSetting"=dword:00000003 ; 00000002/00000003
 
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects\AnimateMinMax]
 "DefaultApplied"="0"
@@ -13452,6 +14324,32 @@ Windows Registry Editor Version 5.00
 "MaximumTransferLength"=dword:00200000
 "PollingInterval"=dword:00000000
 
+[HKEY_LOCAL_MACHINE\System\ControlSet001\Services\USBSTOR\Parameters]
+"DisableEtwEvents"=dword:00000001
+"DisableDeviceSuspend"=dword:00000001
+"DisableTelemetry"=dword:00000001
+"DisableWriteCache"=dword:00000000
+"DisableWppTracing"=dword:00000001
+"EnableWriteCache"=dword:00000001
+"DisableD3Cold"=dword:00000001
+"EnableStorageIdlePolicy"=dword:00000000
+"DisableTaggedQueuing"=dword:00000000
+"MaxTransferLength"=dword:00100000
+"ForceD0"=dword:00000001
+"DisableSystemWake"=dword:00000001
+"DisableIdlePowerManagement"=dword:00000001
+"DisableRemoteWakeup"=dword:00000001
+"DisableWaitWakeIrp"=dword:00000001
+"DisableRuntimePM"=dword:00000001
+"DisablePerformanceCounters"=dword:00000001
+"ForceMaxPower"=dword:00000001
+"DisableD3"=dword:00000001
+"IdleTimeoutMs"=dword:00000000
+"DisableSelectiveSuspend"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\ControlSet001\Services\USBSTOR\Performance]
+"Disable Performance Counters"=dword:00000001
+
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\AccountNotifications]
 "DisableAccountNotifications"=dword:00000001
 
@@ -13463,6 +14361,13 @@ Windows Registry Editor Version 5.00
 "MicrophonePrivacyToastFired"=dword:00000000
 "ScreenReaderDuckingPreference"=dword:00000000
 "UserDuckingPreference"=dword:00000003
+; "DisableAudioEnhancements"=dword:00000001
+
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\.Default\WindowsLogon\.Current]
+@=""
+
+[HKEY_CURRENT_USER\AppEvents\Schemes\Apps\.Default\WindowsLogoff\.Current]
+@=""
 
 [HKEY_CURRENT_USER\Keyboard Layout\Toggle]
 "Hotkey"="3"
@@ -13818,6 +14723,10 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\passkeysEnumeration]
 "Value"="Deny"
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\passkeysEnumeration]
+"Value"="Deny"
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\passkeyAutofill]
+"Value"="Deny"
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\passkeyAutofill]
 "Value"="Deny"
 [HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\chat]
 "Value"="Deny"
@@ -15123,6 +16032,7 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\ASP.NET_2.0.50727\Performance]
 "Disable Performance Counters"=dword:00000001
 
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Perflib\_V2Providers]
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Perflib]
 "Disable Performance Counters"=dword:00000000 ; 00000000, 00000001 breaks taskmgr and anticheats
 "DebugTraceLevel"=dword:00000000
@@ -15158,8 +16068,6 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\BITS\Performance]
 "Disable Performance Counters"=dword:00000001
-[HKEY_LOCAL_MACHINE\System\ControlSet001\Services\BITS\Performance]
-"Disable Performance Counters"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\ContentFilter\Performance]
 "Disable Performance Counters"=dword:00000001
@@ -15168,8 +16076,6 @@ Windows Registry Editor Version 5.00
 "Disable Performance Counters"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\ESENT\Performance]
-"Disable Performance Counters"=dword:00000001
-[HKEY_LOCAL_MACHINE\System\ControlSet001\Services\ESENT\Performance]
 "Disable Performance Counters"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\Intel Storage Counters\Performance]
@@ -16035,7 +16941,7 @@ Windows Registry Editor Version 5.00
 "DragFullWindows"="0"
 "DWMFrameInterval"=dword:00000000
 "EnablePerProcessSystemDPI"=dword:00000000 ; 00000000/00000001
-"FontSmoothing"="2"
+"FontSmoothing"="2" ; 0/2
 "FontSmoothingType"=dword:00000002
 "ForegroundFlashCount"="0" ; 0/00000001
 "ForegroundLockTimeout"=dword:00000000 ; 00000000/00030d40/ffffffff
@@ -16066,7 +16972,7 @@ Windows Registry Editor Version 5.00
 "UserPreferencesMask"=hex(3):90,12,02,80,10,01,00,00
 ; w10
 ; "UserPreferencesMask"=hex(3):90,12,02,80,10,00,00,00
-"WaitToKillAppTimeout"="1000" ; 1/1000
+"WaitToKillAppTimeout"="1000" ; 1/1000/2000
 "WaitToKillServiceTimeout"="1000" ; 1/1000/00000001
 "WheelScrollChars"="7"
 "WheelScrollLines"="7" ; 3, -3/7
@@ -16074,6 +16980,7 @@ Windows Registry Editor Version 5.00
 "WindowArrangementActive"="0"
 "DstNotification"=dword:00000000
 "CaretWidth"=dword:00000001
+"VisualFXSetting"="3"
 
 [-HKEY_CURRENT_USER\Control Panel\Desktop\PerMonitorSettings]
 [HKEY_CURRENT_USER\Control Panel\Desktop\PerMonitorSettings]
@@ -17128,7 +18035,11 @@ Windows Registry Editor Version 5.00
 "EulaAccepted"=dword:00000001
 [HKEY_CURRENT_USER\SOFTWARE\Sysinternals\DiskView]
 "EulaAccepted"=dword:00000001
+[HKEY_CURRENT_USER\SOFTWARE\Sysinternals\Du]
+"EulaAccepted"=dword:00000001
 [HKEY_CURRENT_USER\SOFTWARE\Sysinternals\EFSDump]
+"EulaAccepted"=dword:00000001
+[HKEY_CURRENT_USER\SOFTWARE\Sysinternals\FindLinks]
 "EulaAccepted"=dword:00000001
 [HKEY_CURRENT_USER\SOFTWARE\Sysinternals\Handle]
 "EulaAccepted"=dword:00000001
@@ -17183,6 +18094,8 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\SOFTWARE\Sysinternals\PsLogList]
 "EulaAccepted"=dword:00000001
 [HKEY_CURRENT_USER\SOFTWARE\Sysinternals\PsPasswd]
+"EulaAccepted"=dword:00000001
+[HKEY_CURRENT_USER\SOFTWARE\Sysinternals\PsPing]
 "EulaAccepted"=dword:00000001
 [HKEY_CURRENT_USER\SOFTWARE\Sysinternals\PsService]
 "EulaAccepted"=dword:00000001
@@ -17349,6 +18262,7 @@ Windows Registry Editor Version 5.00
 
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\MobilityCenter]
 "NoMobilityCenter"=dword:00000001
+
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\MobilityCenter]
 "NoMobilityCenter"=dword:00000001
 
@@ -20084,8 +20998,9 @@ Windows Registry Editor Version 5.00
 "Enabled"=-
 
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\MultitaskingView\AltTabViewHost]
-"Grid_backgroundPercent"=dword:00000014
-"BackgroundDimmingLayer_percent"=dword:00000014
+"Grid_backgroundPercent"=dword:00000055 ; 00000055, 00000014
+"BackgroundDimmingLayer_percent"=dword:00000000 ; 00000000, 00000014
+"Wallpaper"=dword:00000000 ; 00000000, 00000001
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SafeBoot\Network\MSIServer]
 @="Service"
@@ -20476,10 +21391,12 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\software\microsoft\wcmsvc\wifinetworkmanager]
 "wifisensecredshared"=dword:00000000
 "wifisenseopen"=dword:00000000
+"PaidWifi"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WcmSvc\wifinetworkmanager\features]
 "WiFiSenseCredShared"=dword:00000000
 "WiFiSenseOpen"=dword:00000000
+"PaidWifi"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WcmSvc\wifinetworkmanager\config]
 "AutoConnectAllowedOEM"=dword:00000000
@@ -20681,6 +21598,10 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Software\Microsoft\Speech_OneCore\Settings\VoiceActivation\UserPreferenceForAllApps]
 "AgentActivationEnabled"=dword:00000000
 "AgentActivationLastUsed"=dword:00000000
+"AgentActivationOnLockScreenEnabled"=dword:00000000
+
+[HKEY_USERS\.DEFAULT\SOFTWARE\Microsoft\Speech_OneCore\Settings\VoiceActivation\UserPreferenceForAllApps]
+"AgentActivationEnabled"=dword:00000000
 "AgentActivationOnLockScreenEnabled"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\SpeechOneCore\Settings]
@@ -20901,6 +21822,9 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer\CopilotKey]
 "SetCopilotHardwareKey"=""
+
+[HKEY_USERS\.DEFAULT\Software\Policies\Microsoft\Windows\WindowsCopilot]
+"TurnOffWindowsCopilot"=dword:00000001
 
 [HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\WindowsCopilot]
 "AllowWindowsCopilot"=dword:00000000
@@ -21250,7 +22174,7 @@ Windows Registry Editor Version 5.00
 "Flags"="58" ; 00000000/34/38/58
 
 [HKEY_CURRENT_USER\Control Panel\Accessibility\HighContrast]
-"Flags"="0" ; 0/126/4194/4198
+"Flags"="4198" ; 0/126/4194/4198
 "High Contrast Scheme"=""
 
 [HKEY_CURRENT_USER\Control Panel\Accessibility\TimeOut]
@@ -21267,7 +22191,7 @@ Windows Registry Editor Version 5.00
 [HKEY_USERS\.DEFAULT\Control Panel\Accessibility\SoundSentry]
 "Flags"="0"
 [HKEY_USERS\.DEFAULT\Control Panel\Accessibility\HighContrast]
-"Flags"="0"
+"Flags"="4198"
 [HKEY_USERS\.DEFAULT\Control Panel\Accessibility\TimeOut]
 "Flags"="0"
 
@@ -21276,7 +22200,7 @@ Windows Registry Editor Version 5.00
 
 [HKEY_CURRENT_USER\Control Panel\Keyboard]
 "InitialKeyboardIndicators"="2147483650" ; 2/00000002/2147483648/2147483650
-"KeyboardDelay"="0" ; 0/1/00000000
+"KeyboardDelay"=dword:00000000 ; 0/1/00000000
 "KeyboardSpeed"="31"
 "PrintScreenKeyForSnippingEnabled"=dword:00000000
 "TypematicDelay"=dword:00000000
@@ -21294,6 +22218,30 @@ Windows Registry Editor Version 5.00
 "ThreadPriority"=dword:0000000f
 "WorkNicely"=dword:00000001
 "WppRecorder_UseTimeStamp"=dword:00000000
+"MaxReportQueueSize"=dword:00000020
+"DisableReportBuffering"=dword:00000001
+"EnableLowLatencyRead"=dword:00000001
+"DisableKeyGhosting"=dword:00000000
+"DisableReportBatching"=dword:00000001
+"DisableKeyRepeatFiltering"=dword:00000000
+"DisableSelectiveSuspend"=dword:00000001
+"EnableImmediateInputReportDelivery"=dword:00000001
+"DisableD3Cold"=dword:00000001
+"DisableReportCoalescing"=dword:00000001
+"DisableRuntimePM"=dword:00000001
+"PollInterval"=dword:00000001
+"DisableTelemetry"=dword:00000001
+"EnableDirectReportProcessing"=dword:00000001
+"DisableWaitWakeIrp"=dword:00000001
+"DisablePerformanceCounters"=dword:00000001
+"DisableEtwEvents"=dword:00000001
+"ForceD0"=dword:00000001
+"DisableWppTracing"=dword:00000001
+"EnableInlineReportProcessing"=dword:00000001
+"ForceMaxPower"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\ControlSet001\Services\kbdhid\Performance]
+"Disable Performance Counters"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shell Icons]
 "29"="C:\\Windows\\blank.ico"
@@ -21394,6 +22342,9 @@ Windows Registry Editor Version 5.00
 
 [HKEY_USERS\.DEFAULT\SOFTWARE\Microsoft\Windows\CurrentVersion\Search]
 "SearchboxTaskbarMode"=dword:00000000
+"TraySearchBoxVisible"=dword:00000000
+"TraySearchBoxVisibleOnAnyMonitor"=dword:00000000
+"BackgroundAppGlobalToggle"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Search]
 "BackgroundAppGlobalToggle"=dword:00000000
@@ -21415,6 +22366,9 @@ Windows Registry Editor Version 5.00
 "BackgroundAppGlobalToggle"=dword:00000000
 "GlobalUserDisabled"=dword:00000001 ; 00000000/00000001
 "GlobalUserOverride"=dword:00000001
+
+[HKEY_USERS\.DEFAULT\SOFTWARE\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications]
+"GlobalUserDisabled"=dword:00000001
 
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications\RazerDynamicLighting_qemfkr3nbbywc]
 "DisabledByUser"=dword:00000001
@@ -21512,6 +22466,9 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications\Microsoft.Windows.CloudExperienceHost_cw5n1h2txyewy]
 "Disabled"=dword:00000001
 "DisabledByUser"=dword:00000001
+
+[HKEY_USERS\.DEFAULT\SOFTWARE\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications\Microsoft.Windows.CloudExperienceHost_cw5n1h2txyewy]
+"Disabled"=dword:00000001
 
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications\Microsoft.Windows.ContentDeliveryManager_cw5n1h2txyewy]
 "Disabled"=dword:00000001
@@ -22572,8 +23529,8 @@ Windows Registry Editor Version 5.00
 "ComServerShutdownDelayMs"=dword:000003e8
 
 ; [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Taskband]
+; "NumThumbnails"=dword:00000000 ; =-, 00000000/00000001 w10 only
 ; "Favorites"=-
-; "NumThumbnails"=dword:00000001 ; =-, 00000000/00000001 w10 only
 
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Taskband\AuxilliaryPins]
 "CopilotPWAPin"=dword:00000000
@@ -22703,6 +23660,116 @@ Windows Registry Editor Version 5.00
 "ThreadPriority"=dword:0000000f
 "UseUsbHidPollingRate"=dword:00000001
 "HidCplSelectDeviceMode"=dword:00000001
+"DisableIdleIrp"=dword:00000001
+"DisableIdleIrpTimeout"=dword:00000001
+"DisableWppTracing"=dword:00000001
+"DisablePerformanceCounters"=dword:00000001
+"DisableIdlePowerManagement"=dword:00000001
+"EnableLowLatencyRead"=dword:00000001
+"DisableIfrTracing"=dword:00000001
+"ReadIntervalMs"=dword:00000001
+"DisableD3Cold"=dword:00000001
+"DisableTelemetry"=dword:00000001
+"DisableOutputReportBuffering"=dword:00000001
+"DisableReportCoalescing"=dword:00000001
+"ForceD0"=dword:00000001
+"DisableRuntimePM"=dword:00000001
+"EnableImmediateInputReportDelivery"=dword:00000001
+"DisableReportBuffering"=dword:00000001
+"DisableReportBatching"=dword:00000001
+"ForceMaxPower"=dword:00000001
+"ReportProcessingPriority"=dword:00000001
+"DisableWaitWakeIrp"=dword:00000001
+"IdleTimeoutMs"=dword:00000000
+"MaxReportQueueSize"=dword:00000020
+"EnableInlineReportProcessing"=dword:00000001
+"EnableDirectReportProcessing"=dword:00000001
+"InputReportQueueDepth"=dword:00000020
+"DisableS0IdleWake"=dword:00000001
+"DisableFeatureReportCaching"=dword:00000001
+"DisableInputReportQueue"=dword:00000000
+"DisablePowerManagement"=dword:00000001
+"DisableSystemWake"=dword:00000001
+"DisableRemoteWakeup"=dword:00000001
+"DisableActivityDetection"=dword:00000001
+"DisableDeviceSuspend"=dword:00000001
+"DisableEtwEvents"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\ControlSet001\Services\HidUsb\Performance]
+"Disable Performance Counters"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\ControlSet001\Services\Ucx01000\Parameters]
+"EnableTimestampPassthrough"=dword:00000001
+"UrbPoolSize"=dword:00000040
+"TransferPoolSize"=dword:00000040
+"MaxStreams"=dword:00000010
+"DisableRootHubSuspend"=dword:00000001
+"EnableTransferCaching"=dword:00000001
+"EnableUrbCaching"=dword:00000001
+"DisableSelectiveSuspend"=dword:00000001
+"EnableTransferBatching"=dword:00000000
+"DisableRemoteWakeup"=dword:00000001
+"EnableZeroCopyTransfers"=dword:00000001
+"DefaultEndpointMaxPacketSize"=dword:00000200
+"DisableTransferCoalescing"=dword:00000001
+"DisableRootHubTracing"=dword:00000001
+"MaxPendingTransfers"=dword:00000100
+"DisableSystemWake"=dword:00000001
+"ForceD0"=dword:00000001
+"MaxPendingUrbs"=dword:00000100
+"ForceMaxPower"=dword:00000001
+"DisableStateMachineTracing"=dword:00000001
+"MaxCachedDeviceSlots"=dword:00000020
+"DisableTransferMerging"=dword:00000001
+"U2Timeout"=dword:00000000
+"DisableArmForWake"=dword:00000001
+"U1Timeout"=dword:00000000
+"EnableInlineTransferCompletion"=dword:00000001
+"DisableTransferPooling"=dword:00000000
+"DisableRuntimePM"=dword:00000001
+"MaxCachedEndpoints"=dword:00000040
+"MaxCachedTransfers"=dword:00000040
+"DisableTransferTracing"=dword:00000001
+"EnableFastEndpointReset"=dword:00000001
+"EnableFastEndpointConfigure"=dword:00000001
+"EnableFastDeviceReset"=dword:00000001
+"DisableControllerTracing"=dword:00000001
+"EnableEndpointCaching"=dword:00000001
+"DisableU1"=dword:00000001
+"DisableD3"=dword:00000001
+"EnableDirectTransferCompletion"=dword:00000001
+"DisableD3Cold"=dword:00000001
+"DisablePowerManagement"=dword:00000001
+"InterruptTransferPriority"=dword:00000001
+"DisableU2"=dword:00000001
+"EnableDeviceSlotCaching"=dword:00000001
+"DisableU2Timeout"=dword:00000001
+"DisableDeviceSuspend"=dword:00000001
+"DisableDeviceTracing"=dword:00000001
+"DisableDiagnostics"=dword:00000001
+"DisableDoubleBuffering"=dword:00000001
+"DisableEndpointTracing"=dword:00000001
+"DisableEtwEvents"=dword:00000001
+"DisableUrbPooling"=dword:00000000
+"DisableExtendedValidation"=dword:00000000
+"DisableWaitWakeIrp"=dword:00000001
+"DisablePortSuspend"=dword:00000001
+"DisableWppTracing"=dword:00000001
+"DisableGlobalSuspend"=dword:00000001
+"DisableIdlePowerManagement"=dword:00000001
+"MaxCachedUrbs"=dword:00000040
+"DisableStreamSupport"=dword:00000000
+"DisableIfrTracing"=dword:00000001
+"DisableLinkStateManagement"=dword:00000001
+"DisableLPM"=dword:00000001
+"DisableLTM"=dword:00000001
+"DisablePerformanceCounters"=dword:00000001
+"DisableTelemetry"=dword:00000001
+"TransferCompletionPriority"=dword:00000001
+"DisableU1Timeout"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\ControlSet001\Services\Ucx01000\Performance]
+"Disable Performance Counters"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\kbdhid]
 "Group"="Base"
@@ -22720,8 +23787,29 @@ Windows Registry Editor Version 5.00
 "Headless"=dword:00000000
 "IncreaseKeyboardPollingRate"=dword:00000001
 "OverrideKeyboardType"=dword:00000001
-"PollingIterations"=dword:00000001
+"PollingIterations"=dword:00000001 ; 00000001/00001000
 "PollStatusIterations"=dword:00000001 ; 00000001/00002ee0
+"SampleRate"=dword:000000c8
+"PollingIterationsMaximum"=dword:00001000
+"DisableKeyboardScanCodeProcessing"=dword:00000000
+"EnableScanCodeMapping"=dword:00000001
+"IsrShareInterrupt"=dword:00000000
+"EnableWheelDetection"=dword:00000002
+"DisableTelemetry"=dword:00000001
+"KeyboardResetTimeout"=dword:000003e8
+"StallMicroseconds"=dword:00000032
+"NumberOfButtons"=dword:00000005
+"WriteToAuxiliaryDeviceTimeoutMs"=dword:000003e8
+"DisableEtwEvents"=dword:00000001
+"DisablePerformanceCounters"=dword:00000001
+"MouseSynchIn100ns"=dword:0000c350
+"EnableKeyboardReset"=dword:00000000
+"MouseResolution"=dword:00000003
+"DisableWppTracing"=dword:00000001
+"PowerCaps"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\System\ControlSet001\Services\i8042prt\Performance]
+"Disable Performance Counters"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\GroupOrderList]
 "IrqPolicySingleProcessor"=dword:00000002
@@ -22748,6 +23836,197 @@ Windows Registry Editor Version 5.00
 "MaxTransferSize"=dword:00004000
 "SelectiveSuspendEnabled"=dword:00000000
 "ThreadPriority"=dword:0000001f ; 0000001f/0000000f
+
+[HKEY_LOCAL_MACHINE\System\ControlSet001\Services\USBHUB3\hubg]
+"DisableBillboard"=dword:00000001
+"PortStabilityTimeMs"=dword:00000000
+"DisableTransferCoalescing"=dword:00000001
+"DisableTransferCompletionDpc"=dword:00000000
+"PortStatusChangeQueueSize"=dword:00000010
+"DisableTransferEtwEvents"=dword:00000001
+"DisableComplianceMode"=dword:00000001
+"PortIdleTimeoutMs"=dword:00000000
+"EnableDirectTransferCompletion"=dword:00000001
+"DisableCompoundDeviceSupport"=dword:00000000
+"EnableExtendedValidation"=dword:00000000
+"DisableTelemetry"=dword:00000001
+"DisableConfigDescriptorCache"=dword:00000000
+"EnableFastDeviceArrival"=dword:00000001
+"DisableConfigurationStringQuery"=dword:00000001
+"EnableFastDeviceRemoval"=dword:00000001
+"DisableContainerIdGeneration"=dword:00000000
+"DisableContainerIdQuery"=dword:00000001
+"PortStatusPollingIntervalMs"=dword:00000001
+"EnableDiagnosticMode"=dword:00000000
+"DisableTransferMerging"=dword:00000001
+"OvercurrentDebounceMs"=dword:00000064
+"PortStatusRetries"=dword:00000003
+"EnableDirectDmaMapping"=dword:00000001
+"EnableFastEnumeration"=dword:00000001
+"EnableContinuousBuffers"=dword:00000001
+"MsOsDescriptorMode"=dword:00000000
+"DisableSuperSpeedWarmReset"=dword:00000000
+"DisableSuperSpeedStreams"=dword:00000000
+"MinimumDescriptorQueryTimeMs"=dword:00000000
+"MinDebounceTimeMs"=dword:00000000
+"PostAddressDelayMs"=dword:00000000
+"DisableSuperSpeedIsochronous"=dword:00000000
+"DisableTransferPooling"=dword:00000000
+"PostConfigurationDelayMs"=dword:00000000
+"MaxSuperSpeedStreams"=dword:00000010
+"DisableSuperSpeedComplianceMode"=dword:00000001
+"MaxScatterGatherElements"=dword:00000040
+"MaxPendingUrbs"=dword:00000100
+"DisableDescriptorEtwEvents"=dword:00000001
+"DisableSuperSpeedCompanionDescriptor"=dword:00000000
+"DisableDescriptorParsing"=dword:00000000
+"DisableSuperSpeedBulkOptimization"=dword:00000000
+"WarmResetRecoveryTimeMs"=dword:00000014
+"DisableDescriptorValidation"=dword:00000000
+"PostResetDelayMs"=dword:0000000a
+"DisableTransferTimeoutCheck"=dword:00000000
+"EnableFastPortStatusChange"=dword:00000001
+"DisableDeviceDescriptorCache"=dword:00000000
+"DisableStateMachineEtwEvents"=dword:00000001
+"DisableDeviceEtwEvents"=dword:00000001
+"DisableDeviceQualifierQuery"=dword:00000001
+"PowerCycleDelayMs"=dword:00000064
+"MaxPendingTransfers"=dword:00000100
+"DeviceEnumerationTimeoutMs"=dword:00002710
+"EnableImmediatePortStatusChange"=dword:00000001
+"DisableDeviceStateMachineTracing"=dword:00000001
+"DisableDeviceSuspend"=dword:00000001
+"DisableSerialNumberStringQuery"=dword:00000000
+"WakeOnConnectUI"=dword:00000000
+"StringDescriptorRetries"=dword:00000003
+"DisableTransferTracing"=dword:00000001
+"DisableSerialNumberQuery"=dword:00000000
+"DeviceDescriptorRetries"=dword:00000003
+"PowerOnToPowerGoodMs"=dword:00000032
+"DisableSelectiveSuspendUI"=dword:00000001
+"DisableDoubleBuffering"=dword:00000001
+"MaxParallelEnumerations"=dword:00000008
+"SuperSpeedInterruptSchedulingLatency"=dword:00000000
+"EnableInlineTransferCompletion"=dword:00000001
+"DescriptorQueryRetryIntervalMs"=dword:0000000a
+"DisableEnumerationDelay"=dword:00000001
+"MaxDescriptorQueryTimeMs"=dword:00001388
+"MaxDebounceTimeMs"=dword:00000000
+"EnableInterruptTransferPriority"=dword:00000001
+"MaxCachedUrbs"=dword:00000040
+"SuperSpeedPortResetTimeMs"=dword:0000000a
+"EnableLowLatencyTransfers"=dword:00000001
+"DisableScatterGather"=dword:00000000
+"MaxCachedTransfers"=dword:00000040
+"TransferPoolSize"=dword:00000040
+"MaxBurstSize"=dword:00000010
+"IsochronousTransferTimeoutMs"=dword:00002710
+"SuperSpeedResetRecoveryTimeMs"=dword:0000000a
+"PreventDebounceTimeForSuperSpeedDevices"=dword:00000001
+"EnableMinimalDescriptorParsing"=dword:00000001
+"DisableGlobalSuspend"=dword:00000001
+"DisableHighSpeedSplitInterrupt"=dword:00000000
+"EnableParallelEnumeration"=dword:00000001
+"PortResetTimeMs"=dword:0000000a
+"DisableHighSpeedSplitIsoch"=dword:00000000
+"IsochronousTransferPriority"=dword:00000000
+"DisableTTBufferTracking"=dword:00000001
+"DisableHubBusyRetryDelay"=dword:00000001
+"DisableHubDepthCheck"=dword:00000000
+"DisableU1"=dword:00000001
+"ControlTransferTimeoutMs"=dword:00002710
+"DisableHubDescriptorCache"=dword:00000000
+"EnableSingleTTMode"=dword:00000000
+"DisableHubEtwEvents"=dword:00000001
+"DisableResetOnResumeError"=dword:00000000
+"DisableHubFeatureSelector"=dword:00000000
+"SurpriseRemovalEnabled"=dword:00000001
+"DisableHubIdleDetection"=dword:00000001
+"ControlTransferPriority"=dword:00000000
+"DisableHubStateMachineTracing"=dword:00000001
+"DisableHubStatusPolling"=dword:00000000
+"DisableRemoteWakeup"=dword:00000001
+"ResetPortRetries"=dword:00000003
+"DisableHubSuperSpeedNesting"=dword:00000000
+"DisableHubSuspend"=dword:00000001
+"U2Timeout"=dword:00000000
+"DisableHubTestMode"=dword:00000001
+"EnableSuperSpeedBurstMode"=dword:00000001
+"DisableHubWake"=dword:00000001
+"DisableProductStringQuery"=dword:00000001
+"DisableIdleNotification"=dword:00000001
+"EnableSuperSpeedInterruptPriority"=dword:00000001
+"EnableTimestampPassthrough"=dword:00000001
+"InterruptTransferTimeoutMs"=dword:00000000
+"DisableU1Timeout"=dword:00000001
+"InterruptTransferSchedulingLatency"=dword:00000000
+"ConnectionDebounceMs"=dword:00000000
+"InterruptTransferPriority"=dword:00000001
+"EnableTransferBatching"=dword:00000000
+"DisableU2"=dword:00000001
+"ResetRecoveryTimeMs"=dword:0000000a
+"TransferBatchSize"=dword:00000001
+"DisableIfrTracing"=dword:00000001
+"InterEndpointDelayMs"=dword:00000000
+"DisableInterfaceStringQuery"=dword:00000001
+"ConfigurationDescriptorRetries"=dword:00000003
+"DisablePowerManagement"=dword:00000001
+"DisableU2Timeout"=dword:00000001
+"IgnoreHubErrors"=dword:00000000
+"IdleTimeoutMs"=dword:00000000
+"UrbPoolSize"=dword:00000040
+"DisablePowerEtwEvents"=dword:00000001
+"HubStatusRetries"=dword:00000003
+"DisableUrbPooling"=dword:00000000
+"HubStatusPollingIntervalMs"=dword:00000001
+"DisablePowerCycleOnError"=dword:00000000
+"DisableLanguageIdQuery"=dword:00000001
+"DisablePortWake"=dword:00000001
+"HubResetOnResume"=dword:00000000
+"DisableLinkStateManagement"=dword:00000001
+"TransferCompletionPriority"=dword:00000001
+"DisableLowSpeedBulk"=dword:00000000
+"EnableTransferCaching"=dword:00000001
+"DisableLPM"=dword:00000001
+"SetAddressRetries"=dword:00000003
+"EnableUrbCaching"=dword:00000001
+"DisableLTM"=dword:00000001
+"DisablePortSuspend"=dword:00000001
+"DisableManufacturerStringQuery"=dword:00000001
+"HubIdleTimeoutMs"=dword:00000000
+"TransferBatchTimeoutUs"=dword:00000000
+"DisableMsOsDescriptorQuery"=dword:00000001
+"DisableMultiTTSupport"=dword:00000000
+"ClearTtBufferRetries"=dword:00000003
+"DisablePortStatusChangeQueue"=dword:00000000
+"DisableOnSoftRemove"=dword:00000000
+"DisableOtherSpeedConfigQuery"=dword:00000001
+"DisablePortStateMachineTracing"=dword:00000001
+"EnableZeroCopyTransfers"=dword:00000001
+"DisableUxdSupport"=dword:00000001
+"DisableOvercurrentProtectionDelay"=dword:00000000
+"BusyRetryDelayMs"=dword:00000000
+"HubDescriptorRetries"=dword:00000003
+"BulkTransferTimeoutMs"=dword:00002710
+"BulkTransferPriority"=dword:00000000
+"DisableWppTracing"=dword:00000001
+"SetConfigurationRetries"=dword:00000003
+"ForceMaxPower"=dword:00000001
+"DisableWaitWakeIrp"=dword:00000001
+"TransferTimeoutMs"=dword:00002710
+"ForceFullSpeed"=dword:00000000
+"U1Timeout"=dword:00000000
+"DisablePerformanceCounters"=dword:00000001
+"EnablePerPortPowerSwitching"=dword:00000000
+"DisablePortIndicators"=dword:00000001
+"EnumerationRetryCount"=dword:00000003
+"DisableBosDescriptorQuery"=dword:00000001
+"EnumerationDebounceMs"=dword:00000000
+"DisablePortFeatureSelector"=dword:00000000
+"DisablePortEtwEvents"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\System\ControlSet001\Services\USBHUB3\Performance]
+"Disable Performance Counters"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\USBHUB3\Parameters\Device]
 "InterruptThreshold"=dword:00000000 ; 00000000/00000001
@@ -22819,12 +24098,197 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\usbccgp\Parameters]
 "ThreadPriority"=dword:0000000f
 "D3ColdSupported"=dword:00000000
+"DisableDeviceSuspend"=dword:00000001
+"DisablePowerManagement"=dword:00000001
+"DisableD3Cold"=dword:00000001
+"DisableEtwEvents"=dword:00000001
+"EnableDirectTransferCompletion"=dword:00000001
+"DisableTransferTracing"=dword:00000001
+"EnableFastEnumeration"=dword:00000001
+"EnableInlineTransferCompletion"=dword:00000001
+"DisableGlobalSuspend"=dword:00000001
+"DisableFunctionRemoteWake"=dword:00000001
+"DisableFunctionSuspend"=dword:00000001
+"DisableWaitWakeIrp"=dword:00000001
+"DisableTelemetry"=dword:00000001
+"DisableWppTracing"=dword:00000001
+"DisableIdlePowerManagement"=dword:00000001
+"EnumerationRetryCount"=dword:00000003
+"ForceD0"=dword:00000001
+"ForceMaxPower"=dword:00000001
+"DisableRuntimePM"=dword:00000001
+"DisableSystemWake"=dword:00000001
+"DisableIfrTracing"=dword:00000001
+"DisableStateMachineTracing"=dword:00000001
+"DisableRemoteWakeup"=dword:00000001
+"DisableSelectiveSuspend"=dword:00000001
+"EnableParallelFunctionEnumeration"=dword:00000001
+"DisablePerformanceCounters"=dword:00000001
+[HKEY_LOCAL_MACHINE\System\ControlSet001\Services\usbccgp\Performance]
+"Disable Performance Counters"=dword:00000001
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\usbehci\Parameters]
 "ThreadPriority"=dword:0000000f
+"ForceD0"=dword:00000001
+"SplitTransactionSMask"=dword:00000001
+"DisablePortPowerControl"=dword:00000000
+"DisableWaitWakeIrp"=dword:00000001
+"SplitTransactionCSMask"=dword:0000001c
+"DisablePerformanceCounters"=dword:00000001
+"AsyncAdvanceDoorbellTimeoutMs"=dword:00002710
+"AsyncScheduleSize"=dword:00000100
+"ForceMaxPower"=dword:00000001
+"DisablePCIePM"=dword:00000001
+"FrameListSize"=dword:00000400
+"TransferCompletionPriority"=dword:00000001
+"HandoffDelayMs"=dword:00000000
+"EnHandoff"=dword:00000001
+"DisablePeriodicListCaching"=dword:00000001
+"EnableZeroCopyTransfers"=dword:00000001
+"DisablePortSuspend"=dword:00000001
+"TransferRingSize"=dword:00000100
+"DisablePortTracing"=dword:00000001
+"DisableL1"=dword:00000001
+"ScheduleLatency"=dword:00000001
+"DisableL0s"=dword:00000001
+"EnableTransferBatching"=dword:00000000
+"InterruptThrottleRate"=dword:00000000
+"DisablePowerManagement"=dword:00000001
+"DisableIfrTracing"=dword:00000001
+"InterruptTransferPriority"=dword:00000001
+"DisableIdlePowerManagement"=dword:00000001
+"EnableSplitTransactionOptimization"=dword:00000001
+"DisableRemoteWakeup"=dword:00000001
+"DisableOvercurrentDetection"=dword:00000000
+"EnablePortOwnershipHandoff"=dword:00000001
+"DisableRootHubSuspend"=dword:00000001
+"DisableRootHubTracing"=dword:00000001
+"DisableGlobalSuspend"=dword:00000001
+"DisableRuntimePM"=dword:00000001
+"DisableExtendedValidation"=dword:00000000
+"DisableEtwEvents"=dword:00000001
+"EnableInlineTransferCompletion"=dword:00000001
+"DisableSelectiveSuspend"=dword:00000001
+"DisableDoubleBuffering"=dword:00000001
+"WakeOnConnect"=dword:00000000
+"MaxPendingTransfers"=dword:00000100
+"DisableDiagnostics"=dword:00000001
+"WakeOnDisconnect"=dword:00000000
+"DisableTransferTracing"=dword:00000001
+"EnableFrameListRollover"=dword:00000001
+"DisableWppTracing"=dword:00000001
+"DisableStateMachineTracing"=dword:00000001
+"EnableFastPortResume"=dword:00000001
+"DisableD3Cold"=dword:00000001
+"MicroframeScheduleLatency"=dword:00000000
+"DisableD3"=dword:00000001
+"DisableControllerTracing"=dword:00000001
+"OvercurrentDebounceMs"=dword:00000064
+"DisableTransferMerging"=dword:00000001
+"PortSuspendDelayMs"=dword:00000000
+"DisableControllerSuspend"=dword:00000001
+"PeriodicListSize"=dword:00000400
+"DisableArmForWake"=dword:00000001
+"PeriodicScheduleThresholdMs"=dword:00000001
+"DisableSystemWake"=dword:00000001
+"DisableTelemetry"=dword:00000001
+"DisableASPM"=dword:00000001
+"DisableAsyncAdvanceDoorbell"=dword:00000000
+"DisableCompanionControllerIdle"=dword:00000001
+"DisableAsyncSchedulePark"=dword:00000001
+"PortOwnershipHandoffDelayMs"=dword:00000000
+"PortPowerOnDelayMs"=dword:00000032
+"PortResetDelayMs"=dword:0000000a
+"DisableTransferCoalescing"=dword:00000001
+"EnableDirectTransferCompletion"=dword:00000001
+"PortResumeDelayMs"=dword:00000014
+"DisableClockGating"=dword:00000001
+"DisablePeriodicSchedule"=dword:00000000
+[HKEY_LOCAL_MACHINE\System\ControlSet001\Services\usbehci\Performance]
+"Disable Performance Counters"=dword:00000001
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\usbohci\Parameters]
 "ThreadPriority"=dword:0000000f
+"DisableWaitWakeIrp"=dword:00000001
+"DisablePortTracing"=dword:00000001
+"DisablePortSuspend"=dword:00000001
+"DisableWppTracing"=dword:00000001
+"DisableRemoteWakeup"=dword:00000001
+"DisablePortPowerControl"=dword:00000000
+"DisablePeriodicListProcessing"=dword:00000000
+"ForceD0"=dword:00000001
+"BulkListFilledThreshold"=dword:00000001
+"ControlListFilledThreshold"=dword:00000001
+"DisableRootHubSuspend"=dword:00000001
+"DisablePerformanceCounters"=dword:00000001
+"DisableASPM"=dword:00000001
+"DisableRuntimePM"=dword:00000001
+"ForceMaxPower"=dword:00000001
+"DisablePCIePM"=dword:00000001
+"PortResumeDelayMs"=dword:00000014
+"HcControl"=dword:00000080
+"DisableL1"=dword:00000001
+"DisableTransferTracing"=dword:00000001
+"DisableClockGating"=dword:00000001
+"PortResetDelayMs"=dword:0000000a
+"DisableL0s"=dword:00000001
+"DisableSelectiveSuspend"=dword:00000001
+"PeriodicStartValue"=dword:00000000
+"DisableControllerSuspend"=dword:00000001
+"InterruptRoutingEnabled"=dword:00000001
+"DisableD3"=dword:00000001
+"DisableIfrTracing"=dword:00000001
+"DisableStateMachineTracing"=dword:00000001
+"DisableSystemWake"=dword:00000001
+"DisableIdlePowerManagement"=dword:00000001
+"DisableD3Cold"=dword:00000001
+"DisableTelemetry"=dword:00000001
+"DisableGlobalSuspend"=dword:00000001
+"LargestDataPacket"=dword:00002000
+"DisableEtwEvents"=dword:00000001
+"MaxPendingTransfers"=dword:00000100
+"DisablePowerManagement"=dword:00000001
+[HKEY_LOCAL_MACHINE\System\ControlSet001\Services\usbohci\Performance]
+"Disable Performance Counters"=dword:00000001
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\usbuhci\Parameters]
 "ThreadPriority"=dword:0000000f
+"DisableSelectiveSuspend"=dword:00000001
+"DisableL0s"=dword:00000001
+"PortResetDelayMs"=dword:0000000a
+"DisableControllerSuspend"=dword:00000001
+"DisableTransferTracing"=dword:00000001
+"DisableL1"=dword:00000001
+"DisableClockGating"=dword:00000001
+"PortResumeDelayMs"=dword:00000014
+"FrameListSize"=dword:00000400
+"InterruptThrottleRate"=dword:00000000
+"DisableBandwidthReclamation"=dword:00000000
+"DisableIfrTracing"=dword:00000001
+"ForceMaxPower"=dword:00000001
+"DisableASPM"=dword:00000001
+"DisableRuntimePM"=dword:00000001
+"DisableIdlePowerManagement"=dword:00000001
+"DisableShortPacketDetect"=dword:00000000
+"DisableStateMachineTracing"=dword:00000001
+"DisablePerformanceCounters"=dword:00000001
+"DisableWaitWakeIrp"=dword:00000001
+"DisableRootHubSuspend"=dword:00000001
+"DisableRemoteWakeup"=dword:00000001
+"ForceD0"=dword:00000001
+"DisableD3"=dword:00000001
+"DisableSystemWake"=dword:00000001
+"DisableTelemetry"=dword:00000001
+"DisableD3Cold"=dword:00000001
+"DisableGlobalSuspend"=dword:00000001
+"DisableEtwEvents"=dword:00000001
+"DisablePortPowerControl"=dword:00000000
+"DisableWppTracing"=dword:00000001
+"DisablePCIePM"=dword:00000001
+"DisablePortSuspend"=dword:00000001
+"DisablePortTracing"=dword:00000001
+"EnableBandwidthReclamation"=dword:00000001
+"MaxPendingTransfers"=dword:00000100
+"DisablePowerManagement"=dword:00000001
+[HKEY_LOCAL_MACHINE\System\ControlSet001\Services\usbuhci\Performance]
+"Disable Performance Counters"=dword:00000001
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Audiosrv\Parameters]
 "ThreadPriority"=dword:00000000 ; 00000000/00000006
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\disk\Parameters]
@@ -24465,6 +25929,63 @@ Windows Registry Editor Version 5.00
 "AppData"=hex(2):25,00,55,00,53,00,45,00,52,00,50,00,52,00,4f,00,46,00,49,00,4c,00,45,00,25,00,5c,00,41,00,70,00,70,00,44,00,61,00,74,00,61,00,5c,00,52,00,6f,00,61,00,6d,00,69,00,6e,00,67,00,00,00
 "Cache"=hex(2):25,00,55,00,53,00,45,00,52,00,50,00,52,00,4f,00,46,00,49,00,4c,00,45,00,25,00,5c,00,41,00,70,00,70,00,44,00,61,00,74,00,61,00,5c,00,4c,00,6f,00,63,00,61,00,6c,00,5c,00,4d,00,69,00,63,00,72,00,6f,00,73,00,6f,00,66,00,74,00,5c,00,57,00,69,00,6e,00,64,00,6f,00,77,00,73,00,5c,00,49,00,4e,00,65,00,74,00,43,00,61,00,63,00,68,00,65,00,00,00
 
+[-HKEY_CURRENT_USER\SOFTWARE\Microsoft\VisualStudio\Licenses\77550D6B-6352-4E77-9DA3-537419DF564B]
+[-HKEY_CURRENT_USER\SOFTWARE\Microsoft\VisualStudio\Licenses\E79B3F9C-6543-4897-BBA5-5BFB0A02BB5C]
+[-HKEY_CURRENT_USER\SOFTWARE\Microsoft\VisualStudio\Licenses\4D8CFBCB-2F6A-4AD2-BABF-10E28F6F2C8F]
+[-HKEY_CURRENT_USER\SOFTWARE\Microsoft\VisualStudio\Licenses\5C505A59-E312-4B89-9508-E162F8150517]
+[-HKEY_CURRENT_USER\SOFTWARE\Microsoft\VisualStudio\Licenses\41717607-F34E-432C-A138-A3CFD7E25CDA]
+[-HKEY_CURRENT_USER\SOFTWARE\Microsoft\VisualStudio\Licenses\B16F0CF0-8AD1-4A5B-87BC-CB0DBE9C48FC]
+[-HKEY_CURRENT_USER\SOFTWARE\Microsoft\VisualStudio\Licenses\10D17DBA-761D-4CD8-A627-984E75A58700]
+[-HKEY_CURRENT_USER\SOFTWARE\Microsoft\VisualStudio\Licenses\1299B4B9-DFCC-476D-98F0-F65A2B46C96D]
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\AppUserModelId\Windows.ActionCenter.UrgentNotification]
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{A973E7B2-131B-428E-8B2B-EAE73D731E98}]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\WOW6432Node\CLSID\{A973E7B2-131B-428E-8B2B-EAE73D731E98}]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{a3b3c46c-05d8-429b-bf66-87068b4ce563}]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\WOW6432Node\CLSID\{a3b3c46c-05d8-429b-bf66-87068b4ce563}]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{01afc156-f2eb-4c1c-a722-8550417d396f}]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\WOW6432Node\CLSID\{01afc156-f2eb-4c1c-a722-8550417d396f}]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Interface\{01afc156-f2eb-4c1c-a722-8550417d396f}]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\WOW6432Node\Interface\{01afc156-f2eb-4c1c-a722-8550417d396f}]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Interface\{824f0d64-069c-4383-9107-f18fc40c3ca6}]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\WOW6432Node\Interface\{824f0d64-069c-4383-9107-f18fc40c3ca6}]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Interface\{418ee892-56f0-4c3b-9238-696ba0cef799}]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\WOW6432Node\Interface\{418ee892-56f0-4c3b-9238-696ba0cef799}]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Interface\{7cbc33db-7a53-45c3-a0cc-610292bd7b9e}]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\WOW6432Node\Interface\{7cbc33db-7a53-45c3-a0cc-610292bd7b9e}]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Interface\{FAE9CE59-7621-4208-8BC3-2ACECD58FED2}]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\WOW6432Node\Interface\{FAE9CE59-7621-4208-8BC3-2ACECD58FED2}]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Interface\{3d2eafc0-96d0-4925-9f7d-ff80b168f243}]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\WOW6432Node\Interface\{3d2eafc0-96d0-4925-9f7d-ff80b168f243}]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Interface\{b387c51b-7fe4-4252-8cd4-585592b4dc7e}]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\WOW6432Node\Interface\{b387c51b-7fe4-4252-8cd4-585592b4dc7e}]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Interface\{e90aad8b-7f0c-480d-b33e-16779c4cf59d}]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\WOW6432Node\Interface\{e90aad8b-7f0c-480d-b33e-16779c4cf59d}]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Interface\{8025d477-47d3-449c-9350-c676140ee829}]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\WOW6432Node\Interface\{8025d477-47d3-449c-9350-c676140ee829}]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Interface\{db62c52c-dbae-476c-aeac-fa9966e85326}]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\WOW6432Node\Interface\{db62c52c-dbae-476c-aeac-fa9966e85326}]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Interface\{1cf5e433-3cf8-498e-8b5a-f47e23200e07}]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\WOW6432Node\Interface\{1cf5e433-3cf8-498e-8b5a-f47e23200e07}]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Interface\{58d879fe-5b40-46aa-ab68-d146ff6a68a0}]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\WOW6432Node\Interface\{58d879fe-5b40-46aa-ab68-d146ff6a68a0}]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Interface\{0acabbb8-8f37-4605-9d41-eec1c33eeb95}]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\WOW6432Node\Interface\{0acabbb8-8f37-4605-9d41-eec1c33eeb95}]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Interface\{0cc6fe25-a88b-480d-956a-a9a20bd2c65a}]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\WOW6432Node\Interface\{0cc6fe25-a88b-480d-956a-a9a20bd2c65a}]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Interface\{8db6ae56-7ea1-421c-9c22-d3247c12c6c4}]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\WOW6432Node\Interface\{8db6ae56-7ea1-421c-9c22-d3247c12c6c4}]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Interface\{014a1425-828b-482a-a386-5763b23531c3}]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\WOW6432Node\Interface\{014a1425-828b-482a-a386-5763b23531c3}]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Interface\{B066DDE3-445D-45dc-BF2A-BC7BAA74C5C5}]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\WOW6432Node\Interface\{B066DDE3-445D-45dc-BF2A-BC7BAA74C5C5}]
+
+; data deduplication
+[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\ddpsvc]
+[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\ddpvssvc]
+[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Dedup]
+
 [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Plain\{41F5FC9D-EE65-4CA4-A908-91B3587198E0}]
 
 [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks\{41F5FC9D-EE65-4CA4-A908-91B3587198E0}]
@@ -25860,8 +27381,8 @@ Windows Registry Editor Version 5.00
 
 [-HKEY_CLASSES_ROOT\UserLibraryFolder\shellex\ContextMenuHandlers\SendTo]
 
-; [HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\taskmgr.exe]
-; "Debugger"="\"C:\\Program Files (x86)\\System Informer\\SystemInformer.exe\""
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\taskmgr.exe]
+"Debugger"="\"C:\\Program Files (x86)\\System Informer\\SystemInformer.exe\""
 "UseLargePages"=dword:00000000
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\explorer.exe]
 "EAFModules"=" "
@@ -28135,7 +29656,7 @@ Windows Registry Editor Version 5.00
 "Version"="1.0"
 
 ; network (nic)
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\0000]
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\0001]
 "AdaptiveIFS"="0"
 "AdvancedEEE"="0"
 "AllowAllSpeedsLPLU"="0"
@@ -28322,7 +29843,7 @@ Windows Registry Editor Version 5.00
 "VlanId"=dword:00000000
 "*VMQ"="0"
 "VMQSupported"="0"
-"WaitAutoNegComplete"="1"
+"WaitAutoNegComplete"="0" ; 0/1
 "WaitForValidPhyIDRead"="0"
 "WakeFromPowerOff"="0"
 "WakeFromS5"="0"
@@ -28343,27 +29864,32 @@ Windows Registry Editor Version 5.00
 "*MaxRssProcessors"=dword:00000001
 "BaseProcessorNumber"=dword:00000002
 "MaxProcessorNumber"=dword:00000002
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\0000\Ndi\Params\*NumRssQueues]
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\0001\Ndi\Params\*NumRssQueues]
 "ParamDesc"="Number of RSS Queues"
 "default"="1"
 "type"="enum"
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\0000\Ndi\Params\*NumRssQueues\Enum]
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\0001\Ndi\Params\*NumRssQueues\Enum]
 "1"="1 Queue"
 "2"="2 Queues"
 "3"="3 Queues"
 "4"="4 Queues"
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\0000\Ndi\Params\*RSS]
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\0001\Ndi\Params\*RSS]
 "ParamDesc"="Receive Side Scaling"
 "default"="1"
 "type"="enum"
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\0000\Ndi\Params\*RSS\Enum]
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\0001\Ndi\Params\*RSS\Enum]
 "0"="Disabled"
 "1"="Enabled"
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\0000\Ndi\Params\*RSSProfile]
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\0001\Ndi\Params\*RSSProfile]
 "ParamDesc"="RSS load balancing profile"
 "default"="4"
 "type"="enum"
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\0000\Ndi\Params\*RSSProfile\Enum]
+[HKEY_LOCAL_MACHINE\System\ControlSet001\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\0001\Ndi\params\*SpeedDuplex]
+"TxAbsIntDelay"="0"
+"TxIntDelay"="0"
+"RxAbsIntDelay"="0"
+"RxIntDelay"="0"
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\0001\Ndi\Params\*RSSProfile\Enum]
 "1"="ClosestProcessor"
 "2"="ClosestProcessorStatic"
 "3"="NUMAScaling"
@@ -28371,7 +29897,7 @@ Windows Registry Editor Version 5.00
 "5"="ConservativeScaling"
 
 ; network (nic) guid
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces\{494f01f7-1583-4647-87e8-51bcc437b858}]
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces\{71878fbf-3693-485b-94a3-4c59db1624d9}]
 "DisableAutoNegotiation"=dword:00000000
 "EnableJumboPackets"=dword:00000000
 "EnableTCPA"=dword:00000000
