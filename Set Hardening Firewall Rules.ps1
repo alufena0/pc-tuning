@@ -1,9 +1,10 @@
-﻿# Remove old rules before recreating
+# Remove old rules before recreating
 Get-NetFirewallRule | Where-Object { $_.DisplayName -like "SW_Block_Out_*" -or $_.DisplayName -like "SW_Block_In_*" } | Remove-NetFirewallRule
 
 $lists = @(
-    "https://raw.githubusercontent.com/ShadowWhisperer/IPs/master/Malware/Hackers",
-    "https://raw.githubusercontent.com/ShadowWhisperer/IPs/master/BruteForce/Extreme"
+    "https://raw.githubusercontent.com/ShadowWhisperer/IPs/master/Lists/Threats",
+    "https://raw.githubusercontent.com/ShadowWhisperer/IPs/master/Lists/Trackers",
+    "https://raw.githubusercontent.com/ShadowWhisperer/IPs/master/Lists/Ads"
 )
 $ips = @()
 foreach ($url in $lists) {
