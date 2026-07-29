@@ -167,7 +167,7 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\mouclass\Parameters]
 "ConnectMultiplePorts"=dword:00000000
 "LayeredLatency"=dword:00000000
-"MaximumPortsServiced"=dword:00000000 ; 00000000/00000001/00000003/00000010
+"MaximumPortsServiced"=dword:00000003 ; 00000000/00000001/00000003/00000010
 "MouseDataQueueSize"=dword:00000064 ; 00000064, 00000010/00000014/00000015/00000016/00000032/00000036/00000100
 "MouseReportBufferCount"=dword:00000004 ; 00000001/00000004
 "MouseTransmitTimeout"=dword:00000000
@@ -198,7 +198,7 @@ Windows Registry Editor Version 5.00
 "KeyboardReportBufferCount"=dword:00000004 ; 00000001/00000004
 "KeyboardTransmitTimeout"=dword:00000000
 "LayeredLatency"=dword:00000000
-"MaximumPortsServiced"=dword:00000000 ; 00000000/00000001/00000003
+"MaximumPortsServiced"=dword:00000003 ; 00000000/00000001/00000003
 "SendOutputToAllPorts"=dword:00000000
 "ThreadPriority"=dword:0000001f
 "WppRecorder_UseTimeStamp"=dword:00000000
@@ -403,7 +403,7 @@ Windows Registry Editor Version 5.00
 "CacheErrataOverride"=dword:00000000 ; 00000000/00000001
 "CacheIsoBitmap"=dword:00000000 ; 00000000/00000001
 "Capabilities"=dword:00000110
-"ClockInterruptSteering"=dword:00000000
+"ClockInterruptSteering"=dword:00000000 ; 00000000/00000001
 "ClockOwner"=dword:00000001
 "ClockRate"=dword:00000000
 "Clock Rate"=dword:00000000
@@ -520,8 +520,8 @@ Windows Registry Editor Version 5.00
 "InterruptRate"=dword:ffffffff ; 00000001/99999999/ffffffff
 "InterruptRequest"=dword:00000001
 "InterruptRequestRate"=dword:ffffffff ; 99999999/ffffffff
-"InterruptSteeringDisabled"=dword:00000001 ; 00000000/00000001
-"InterruptSteeringFlags"=dword:00000001 ; 00000000, 00000001 off/00000002 on/00000003
+"InterruptSteeringDisabled"=dword:00000000 ; 00000000/00000001
+"InterruptSteeringFlags"=dword:00000002 ; 00000000, 00000001 off/00000002 on/00000003
 "InterruptTimeBias"=dword:00000001
 "IoEnqueueIrp"=dword:00000020
 "IoQueueThreadIrp"=dword:00000020
@@ -648,7 +648,7 @@ Windows Registry Editor Version 5.00
 "RNGAuxiliarySeed"=dword:2c48f2e3
 
 [HKEY_LOCAL_MACHINE\SYSTEM]
-"InterruptSteeringDisabled"=dword:00000001
+"InterruptSteeringDisabled"=dword:00000000
 "OverlayTestMode"=dword:00000005
 "UseLargePages"=dword:00000000
 
@@ -747,7 +747,7 @@ Windows Registry Editor Version 5.00
 "ENABLE_MEMORY_PREFETCH"="1" ; 0/1
 "FAST_RESPONSE_MODE"="1"
 "FlipEx"="1"
-"FORCE_DISABLE_FULL_SCREEN_OPTIMIZATIONS"="1" ; 0 w11/1 w10
+"FORCE_DISABLE_FULL_SCREEN_OPTIMIZATIONS"="1" ; 0/1
 "FORCE_GPU_TIMINGS"="1"
 "FORCE_HIGH_PRIORITY_THREAD_SCHEDULING"="1"
 "ForceThreadedRendering"="1"
@@ -866,7 +866,6 @@ Windows Registry Editor Version 5.00
 "LIVESHARE_TELEMETRY_OPTOUT"="1"
 "VSSDK_TELEMETRY_OPTOUT"="1"
 "NO_PROXY"="localhost,127.0.0.1,::1"
-"no_proxy"="localhost,127.0.0.1,::1"
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\Profile\Events\{54533251-82be-4824-96c1-47b60b740d00}\{0AABB002-A307-447e-9B81-1D819DF6C6D0}]
 "Name"="SustainedPerf"
@@ -1649,7 +1648,6 @@ Windows Registry Editor Version 5.00
 "Class1InitialUnparkCount"=dword:00000040 ; 00000040/00000064
 "Class2InitialUnparkCount"=dword:00000064
 "CoalescingFlushInterval"=dword:00000000 ; 00000000/0000003c
-"CoalescingTimerInterval"=dword:00000000
 "CoreParkingDisabled"=dword:00000001
 "CsEnabled"=dword:00000000
 "CustomizeDuringSetup"=dword:00000001
@@ -1752,7 +1750,7 @@ Windows Registry Editor Version 5.00
 "IgnoreLidStateForInputSuppression"=dword:00000000 ; 00000000/ffffffff
 "InitialUnparkCount"=dword:00000064
 "InternalPacketCoalescingLimit"=dword:00000000
-"InterruptSteeringDisabled"=dword:00000001
+"InterruptSteeringDisabled"=dword:00000000
 "IpiLastClockOwnerDisable"=dword:00000001 ; 00000000/00000001
 "Latency"=dword:00000001
 "LatencyToleranceDefault"=dword:00000001 ; 00000000/00000001
@@ -1884,7 +1882,7 @@ Windows Registry Editor Version 5.00
 "Enable"=dword:00000000 ; 00000000/00000001
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\usbhub\hubg]
-"DisableOnSoftRemove"=dword:00000001
+"DisableOnSoftRemove"=dword:00000000 ; 00000000/00000001
 "DisableSelectiveSuspendUI"=dword:00000001
 "EnableDiagnosticMode"=dword:00000000
 "EnumerationRetryCount"=dword:00000003
@@ -2263,7 +2261,7 @@ Windows Registry Editor Version 5.00
 "MaxPacketSize"=dword:00000200
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\usbhub\Parameters]
-"DisableOnSoftRemove"=dword:00000001
+"DisableOnSoftRemove"=dword:00000000
 "EnableAggressiveSuspend"=dword:00000000
 "IoQueueWorkItem"=dword:0000000a
 "SelectiveSuspendTimeout"=dword:00000000
@@ -2409,7 +2407,6 @@ Windows Registry Editor Version 5.00
 "EnableSvchostMitigationsPolicy"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Policies\EarlyLaunch]
-"DriverLoadPolicy"=-
 "DriverLoadPolicy"=-
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\EventSystem]
@@ -4349,8 +4346,8 @@ Windows Registry Editor Version 5.00
 "ForceMSI"=dword:00000001
 "HackFlags"=dword:000000c8
 "InterruptManagementPolicy"=dword:00000003
-"InterruptSteeringDisabled"=dword:00000001 ; 00000000/00000001
-"InterruptSteeringEnabled"=dword:00000000 ; 00000000/00000001
+"InterruptSteeringDisabled"=dword:00000000
+"InterruptSteeringEnabled"=dword:00000001 ; 00000000/00000001
 "LowLatencyMode"=dword:00000001
 "MaxMSI"=dword:00000010
 "MSIEnable"=dword:00000001
@@ -5786,7 +5783,7 @@ Windows Registry Editor Version 5.00
 "Enabled"=dword:00000000
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\WINEVT\Channels\Microsoft-Windows-Deduplication/Scrubbing]
 "Enabled"=dword:00000000
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\WINEVT\Channels\Microsoft-Windows-DeviceManagement-Enterprise-Diagnostics-Provider/Operational]	
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\WINEVT\Channels\Microsoft-Windows-DeviceManagement-Enterprise-Diagnostics-Provider/Operational]
 "Enabled"=dword:00000000
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\WINEVT\Channels\Microsoft-Windows-DeviceManagement-Enterprise-Diagnostics-Provider/Admin]
 "Enabled"=dword:00000000
@@ -14728,6 +14725,10 @@ Windows Registry Editor Version 5.00
 "Value"="Deny"
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\passkeyAutofill]
 "Value"="Deny"
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\passkeyEnumeration]
+"Value"="Deny"
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\passkeyEnumeration]
+"Value"="Deny"
 [HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\chat]
 "Value"="Deny"
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\chat]
@@ -14893,6 +14894,10 @@ Windows Registry Editor Version 5.00
 "EnableICMPRedirect"=dword:00000000
 "EnableICSIPv6"=dword:00000000
 "ThreadPriority"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\System\ControlSet001\Services\iphlpsvc\config]
+"Enable6to4"=dword:00000003
+"IsatapState"=dword:00000003
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\QoS]
 "Do not use NLA"="1"
@@ -16032,7 +16037,7 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\ASP.NET_2.0.50727\Performance]
 "Disable Performance Counters"=dword:00000001
 
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Perflib\_V2Providers]
+; [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Perflib\_V2Providers]
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Perflib]
 "Disable Performance Counters"=dword:00000000 ; 00000000, 00000001 breaks taskmgr and anticheats
 "DebugTraceLevel"=dword:00000000
@@ -17640,7 +17645,6 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
 "MaxDevicePasswordFailedAttempts"=dword:00000000
-"DontDisplayLockedUserId"=dword:00000000
 "InactivityTimeoutSecs"=dword:00000000
 "ConsentPromptBehaviorAdmin"=dword:00000000
 "ConsentPromptBehaviorUser"=dword:00000003 ; 00000000/00000003
@@ -19783,6 +19787,7 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\rt640x64\Parameters]
 "EnableFwTelemetry"=dword:00000000
+"DmaRemappingCompatible"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceSetup\Settings]
 "PreventDeviceDriverUpdate"=dword:00000001
@@ -20167,6 +20172,10 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\15.0\Firstrun]
 "disablemovie"=dword:00000001
 "bootedrtm"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Cloud\Office\16.0\common\copilot]
+"CopilotPinning"=dword:00000000
+"PinningStateforCopilotApp"=dword:00000000
 
 [HKEY_CURRENT_USER\Software\Microsoft\Office\Common\Graphics]
 "DisableAnimations"=dword:00000001
@@ -23787,7 +23796,7 @@ Windows Registry Editor Version 5.00
 "Headless"=dword:00000000
 "IncreaseKeyboardPollingRate"=dword:00000001
 "OverrideKeyboardType"=dword:00000001
-"PollingIterations"=dword:00000001 ; 00000001/00001000
+"PollingIterations"=dword:00001000 ; 00000001/00001000
 "PollStatusIterations"=dword:00000001 ; 00000001/00002ee0
 "SampleRate"=dword:000000c8
 "PollingIterationsMaximum"=dword:00001000
@@ -29897,7 +29906,7 @@ Windows Registry Editor Version 5.00
 "5"="ConservativeScaling"
 
 ; network (nic) guid
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces\{71878fbf-3693-485b-94a3-4c59db1624d9}]
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces\{7841a961-c95d-4711-8200-0690826d4a61}]
 "DisableAutoNegotiation"=dword:00000000
 "EnableJumboPackets"=dword:00000000
 "EnableTCPA"=dword:00000000
