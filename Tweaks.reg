@@ -1,7 +1,7 @@
 Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\PriorityControl]
-"Win32PrioritySeparation"=dword:00000024 ; 00000002, 00000016/00000018/00000024/00000026/00000028/0000002a
+"Win32PrioritySeparation"=dword:00000026 ; 00000002, 00000016/00000018/00000024/00000026/00000028/0000002a
 
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\GameBar]
 "AllowAutoGameMode"=dword:00000000 ; game mode 00000001, 00000000
@@ -33,12 +33,12 @@ Windows Registry Editor Version 5.00
 "Affinity"=dword:00000000
 "Background Only"="False"
 "BackgroundPriority"=dword:00000001 ; 00000001/00000008
-"Clock Rate"=dword:000013ab ; 00002710, 000013ab
+"Clock Rate"=dword:00002710 ; 00002710, 000013ab
 "GPU Priority"=dword:00000008 ; 00000008, 00000012
 "Latency Sensitive"="True" ; False/True
 "Priority"=dword:00000008 ; 00000002, 00000006/00000008
 "Priority When Yielded"=dword:00000013
-"Scheduling Category"="Medium" ; Medium, High
+"Scheduling Category"="High" ; Medium, High
 "SFIO Priority"="High" ; Normal, High
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Audio]
@@ -80,7 +80,7 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Low Latency]
 "Affinity"=dword:00000000
 "Background Only"="False"
-"Clock Rate"=dword:00000a8e
+"Clock Rate"=dword:00002710 ; 00002710, 00000a8e
 "GPU Priority"=dword:00000008
 "Latency Sensitive"="True"
 "Priority"=dword:00000006
@@ -91,7 +91,7 @@ Windows Registry Editor Version 5.00
 "Affinity"=dword:00000000
 "Background Only"="True"
 "BackgroundPriority"=dword:00000008
-"Clock Rate"=dword:000013ab ; 00002710, 000013ab
+"Clock Rate"=dword:00002710 ; 00002710, 000013ab
 "GPU Priority"=dword:00000008
 "Latency Sensitive"="False" ; False/True
 "Priority"=dword:00000008 ; 00000005, 00000008
@@ -103,7 +103,7 @@ Windows Registry Editor Version 5.00
 "Affinity"=dword:00000000
 "Background Only"="True"
 "BackgroundPriority"=dword:00000008
-"Clock Rate"=dword:000013ab ; 00002710, 000013ab
+"Clock Rate"=dword:00002710 ; 00002710, 000013ab
 "GPU Priority"=dword:00000008
 "Latency Sensitive"="False" ; False/True
 "Priority"=dword:00000008 ; 00000004, 00000008
@@ -126,7 +126,7 @@ Windows Registry Editor Version 5.00
 "Affinity"=dword:00000000
 "Background Only"="True" ; True, False
 "BackgroundPriority"=dword:00000008
-"Clock Rate"=dword:000013ab ; 00002710, 000013ab
+"Clock Rate"=dword:00002710 ; 00002710, 000013ab
 "GPU Priority"=dword:00000008
 "Latency Sensitive"="False" ; False/True
 "Priority"=dword:00000008 ; 00000005, 00000008
@@ -168,7 +168,7 @@ Windows Registry Editor Version 5.00
 "ConnectMultiplePorts"=dword:00000000
 "LayeredLatency"=dword:00000000
 "MaximumPortsServiced"=dword:00000003 ; 00000000/00000001/00000003/00000010
-"MouseDataQueueSize"=dword:00000064 ; 00000064, 00000010/00000014/00000015/00000016/00000032/00000036/00000100
+"MouseDataQueueSize"=dword:00000016 ; 00000064, 00000010/00000014/00000015/00000016/00000032/00000036/00000100
 "MouseReportBufferCount"=dword:00000004 ; 00000001/00000004
 "MouseTransmitTimeout"=dword:00000000
 "SendOutputToAllPorts"=dword:00000000
@@ -194,7 +194,7 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\kbdclass\Parameters]
 "ConnectMultiplePorts"=dword:00000000
-"KeyboardDataQueueSize"=dword:00000064 ; 00000064, 00000003/00000010/00000014/00000015/00000100
+"KeyboardDataQueueSize"=dword:00000015 ; 00000064, 00000003/00000010/00000014/00000015/00000100 low values can cause keyboard typing bug
 "KeyboardReportBufferCount"=dword:00000004 ; 00000001/00000004
 "KeyboardTransmitTimeout"=dword:00000000
 "LayeredLatency"=dword:00000000
@@ -589,7 +589,7 @@ Windows Registry Editor Version 5.00
 "PfnMaxLookahead"=dword:00000010
 "PoCleanShutdownFlags"=dword:00000000
 "PowerOffFrozenProcessors"=dword:00000000 ; 00000000/00000001
-"PriorityControl"=dword:00000028 ; 00000020/00000028/00000032
+"PriorityControl"=dword:00000026 ; 00000020/00000026/00000028/00000032
 "PriorityState"=dword:00000001
 "QuantumEnd"=dword:00000001
 "QuantumLength"=dword:00000014 ; 00000001/00000002/0000000e/00000014
@@ -1029,10 +1029,10 @@ Windows Registry Editor Version 5.00
 "IdleDetectionCycles"=dword:00000001 ; 00000000/00000001/00000002/00000005
 "LazyModeTimeout"=dword:000f4240 ; 00002710/000061a8/000f4240/ffffffff
 "MaxThreadsPerProcess"=dword:00000020 ; 00000020, 00000080/0000000a
-"MaxThreadsTotal"=dword:00000080 ; 00000100/00000080/0000ffff
-"NetworkThrottlingIndex"=dword:ffffffff ; 0000000a mmcs on/00000014/0000004f/0000008f/ffffffff
+"MaxThreadsTotal"=dword:0000ffff ; 00000080/00000100/0000ffff
+"NetworkThrottlingIndex"=dword:0000000a ; 0000000a mmcs on/00000014/0000004f/0000008f/ffffffff
 "NoLazyMode"=dword:00000001 ; 00000000/00000001
-"SchedulerPeriod"=dword:000186a0 ; 000186a0, 000f4240/0000c350
+"SchedulerPeriod"=dword:0000c350 ; 000186a0/000f4240/0000c350
 "SchedulerTimerResolution"=dword:00002710 ; 00002710/00001388
 "Scheduling Category"="High"
 "SystemResponsiveness"=dword:0000000a ; 00000014, 00000000/00000001/0000000a/00000064 mmcs off
@@ -1510,7 +1510,7 @@ Windows Registry Editor Version 5.00
 "IRQ4294967293Priority"=dword:00000001
 "IRQ4294967294Priority"=dword:00000001
 "MaxWorkerThreads"=dword:00000010
-"PriorityControl"=dword:00000028 ; 00000000/00000028
+"PriorityControl"=dword:00000026 ; 00000000/00000026/00000028
 "ProcessorScheduling"=dword:00000002
 "SchedulerAssistThreadFlagOverride"=dword:00000000
 "ShortTermHighPriorityThreshold"=dword:00000001
@@ -3291,6 +3291,7 @@ Windows Registry Editor Version 5.00
 "TransitionLatency"=dword:00000001
 "UseGpuTimer"=dword:00000001
 "UseSelfRefreshVRAMInS3"=dword:00000001
+"DisablePStateManagement"=dword:00000000
 
 ; device instance path
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Enum\PCI\VEN_10DE&DEV_2182&SUBSYS_3FBE1458&REV_A1\4&1fc990d7&0&0019\DxgkSettings]
@@ -3677,7 +3678,7 @@ Windows Registry Editor Version 5.00
 "RM572548"=dword:00000001
 "RM580312"=dword:00000001
 "RM592311"=dword:00000002
-"RM1441072"=dword:00000001 ; 00000000/00000001
+"RM1441072"=dword:00000000 ; 00000000/00000001
 "RM2644249"=dword:00000001
 "RM2779240"=dword:00000005
 "RMAcpiD3ColdControl"=dword:00000000
@@ -4047,7 +4048,7 @@ Windows Registry Editor Version 5.00
 "PreemptionQuantumUnit"=dword:0000c350 ; 00000001/0000c350
 "ProfileLevel"=dword:00000002
 "QuantumUnit"=dword:000009c4 ; 00000001/000061a8/0003d090/000009c4
-"QueuedPresentLimit"=dword:00000002 ; 00000003, 00000001/00000002
+"QueuedPresentLimit"=dword:00000001 ; 00000003, 00000001/00000002
 "RMDisablePostL2Compression"=dword:00000001
 "RmDisableRegistryCaching"=dword:0000000f
 "RmGpsPsEnablePerCpuCoreDpc"=dword:00000000
@@ -8357,6 +8358,7 @@ Windows Registry Editor Version 5.00
 "AddressBarMicrosoftSearchInBingProviderEnabled"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Edge]
+"CopilotCoworkToolActionsEnabled"=dword:00000000
 "ProcessIsolationEnabled"=dword:00000001
 ; "PreferSlowKexAlgorithms"="cnsa2"
 ; "PreferSlowCiphers"="cnsa"
@@ -10238,8 +10240,8 @@ Windows Registry Editor Version 5.00
 ; "SmoothMouseYCurve"=hex:00,00,00,00,00,00,00,00,66,a6,02,00,00,00,00,00,cd,4c,05,00,00,00,00,00,a0,99,0a,00,00,00,00,00,38,33,15,00,00,00,00,00
 ; "SmoothMouseXCurve"=hex:00,00,00,00,00,00,00,00,c0,cc,0c,00,00,00,00,00,80,99,19,00,00,00,00,00,40,66,26,00,00,00,00,00,00,33,33,00,00,00,00,00
 ; "SmoothMouseYCurve"=hex:00,00,00,00,00,00,00,00,00,00,38,00,00,00,00,00,00,00,70,00,00,00,00,00,00,00,a8,00,00,00,00,00,00,00,e0,00,00,00,00,00
-; "SmoothMouseYCurve"=hex(3):00,00,00,00,00,00,00,00,66,A6,02,00,00,00,00,00,CD,4C,05,00,00,00,00,00,A0,99,0A,00,00,00,00,00,38,33,15,00,00,00,00,00
-; "SmoothMouseXCurve"=hex(3):00,00,00,00,00,00,00,00,00,A0,00,00,00,00,00,00,00,40,01,00,00,00,00,00,00,80,02,00,00,00,00,00,00,00,05,00,00,00,00,00
+; "SmoothMouseYCurve"=hex:00,00,00,00,00,00,00,00,66,A6,02,00,00,00,00,00,CD,4C,05,00,00,00,00,00,A0,99,0A,00,00,00,00,00,38,33,15,00,00,00,00,00
+; "SmoothMouseXCurve"=hex:00,00,00,00,00,00,00,00,00,A0,00,00,00,00,00,00,00,40,01,00,00,00,00,00,00,80,02,00,00,00,00,00,00,00,05,00,00,00,00,00
 
 [HKEY_USERS\.DEFAULT\Control Panel\Mouse]
 "ActiveWindowTracking"=dword:00000000
@@ -10282,8 +10284,8 @@ Windows Registry Editor Version 5.00
 ; "SmoothMouseYCurve"=hex:00,00,00,00,00,00,00,00,66,a6,02,00,00,00,00,00,cd,4c,05,00,00,00,00,00,a0,99,0a,00,00,00,00,00,38,33,15,00,00,00,00,00
 ; "SmoothMouseXCurve"=hex:00,00,00,00,00,00,00,00,c0,cc,0c,00,00,00,00,00,80,99,19,00,00,00,00,00,40,66,26,00,00,00,00,00,00,33,33,00,00,00,00,00
 ; "SmoothMouseYCurve"=hex:00,00,00,00,00,00,00,00,00,00,38,00,00,00,00,00,00,00,70,00,00,00,00,00,00,00,a8,00,00,00,00,00,00,00,e0,00,00,00,00,00
-; "SmoothMouseYCurve"=hex(3):00,00,00,00,00,00,00,00,66,A6,02,00,00,00,00,00,CD,4C,05,00,00,00,00,00,A0,99,0A,00,00,00,00,00,38,33,15,00,00,00,00,00
-; "SmoothMouseXCurve"=hex(3):00,00,00,00,00,00,00,00,00,A0,00,00,00,00,00,00,00,40,01,00,00,00,00,00,00,80,02,00,00,00,00,00,00,00,05,00,00,00,00,00
+; "SmoothMouseYCurve"=hex:00,00,00,00,00,00,00,00,66,A6,02,00,00,00,00,00,CD,4C,05,00,00,00,00,00,A0,99,0A,00,00,00,00,00,38,33,15,00,00,00,00,00
+; "SmoothMouseXCurve"=hex:00,00,00,00,00,00,00,00,00,A0,00,00,00,00,00,00,00,40,01,00,00,00,00,00,00,80,02,00,00,00,00,00,00,00,05,00,00,00,00,00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Paint]
 "DisableCocreator"=dword:00000001
