@@ -52,7 +52,7 @@ $enableFeatures = @(
     "ClearCrossSiteCrossBrowsingContextGroupWindowName",
     "CapReferrerToOriginOnCrossOrigin",
     "LocalNetworkAccessChecksWebRTC",
-    "LocalNetworkAccessChecksWebSockets",
+    # "LocalNetworkAccessChecksWebSockets",
     "LocalNetworkAccessChecksWebTransport",
     "ReduceAcceptLanguage",
     "StrictOriginIsolation",
@@ -135,3 +135,4 @@ Write-Host "   3. Check msedge://version -> Command Line"
 Write-Host ""
 Write-Host "Shortcut has original Edge icon"
 Write-Host "Launcher is invisible (no CMD window)"
+Set-ItemProperty -Path $shortcutPath -Name IsReadOnly -Value $true
