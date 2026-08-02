@@ -1,4 +1,4 @@
-﻿# create-chrome-shortcut-v2.ps1
+# create-chrome-shortcut-v2.ps1
 # Definitive solution: .lnk shortcut with Chrome icon that runs ALL flags via invisible launcher
 
 $chromePath = "C:\Program Files\Google\Chrome\Application\chrome.exe"
@@ -65,7 +65,7 @@ $enableFeatures = @(
     "ClearCrossSiteCrossBrowsingContextGroupWindowName",
     "CapReferrerToOriginOnCrossOrigin",
     "LocalNetworkAccessChecksWebRTC",
-    "LocalNetworkAccessChecksWebSockets",
+    # "LocalNetworkAccessChecksWebSockets",
     "LocalNetworkAccessChecksWebTransport",
     "ReduceAcceptLanguage",
     "StrictOriginIsolation",
@@ -147,3 +147,4 @@ Write-Host "   3. Check chrome://version -> Command Line"
 Write-Host ""
 Write-Host "Shortcut has original Chrome icon"
 Write-Host "Launcher is invisible (no CMD window)"
+Set-ItemProperty -Path $shortcutPath -Name IsReadOnly -Value $true
