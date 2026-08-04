@@ -513,7 +513,7 @@ powershell -NoProfile -Command "$me=[System.Security.Principal.WindowsIdentity]:
 powershell -NoP -C "$k='HKCU:\Software\Microsoft\Windows\CurrentVersion\RunNotification';if(Test-Path $k){$n=(Get-Item $k).Property|?{$_ -like '*MicrosoftCopilotAutoLaunch*'};if($n){Remove-ItemProperty $k -Name $n -Force}}" >nul 2>&1
 pnputil /disable-device "ROOT\AMDLOG\0000" >nul 2>&1
 pnputil /disable-device "ROOT\AMDSAFD&FUN_01&REV_01\0000" >nul 2>&1
-pnputil /disable-device "ROOT\KDNIC\0000" >nul 2>&1
+pnputil /remove-device "ROOT\KDNIC\0000" >nul 2>&1 & rem disable/remove
 pnputil /disable-device "ROOT\VID\0000" >nul 2>&1
 pnputil /disable-device "SWD\DRIVERENUM\AMDWIN&7&3675a230&0" >nul 2>&1
 pnputil /disable-device "SWD\MSRRAS\{3e259276-bc7e-40e3-b93b-8f89b5f3abc0}" >nul 2>&1
@@ -739,6 +739,7 @@ RD /S /Q %windir%\System32\Tasks\Microsoft\Windows\WindowsAI >nul 2>&1
 gpupdate /force /wait:0 >nul 2>&1
 assoc folder=Folder
 ftype Folder=explorer.exe "%%1"
+for /f "tokens=2" %%S in ('whoami /user ^| findstr /r "S-1-5-21"') do (reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\SystemProtectedUserData\%%S\AnyoneRead\LockScreen" /v "HideLogonBackgroundImage" /t REG_DWORD /d 1 /f >nul 2>&1 & reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\SystemProtectedUserData\%%S\AnyoneRead\Logon" /v "ShowEmail" /t REG_DWORD /d 0 /f >nul 2>&1)
 for /f "tokens=*" %%G in ('reg query "HKCU\SOFTWARE\Microsoft\EdgeUpdate\ClientState" /s /v metricsid 2^>nul ^| findstr /i "HKEY"') do reg add "%%G" /v metricsid /t REG_SZ /d "" /f >nul 2>&1 & reg add "%%G" /v metricsid_installdate /t REG_SZ /d "" /f >nul 2>&1 & reg add "%%G" /v metricsid_enableddate /t REG_SZ /d "" /f >nul 2>&1 & reg add "%%G" /v metricsid_hash /t REG_SZ /d "" /f >nul 2>&1
 PowerShell -NoProfile -ExecutionPolicy Bypass -Command "$p=[Environment]::GetFolderPath('LocalApplicationData')+'\Microsoft\Edge\User Data\Local State';$j=Get-Content -LiteralPath $p -Raw|ConvertFrom-Json;$j.user_experience_metrics.client_id2=[guid]::NewGuid().ToString();$j.user_experience_metrics.machine_id=(Get-Random -Min 1000000 -Max 9999999);$j|ConvertTo-Json -Depth 50|Set-Content -LiteralPath $p -Encoding UTF8" >nul 2>&1
 ::gdid, lid
