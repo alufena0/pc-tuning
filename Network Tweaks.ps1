@@ -1,4 +1,4 @@
-﻿netsh advfirewall set allprofiles state on # off/on
+netsh advfirewall set allprofiles state on # off/on
 Get-NetFirewallRule -Group '*-32752*' | Where-Object 'Profile' -Match 'Domain' | Set-NetFirewallRule -Enabled 'False'
 Get-NetFirewallRule -Group '*-32752*' | Where-Object 'Profile' -Match 'Private' | Set-NetFirewallRule -Enabled 'False'
 Get-NetFirewallRule -Group '*-32752*' | Where-Object 'Profile' -Match 'Public' | Set-NetFirewallRule -Enabled 'False'
@@ -52,8 +52,7 @@ netsh advfirewall firewall add rule name="DNS UDP Block except ControlD" dir=out
 netsh advfirewall firewall add rule name="TCP DoT Block except ControlD" dir=out action=block protocol=TCP remoteport=853 remoteip=0.0.0.0-76.76.1.255,76.76.3.0-76.76.9.255,76.76.11.0-255.255.255.255 enable=yes
 netsh advfirewall set allprofiles logging droppedconnections disable
 netsh advfirewall set allprofiles logging allowedconnections disable
-netsh dns set global dot=no ddr=no
-netsh dns set global doh=no ddr=no
+netsh dnsclient set global doh=no dot=no ddr=no
 netsh advfirewall firewall set rule group="Network Discovery" new enable=No
 netsh advfirewall firewall set rule group="File and Printer Sharing" new enable=no
 netsh int 6to4 set state disabled
@@ -76,8 +75,8 @@ netsh int ip set global routecachelimit=4096
 netsh int ip set global sourcebasedecmp=enabled
 netsh int ip set global sourcebasedecmp=enable
 netsh int ip set global sourceroutingbehavior=drop
-netsh int ip set global taskoffload=enabled # disabled/enabled
-netsh int ip set global taskoffload=enable
+netsh int ip set global taskoffload=disabled # rss disabled/enabled
+netsh int ip set global taskoffload=disable
 netsh int ip set interface ethernet currenthoplimit=64 # 0/40/64/128
 netsh int ipv4 set glob defaultcurhoplimit=64
 netsh int ipv6 set glob defaultcurhoplimit=64
@@ -109,8 +108,8 @@ netsh int tcp set global prr=enabled # disabled/enabled
 netsh int tcp set global prr=enable
 netsh int tcp set global rsc=disabled # disabled/enabled
 netsh int tcp set global rsc=disable
-netsh int tcp set global rss=enabled
-netsh int tcp set global rss=enable
+netsh int tcp set global rss=disabled # disabled/enabled
+netsh int tcp set global rss=disable
 netsh int tcp set global timestamps=allowed # disabled/enabled/allowed
 #netsh int tcp set global timestamps=enable
 #netsh int tcp set heuristics wsh=disabled forcews=disabled # forcews disabled/enabled
@@ -207,22 +206,20 @@ Disable-NetAdapterRsc -Name "*" # Disable/Enable
 Disable-NetAdapterSriov -Name '*' # Disable/Enable
 Disable-NetAdapterUso -Name '*'
 Disable-NetAdapterVmq -Name '*' # Disable/Enable
-Enable-NetAdapterChecksumOffload -Name "*" # Disable/Enable
+Disable-NetAdapterChecksumOffload -Name "*" # rss Disable/Enable
 Disable-NetAdapterEncapsulatedPacketTaskOffload -Name "*" # Disable/Enable
-Enable-NetAdapterRss -Name "*"
-Set-NetAdapterDataPathConfiguration -Name '*' -IncludeHidden -Profile Dispatch
+Disable-NetAdapterRss -Name "*" # Disable/Enable
+Set-NetAdapterDataPathConfiguration -Name '*' -IncludeHidden -Profile Dispatch # Dispatch/Passive
 Set-NetAdapterIPsecOffload -Name "*" -Enabled $False # False/True
 #Set-NetAdapterRdma -Name "*" -Enabled $True
-#Set-NetAdapterRss -Name '*' -IncludeHidden -NumberOfReceiveQueues 1 -Profile Conservative -BaseProcessorGroup 0 -BaseProcessorNumber 0 -MaxProcessorGroup 0 -MaxProcessorNumber 0 -MaxProcessors 1 -NumaNode 0 -Enabled $true
-#Set-NetAdapterRss -Name "*" -Profile Closest # Closest/ClosestStatic/Conservative
-Set-NetAdapterRss -Name "*" -BaseProcessorGroup 0 -BaseProcessorNumber 2 -MaxProcessorGroup 0 -MaxProcessorNumber 2 -MaxProcessors 1 -NumberOfReceiveQueues 1 -Profile NUMAScalingStatic -Enabled $true
+#Set-NetAdapterRss -Name "*" -BaseProcessorGroup 0 -BaseProcessorNumber 2 -MaxProcessorGroup 0 -MaxProcessorNumber 2 -MaxProcessors 1 -NumberOfReceiveQueues 1 -Profile NUMAStatic -Enabled $true
 Set-NetOffloadGlobalSetting -Chimney Disabled
 Set-NetOffloadGlobalSetting -NetworkDirectAcrossIPSubnets Allowed # Blocked/Allowed
 Set-NetOffloadGlobalSetting -NetworkDirect Enabled # Disabled/Enabled
 Set-NetOffloadGlobalSetting -PacketCoalescingFilter Disabled # Disabled/Enabled
 Set-NetOffloadGlobalSetting -ReceiveSegmentCoalescing Disabled # Disabled/Enabled
-Set-NetOffloadGlobalSetting -ReceiveSideScaling Enabled # Disabled/Enabled
-Set-NetOffloadGlobalSetting -Taskoffload Enabled # Disabled/Enabled
+Set-NetOffloadGlobalSetting -ReceiveSideScaling Disabled # rss Disabled/Enabled
+Set-NetOffloadGlobalSetting -Taskoffload Disabled # rss Disabled/Enabled
 Set-NetTCPSetting -SettingName "*" -AutoTuningLevelLocal Normal # Disabled/Normal
 Set-NetTCPSetting -SettingName internet -MinRto 300 # 20/300/2000
 Set-NetTCPSetting -SettingName "*" -ScalingHeuristics Disabled
@@ -265,11 +262,11 @@ Set-NetIPv6Protocol -RouteCacheLimitEntries 256
 Set-NetIPv6Protocol -SourceRoutingBehavior Drop
 
 Set-NetIPInterface -InterfaceAlias 'Wi-Fi' -AddressFamily IPv4 -AdvertiseDefaultRoute Disabled
-Set-NetIPInterface -InterfaceAlias 'Wi-Fi' -AddressFamily IPv4 -AdvertisedRouterLifetime 450
+Set-NetIPInterface -InterfaceAlias 'Wi-Fi' -AddressFamily IPv4 -AdvertisedRouterLifetime (New-TimeSpan -Seconds 450)
 Set-NetIPInterface -InterfaceAlias 'Wi-Fi' -AddressFamily IPv4 -Advertising Disabled
 Set-NetIPInterface -InterfaceAlias 'Wi-Fi' -AddressFamily IPv4 -BaseReachableTimeMs 15
 Set-NetIPInterface -InterfaceAlias 'Wi-Fi' -AddressFamily IPv4 -ClampMss Enabled
-Set-NetIPInterface -InterfaceAlias 'Wi-Fi' -AddressFamily IPv4 -CurrentHopLimit # 0/64
+Set-NetIPInterface -InterfaceAlias 'Wi-Fi' -AddressFamily IPv4 -CurrentHopLimit 64 # 0/64
 Set-NetIPInterface -InterfaceAlias 'Wi-Fi' -AddressFamily IPv4 -DadRetransmitTimeMs 1000
 Set-NetIPInterface -InterfaceAlias 'Wi-Fi' -AddressFamily IPv4 -DadTransmits 5
 Set-NetIPInterface -InterfaceAlias 'Wi-Fi' -AddressFamily IPv4 -Dhcp Enabled
@@ -280,7 +277,7 @@ Set-NetIPInterface -InterfaceAlias 'Wi-Fi' -AddressFamily IPv4 -Forwarding Disab
 Set-NetIPInterface -InterfaceAlias 'Wi-Fi' -AddressFamily IPv4 -IgnoreDefaultRoutes Disabled
 Set-NetIPInterface -InterfaceAlias 'Wi-Fi' -AddressFamily IPv4 -InterfaceMetric 50 # 10/50
 Set-NetIPInterface -InterfaceAlias 'Wi-Fi' -AddressFamily IPv4 -ManagedAddressConfiguration Disabled
-Set-NetIPInterface -InterfaceAlias 'Wi-Fi' -AddressFamily IPv4 -NeighborDiscoverySupported Disabled
+Set-NetIPInterface -InterfaceAlias 'Wi-Fi' -AddressFamily IPv4 -NeighborDiscoverySupported No # Disabled/No
 Set-NetIPInterface -InterfaceAlias 'Wi-Fi' -AddressFamily IPv4 -NeighborUnreachabilityDetection Enabled
 Set-NetIPInterface -InterfaceAlias 'Wi-Fi' -AddressFamily IPv4 -NlMtuBytes 1500
 Set-NetIPInterface -InterfaceAlias 'Wi-Fi' -AddressFamily IPv4 -OtherStatefulConfiguration Disabled
@@ -292,11 +289,11 @@ Set-NetIPInterface -InterfaceAlias 'Wi-Fi' -AddressFamily IPv4 -WeakHostReceive 
 Set-NetIPInterface -InterfaceAlias 'Wi-Fi' -AddressFamily IPv4 -WeakHostSend Disabled
 
 Set-NetIPInterface -InterfaceAlias 'Wi-Fi' -AddressFamily IPv6 -AdvertiseDefaultRoute Disabled
-Set-NetIPInterface -InterfaceAlias 'Wi-Fi' -AddressFamily IPv6 -AdvertisedRouterLifetime 450
+Set-NetIPInterface -InterfaceAlias 'Wi-Fi' -AddressFamily IPv6 -AdvertisedRouterLifetime (New-TimeSpan -Seconds 450)
 Set-NetIPInterface -InterfaceAlias 'Wi-Fi' -AddressFamily IPv6 -Advertising Disabled
 Set-NetIPInterface -InterfaceAlias 'Wi-Fi' -AddressFamily IPv6 -BaseReachableTimeMs 15
 Set-NetIPInterface -InterfaceAlias 'Wi-Fi' -AddressFamily IPv6 -ClampMss Enabled
-Set-NetIPInterface -InterfaceAlias 'Wi-Fi' -AddressFamily IPv6 -CurrentHopLimit # 0/64
+Set-NetIPInterface -InterfaceAlias 'Wi-Fi' -AddressFamily IPv6 -CurrentHopLimit 64 # 0/64
 Set-NetIPInterface -InterfaceAlias 'Wi-Fi' -AddressFamily IPv6 -DadRetransmitTimeMs 1000
 Set-NetIPInterface -InterfaceAlias 'Wi-Fi' -AddressFamily IPv6 -DadTransmits 5
 Set-NetIPInterface -InterfaceAlias 'Wi-Fi' -AddressFamily IPv6 -Dhcp Enabled
@@ -307,7 +304,7 @@ Set-NetIPInterface -InterfaceAlias 'Wi-Fi' -AddressFamily IPv6 -Forwarding Disab
 Set-NetIPInterface -InterfaceAlias 'Wi-Fi' -AddressFamily IPv6 -IgnoreDefaultRoutes Disabled
 Set-NetIPInterface -InterfaceAlias 'Wi-Fi' -AddressFamily IPv6 -InterfaceMetric 50
 Set-NetIPInterface -InterfaceAlias 'Wi-Fi' -AddressFamily IPv6 -ManagedAddressConfiguration Disabled
-Set-NetIPInterface -InterfaceAlias 'Wi-Fi' -AddressFamily IPv6 -NeighborDiscoverySupported Disabled
+Set-NetIPInterface -InterfaceAlias 'Wi-Fi' -AddressFamily IPv6 -NeighborDiscoverySupported No
 Set-NetIPInterface -InterfaceAlias 'Wi-Fi' -AddressFamily IPv6 -NeighborUnreachabilityDetection Enabled
 Set-NetIPInterface -InterfaceAlias 'Wi-Fi' -AddressFamily IPv6 -NlMtuBytes 1500
 Set-NetIPInterface -InterfaceAlias 'Wi-Fi' -AddressFamily IPv6 -OtherStatefulConfiguration Disabled
@@ -319,11 +316,11 @@ Set-NetIPInterface -InterfaceAlias 'Wi-Fi' -AddressFamily IPv6 -WeakHostReceive 
 Set-NetIPInterface -InterfaceAlias 'Wi-Fi' -AddressFamily IPv6 -WeakHostSend Disabled
 
 Set-NetIPInterface -InterfaceAlias 'Ethernet' -AddressFamily IPv4 -AdvertiseDefaultRoute Disabled
-Set-NetIPInterface -InterfaceAlias 'Ethernet' -AddressFamily IPv4 -AdvertisedRouterLifetime 450
+Set-NetIPInterface -InterfaceAlias 'Ethernet' -AddressFamily IPv4 -AdvertisedRouterLifetime (New-TimeSpan -Seconds 450)
 Set-NetIPInterface -InterfaceAlias 'Ethernet' -AddressFamily IPv4 -Advertising Disabled
 Set-NetIPInterface -InterfaceAlias 'Ethernet' -AddressFamily IPv4 -BaseReachableTimeMs 15
 Set-NetIPInterface -InterfaceAlias 'Ethernet' -AddressFamily IPv4 -ClampMss Enabled
-Set-NetIPInterface -InterfaceAlias 'Ethernet' -AddressFamily IPv4 -CurrentHopLimit # 0/64
+Set-NetIPInterface -InterfaceAlias 'Ethernet' -AddressFamily IPv4 -CurrentHopLimit 64 # 0/64
 Set-NetIPInterface -InterfaceAlias 'Ethernet' -AddressFamily IPv4 -DadRetransmitTimeMs 1000
 Set-NetIPInterface -InterfaceAlias 'Ethernet' -AddressFamily IPv4 -DadTransmits 5
 Set-NetIPInterface -InterfaceAlias 'Ethernet' -AddressFamily IPv4 -Dhcp Enabled
@@ -334,7 +331,7 @@ Set-NetIPInterface -InterfaceAlias 'Ethernet' -AddressFamily IPv4 -Forwarding Di
 Set-NetIPInterface -InterfaceAlias 'Ethernet' -AddressFamily IPv4 -IgnoreDefaultRoutes Disabled
 Set-NetIPInterface -InterfaceAlias 'Ethernet' -AddressFamily IPv4 -InterfaceMetric 5 # 5/20
 Set-NetIPInterface -InterfaceAlias 'Ethernet' -AddressFamily IPv4 -ManagedAddressConfiguration Disabled
-Set-NetIPInterface -InterfaceAlias 'Ethernet' -AddressFamily IPv4 -NeighborDiscoverySupported Disabled
+Set-NetIPInterface -InterfaceAlias 'Ethernet' -AddressFamily IPv4 -NeighborDiscoverySupported No
 Set-NetIPInterface -InterfaceAlias 'Ethernet' -AddressFamily IPv4 -NeighborUnreachabilityDetection Enabled
 Set-NetIPInterface -InterfaceAlias 'Ethernet' -AddressFamily IPv4 -NlMtuBytes 1500
 Set-NetIPInterface -InterfaceAlias 'Ethernet' -AddressFamily IPv4 -OtherStatefulConfiguration Disabled
@@ -346,11 +343,11 @@ Set-NetIPInterface -InterfaceAlias 'Ethernet' -AddressFamily IPv4 -WeakHostRecei
 Set-NetIPInterface -InterfaceAlias 'Ethernet' -AddressFamily IPv4 -WeakHostSend Disabled
 
 Set-NetIPInterface -InterfaceAlias 'Ethernet' -AddressFamily IPv6 -AdvertiseDefaultRoute Disabled
-Set-NetIPInterface -InterfaceAlias 'Ethernet' -AddressFamily IPv6 -AdvertisedRouterLifetime 450
+Set-NetIPInterface -InterfaceAlias 'Ethernet' -AddressFamily IPv6 -AdvertisedRouterLifetime (New-TimeSpan -Seconds 450)
 Set-NetIPInterface -InterfaceAlias 'Ethernet' -AddressFamily IPv6 -Advertising Disabled
 Set-NetIPInterface -InterfaceAlias 'Ethernet' -AddressFamily IPv6 -BaseReachableTimeMs 15
 Set-NetIPInterface -InterfaceAlias 'Ethernet' -AddressFamily IPv6 -ClampMss Enabled
-Set-NetIPInterface -InterfaceAlias 'Ethernet' -AddressFamily IPv6 -CurrentHopLimit # 0/64
+Set-NetIPInterface -InterfaceAlias 'Ethernet' -AddressFamily IPv6 -CurrentHopLimit 64 # 0/64
 Set-NetIPInterface -InterfaceAlias 'Ethernet' -AddressFamily IPv6 -DadRetransmitTimeMs 1000
 Set-NetIPInterface -InterfaceAlias 'Ethernet' -AddressFamily IPv6 -DadTransmits 5
 Set-NetIPInterface -InterfaceAlias 'Ethernet' -AddressFamily IPv6 -Dhcp Enabled
@@ -361,7 +358,7 @@ Set-NetIPInterface -InterfaceAlias 'Ethernet' -AddressFamily IPv6 -Forwarding Di
 Set-NetIPInterface -InterfaceAlias 'Ethernet' -AddressFamily IPv6 -IgnoreDefaultRoutes Disabled
 Set-NetIPInterface -InterfaceAlias 'Ethernet' -AddressFamily IPv6 -InterfaceMetric 5
 Set-NetIPInterface -InterfaceAlias 'Ethernet' -AddressFamily IPv6 -ManagedAddressConfiguration Disabled
-Set-NetIPInterface -InterfaceAlias 'Ethernet' -AddressFamily IPv6 -NeighborDiscoverySupported Disabled
+Set-NetIPInterface -InterfaceAlias 'Ethernet' -AddressFamily IPv6 -NeighborDiscoverySupported No
 Set-NetIPInterface -InterfaceAlias 'Ethernet' -AddressFamily IPv6 -NeighborUnreachabilityDetection Enabled
 Set-NetIPInterface -InterfaceAlias 'Ethernet' -AddressFamily IPv6 -NlMtuBytes 1500
 Set-NetIPInterface -InterfaceAlias 'Ethernet' -AddressFamily IPv6 -OtherStatefulConfiguration Disabled
