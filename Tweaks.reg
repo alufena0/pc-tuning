@@ -1319,6 +1319,15 @@ Windows Registry Editor Version 5.00
 "ThreadPriorityBoost"=dword:00000001
 "BalanceSetManager"=dword:00000001
 
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LanmanServer]
+"AuditClientDoesNotSupportEncryption"=dword:00000001
+"AuditClientDoesNotSupportSigning"=dword:00000001
+"AuditInsecureGuestLogon"=dword:00000001
+"EnableAuthRateLimiter"=dword:00000001
+"InvalidAuthenticationDelayTimeInMs"=dword:000007d0
+"MaxSmb2Dialect"=dword:00000311
+"MinSmb2Dialect"=dword:00000300
+
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters]
 "autodisconnect"=dword:ffffffff
 "AutoShareServer"=dword:00000000
@@ -2408,7 +2417,7 @@ Windows Registry Editor Version 5.00
 "EnableSvchostMitigationsPolicy"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Policies\EarlyLaunch]
-"DriverLoadPolicy"=-
+"DriverLoadPolicy"=dword:00000003 ; =-/00000003/00000007
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\EventSystem]
 "ParallelFiringTimeoutEnabled"=dword:00000001
@@ -4409,13 +4418,26 @@ Windows Registry Editor Version 5.00
 ; @="Text Document"
 ; [HKEY_CLASSES_ROOT\Applications\notepad.exe]
 ; "NoOpenWith"=-
-; ; [HKEY_CLASSES_ROOT\txtfilelegacy\DefaultIcon]
+; [HKEY_CLASSES_ROOT\txtfilelegacy\DefaultIcon]
 ; @="imageres.dll,-102"
 ; [HKEY_CLASSES_ROOT\txtfilelegacy\shell\open\command]
 ; @="C:\\Windows\\System32\\notepad.exe \"%1\""
 ; [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\notepad.exe]
 ; "UseFilter"=dword:00000000
 ; [-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\App Paths\notepad.exe]
+
+[HKEY_CLASSES_ROOT\Directory\Background\shell\WinDirStat]
+@="WinDirStat"
+"Icon"="C:\\Program Files (x86)\\WinDirStat\\WinDirStat.exe,0"
+"NoWorkingDirectory"=""
+[HKEY_CLASSES_ROOT\Directory\Background\shell\WinDirStat\command]
+@="\"C:\\Program Files (x86)\\WinDirStat\\WinDirStat.exe\" \"%V\""
+[HKEY_CLASSES_ROOT\DesktopBackground\shell\WinDirStat]
+@="WinDirStat"
+"Icon"="C:\\Program Files (x86)\\WinDirStat\\WinDirStat.exe,0"
+"NoWorkingDirectory"=""
+[HKEY_CLASSES_ROOT\DesktopBackground\shell\WinDirStat\command]
+@="\"C:\\Program Files (x86)\\WinDirStat\\WinDirStat.exe\" \"%V\""
 
 ; visual studio code (VSC) system installer
 ; [HKEY_CLASSES_ROOT\*\shell\OpenWithCode]
@@ -5369,6 +5391,9 @@ Windows Registry Editor Version 5.00
 "SupportUwpStartupTasks"=dword:00000001
 "UploadUserActivities"=dword:00000000
 "WaitForNetwork"=dword:00000000
+"EnumerateLocalUsers"=dword:00000000
+"AllowDomainPINLogon"=dword:00000000
+"AllowCustomSSPsAPs"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsCopilot]
 "DisableAIDataAnalysis"=dword:00000001
@@ -5484,11 +5509,16 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LanmanWorkstation]
 "AllowOfflineFilesforCAShares"=dword:00000000
-"RequireEncryption"=dword:00000001
-"MinSmb2Dialect"=dword:00000311
+"RequireEncryption"=dword:00000000 ; 00000000/00000001
+"MinSmb2Dialect"=dword:00000311 ; 00000300/00000311
 "CipherSuiteOrder"=hex(7):41,00,45,00,53,00,5f,00,32,00,35,00,36,00,5f,00,47,00,43,00,4d,00,00,00,41,00,45,00,53,00,5f,00,32,00,35,00,36,00,5f,00,43,00,43,00,4d,00,00,00,41,00,45,00,53,00,5f,00,31,00,32,00,38,00,5f,00,47,00,43,00,4d,00,00,00,41,00,45,00,53,00,5f,00,31,00,32,00,38,00,5f,00,43,00,43,00,4d,00,00,00,00,00
 "EnableSMBQUIC"=dword:00000001
 "BlockNTLM"=dword:00000001
+"AllowInsecureGuestAuth"=dword:00000000
+"AuditInsecureGuestLogon"=dword:00000001
+"AuditServerDoesNotSupportEncryption"=dword:00000001
+"AuditServerDoesNotSupportSigning"=dword:00000001
+"MaxSmb2Dialect"=dword:00000311
 
 [HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\FVE]
 "DisableExternalDMAUnderLock"=dword:00000000 ; 00000000/00000001
@@ -5521,6 +5551,7 @@ Windows Registry Editor Version 5.00
 "FDVActiveDirectoryBackup"=dword:00000000
 "RDVActiveDirectoryBackup"=dword:00000000
 "RDVDenyCrossOrg"=dword:00000000
+"UseEnhancedPin"=dword:00000000 ; 00000000/00000001
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Policies\Microsoft\FVE]
 "FDVDenyWriteAccess"=dword:00000000
@@ -6635,10 +6666,12 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Attachments]
 "SaveZoneInformation"=dword:00000001
 "ScanWithAntiVirus"=dword:00000001 ; 00000000/00000001
+"HideZoneInfoOnProperties"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Attachments]
 "SaveZoneInformation"=dword:00000001
 "ScanWithAntiVirus"=dword:00000001
+"HideZoneInfoOnProperties"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\QualityCompat]
 "cadca5fe-87d3-4b96-b7fb-a231484277cc"=-
@@ -6709,6 +6742,7 @@ Windows Registry Editor Version 5.00
 "EnableModuleLogging"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\PowerShell\ScriptBlockLogging]
+; "**del.EnableScriptBlockInvocationLogging"=" "
 "EnableScriptBlockLogging"=dword:00000000
 "EnableScriptBlockInvocationLogging"=dword:00000000
 
@@ -7670,6 +7704,9 @@ Windows Registry Editor Version 5.00
 "DoNotTrack"=dword:00000001
 "AutoSearch"=dword:00000000
 "Isolation64Bit"=dword:00000001
+"DisableEPMCompat"=dword:00000001
+"DisableInternetExplorerLaunchViaCOM"=dword:00000001
+"Isolation"="PMEM"
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Internet Explorer\PrefetchPrerender]
 "Enabled"=dword:00000000
@@ -8269,12 +8306,20 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\4]
 "2301"=dword:00000003
 
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\0]
+"1C00"=dword:00000000
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\1]
+"1C00"=dword:00000000
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\3]
 "180F"=dword:00000000
-"2301"=dword:00000003
-
+"2301"=dword:00000000 ; 00000000/00000003
 [HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\3]
 "180F"=dword:00000000
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\2]
+"1C00"=dword:00000000
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Lockdown_Zones\4]
+"1C00"=dword:00000000
+"2301"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RpcSs]
 "ListenOnInternet"="N"
@@ -8299,9 +8344,43 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\Software\WOW6432Node\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_MAXCONNECTIONSPER1_0SERVER]
 "explorer.exe"=dword:0000000a
 "iexplore.exe"=dword:0000000a
+
 [HKEY_LOCAL_MACHINE\Software\WOW6432Node\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_MAXCONNECTIONSPERSERVER]
 "explorer.exe"=dword:0000000a
 "iexplore.exe"=dword:0000000a
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_DISABLE_MK_PROTOCOL]
+"(Reserved)"="1"
+"explorer.exe"="1"
+"iexplore.exe"="1"
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_MIME_HANDLING]
+"(Reserved)"="1"
+"explorer.exe"="1"
+"iexplore.exe"="1"
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_MIME_SNIFFING]
+"(Reserved)"="1"
+"explorer.exe"="1"
+"iexplore.exe"="1"
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_RESTRICT_ACTIVEXINSTALL]
+"(Reserved)"="1"
+"explorer.exe"="1"
+"iexplore.exe"="1"
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_RESTRICT_FILEDOWNLOAD]
+"(Reserved)"="1"
+"explorer.exe"="1"
+"iexplore.exe"="1"
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_SECURITYBAND]
+"(Reserved)"="1"
+"explorer.exe"="1"
+"iexplore.exe"="1"
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_WINDOW_RESTRICTIONS]
+"(Reserved)"="1"
+"explorer.exe"="1"
+"iexplore.exe"="1"
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_ZONE_ELEVATION]
+"(Reserved)"="1"
+"explorer.exe"="1"
+"iexplore.exe"="1"
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_MAXCONNECTIONSPERSERVER]
 "explorer.exe"=dword:0000000a ; 0000000a/00000255
@@ -11637,6 +11716,7 @@ Windows Registry Editor Version 5.00
 "Start"=dword:00000004 ; 00000003, 00000004
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\bowser]
 "Start"=dword:00000004 ; 00000003, 00000004
+"EnableMailslots"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\xboxgip]
 "Start"=dword:00000004 ; 00000003, 00000004
@@ -15208,6 +15288,7 @@ Windows Registry Editor Version 5.00
 "3"="SWC\\VEN_MSFT&AUDIO_EFFECTPACK_AUDIOHOME"
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeviceInstall\Restrictions\DenyDeviceClasses]
+"**delvals."=" "
 "1"="{4d36e968-e325-11ce-bfc1-08002be10318}"
 
 [HKEY_CURRENT_USER\Control Panel\Quick Actions\Control Center\Unpinned]
@@ -15336,86 +15417,86 @@ Windows Registry Editor Version 5.00
 "Block-NetBIOS-Session-Out-TCP"="v2.33|Action=Block|Active=TRUE|Dir=Out|Protocol=6|RPort=139|Name=Block NetBIOS Session Out TCP|"
 "{6cae16ee-61e4-439a-818e-1db16dc787ed}"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=17|LPort=5050|Name=Block Inbound Port 5050 UDP (CDP)|EmbedCtxt=!Custom block inbound port (CDP)|"
 "NVS-FrameServer-Out-TCP-NoScope"="v2.33|Action=Block|Active=TRUE|Dir=Out|Protocol=6|RPort=554|RPort2_10=8554-8558|RA4=LocalSubnet|RA6=LocalSubnet|App=%SystemRoot%\\system32\\svchost.exe|Svc=FrameServer|Name=@FirewallAPI.dll,-54004|Desc=@FirewallAPI.dll,-54005|EmbedCtxt=@FirewallAPI.dll,-54001|"
-"PlayTo-Out-UDP-LocalSubnetScope"="v2.33|Action=Block|Active=TRUE|Dir=Out|Protocol=17|Profile=Private|RA4=LocalSubnet|RA6=LocalSubnet|App=%SystemRoot%\\system32\\mdeserver.exe|Name=@FirewallAPI.dll,-36006|Desc=@FirewallAPI.dll,-36007|EmbedCtxt=@FirewallAPI.dll,-36001|"
+"PlayTo-Out-UDP-LocalSubnetScope"="v2.33|Action=Block|Active=TRUE|Dir=Out|Protocol=17|RA4=LocalSubnet|RA6=LocalSubnet|App=%SystemRoot%\\system32\\mdeserver.exe|Name=@FirewallAPI.dll,-36006|Desc=@FirewallAPI.dll,-36007|EmbedCtxt=@FirewallAPI.dll,-36001|"
 "NVS-FrameServer-In-TCP-NoScope"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=6|LPort=554|LPort2_10=8554-8558|RA4=LocalSubnet|RA6=LocalSubnet|App=%SystemRoot%\\system32\\svchost.exe|Svc=FrameServer|Name=@FirewallAPI.dll,-54002|Desc=@FirewallAPI.dll,-54003|EmbedCtxt=@FirewallAPI.dll,-54001|"
-"WFDPRINT-DAFWSD-In-Active"="v2.33|Action=Block|Active=TRUE|Dir=In|Profile=Public|App=%SystemRoot%\\system32\\dashost.exe|Name=@FirewallAPI.dll,-36852|Desc=@FirewallAPI.dll,-36853|LUAuth=O:LSD:(A;;CC;;;S-1-5-92-3339056971-1291069075-3798698925-2882100687-0)|EmbedCtxt=@FirewallAPI.dll,-36851|TTK2_22=WFDPrint|"
-"AllJoyn-Router-Out-UDP"="v2.33|Action=Block|Active=TRUE|Dir=Out|Protocol=17|Profile=Domain|Profile=Private|App=%SystemRoot%\\system32\\svchost.exe|Svc=AJRouter|Name=@FirewallAPI.dll,-37009|Desc=@FirewallAPI.dll,-37010|EmbedCtxt=@FirewallAPI.dll,-37002|"
+"WFDPRINT-DAFWSD-In-Active"="v2.33|Action=Block|Active=TRUE|Dir=In|App=%SystemRoot%\\system32\\dashost.exe|Name=@FirewallAPI.dll,-36852|Desc=@FirewallAPI.dll,-36853|LUAuth=O:LSD:(A;;CC;;;S-1-5-92-3339056971-1291069075-3798698925-2882100687-0)|EmbedCtxt=@FirewallAPI.dll,-36851|TTK2_22=WFDPrint|"
+"AllJoyn-Router-Out-UDP"="v2.33|Action=Block|Active=TRUE|Dir=Out|Protocol=17|App=%SystemRoot%\\system32\\svchost.exe|Svc=AJRouter|Name=@FirewallAPI.dll,-37009|Desc=@FirewallAPI.dll,-37010|EmbedCtxt=@FirewallAPI.dll,-37002|"
 "WiFiDirect-KM-Driver-Out-TCP"="v2.33|Action=Block|Active=TRUE|Dir=Out|Protocol=6|App=System|Name=@wlansvc.dll,-37379|Desc=@wlansvc.dll,-37891|EmbedCtxt=@wlansvc.dll,-36865|TTK2_27=WFDKmDriver|"
-"PlayTo-In-UDP-NoScope"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=17|Profile=Domain|App=%SystemRoot%\\system32\\mdeserver.exe|Name=@FirewallAPI.dll,-36004|Desc=@FirewallAPI.dll,-36005|EmbedCtxt=@FirewallAPI.dll,-36001|"
-"PlayTo-In-RTSP-NoScope"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=6|Profile=Domain|LPort=23554|LPort=23555|LPort=23556|App=%SystemRoot%\\system32\\mdeserver.exe|Name=@FirewallAPI.dll,-36008|Desc=@FirewallAPI.dll,-36009|EmbedCtxt=@FirewallAPI.dll,-36001|"
-"PlayTo-QWave-In-UDP-PlayToScope"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=17|Profile=Private|Profile=Public|LPort=2177|RA42=Ply2Renders|RA62=Ply2Renders|App=%SystemRoot%\\system32\\svchost.exe|Svc=Qwave|Name=@FirewallAPI.dll,-36010|Desc=@FirewallAPI.dll,-36011|EmbedCtxt=@FirewallAPI.dll,-36001|"
+"PlayTo-In-UDP-NoScope"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=17|App=%SystemRoot%\\system32\\mdeserver.exe|Name=@FirewallAPI.dll,-36004|Desc=@FirewallAPI.dll,-36005|EmbedCtxt=@FirewallAPI.dll,-36001|"
+"PlayTo-In-RTSP-NoScope"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=6|LPort=23554|LPort=23555|LPort=23556|App=%SystemRoot%\\system32\\mdeserver.exe|Name=@FirewallAPI.dll,-36008|Desc=@FirewallAPI.dll,-36009|EmbedCtxt=@FirewallAPI.dll,-36001|"
+"PlayTo-QWave-In-UDP-PlayToScope"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=17|LPort=2177|RA42=Ply2Renders|RA62=Ply2Renders|App=%SystemRoot%\\system32\\svchost.exe|Svc=Qwave|Name=@FirewallAPI.dll,-36010|Desc=@FirewallAPI.dll,-36011|EmbedCtxt=@FirewallAPI.dll,-36001|"
 "WiFiDirect-KM-Driver-In-TCP"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=6|App=System|Name=@wlansvc.dll,-37378|Desc=@wlansvc.dll,-37890|EmbedCtxt=@wlansvc.dll,-36865|TTK2_27=WFDKmDriver|"
-"RemoteAssistance-RAServer-Out-TCP-NoScope-Active"="v2.33|Action=Block|Active=TRUE|Dir=Out|Protocol=6|Profile=Domain|App=%SystemRoot%\\system32\\raserver.exe|Name=@FirewallAPI.dll,-33015|Desc=@FirewallAPI.dll,-33018|EmbedCtxt=@FirewallAPI.dll,-33002|"
-"PlayTo-QWave-Out-UDP-PlayToScope"="v2.33|Action=Block|Active=TRUE|Dir=Out|Protocol=17|Profile=Private|Profile=Public|RPort=2177|RA42=Ply2Renders|RA62=Ply2Renders|App=%SystemRoot%\\system32\\svchost.exe|Svc=Qwave|Name=@FirewallAPI.dll,-36012|Desc=@FirewallAPI.dll,-36013|EmbedCtxt=@FirewallAPI.dll,-36001|"
-"PlayTo-HTTPSTR-In-TCP-LocalSubnetScope"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=6|Profile=Private|LPort=10246|RA4=LocalSubnet|RA6=LocalSubnet|App=System|Name=@FirewallAPI.dll,-36002|Desc=@FirewallAPI.dll,-36003|EmbedCtxt=@FirewallAPI.dll,-36001|"
-"PlayTo-QWave-In-TCP-PlayToScope"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=6|Profile=Private|Profile=Public|LPort=2177|RA42=Ply2Renders|RA62=Ply2Renders|App=%SystemRoot%\\system32\\svchost.exe|Svc=Qwave|Name=@FirewallAPI.dll,-36014|Desc=@FirewallAPI.dll,-36015|EmbedCtxt=@FirewallAPI.dll,-36001|"
-"PlayTo-SSDP-Discovery-PlayToScope"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=17|Profile=Public|LPort2_20=Ply2Disc|App=%SystemRoot%\\system32\\svchost.exe|Svc=ssdpsrv|Name=@FirewallAPI.dll,-36104|Desc=@FirewallAPI.dll,-36105|EmbedCtxt=@FirewallAPI.dll,-36001|"
-"PlayTo-Out-UDP-NoScope"="v2.33|Action=Block|Active=TRUE|Dir=Out|Protocol=17|Profile=Domain|App=%SystemRoot%\\system32\\mdeserver.exe|Name=@FirewallAPI.dll,-36006|Desc=@FirewallAPI.dll,-36007|EmbedCtxt=@FirewallAPI.dll,-36001|"
+"RemoteAssistance-RAServer-Out-TCP-NoScope-Active"="v2.33|Action=Block|Active=TRUE|Dir=Out|Protocol=6|App=%SystemRoot%\\system32\\raserver.exe|Name=@FirewallAPI.dll,-33015|Desc=@FirewallAPI.dll,-33018|EmbedCtxt=@FirewallAPI.dll,-33002|"
+"PlayTo-QWave-Out-UDP-PlayToScope"="v2.33|Action=Block|Active=TRUE|Dir=Out|Protocol=17|RPort=2177|RA42=Ply2Renders|RA62=Ply2Renders|App=%SystemRoot%\\system32\\svchost.exe|Svc=Qwave|Name=@FirewallAPI.dll,-36012|Desc=@FirewallAPI.dll,-36013|EmbedCtxt=@FirewallAPI.dll,-36001|"
+"PlayTo-HTTPSTR-In-TCP-LocalSubnetScope"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=6|LPort=10246|RA4=LocalSubnet|RA6=LocalSubnet|App=System|Name=@FirewallAPI.dll,-36002|Desc=@FirewallAPI.dll,-36003|EmbedCtxt=@FirewallAPI.dll,-36001|"
+"PlayTo-QWave-In-TCP-PlayToScope"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=6|LPort=2177|RA42=Ply2Renders|RA62=Ply2Renders|App=%SystemRoot%\\system32\\svchost.exe|Svc=Qwave|Name=@FirewallAPI.dll,-36014|Desc=@FirewallAPI.dll,-36015|EmbedCtxt=@FirewallAPI.dll,-36001|"
+"PlayTo-SSDP-Discovery-PlayToScope"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=17|LPort2_20=Ply2Disc|App=%SystemRoot%\\system32\\svchost.exe|Svc=ssdpsrv|Name=@FirewallAPI.dll,-36104|Desc=@FirewallAPI.dll,-36105|EmbedCtxt=@FirewallAPI.dll,-36001|"
+"PlayTo-Out-UDP-NoScope"="v2.33|Action=Block|Active=TRUE|Dir=Out|Protocol=17|App=%SystemRoot%\\system32\\mdeserver.exe|Name=@FirewallAPI.dll,-36006|Desc=@FirewallAPI.dll,-36007|EmbedCtxt=@FirewallAPI.dll,-36001|"
 "WirelessDisplay-Out-UDP"="v2.33|Action=Block|Active=TRUE|Dir=Out|Protocol=17|App=%systemroot%\\system32\\WUDFHost.exe|Name=@wifidisplay.dll,-10204|Desc=@wifidisplay.dll,-10205|LUAuth=O:LSD:(A;;CC;;;S-1-5-84-0-0-0-0-0)|EmbedCtxt=@wifidisplay.dll,-100|TTK2_22=WFDDisplay|"
-"PlayTo-In-UDP-PlayToScope"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=17|Profile=Public|RA42=Ply2Renders|RA62=Ply2Renders|App=%SystemRoot%\\system32\\mdeserver.exe|Name=@FirewallAPI.dll,-36004|Desc=@FirewallAPI.dll,-36005|EmbedCtxt=@FirewallAPI.dll,-36001|"
-"PlayTo-UPnP-Events-PlayToScope"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=6|Profile=Public|LPort=2869|RA42=Ply2Renders|RA62=Ply2Renders|App=System|Name=@FirewallAPI.dll,-36106|Desc=@FirewallAPI.dll,-36107|EmbedCtxt=@FirewallAPI.dll,-36001|"
-"NETDIS-FDRESPUB-WSD-Out-UDP-Active"="v2.33|Action=Block|Active=TRUE|Dir=Out|Protocol=17|Profile=Private|RPort=3702|RA4=LocalSubnet|RA6=LocalSubnet|App=%SystemRoot%\\system32\\svchost.exe|Svc=fdrespub|Name=@FirewallAPI.dll,-32811|Desc=@FirewallAPI.dll,-32812|EmbedCtxt=@FirewallAPI.dll,-32752|"
-"DIAL-Protocol-Server-In-TCP-NoScope"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=6|Profile=Domain|LPort=10247|App=System|Name=@FirewallAPI.dll,-37102|Desc=@FirewallAPI.dll,-37103|EmbedCtxt=@FirewallAPI.dll,-37101|"
-"RemoteAssistance-SSDPSrv-In-UDP-Active"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=17|Profile=Domain|Profile=Private|LPort=1900|RA4=LocalSubnet|RA6=LocalSubnet|App=%SystemRoot%\\system32\\svchost.exe|Svc=Ssdpsrv|Name=@FirewallAPI.dll,-33019|Desc=@FirewallAPI.dll,-33022|EmbedCtxt=@FirewallAPI.dll,-33002|"
-"PlayTo-In-UDP-LocalSubnetScope"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=17|Profile=Private|RA4=LocalSubnet|RA6=LocalSubnet|App=%SystemRoot%\\system32\\mdeserver.exe|Name=@FirewallAPI.dll,-36004|Desc=@FirewallAPI.dll,-36005|EmbedCtxt=@FirewallAPI.dll,-36001|"
-"RemoteAssistance-PnrpSvc-UDP-In-EdgeScope-Active"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=17|Profile=Domain|Profile=Private|LPort=3540|App=%systemroot%\\system32\\svchost.exe|Svc=pnrpsvc|Name=@FirewallAPI.dll,-33039|Desc=@FirewallAPI.dll,-33040|EmbedCtxt=@FirewallAPI.dll,-33002|Edge=TRUE|Defer=App|"
-"NETDIS-FDRESPUB-WSD-In-UDP-Active"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=17|Profile=Private|LPort=3702|RA4=LocalSubnet|RA6=LocalSubnet|App=%SystemRoot%\\system32\\svchost.exe|Svc=fdrespub|Name=@FirewallAPI.dll,-32809|Desc=@FirewallAPI.dll,-32810|EmbedCtxt=@FirewallAPI.dll,-32752|"
+"PlayTo-In-UDP-PlayToScope"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=17|RA42=Ply2Renders|RA62=Ply2Renders|App=%SystemRoot%\\system32\\mdeserver.exe|Name=@FirewallAPI.dll,-36004|Desc=@FirewallAPI.dll,-36005|EmbedCtxt=@FirewallAPI.dll,-36001|"
+"PlayTo-UPnP-Events-PlayToScope"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=6|LPort=2869|RA42=Ply2Renders|RA62=Ply2Renders|App=System|Name=@FirewallAPI.dll,-36106|Desc=@FirewallAPI.dll,-36107|EmbedCtxt=@FirewallAPI.dll,-36001|"
+"NETDIS-FDRESPUB-WSD-Out-UDP-Active"="v2.33|Action=Block|Active=TRUE|Dir=Out|Protocol=17|RPort=3702|RA4=LocalSubnet|RA6=LocalSubnet|App=%SystemRoot%\\system32\\svchost.exe|Svc=fdrespub|Name=@FirewallAPI.dll,-32811|Desc=@FirewallAPI.dll,-32812|EmbedCtxt=@FirewallAPI.dll,-32752|"
+"DIAL-Protocol-Server-In-TCP-NoScope"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=6|LPort=10247|App=System|Name=@FirewallAPI.dll,-37102|Desc=@FirewallAPI.dll,-37103|EmbedCtxt=@FirewallAPI.dll,-37101|"
+"RemoteAssistance-SSDPSrv-In-UDP-Active"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=17|LPort=1900|RA4=LocalSubnet|RA6=LocalSubnet|App=%SystemRoot%\\system32\\svchost.exe|Svc=Ssdpsrv|Name=@FirewallAPI.dll,-33019|Desc=@FirewallAPI.dll,-33022|EmbedCtxt=@FirewallAPI.dll,-33002|"
+"PlayTo-In-UDP-LocalSubnetScope"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=17|RA4=LocalSubnet|RA6=LocalSubnet|App=%SystemRoot%\\system32\\mdeserver.exe|Name=@FirewallAPI.dll,-36004|Desc=@FirewallAPI.dll,-36005|EmbedCtxt=@FirewallAPI.dll,-36001|"
+"RemoteAssistance-PnrpSvc-UDP-In-EdgeScope-Active"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=17|LPort=3540|App=%systemroot%\\system32\\svchost.exe|Svc=pnrpsvc|Name=@FirewallAPI.dll,-33039|Desc=@FirewallAPI.dll,-33040|EmbedCtxt=@FirewallAPI.dll,-33002|Edge=TRUE|Defer=App|"
+"NETDIS-FDRESPUB-WSD-In-UDP-Active"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=17|LPort=3702|RA4=LocalSubnet|RA6=LocalSubnet|App=%SystemRoot%\\system32\\svchost.exe|Svc=fdrespub|Name=@FirewallAPI.dll,-32809|Desc=@FirewallAPI.dll,-32810|EmbedCtxt=@FirewallAPI.dll,-32752|"
 "WirelessDisplay-Infra-In-TCP"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=6|LPort=7250|App=%systemroot%\\system32\\CastSrv.exe|Name=@wifidisplay.dll,-10206|Desc=@wifidisplay.dll,-10207|EmbedCtxt=@wifidisplay.dll,-100|"
 "DeliveryOptimization-TCP-In"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=6|LPort=7680|App=%SystemRoot%\\system32\\svchost.exe|Svc=dosvc|Name=@%systemroot%\\system32\\dosvc.dll,-102|Desc=@%systemroot%\\system32\\dosvc.dll,-104|EmbedCtxt=@%systemroot%\\system32\\dosvc.dll,-100|Edge=TRUE|"
 "NVS-FrameServer-In-UDP-NoScope"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=17|LPort2_10=5000-5020|RA4=LocalSubnet|RA6=LocalSubnet|App=%SystemRoot%\\system32\\svchost.exe|Svc=FrameServer|Name=@FirewallAPI.dll,-54006|Desc=@FirewallAPI.dll,-54007|EmbedCtxt=@FirewallAPI.dll,-54001|"
-"NETDIS-UPnPHost-In-TCP-Active"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=6|Profile=Private|LPort=2869|RA4=LocalSubnet|RA6=LocalSubnet|App=System|Name=@FirewallAPI.dll,-32761|Desc=@FirewallAPI.dll,-32764|EmbedCtxt=@FirewallAPI.dll,-32752|"
-"RemoteAssistance-RAServer-In-TCP-NoScope-Active"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=6|Profile=Domain|App=%SystemRoot%\\system32\\raserver.exe|Name=@FirewallAPI.dll,-33011|Desc=@FirewallAPI.dll,-33014|EmbedCtxt=@FirewallAPI.dll,-33002|"
-"NETDIS-WSDEVNTS-In-TCP-Active"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=6|Profile=Private|LPort=5358|RA4=LocalSubnet|RA6=LocalSubnet|App=System|Name=@FirewallAPI.dll,-32813|Desc=@FirewallAPI.dll,-32814|EmbedCtxt=@FirewallAPI.dll,-32752|"
-"NETDIS-UPnPHost-Out-TCP-Active"="v2.33|Action=Block|Active=TRUE|Dir=Out|Protocol=6|Profile=Private|RPort=2869|RA4=LocalSubnet|RA6=LocalSubnet|App=%SystemRoot%\\system32\\svchost.exe|Svc=fdphost|Name=@FirewallAPI.dll,-32765|Desc=@FirewallAPI.dll,-32768|EmbedCtxt=@FirewallAPI.dll,-32752|"
-"NETDIS-LLMNR-Out-UDP-Active"="v2.33|Action=Block|Active=TRUE|Dir=Out|Protocol=17|Profile=Private|RPort=5355|RA4=LocalSubnet|RA6=LocalSubnet|App=%SystemRoot%\\system32\\svchost.exe|Svc=dnscache|Name=@FirewallAPI.dll,-32805|Desc=@FirewallAPI.dll,-32808|EmbedCtxt=@FirewallAPI.dll,-32752|"
-"NETDIS-WSDEVNT-In-TCP-Active"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=6|Profile=Private|LPort=5357|RA4=LocalSubnet|RA6=LocalSubnet|App=System|Name=@FirewallAPI.dll,-32817|Desc=@FirewallAPI.dll,-32818|EmbedCtxt=@FirewallAPI.dll,-32752|"
-"RemoteAssistance-SSDPSrv-Out-TCP-Active"="v2.33|Action=Block|Active=TRUE|Dir=Out|Protocol=6|Profile=Domain|Profile=Private|RA4=LocalSubnet|RA6=LocalSubnet|App=System|Name=@FirewallAPI.dll,-33031|Desc=@FirewallAPI.dll,-33034|EmbedCtxt=@FirewallAPI.dll,-33002|"
-"RemoteAssistance-SSDPSrv-Out-UDP-Active"="v2.33|Action=Block|Active=TRUE|Dir=Out|Protocol=17|Profile=Domain|Profile=Private|RPort=1900|RA4=LocalSubnet|RA6=LocalSubnet|App=%SystemRoot%\\system32\\svchost.exe|Svc=Ssdpsrv|Name=@FirewallAPI.dll,-33023|Desc=@FirewallAPI.dll,-33026|EmbedCtxt=@FirewallAPI.dll,-33002|"
-"NETDIS-FDPHOST-In-UDP-Active"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=17|Profile=Private|LPort=3702|RA4=LocalSubnet|RA6=LocalSubnet|App=%SystemRoot%\\system32\\svchost.exe|Svc=fdphost|Name=@FirewallAPI.dll,-32785|Desc=@FirewallAPI.dll,-32788|EmbedCtxt=@FirewallAPI.dll,-32752|"
-"WFDPRINT-SCAN-In-Active"="v2.33|Action=Block|Active=TRUE|Dir=In|Profile=Public|App=%SystemRoot%\\system32\\svchost.exe|Svc=stisvc|Name=@FirewallAPI.dll,-36860|Desc=@FirewallAPI.dll,-36861|EmbedCtxt=@FirewallAPI.dll,-36851|TTK2_22=WFDPrint|"
-"CDPSvc-Out-TCP"="v2.33|Action=Block|Active=TRUE|Dir=Out|Protocol=6|Profile=Domain|Profile=Private|App=%SystemRoot%\\system32\\svchost.exe|Svc=CDPSvc|Name=@FirewallAPI.dll,-37405|Desc=@FirewallAPI.dll,-37406|EmbedCtxt=@FirewallAPI.dll,-37402|"
-"NETDIS-SSDPSrv-In-UDP-Teredo"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=17|Profile=Public|App=%SystemRoot%\\system32\\svchost.exe|Svc=Ssdpsrv|Name=@FirewallAPI.dll,-32754|Desc=@FirewallAPI.dll,-32756|EmbedCtxt=@FirewallAPI.dll,-32752|TTK2_27=UPnP|"
-"NETDIS-DAS-In-UDP-Active"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=17|Profile=Private|LPort=3702|RA4=LocalSubnet|RA6=LocalSubnet|App=%SystemRoot%\\system32\\dashost.exe|Name=@FirewallAPI.dll,-32825|Desc=@FirewallAPI.dll,-32826|EmbedCtxt=@FirewallAPI.dll,-32752|"
-"PlayTo-QWave-Out-TCP-PlayToScope"="v2.33|Action=Block|Active=TRUE|Dir=Out|Protocol=6|Profile=Private|Profile=Public|RPort=2177|RA42=Ply2Renders|RA62=Ply2Renders|App=%SystemRoot%\\system32\\svchost.exe|Svc=Qwave|Name=@FirewallAPI.dll,-36016|Desc=@FirewallAPI.dll,-36017|EmbedCtxt=@FirewallAPI.dll,-36001|"
-"PlayTo-Out-UDP-PlayToScope"="v2.33|Action=Block|Active=TRUE|Dir=Out|Protocol=17|Profile=Public|RA42=Ply2Renders|RA62=Ply2Renders|App=%SystemRoot%\\system32\\mdeserver.exe|Name=@FirewallAPI.dll,-36006|Desc=@FirewallAPI.dll,-36007|EmbedCtxt=@FirewallAPI.dll,-36001|"
+"NETDIS-UPnPHost-In-TCP-Active"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=6|LPort=2869|RA4=LocalSubnet|RA6=LocalSubnet|App=System|Name=@FirewallAPI.dll,-32761|Desc=@FirewallAPI.dll,-32764|EmbedCtxt=@FirewallAPI.dll,-32752|"
+"RemoteAssistance-RAServer-In-TCP-NoScope-Active"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=6|App=%SystemRoot%\\system32\\raserver.exe|Name=@FirewallAPI.dll,-33011|Desc=@FirewallAPI.dll,-33014|EmbedCtxt=@FirewallAPI.dll,-33002|"
+"NETDIS-WSDEVNTS-In-TCP-Active"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=6|LPort=5358|RA4=LocalSubnet|RA6=LocalSubnet|App=System|Name=@FirewallAPI.dll,-32813|Desc=@FirewallAPI.dll,-32814|EmbedCtxt=@FirewallAPI.dll,-32752|"
+"NETDIS-UPnPHost-Out-TCP-Active"="v2.33|Action=Block|Active=TRUE|Dir=Out|Protocol=6|RPort=2869|RA4=LocalSubnet|RA6=LocalSubnet|App=%SystemRoot%\\system32\\svchost.exe|Svc=fdphost|Name=@FirewallAPI.dll,-32765|Desc=@FirewallAPI.dll,-32768|EmbedCtxt=@FirewallAPI.dll,-32752|"
+"NETDIS-LLMNR-Out-UDP-Active"="v2.33|Action=Block|Active=TRUE|Dir=Out|Protocol=17|RPort=5355|RA4=LocalSubnet|RA6=LocalSubnet|App=%SystemRoot%\\system32\\svchost.exe|Svc=dnscache|Name=@FirewallAPI.dll,-32805|Desc=@FirewallAPI.dll,-32808|EmbedCtxt=@FirewallAPI.dll,-32752|"
+"NETDIS-WSDEVNT-In-TCP-Active"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=6|LPort=5357|RA4=LocalSubnet|RA6=LocalSubnet|App=System|Name=@FirewallAPI.dll,-32817|Desc=@FirewallAPI.dll,-32818|EmbedCtxt=@FirewallAPI.dll,-32752|"
+"RemoteAssistance-SSDPSrv-Out-TCP-Active"="v2.33|Action=Block|Active=TRUE|Dir=Out|Protocol=6|RA4=LocalSubnet|RA6=LocalSubnet|App=System|Name=@FirewallAPI.dll,-33031|Desc=@FirewallAPI.dll,-33034|EmbedCtxt=@FirewallAPI.dll,-33002|"
+"RemoteAssistance-SSDPSrv-Out-UDP-Active"="v2.33|Action=Block|Active=TRUE|Dir=Out|Protocol=17|RPort=1900|RA4=LocalSubnet|RA6=LocalSubnet|App=%SystemRoot%\\system32\\svchost.exe|Svc=Ssdpsrv|Name=@FirewallAPI.dll,-33023|Desc=@FirewallAPI.dll,-33026|EmbedCtxt=@FirewallAPI.dll,-33002|"
+"NETDIS-FDPHOST-In-UDP-Active"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=17|LPort=3702|RA4=LocalSubnet|RA6=LocalSubnet|App=%SystemRoot%\\system32\\svchost.exe|Svc=fdphost|Name=@FirewallAPI.dll,-32785|Desc=@FirewallAPI.dll,-32788|EmbedCtxt=@FirewallAPI.dll,-32752|"
+"WFDPRINT-SCAN-In-Active"="v2.33|Action=Block|Active=TRUE|Dir=In|App=%SystemRoot%\\system32\\svchost.exe|Svc=stisvc|Name=@FirewallAPI.dll,-36860|Desc=@FirewallAPI.dll,-36861|EmbedCtxt=@FirewallAPI.dll,-36851|TTK2_22=WFDPrint|"
+"CDPSvc-Out-TCP"="v2.33|Action=Block|Active=TRUE|Dir=Out|Protocol=6|App=%SystemRoot%\\system32\\svchost.exe|Svc=CDPSvc|Name=@FirewallAPI.dll,-37405|Desc=@FirewallAPI.dll,-37406|EmbedCtxt=@FirewallAPI.dll,-37402|"
+"NETDIS-SSDPSrv-In-UDP-Teredo"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=17|App=%SystemRoot%\\system32\\svchost.exe|Svc=Ssdpsrv|Name=@FirewallAPI.dll,-32754|Desc=@FirewallAPI.dll,-32756|EmbedCtxt=@FirewallAPI.dll,-32752|TTK2_27=UPnP|"
+"NETDIS-DAS-In-UDP-Active"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=17|LPort=3702|RA4=LocalSubnet|RA6=LocalSubnet|App=%SystemRoot%\\system32\\dashost.exe|Name=@FirewallAPI.dll,-32825|Desc=@FirewallAPI.dll,-32826|EmbedCtxt=@FirewallAPI.dll,-32752|"
+"PlayTo-QWave-Out-TCP-PlayToScope"="v2.33|Action=Block|Active=TRUE|Dir=Out|Protocol=6|RPort=2177|RA42=Ply2Renders|RA62=Ply2Renders|App=%SystemRoot%\\system32\\svchost.exe|Svc=Qwave|Name=@FirewallAPI.dll,-36016|Desc=@FirewallAPI.dll,-36017|EmbedCtxt=@FirewallAPI.dll,-36001|"
+"PlayTo-Out-UDP-PlayToScope"="v2.33|Action=Block|Active=TRUE|Dir=Out|Protocol=17|RA42=Ply2Renders|RA62=Ply2Renders|App=%SystemRoot%\\system32\\mdeserver.exe|Name=@FirewallAPI.dll,-36006|Desc=@FirewallAPI.dll,-36007|EmbedCtxt=@FirewallAPI.dll,-36001|"
 "DeliveryOptimization-UDP-In"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=17|LPort=7680|App=%SystemRoot%\\system32\\svchost.exe|Svc=dosvc|Name=@%systemroot%\\system32\\dosvc.dll,-103|Desc=@%systemroot%\\system32\\dosvc.dll,-104|EmbedCtxt=@%systemroot%\\system32\\dosvc.dll,-100|Edge=TRUE|"
-"CDPSvc-WFD-Out-TCP"="v2.33|Action=Block|Active=TRUE|Dir=Out|Protocol=6|Profile=Public|App=%SystemRoot%\\system32\\svchost.exe|Svc=CDPSvc|Name=@FirewallAPI.dll,-37413|Desc=@FirewallAPI.dll,-37414|EmbedCtxt=@FirewallAPI.dll,-37402|TTK2_28=WFDCDPSvc|"
-"NETDIS-UPnP-Out-TCP-Active"="v2.33|Action=Block|Active=TRUE|Dir=Out|Protocol=6|Profile=Private|RPort=2869|RA4=LocalSubnet|RA6=LocalSubnet|App=%SystemRoot%\\system32\\svchost.exe|Svc=upnphost|Name=@FirewallAPI.dll,-32821|Desc=@FirewallAPI.dll,-32822|EmbedCtxt=@FirewallAPI.dll,-32752|"
-"RemoteAssistance-In-TCP-EdgeScope-Active"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=6|Profile=Domain|Profile=Private|App=%SystemRoot%\\system32\\msra.exe|Name=@FirewallAPI.dll,-33003|Desc=@FirewallAPI.dll,-33006|EmbedCtxt=@FirewallAPI.dll,-33002|Edge=TRUE|Defer=App|"
-"DIAL-Protocol-Server-HTTPSTR-In-TCP-LocalSubnetScope"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=6|Profile=Private|LPort=10247|RA4=LocalSubnet|RA6=LocalSubnet|App=System|Name=@FirewallAPI.dll,-37102|Desc=@FirewallAPI.dll,-37103|EmbedCtxt=@FirewallAPI.dll,-37101|"
-"NETDIS-FDPHOST-Out-UDP-Active"="v2.33|Action=Block|Active=TRUE|Dir=Out|Protocol=17|Profile=Private|RPort=3702|RA4=LocalSubnet|RA6=LocalSubnet|App=%SystemRoot%\\system32\\svchost.exe|Svc=fdphost|Name=@FirewallAPI.dll,-32789|Desc=@FirewallAPI.dll,-32792|EmbedCtxt=@FirewallAPI.dll,-32752|"
+"CDPSvc-WFD-Out-TCP"="v2.33|Action=Block|Active=TRUE|Dir=Out|Protocol=6|App=%SystemRoot%\\system32\\svchost.exe|Svc=CDPSvc|Name=@FirewallAPI.dll,-37413|Desc=@FirewallAPI.dll,-37414|EmbedCtxt=@FirewallAPI.dll,-37402|TTK2_28=WFDCDPSvc|"
+"NETDIS-UPnP-Out-TCP-Active"="v2.33|Action=Block|Active=TRUE|Dir=Out|Protocol=6|RPort=2869|RA4=LocalSubnet|RA6=LocalSubnet|App=%SystemRoot%\\system32\\svchost.exe|Svc=upnphost|Name=@FirewallAPI.dll,-32821|Desc=@FirewallAPI.dll,-32822|EmbedCtxt=@FirewallAPI.dll,-32752|"
+"RemoteAssistance-In-TCP-EdgeScope-Active"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=6|App=%SystemRoot%\\system32\\msra.exe|Name=@FirewallAPI.dll,-33003|Desc=@FirewallAPI.dll,-33006|EmbedCtxt=@FirewallAPI.dll,-33002|Edge=TRUE|Defer=App|"
+"DIAL-Protocol-Server-HTTPSTR-In-TCP-LocalSubnetScope"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=6|LPort=10247|RA4=LocalSubnet|RA6=LocalSubnet|App=System|Name=@FirewallAPI.dll,-37102|Desc=@FirewallAPI.dll,-37103|EmbedCtxt=@FirewallAPI.dll,-37101|"
+"NETDIS-FDPHOST-Out-UDP-Active"="v2.33|Action=Block|Active=TRUE|Dir=Out|Protocol=17|RPort=3702|RA4=LocalSubnet|RA6=LocalSubnet|App=%SystemRoot%\\system32\\svchost.exe|Svc=fdphost|Name=@FirewallAPI.dll,-32789|Desc=@FirewallAPI.dll,-32792|EmbedCtxt=@FirewallAPI.dll,-32752|"
 "ProximityUxHost-Sharing-In-TCP-NoScope"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=6|App=%SystemRoot%\\system32\\proximityuxhost.exe|Name=@FirewallAPI.dll,-36252|Desc=@FirewallAPI.dll,-36253|EmbedCtxt=@FirewallAPI.dll,-36251|TTK=ProxSharing|"
-"RemoteAssistance-SSDPSrv-In-TCP-Active"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=6|Profile=Domain|Profile=Private|LPort=2869|RA4=LocalSubnet|RA6=LocalSubnet|App=System|Name=@FirewallAPI.dll,-33027|Desc=@FirewallAPI.dll,-33030|EmbedCtxt=@FirewallAPI.dll,-33002|"
-"NETDIS-WSDEVNTS-Out-TCP-Active"="v2.33|Action=Block|Active=TRUE|Dir=Out|Protocol=6|Profile=Private|RPort=5358|RA4=LocalSubnet|RA6=LocalSubnet|App=%SystemRoot%\\system32\\svchost.exe|Svc=fdphost|Name=@FirewallAPI.dll,-32815|Desc=@FirewallAPI.dll,-32816|EmbedCtxt=@FirewallAPI.dll,-32752|"
+"RemoteAssistance-SSDPSrv-In-TCP-Active"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=6|LPort=2869|RA4=LocalSubnet|RA6=LocalSubnet|App=System|Name=@FirewallAPI.dll,-33027|Desc=@FirewallAPI.dll,-33030|EmbedCtxt=@FirewallAPI.dll,-33002|"
+"NETDIS-WSDEVNTS-Out-TCP-Active"="v2.33|Action=Block|Active=TRUE|Dir=Out|Protocol=6|RPort=5358|RA4=LocalSubnet|RA6=LocalSubnet|App=%SystemRoot%\\system32\\svchost.exe|Svc=fdphost|Name=@FirewallAPI.dll,-32815|Desc=@FirewallAPI.dll,-32816|EmbedCtxt=@FirewallAPI.dll,-32752|"
 "WirelessDisplay-In-TCP"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=6|App=%systemroot%\\system32\\WUDFHost.exe|Name=@wifidisplay.dll,-10200|Desc=@wifidisplay.dll,-10201|LUAuth=O:LSD:(A;;CC;;;S-1-5-84-0-0-0-0-0)|EmbedCtxt=@wifidisplay.dll,-100|TTK2_22=WFDDisplay|"
-"CDPSvc-Out-UDP"="v2.33|Action=Block|Active=TRUE|Dir=Out|Protocol=17|Profile=Domain|Profile=Private|App=%SystemRoot%\\system32\\svchost.exe|Svc=CDPSvc|Name=@FirewallAPI.dll,-37409|Desc=@FirewallAPI.dll,-37410|EmbedCtxt=@FirewallAPI.dll,-37402|"
+"CDPSvc-Out-UDP"="v2.33|Action=Block|Active=TRUE|Dir=Out|Protocol=17|App=%SystemRoot%\\system32\\svchost.exe|Svc=CDPSvc|Name=@FirewallAPI.dll,-37409|Desc=@FirewallAPI.dll,-37410|EmbedCtxt=@FirewallAPI.dll,-37402|"
 "WiFiDirect-KM-Driver-In-UDP"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=17|App=System|Name=@wlansvc.dll,-37380|Desc=@wlansvc.dll,-37892|EmbedCtxt=@wlansvc.dll,-36865|TTK2_27=WFDKmDriver|"
-"CDPSvc-WFD-In-TCP"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=6|Profile=Public|App=%SystemRoot%\\system32\\svchost.exe|Svc=CDPSvc|Name=@FirewallAPI.dll,-37411|Desc=@FirewallAPI.dll,-37412|EmbedCtxt=@FirewallAPI.dll,-37402|TTK2_28=WFDCDPSvc|"
+"CDPSvc-WFD-In-TCP"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=6|App=%SystemRoot%\\system32\\svchost.exe|Svc=CDPSvc|Name=@FirewallAPI.dll,-37411|Desc=@FirewallAPI.dll,-37412|EmbedCtxt=@FirewallAPI.dll,-37402|TTK2_28=WFDCDPSvc|"
 "WiFiDirect-KM-Driver-Out-UDP"="v2.33|Action=Block|Active=TRUE|Dir=Out|Protocol=17|App=System|Name=@wlansvc.dll,-37381|Desc=@wlansvc.dll,-37893|EmbedCtxt=@wlansvc.dll,-36865|TTK2_27=WFDKmDriver|"
-"WFDPRINT-SCAN-Out-Active"="v2.33|Action=Block|Active=TRUE|Dir=Out|Profile=Public|App=%SystemRoot%\\system32\\svchost.exe|Svc=stisvc|Name=@FirewallAPI.dll,-36862|Desc=@FirewallAPI.dll,-36863|EmbedCtxt=@FirewallAPI.dll,-36851|TTK2_22=WFDPrint|"
-"RemoteAssistance-PnrpSvc-UDP-OUT-Active"="v2.33|Action=Block|Active=TRUE|Dir=Out|Protocol=17|Profile=Domain|Profile=Private|App=%systemroot%\\system32\\svchost.exe|Svc=pnrpsvc|Name=@FirewallAPI.dll,-33037|Desc=@FirewallAPI.dll,-33038|EmbedCtxt=@FirewallAPI.dll,-33002|"
-"AllJoyn-Router-In-UDP"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=17|Profile=Domain|Profile=Private|App=%SystemRoot%\\system32\\svchost.exe|Svc=AJRouter|Name=@FirewallAPI.dll,-37007|Desc=@FirewallAPI.dll,-37008|EmbedCtxt=@FirewallAPI.dll,-37002|"
+"WFDPRINT-SCAN-Out-Active"="v2.33|Action=Block|Active=TRUE|Dir=Out|App=%SystemRoot%\\system32\\svchost.exe|Svc=stisvc|Name=@FirewallAPI.dll,-36862|Desc=@FirewallAPI.dll,-36863|EmbedCtxt=@FirewallAPI.dll,-36851|TTK2_22=WFDPrint|"
+"RemoteAssistance-PnrpSvc-UDP-OUT-Active"="v2.33|Action=Block|Active=TRUE|Dir=Out|Protocol=17|App=%systemroot%\\system32\\svchost.exe|Svc=pnrpsvc|Name=@FirewallAPI.dll,-33037|Desc=@FirewallAPI.dll,-33038|EmbedCtxt=@FirewallAPI.dll,-33002|"
+"AllJoyn-Router-In-UDP"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=17|App=%SystemRoot%\\system32\\svchost.exe|Svc=AJRouter|Name=@FirewallAPI.dll,-37007|Desc=@FirewallAPI.dll,-37008|EmbedCtxt=@FirewallAPI.dll,-37002|"
 "Microsoft-Windows-WLANSvc-ASP-CP-In"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=17|LPort=7235|RPort=7235|RA4=LocalSubnet|RA6=LocalSubnet|App=%systemroot%\\system32\\svchost.exe|Svc=WlanSvc|Name=@wlansvc.dll,-37376|Desc=@wlansvc.dll,-37888|EmbedCtxt=@wlansvc.dll,-36864|"
-"AllJoyn-Router-In-TCP"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=6|Profile=Domain|Profile=Private|LPort=9955|App=%SystemRoot%\\system32\\svchost.exe|Svc=AJRouter|Name=@FirewallAPI.dll,-37003|Desc=@FirewallAPI.dll,-37004|EmbedCtxt=@FirewallAPI.dll,-37002|"
-"PlayTo-HTTPSTR-In-TCP-NoScope"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=6|Profile=Domain|LPort=10246|App=System|Name=@FirewallAPI.dll,-36002|Desc=@FirewallAPI.dll,-36003|EmbedCtxt=@FirewallAPI.dll,-36001|"
-"PlayTo-HTTPSTR-In-TCP-PlayToScope"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=6|Profile=Public|LPort=10246|RA42=Ply2Renders|RA62=Ply2Renders|App=System|Name=@FirewallAPI.dll,-36002|Desc=@FirewallAPI.dll,-36003|EmbedCtxt=@FirewallAPI.dll,-36001|"
-"WFDPRINT-DAFWSD-Out-Active"="v2.33|Action=Block|Active=TRUE|Dir=Out|Profile=Public|App=%SystemRoot%\\system32\\dashost.exe|Name=@FirewallAPI.dll,-36854|Desc=@FirewallAPI.dll,-36855|LUAuth=O:LSD:(A;;CC;;;S-1-5-92-3339056971-1291069075-3798698925-2882100687-0)|EmbedCtxt=@FirewallAPI.dll,-36851|TTK2_22=WFDPrint|"
-"NETDIS-LLMNR-In-UDP-Active"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=17|Profile=Private|LPort=5355|RA4=LocalSubnet|RA6=LocalSubnet|App=%SystemRoot%\\system32\\svchost.exe|Svc=dnscache|Name=@FirewallAPI.dll,-32801|Desc=@FirewallAPI.dll,-32804|EmbedCtxt=@FirewallAPI.dll,-32752|"
+"AllJoyn-Router-In-TCP"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=6|LPort=9955|App=%SystemRoot%\\system32\\svchost.exe|Svc=AJRouter|Name=@FirewallAPI.dll,-37003|Desc=@FirewallAPI.dll,-37004|EmbedCtxt=@FirewallAPI.dll,-37002|"
+"PlayTo-HTTPSTR-In-TCP-NoScope"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=6|LPort=10246|App=System|Name=@FirewallAPI.dll,-36002|Desc=@FirewallAPI.dll,-36003|EmbedCtxt=@FirewallAPI.dll,-36001|"
+"PlayTo-HTTPSTR-In-TCP-PlayToScope"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=6|LPort=10246|RA42=Ply2Renders|RA62=Ply2Renders|App=System|Name=@FirewallAPI.dll,-36002|Desc=@FirewallAPI.dll,-36003|EmbedCtxt=@FirewallAPI.dll,-36001|"
+"WFDPRINT-DAFWSD-Out-Active"="v2.33|Action=Block|Active=TRUE|Dir=Out|App=%SystemRoot%\\system32\\dashost.exe|Name=@FirewallAPI.dll,-36854|Desc=@FirewallAPI.dll,-36855|LUAuth=O:LSD:(A;;CC;;;S-1-5-92-3339056971-1291069075-3798698925-2882100687-0)|EmbedCtxt=@FirewallAPI.dll,-36851|TTK2_22=WFDPrint|"
+"NETDIS-LLMNR-In-UDP-Active"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=17|LPort=5355|RA4=LocalSubnet|RA6=LocalSubnet|App=%SystemRoot%\\system32\\svchost.exe|Svc=dnscache|Name=@FirewallAPI.dll,-32801|Desc=@FirewallAPI.dll,-32804|EmbedCtxt=@FirewallAPI.dll,-32752|"
 "ProximityUxHost-Sharing-Out-TCP-NoScope"="v2.33|Action=Block|Active=TRUE|Dir=Out|Protocol=6|App=%SystemRoot%\\system32\\proximityuxhost.exe|Name=@FirewallAPI.dll,-36254|Desc=@FirewallAPI.dll,-36255|EmbedCtxt=@FirewallAPI.dll,-36251|TTK=ProxSharing|"
-"AllJoyn-Router-Out-TCP"="v2.33|Action=Block|Active=TRUE|Dir=Out|Protocol=6|Profile=Domain|Profile=Private|App=%SystemRoot%\\system32\\svchost.exe|Svc=AJRouter|Name=@FirewallAPI.dll,-37005|Desc=@FirewallAPI.dll,-37006|EmbedCtxt=@FirewallAPI.dll,-37002|"
-"CDPSvc-In-TCP"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=6|Profile=Domain|Profile=Private|App=%SystemRoot%\\system32\\svchost.exe|Svc=CDPSvc|Name=@FirewallAPI.dll,-37403|Desc=@FirewallAPI.dll,-37404|EmbedCtxt=@FirewallAPI.dll,-37402|"
-"CDPSvc-In-UDP"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=17|Profile=Domain|Profile=Private|App=%SystemRoot%\\system32\\svchost.exe|Svc=CDPSvc|Name=@FirewallAPI.dll,-37407|Desc=@FirewallAPI.dll,-37408|EmbedCtxt=@FirewallAPI.dll,-37402|"
+"AllJoyn-Router-Out-TCP"="v2.33|Action=Block|Active=TRUE|Dir=Out|Protocol=6|App=%SystemRoot%\\system32\\svchost.exe|Svc=AJRouter|Name=@FirewallAPI.dll,-37005|Desc=@FirewallAPI.dll,-37006|EmbedCtxt=@FirewallAPI.dll,-37002|"
+"CDPSvc-In-TCP"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=6|App=%SystemRoot%\\system32\\svchost.exe|Svc=CDPSvc|Name=@FirewallAPI.dll,-37403|Desc=@FirewallAPI.dll,-37404|EmbedCtxt=@FirewallAPI.dll,-37402|"
+"CDPSvc-In-UDP"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=17|App=%SystemRoot%\\system32\\svchost.exe|Svc=CDPSvc|Name=@FirewallAPI.dll,-37407|Desc=@FirewallAPI.dll,-37408|EmbedCtxt=@FirewallAPI.dll,-37402|"
 "WirelessDisplay-Out-TCP"="v2.33|Action=Block|Active=TRUE|Dir=Out|Protocol=6|App=%systemroot%\\system32\\WUDFHost.exe|Name=@wifidisplay.dll,-10202|Desc=@wifidisplay.dll,-10203|LUAuth=O:LSD:(A;;CC;;;S-1-5-84-0-0-0-0-0)|EmbedCtxt=@wifidisplay.dll,-100|TTK2_22=WFDDisplay|"
-"PlayTo-In-RTSP-LocalSubnetScope"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=6|Profile=Private|LPort=23554|LPort=23555|LPort=23556|RA4=LocalSubnet|RA6=LocalSubnet|App=%SystemRoot%\\system32\\mdeserver.exe|Name=@FirewallAPI.dll,-36008|Desc=@FirewallAPI.dll,-36009|EmbedCtxt=@FirewallAPI.dll,-36001|"
-"RemoteAssistance-Out-TCP-Active"="v2.33|Action=Block|Active=TRUE|Dir=Out|Protocol=6|Profile=Domain|Profile=Private|App=%SystemRoot%\\system32\\msra.exe|Name=@FirewallAPI.dll,-33007|Desc=@FirewallAPI.dll,-33010|EmbedCtxt=@FirewallAPI.dll,-33002|"
-"WFDPRINT-SPOOL-In-Active"="v2.33|Action=Block|Active=TRUE|Dir=In|Profile=Public|App=%SystemRoot%\\system32\\spoolsv.exe|Svc=Spooler|Name=@FirewallAPI.dll,-36856|Desc=@FirewallAPI.dll,-36857|EmbedCtxt=@FirewallAPI.dll,-36851|TTK2_22=WFDPrint|"
-"NETDIS-WSDEVNT-Out-TCP-Active"="v2.33|Action=Block|Active=TRUE|Dir=Out|Protocol=6|Profile=Private|RPort=5357|RA4=LocalSubnet|RA6=LocalSubnet|App=%SystemRoot%\\system32\\svchost.exe|Svc=fdphost|Name=@FirewallAPI.dll,-32819|Desc=@FirewallAPI.dll,-32820|EmbedCtxt=@FirewallAPI.dll,-32752|"
-"NETDIS-SSDPSrv-Out-UDP-Active"="v2.33|Action=Block|Active=TRUE|Dir=Out|Protocol=17|Profile=Private|RPort=1900|RA4=LocalSubnet|RA6=LocalSubnet|App=%SystemRoot%\\system32\\svchost.exe|Svc=Ssdpsrv|Name=@FirewallAPI.dll,-32757|Desc=@FirewallAPI.dll,-32760|EmbedCtxt=@FirewallAPI.dll,-32752|"
-"NETDIS-SSDPSrv-In-UDP-Active"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=17|Profile=Private|LPort=1900|RA4=LocalSubnet|RA6=LocalSubnet|App=%SystemRoot%\\system32\\svchost.exe|Svc=Ssdpsrv|Name=@FirewallAPI.dll,-32753|Desc=@FirewallAPI.dll,-32756|EmbedCtxt=@FirewallAPI.dll,-32752|"
-"WFDPRINT-SPOOL-Out-Active"="v2.33|Action=Block|Active=TRUE|Dir=Out|Profile=Public|App=%SystemRoot%\\system32\\spoolsv.exe|Svc=Spooler|Name=@FirewallAPI.dll,-36858|Desc=@FirewallAPI.dll,-36859|EmbedCtxt=@FirewallAPI.dll,-36851|TTK2_22=WFDPrint|"
+"PlayTo-In-RTSP-LocalSubnetScope"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=6|LPort=23554|LPort=23555|LPort=23556|RA4=LocalSubnet|RA6=LocalSubnet|App=%SystemRoot%\\system32\\mdeserver.exe|Name=@FirewallAPI.dll,-36008|Desc=@FirewallAPI.dll,-36009|EmbedCtxt=@FirewallAPI.dll,-36001|"
+"RemoteAssistance-Out-TCP-Active"="v2.33|Action=Block|Active=TRUE|Dir=Out|Protocol=6|App=%SystemRoot%\\system32\\msra.exe|Name=@FirewallAPI.dll,-33007|Desc=@FirewallAPI.dll,-33010|EmbedCtxt=@FirewallAPI.dll,-33002|"
+"WFDPRINT-SPOOL-In-Active"="v2.33|Action=Block|Active=TRUE|Dir=In|App=%SystemRoot%\\system32\\spoolsv.exe|Svc=Spooler|Name=@FirewallAPI.dll,-36856|Desc=@FirewallAPI.dll,-36857|EmbedCtxt=@FirewallAPI.dll,-36851|TTK2_22=WFDPrint|"
+"NETDIS-WSDEVNT-Out-TCP-Active"="v2.33|Action=Block|Active=TRUE|Dir=Out|Protocol=6|RPort=5357|RA4=LocalSubnet|RA6=LocalSubnet|App=%SystemRoot%\\system32\\svchost.exe|Svc=fdphost|Name=@FirewallAPI.dll,-32819|Desc=@FirewallAPI.dll,-32820|EmbedCtxt=@FirewallAPI.dll,-32752|"
+"NETDIS-SSDPSrv-Out-UDP-Active"="v2.33|Action=Block|Active=TRUE|Dir=Out|Protocol=17|RPort=1900|RA4=LocalSubnet|RA6=LocalSubnet|App=%SystemRoot%\\system32\\svchost.exe|Svc=Ssdpsrv|Name=@FirewallAPI.dll,-32757|Desc=@FirewallAPI.dll,-32760|EmbedCtxt=@FirewallAPI.dll,-32752|"
+"NETDIS-SSDPSrv-In-UDP-Active"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=17|LPort=1900|RA4=LocalSubnet|RA6=LocalSubnet|App=%SystemRoot%\\system32\\svchost.exe|Svc=Ssdpsrv|Name=@FirewallAPI.dll,-32753|Desc=@FirewallAPI.dll,-32756|EmbedCtxt=@FirewallAPI.dll,-32752|"
+"WFDPRINT-SPOOL-Out-Active"="v2.33|Action=Block|Active=TRUE|Dir=Out|App=%SystemRoot%\\system32\\spoolsv.exe|Svc=Spooler|Name=@FirewallAPI.dll,-36858|Desc=@FirewallAPI.dll,-36859|EmbedCtxt=@FirewallAPI.dll,-36851|TTK2_22=WFDPrint|"
 "{07670A02-84D3-48D6-8680-E86E8B6E3F42}"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=17|LPort=5353|App=C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application\\brave.exe|Name=Brave (mDNS-In)|Desc=Inbound rule for Brave to allow mDNS traffic.|EmbedCtxt=Brave|"
-"NETDIS-UPnPHost-In-TCP-Teredo"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=6|Profile=Public|App=System|Name=@FirewallAPI.dll,-32762|Desc=@FirewallAPI.dll,-32764|EmbedCtxt=@FirewallAPI.dll,-32752|TTK2_27=UPnP|"
-"PlayTo-In-RTSP-PlayToScope"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=6|Profile=Public|LPort=23554|LPort=23555|LPort=23556|RA42=Ply2Renders|RA62=Ply2Renders|App=%SystemRoot%\\system32\\mdeserver.exe|Name=@FirewallAPI.dll,-36008|Desc=@FirewallAPI.dll,-36009|EmbedCtxt=@FirewallAPI.dll,-36001|"
+"NETDIS-UPnPHost-In-TCP-Teredo"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=6|App=System|Name=@FirewallAPI.dll,-32762|Desc=@FirewallAPI.dll,-32764|EmbedCtxt=@FirewallAPI.dll,-32752|TTK2_27=UPnP|"
+"PlayTo-In-RTSP-PlayToScope"="v2.33|Action=Block|Active=TRUE|Dir=In|Protocol=6|LPort=23554|LPort=23555|LPort=23556|RA42=Ply2Renders|RA62=Ply2Renders|App=%SystemRoot%\\system32\\mdeserver.exe|Name=@FirewallAPI.dll,-36008|Desc=@FirewallAPI.dll,-36009|EmbedCtxt=@FirewallAPI.dll,-36001|"
 "Microsoft-Windows-WLANSvc-ASP-CP-Out"="v2.33|Action=Block|Active=TRUE|Dir=Out|Protocol=17|LPort=7235|RPort=7235|RA4=LocalSubnet|RA6=LocalSubnet|App=%systemroot%\\system32\\svchost.exe|Svc=WlanSvc|Name=@wlansvc.dll,-37377|Desc=@wlansvc.dll,-37889|EmbedCtxt=@wlansvc.dll,-36864|"
 "{E6FD3394-699E-4C25-8B36-3A40C95A0927}"="v2.33|Action=Block|Active=TRUE|Dir=Out|App=C:\\Windows\\systemapps\\Microsoft.AccountsControl_cw5n1h2txyewy\\AccountsControlHost.exe|Name=W10Privacy-AccountsControl|"
 "{8C23B128-A09D-44C1-950A-374AD06DD043}"="v2.33|Action=Block|Active=TRUE|Dir=Out|App=C:\\Windows\\systemapps\\Microsoft.BioEnrollment_cw5n1h2txyewy\\BioEnrollmentHost.exe|Name=W10Privacy-BioEnrollment|"
@@ -15440,6 +15521,13 @@ Windows Registry Editor Version 5.00
 "Block StartMenuExperienceHost"="v2.32|Action=Block|Active=TRUE|Dir=Out|RA42=IntErnet|RA62=IntErnet|App=%SystemRoot%\\SystemApps\\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\\StartMenuExperienceHost.exe|Name=Block StartMenuExperienceHost|Desc=Block Cortana Outbound UDP/TCP Traffic|"
 "Block SystemSettings"="v2.32|Action=Block|Active=TRUE|Dir=Out|RA42=IntErnet|RA62=IntErnet|App=%SystemRoot%\\ImmersiveControlPanel\\SystemSettings.exe|Name=Block SystemSettings|Desc=Block Windows Settings Outbound UDP/TCP Traffic|"
 "Block Explorer"="v2.32|Action=Block|Active=TRUE|Dir=Out|RA42=IntErnet|RA62=IntErnet|App=%SystemRoot%\\explorer.exe|Name=Block Explorer|Desc=Block Explorer Outbound UDP/TCP Traffic|" ; breaks windhawk (symbols)
+"NoID-Block-AdminShares-TCP-445"="v2.30|Action=Block|Active=TRUE|Dir=In|Protocol=6|LPort=445|Name=NoID Privacy - Block SMB TCP 445 on Public|Desc=Block inbound SMB TCP 445 on Public networks|"
+"NoID-Block-UPnP-TCP-2869"="v2.30|Action=Block|Active=TRUE|Dir=In|Protocol=6|LPort=2869|Name=NoID Privacy - Block UPnP TCP 2869|Desc=Block inbound UPnP TCP 2869 (all profiles, not just Private/Public scoped)|"
+"NoID-Block-mDNS-UDP-5353"="v2.30|Action=Block|Active=TRUE|Dir=In|Protocol=17|LPort=5353|Name=NoID Privacy - Block mDNS UDP 5353|Desc=Block inbound mDNS UDP 5353 system-wide (native rule only scoped to Brave)|"
+"NoID-Block-Miracast-TCP-7236"="v2.30|Action=Block|Active=TRUE|Dir=In|Protocol=6|LPort=7236|Name=NoID Privacy - Block Miracast TCP 7236|Desc=Block inbound Miracast TCP 7236|"
+"NoID-Block-Miracast-TCP-7250"="v2.30|Action=Block|Active=TRUE|Dir=In|Protocol=6|LPort=7250|Name=NoID Privacy - Block Miracast TCP 7250|Desc=Block inbound Miracast TCP 7250 (native rule scoped only to CastSrv.exe, this covers any process)|"
+"NoID-Block-Miracast-UDP-7236"="v2.30|Action=Block|Active=TRUE|Dir=In|Protocol=17|LPort=7236|Name=NoID Privacy - Block Miracast UDP 7236|Desc=Block inbound Miracast UDP 7236|"
+"NoID-Block-Miracast-UDP-7250"="v2.30|Action=Block|Active=TRUE|Dir=In|Protocol=17|LPort=7250|Name=NoID Privacy - Block Miracast UDP 7250|Desc=Block inbound Miracast UDP 7250|"
 
 [HKEY_LOCAL_MACHINE\System\ControlSet001\Services\SharedAccess\Parameters\FirewallPolicy\RestrictedServices\AppIso\FirewallRules]
 "Microsoft.GamingApp_8wekyb3d8bbwe-In-Block"=-
@@ -16165,6 +16253,9 @@ Windows Registry Editor Version 5.00
 "PolicyEnabled"=dword:00000000
 
 [HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\WindowsAI]
+"ConfigureAgentConnectors"=dword:00000002
+"AgentConsentDuration"=dword:00000001
+"AgentConnectorMinimumPolicy"=dword:00000001
 "AllowRecallEnablement"=dword:00000000
 "AllowRecallExport"=dword:00000000
 "AllowSnapshotting"=dword:00000000
@@ -16196,6 +16287,9 @@ Windows Registry Editor Version 5.00
 "RemoveMicrosoftCopilotApp"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsAI]
+"ConfigureAgentConnectors"=dword:00000002
+"AgentConsentDuration"=dword:00000001
+"AgentConnectorMinimumPolicy"=dword:00000001
 "AllowRecallEnablement"=dword:00000000
 "AllowRecallExport"=dword:00000000
 "AllowSnapshotting"=dword:00000000
@@ -16360,7 +16454,7 @@ Windows Registry Editor Version 5.00
 "DisableClickToDo"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\CredUI]
-; "EnableSecureCredentialPrompting"=dword:00000001
+"EnableSecureCredentialPrompting"=dword:00000000 ; 00000000/00000001
 "EnumerateAdministrators"=dword:00000000
 
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CrossDeviceResume\Configuration]
@@ -16705,6 +16799,7 @@ Windows Registry Editor Version 5.00
 "UseWUServer"=dword:00000000 ; 00000000/00000001
 "AllowMUUpdateService"=dword:00000000
 "AlwaysAutoRebootAtScheduledTime"=dword:00000000
+; "EnableFeaturedSoftware"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\default\Update\DeferFeatureUpdatesPeriodInDays]
 "value"=- ; =-, 0000016d
@@ -16927,6 +17022,8 @@ Windows Registry Editor Version 5.00
 "DisableHTTPPrinting"=dword:00000001
 "DisableWebPnPDownload"=dword:00000001
 "DisableWebPrinting"=dword:00000001
+"CopyFilesPolicy"=dword:00000001
+"RedirectionGuardPolicy"=dword:00000001
 
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Network]
 "NoComputersNearMe"=dword:00000001
@@ -16947,14 +17044,15 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Print]
 "DisablePrinterMapping"=dword:00000001
 "DisableWebPrinting"=dword:00000001
-"RpcAuthnLevelPrivacyEnabled"=dword:00000000
+"RpcAuthnLevelPrivacyEnabled"=dword:00000000 ; 00000000/00000001
 "ThrowDriverException"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Printers\RPC]
-"RpcUseNamedPipeProtocol"=dword:00000001
-"RpcProtocols"=dword:00000007
+"RpcUseNamedPipeProtocol"=dword:00000000 ; 00000000/00000001
+"RpcProtocols"=dword:00000004 ; 00000004/00000005/00000007
 "ForceKerberosForRpc"=dword:00000000
-"RpcTcpPort"=dword:00000259
+"RpcTcpPort"=dword:00000259 ; 00000000/00000259
+"RpcAuthentication"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\Software\Microsoft\Command Processor]
 "LockBatchFilesWhenInUse"=dword:00000000 ; 00000000/00000001
@@ -17112,6 +17210,8 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\NetworkListManager\Networks\Default]
 "Category"=dword:00000000
 
+; [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall]
+; "PolicyVersion"=dword:0000021a
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\IPSec\ICFv4]
 "BypassFirewall"=dword:00000001 ; 00000000/00000001
 "DisableNotifications"=dword:00000001
@@ -17120,21 +17220,29 @@ Windows Registry Editor Version 5.00
 "DisableNotifications"=dword:00000001
 "AllowLocalPolicyMerge"=dword:00000001
 "AllowLocalIPsecPolicyMerge"=dword:00000001
+; "DefaultInboundAction"=dword:00000001
+; "DefaultOutboundAction"=dword:00000000
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile]
 "EnableFirewall"=dword:00000001
 "DisableNotifications"=dword:00000001
 "AllowLocalPolicyMerge"=dword:00000001
 "AllowLocalIPsecPolicyMerge"=dword:00000001
+; "DefaultInboundAction"=dword:00000001
+; "DefaultOutboundAction"=dword:00000000
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile]
 "EnableFirewall"=dword:00000001
 "DisableNotifications"=dword:00000001
 "AllowLocalPolicyMerge"=dword:00000001
 "AllowLocalIPsecPolicyMerge"=dword:00000001
+; "DefaultInboundAction"=dword:00000001
+; "DefaultOutboundAction"=dword:00000000
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PrivateProfile]
 "EnableFirewall"=dword:00000001
 "DisableNotifications"=dword:00000001
 "AllowLocalPolicyMerge"=dword:00000001
 "AllowLocalIPsecPolicyMerge"=dword:00000001
+; "DefaultInboundAction"=dword:00000001
+; "DefaultOutboundAction"=dword:00000000
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile]
 "DisableNotifications"=dword:00000001
 "DisableUnicastResponsesToMulticastBroadcast"=dword:00000001
@@ -17165,12 +17273,15 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile\Logging]
 "LogDroppedPackets"=dword:00000000
 "LogSuccessfulConnections"=dword:00000000
+; "LogFileSize"=dword:00004000
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile\Logging]
 "LogDroppedPackets"=dword:00000000
 "LogSuccessfulConnections"=dword:00000000
+; "LogFileSize"=dword:00004000
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PrivateProfile\Logging]
 "LogDroppedPackets"=dword:00000000
 "LogSuccessfulConnections"=dword:00000000
+; "LogFileSize"=dword:00004000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy]
 "DeleteUserAppContainersOnLogoff"=dword:00000001
@@ -17401,6 +17512,7 @@ Windows Registry Editor Version 5.00
 "AdditionalActionTimeOut"=dword:00000000
 "CriticalFailureTimeOut"=dword:00000000
 "NonCriticalTimeOut"=dword:00000000
+"EnableDynamicSignatureDroppedEventReporting"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Defender\Windows Defender\ControlledFolderAccess]
 "Enable"=dword:00000000
@@ -17414,6 +17526,7 @@ Windows Registry Editor Version 5.00
 "DisableCoreService1DSTelemetry"=dword:00000001
 "DisableCoreServiceECSIntegration"=dword:00000001
 "TDTFeatureEnabled"=dword:00000000
+"PassiveRemediation"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Notifications]
 "DisableEnhancedNotifications"=dword:00000001
@@ -17566,6 +17679,7 @@ Windows Registry Editor Version 5.00
 "VerboseStatus"=dword:00000001
 "SupportUwpStartupTasks"=dword:00000001
 "ConsentPromptBehaviorEnhancedAdmin"=dword:00000000
+"EnableMPR"=dword:00000000
 
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\RulesEngine\StateManager]
 "LastSuppressionTimes"="{\"settingshomealertbanner\":\"2099-01-01T00:00:00Z\",\"startmenu\":\"2099-01-01T00:00:00Z\"}"
@@ -17644,8 +17758,23 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\Audit]
 "ProcessCreationIncludeCmdLine_Enabled"=dword:00000000 ; 00000000/00000001
 
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\CredSSP\Parameters]
+"AllowEncryptionOracle"=dword:00000000
+
 [HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\Kerberos\Parameters]
 "EnableCbacAndArmor"=dword:00000000
+"PKInitHashAlgorithmConfigurationEnabled"=dword:00000001
+"PKInitSHA1"=dword:00000000
+"PKInitSHA256"=dword:00000003
+"PKInitSHA384"=dword:00000003
+"PKInitSHA512"=dword:00000003
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\KDC\Parameters]
+"PKINITHashAlgorithmConfigurationEnabled"=dword:00000001
+"PKINITSHA1"=dword:00000000
+"PKINITSHA256"=dword:00000003
+"PKINITSHA384"=dword:00000003
+"PKINITSHA512"=dword:00000003
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\MEIx64\Parameters]
 "DisableD3"=dword:00000001
@@ -17785,6 +17914,12 @@ Windows Registry Editor Version 5.00
 "EnableSSL3Fallback"=dword:00000000
 "PreventIgnoreCertErrors"=dword:00000001
 "ProxySettingsPerUser"=dword:00000001
+"CertificateRevocation"=dword:00000001
+"SecureProtocols"=dword:00000a00
+"Security_HKLM_only"=dword:00000001
+"Security_options_edit"=dword:00000001
+"Security_zones_map_edit"=dword:00000001
+"WarnOnBadCertRecving"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HTTP\Parameters]
 "EnableHttp2Cleartext"=dword:00000001
@@ -17820,7 +17955,12 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Connect]
 "AllowProjectionToPC"=dword:00000000
-"RequirePinForPairing"=dword:00000000
+"AllowMdnsAdvertisement"=dword:00000000
+"AllowMdnsDiscovery"=dword:00000000
+"AllowProjectionFromPC"=dword:00000000
+"AllowProjectionFromPCOverInfrastructure"=dword:00000000
+"AllowProjectionToPCOverInfrastructure"=dword:00000000
+"RequirePinForPairing"=dword:00000000 ; 00000000/00000002
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PlayToReceiver]
 "AutoEnabled"=dword:00000000
@@ -18024,6 +18164,12 @@ Windows Registry Editor Version 5.00
 "DisableFirstRunCustomize"=dword:00000001 ; 00000001/00000002
 "DoNotTrack"=dword:00000001
 "RunOnceHasShown"=dword:00000001
+"FormSuggest Passwords"="no"
+"FormSuggest PW Ask"="no"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Internet Explorer\Download]
+"CheckExeSignatures"="no" ; no/yes
+"RunInvalidSignatures"=dword:00000001 ; 00000000/00000001
 
 [HKEY_USERS\.DEFAULT\Software\Policies\Microsoft\Internet Explorer\Main]
 "DoNotTrack"=dword:00000001
@@ -18123,6 +18269,8 @@ Windows Registry Editor Version 5.00
 "EnableLMHOSTS"=dword:00000000
 "NetbiosOptions"=dword:00000002
 "SMBDeviceEnabled"=dword:00000000 ; 00000000/00000001
+"NodeType"=dword:00000002
+"NoNameReleaseOnDemand"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\NetBT\Parameters\Interfaces]
 "NetBIOSOptions"=dword:00000002
@@ -18426,6 +18574,13 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Network Connections]
 "NC_ShowSharedAccessUI"=dword:00000000
 
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\NetworkProvider]
+"EnableMailslots"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\NetworkProvider\HardenedPaths]
+"\\\\*\\NETLOGON"="RequireMutualAuthentication=1,RequireIntegrity=1"
+"\\\\*\\SYSVOL"="RequireMutualAuthentication=1,RequireIntegrity=1"
+
 [HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\WinRM\Service\WinRS]
 "AllowRemoteShellAccess"=dword:00000000
 
@@ -18478,6 +18633,14 @@ Windows Registry Editor Version 5.00
 "AllowSignedFiles"=dword:00000000
 "AllowUnsignedFiles"=dword:00000000
 "DisablePasswordSaving"=dword:00000001
+"**del.fAllowFullControl"=" "
+"**del.fUseMailto"=" "
+"**del.MaxTicketExpiry"=" "
+"**del.MaxTicketExpiryUnits"=" "
+"fPromptForPassword"=dword:00000001
+"MinEncryptionLevel"=dword:00000003
+"SecurityLayer"=dword:00000002
+"UserAuthentication"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Remote Assistance]
 "fAllowToGetHelp"=dword:00000000
@@ -18701,6 +18864,16 @@ Windows Registry Editor Version 5.00
 
 [HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Internet Explorer\Control Panel]
 "Proxy"=-
+"FormSuggest Passwords"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Ext]
+"RunThisTimeEnabled"=dword:00000000
+"VersionCheckEnabled"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\LAPS]
+"ADBackupDSRMPassword"=dword:00000001
+"ADPasswordEncryptionEnabled"=dword:00000001
+"BackupDirectory"=dword:00000002
 
 [HKEY_CURRENT_USER\Software\GlarySoft\Glary Utilities\Settings]
 "AutoLoad"=dword:00000000
@@ -19482,6 +19655,15 @@ Windows Registry Editor Version 5.00
 "NoHelpItemSendFeedback"=dword:00000001
 "NoHelpItemTipOfTheDay"=dword:00000001
 "NoCrashDetection"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Internet Explorer\Security]
+"DisableSecuritySettingsCheck"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Internet Explorer\Security\ActiveX]
+"BlockNonAdminActiveXInstall"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AxInstaller]
+"OnlyUseAXISForActiveXInstall"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\QuietHours]
 "AllowCalls"=dword:00000000
@@ -21267,6 +21449,14 @@ Windows Registry Editor Version 5.00
 ; "SaferFlags"=dword:00000000
 ; [-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Srp\Gp\RuleCount]
 ; [-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Srp\Gp\LastWriteTime]
+; [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{1D73F334-6A40-4A48-92B4-3C68B7F1D101}]
+; "Description"="Legacy SRP path rule intended to restrict .lnk launch from the current user's Temp tree, including common attachment staging locations."
+; "ItemData"="%LOCALAPPDATA%\Temp\*.lnk"
+; "SaferFlags"=dword:00000000
+; [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{1D73F334-6A40-4A48-92B4-3C68B7F1D102}]
+; "Description"="Legacy SRP path rule intended to restrict .lnk launch from the current user's Downloads folder."
+; "ItemData"="%USERPROFILE%\Downloads\*.lnk"
+; "SaferFlags"=dword:00000000
 
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsCopilot]
 "AllowCopilotRuntime"=dword:00000000
@@ -21472,6 +21662,7 @@ Windows Registry Editor Version 5.00
 "AllowUsingDiacritics"=dword:00000000
 "AllowCortanaInAAD"=dword:00000000
 "AllowCortanaInAADPathOOBE"=dword:00000000
+"PreventModifyingIndexedLocations"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Desktop Search]
 "ProtocolDebugMode"=dword:00000000
@@ -22169,7 +22360,7 @@ Windows Registry Editor Version 5.00
 "ShowRecentSection"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Biometrics\FacialFeatures]
-"EnhancedAntiSpoofing"=dword:00000000 ; =-/00000000
+"EnhancedAntiSpoofing"=dword:00000000 ; =-/00000000/00000001
 
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Windows Search]
 "CortanaConsent"=dword:00000000
@@ -22640,6 +22831,13 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WinRM\Client]
 "AllowBasic"=dword:00000000
+"AllowDigest"=dword:00000000
+"AllowUnencryptedTraffic"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WinRM\Service]
+"AllowBasic"=dword:00000000
+"AllowUnencryptedTraffic"=dword:00000000
+"DisableRunAs"=dword:00000001
 
 [HKEY_CURRENT_USER\Software\Microsoft\Windows Script\Settings]
 "AmsiEnable"=dword:00000000 ; 00000000/00000001
@@ -23215,6 +23413,7 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\NIS]
 "DisableProtocolRecognition"=dword:00000001
+"EnableConvertWarnToBlock"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Device performance and health]
 "UILockdown"=dword:00000001
@@ -23321,6 +23520,10 @@ Windows Registry Editor Version 5.00
 "EnabledV8"=dword:00000000
 "EnabledV9"=dword:00000000
 "PreventOverride"=dword:00000000
+"PreventOverrideAppRepUnknown"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CredentialsDelegation]
+"AllowProtectedCreds"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsMitigation]
 "UserPreference"=dword:00000001 ; 00000001/00000002/00000003
@@ -25704,6 +25907,14 @@ Windows Registry Editor Version 5.00
 "Version"="3369"
 "WRONG_DISC"="Wrong disc in drive. Please insert the disc labelled 'Unreal Tournament 2004 Play Disc' to continue."
 "YEAR"="2004"
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\ms-edge-copilot]
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\ms-copilot]
+
+[-HKEY_CURRENT_USER\SOFTWARE\Classes\ms-copilot]
+
+[-HKEY_CURRENT_USER\SOFTWARE\Classes\ms-copilot]
 
 [-HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows NT\CurrentVersion\HostActivityManager\CommitHistory\MicrosoftWindows.Client.CBS_cw5n1h2txyewy!ScreenClipping]
 
