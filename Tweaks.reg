@@ -280,7 +280,7 @@ Windows Registry Editor Version 5.00
 "MoveImages"=dword:00000001 ; 00000000, 00000001 security option for anticheats
 "NonPagedPoolLimit"=dword:00000000
 "NonPagedPoolQuota"=dword:00000000 ; 00000000, 0000008f/ffffffff
-"NonPagedPoolSize"=dword:00000400 ; 00000000, 00000400/000000c0
+"NonPagedPoolSize"=dword:00000000 ; 00000000, 00000400/000000c0
 "NUMAForceLocalOnly"=dword:00000000 ; 00000000/00000001
 "OverlayTestMode"=dword:00000005
 "PagedPoolLimit"=dword:00000000
@@ -1311,8 +1311,8 @@ Windows Registry Editor Version 5.00
 "UseDelayedAcceptance"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Executive]
-"AdditionalCriticalWorkerThreads"=dword:00000004 ; 00000000, 00000004/00000010/00000040
-"AdditionalDelayedWorkerThreads"=dword:00000002 ; 00000000, 00000002/00000004/00000010
+"AdditionalCriticalWorkerThreads"=dword:00000010 ; 00000000, 00000004/00000010/00000040
+"AdditionalDelayedWorkerThreads"=dword:00000010 ; 00000000, 00000002/00000004/00000010
 "ForceEnableMutantAutoboost"=dword:00000001
 "MaxTimeSeparationBeforeCorrect"=dword:00000001 ; 00000000/00000001
 "PriorityQuantumMatrix"=dword:00000000
@@ -1576,6 +1576,8 @@ Windows Registry Editor Version 5.00
 "QueueDepth"=dword:00000040 ; 00000020/00000040
 "IdleTimeoutInMS"=dword:00000000
 "NumberOfRequests"=dword:000000ff
+; device instace path
+"HostMemoryBufferBytes"=hex(7):56,00,45,00,4e,00,5f,00,31,00,35,00,42,00,37,00,26,00,44,00,45,00,56,00,5f,00,35,00,30,00,30,00,33,00,26,00,52,00,45,00,56,00,5f,00,3f,00,3f,00,20,00,36,00,37,00,31,00,30,00,38,00,38,00,36,00,34,00,00,00,00,00
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\iaStorVD\Parameters\Device]
 "Nvme0IgnoreFuaBit"=dword:00000001
@@ -2368,7 +2370,7 @@ Windows Registry Editor Version 5.00
 "NVMeDisablePerfThrottling"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\StorPort]
-"HmbAllocationPolicy"=dword:00000001 ; 00000002, 00000000/00000001
+"HmbAllocationPolicy"=dword:00000002 ; 00000002, 00000000/00000001
 ; "LogControlEnable"=qword:00000000
 "TelemetryDeviceHealthEnabled"=dword:00000000
 "TelemetryErrorDataEnabled"=dword:00000000
@@ -2417,7 +2419,7 @@ Windows Registry Editor Version 5.00
 "EnableSvchostMitigationsPolicy"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Policies\EarlyLaunch]
-"DriverLoadPolicy"=dword:00000007 ; =-/00000003/00000007
+"DriverLoadPolicy"=dword:00000007 ; =-/00000003, 00000007
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\EventSystem]
 "ParallelFiringTimeoutEnabled"=dword:00000001
@@ -2881,7 +2883,8 @@ Windows Registry Editor Version 5.00
 "ArbitrationBurst"=dword:00000100
 "ForceEagerWrites"=dword:00000001
 "ForceFlush"=dword:00000001
-"HostMemoryBufferBytes"=dword:000005dc
+; "HostMemoryBufferBytes"=dword:000005dc
+"HostMemoryBufferBytes"=hex(7):56,00,45,00,4e,00,5f,00,31,00,35,00,42,00,37,00,26,00,44,00,45,00,56,00,5f,00,35,00,30,00,30,00,33,00,26,00,52,00,45,00,56,00,5f,00,3f,00,3f,00,20,00,36,00,37,00,31,00,30,00,38,00,38,00,36,00,34,00,00,00,00,00
 "ImmediateData"=dword:00000001
 "IoQueueDepth"=dword:00000040
 "IoSubmissionQueueCount"=dword:00000003
@@ -2903,7 +2906,8 @@ Windows Registry Editor Version 5.00
 "ArbitrationBurst"=dword:00000100
 "ForceEagerWrites"=dword:00000001
 "ForceFlush"=dword:00000001
-"HostMemoryBufferBytes"=dword:000000ff
+; "HostMemoryBufferBytes"=dword:000000ff
+"HostMemoryBufferBytes"=hex(7):56,00,45,00,4e,00,5f,00,31,00,35,00,42,00,37,00,26,00,44,00,45,00,56,00,5f,00,35,00,30,00,30,00,33,00,26,00,52,00,45,00,56,00,5f,00,3f,00,3f,00,20,00,36,00,37,00,31,00,30,00,38,00,38,00,36,00,34,00,00,00,00,00
 "ImmediateData"=dword:00000001
 "IoQueueDepth"=dword:00000040
 "IoSubmissionQueueCount"=dword:00000003
@@ -4406,7 +4410,7 @@ Windows Registry Editor Version 5.00
 "MUIVerb"="Cleanup"
 "Position"=""
 [HKEY_CLASSES_ROOT\DesktopBackground\Shell\Cleanup\command]
-@="powershell.exe -NoProfile -WindowStyle Hidden -Command \"Start-Process -FilePath powershell.exe -ArgumentList '-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -Command \"& { Stop-Process -Name dwm -Force -ErrorAction SilentlyContinue; Start-Sleep -Seconds 3; Stop-Process -Name explorer -Force -ErrorAction SilentlyContinue; Start-Sleep -Seconds 1; Start-Process explorer; netsh http flush logbuffer; netsh interface ip delete arpcache; ipconfig /flushdns; ipconfig /registerdns; & $env:windir\\system32\\lodctr.exe /R; & $env:windir\\syswow64\\lodctr.exe /R; & $env:windir\\syswow64\\wbem\\winmgmt.exe /RESYNCPERF; & $env:windir\\system32\\wbem\\winmgmt.exe /RESYNCPERF; & $env:windir\\system32\\lodctr.exe /e:PerfOS; winmgmt /salvagerepository; fsutil usn deletejournal /d /n C:; fsutil usn deletejournal /d /n D:; fsutil usn deletejournal /d /n E:; fsutil usn deletejournal /d /n F:; fsutil usn deletejournal /d /n G:; logman stop ''Steam Event Tracing'' -ets; logman stop UBPM -ets; logman stop NetCfgTrace -ets; logman stop WindowsUpdate_trace_log -ets; logman stop MoUxCoreWorker -ets; logman stop UpdateSessionOrchestration -ets; logman stop Diagtrack-Listener -ets; logman stop Microsoft-Windows-Rdp-Graphics-RdpIdd-Trace -ets; logman stop SleepStudyTraceSession -ets; logman stop UserNotPresentTraceSession -ets; logman stop NVIDIA-NVTOPPS-FILTER -ets; logman stop NVIDIA-NVTOPPS-NOCAT -ets; logman stop Admin_PS_Provider -ets; logman stop 8696EAC4-1288-4288-A4EE-49EE431B0AD9 -ets; logman stop Microsoft.Windows.UpdateHealthTools -ets; logman stop SiPresentTraceSession -ets; logman stop SiKernelTraceSession -ets; logman stop ''NT Kernel Logger'' -ets; Stop-Process -Name acrotray,adb,''Adobe Crash Processor'',AdobeIPCBroker,Agent,AggregatorHost,ai,alg,ApplicationFrameHost,AppVShNotify,armsvc,attrib,backgroundTaskHost,calculator,CalculatorApp,CCLibrary,CCXProcess,CEPHtmlEngine,cfbackd.w32,CHXSmartScreen,CompPkgSrv,CoreSync,crashhelper,CrashMailer_64,CrashReportClient,CredentialEnrollmentManager,CrossDeviceResume,perfmon,DashboardNotificationManager,DataExchangeHost,dllhost,drvinst,StartMenu,EABackgroundService,elevation_service,EpicOnlineServicesUserHelper,CCleaner64,EpicWebHelper,fdm,FESearchHost,FileCoAuth,gamebar,GameBarPresFenceWriter,GameInputSvc,GameManagerService,helperservice,HelpPane,hxaccounts,hxoutlook,TrackerUpdate,WindowsCamera,GoogleUpdate,HxTsr,identity_helper,steamservice,provtool,JackettConsole,jcef_helper,UpdateHub,Locator,lockapp,Popcorn-Time,Node,MeasureSleep,MBAMService,memBoost,Microsoft.Photos,MicrosoftEdgeUpdate,MoUsoCoreWorker,MpCmdRun,MpDefenderCoreService,WinaeroTweakerHelper,msdtc,msedgewebview2,UCheck_portable64_win10,msiexec,MsMpEng,NisSrv,nvcplui,NVDisplay.Container,nvidia-smi,officeclicktorun,OneDrive,OSE,PerceptionSimulationService,perfhost,PerfWatson2,CortexLauncherService,GameInputRedistService,RazerCortex,RegWorkshopPortable,RegWorkshopX64,RazerCortex.Shell,PhoneExperienceHost,PhotosService,PickerHost,razer_elevation_service,RzAppManager,RzBTLEManager,RzChromaConnectManager,RzChromaConnectServer,RzChromaStreamServer,RzDeviceManager,RzDeviceManagerEx,RzDiagnosticService,RzEngineMon,RzIoTDeviceManager,RzSDKServer,provtool,RzSDKService,RzSmartlightingDeviceManager,RzWDLDeviceManager,razerwdl,RazerAppEngine,HapticService,GameManagerService3,PresentationFontCache,prevhost,''Razer Central'',''Razer Synapse 3'',''Razer Synapse Service'',''Razer Synapse Service Process'',RazerCentralService,RtkAudUService64,RtkNGUI64,RuntimeBroker,findstr,RRCsrv,SDXHelper,SearchApp,SearchFilterHost,SearchHost,SearchIndexer,SearchProtocolHost,SecurityHealthHost,SecurityHealthService,crashpad_handler,TeamViewer_Service,tv_w32,tv_x64,TeamViewer,java,SelectiveToolApp,aimgr,set-up,setup,ShellExperienceHost,ShellHost,SkypeApp,SkypeBackgroundHost,smartscreen,wevtutil,PnPUtil,AppActions,smss,SMSvcHost,SndVol,SnippingTool,snmptrap,splwow64,spoolsv,SppExtComObj,sppsvc,sqlwriter,ssh,ssh-agent,python,StartMenuExperienceHost,steamerrorreporter,StoreDesktopExtension,RGSUpdater,RGSUpdaterAgent,SystemSettings,SystemSettingsAdminFlows,SystemSettingsBroker,TabTip,taskhostw,Taskmgr,textinputhost,TieringEngineService,TiWorker,TrustedInstaller,uhssvc,UnityCrashHandler64,upfc,userinit,UserOOBEBroker,vds,vdsldr,video.ui,vssadmin,DismHost,Dism,VSSVC,wbengine,werfault,Widgets,WidgetService,wimserv,fireshot-chrome-plugin,WindowsPackageManagerServer,WinStore.App,WinUpdateHelper,WMIADAP,WmiApSrv,WmiPrvSE,WmiPrvSvc,wowreg32,wuauclt,wuaucltcore,WUDFHost,WWAHost,yourphone -Force -ErrorAction SilentlyContinue; Start-Sleep -Seconds 2; Get-Process audiodg,winlogon | ForEach-Object { $_.PriorityClass = ''Idle'' }; Get-Process ctfmon,svchost,ShellHost,RuntimeBroker | ForEach-Object { $_.PriorityClass = ''BelowNormal'' }; & \"$env:windir\\system32\\regsvr32.exe\" /s atl.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s atl.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s urlmon.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s urlmon.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s mshtml.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s mshtml.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s shdocvw.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s shdocvw.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s browseui.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s browseui.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s jscript.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s jscript.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s vbscript.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s vbscript.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s scrrun.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s scrrun.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s msxml.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s msxml.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s msxml2.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s msxml2.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s msxml3.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s msxml3.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s msxml6.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s msxml6.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s actxprxy.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s actxprxy.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s softpub.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s softpub.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s wintrust.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s wintrust.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s dssenh.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s dssenh.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s rsaenh.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s rsaenh.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s gpkcsp.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s gpkcsp.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s sccbase.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s sccbase.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s slbcsp.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s slbcsp.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s cryptdlg.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s cryptdlg.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s oleaut32.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s oleaut32.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s ole32.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s ole32.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s shell32.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s shell32.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s initpki.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s initpki.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s wuapi.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s wuapi.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s wuaueng.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s wuaueng.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s wuaueng1.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s wuaueng1.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s wucltui.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s wucltui.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s wups.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s wups.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s wups2.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s wups2.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s wuweb.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s wuweb.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s qmgr.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s qmgr.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s qmgrprxy.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s qmgrprxy.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s wucltux.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s wucltux.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s muweb.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s muweb.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s wuwebv.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s wuwebv.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s quartz.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s quartz.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s msimtf.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s msimtf.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s msctf.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s msctf.dll; & \"$env:windir\\system32\\rundll32.exe\" \"user32.dll,UpdatePerUserSystemParameters ,1 ,True\"; & \"$env:windir\\sysWOW64\\rundll32.exe\" \"user32.dll,UpdatePerUserSystemParameters ,1 ,True\"; @(''HID\\VID_1532&PID_008A&MI_02\\8&2233E4E3&0&0000'',''HID\\VID_1B1C&PID_1B15&MI_00&COL01\\8&12AB0AA0&0&0000'',''HID\\VID_0D8C&PID_000C&MI_03\\8&E0E3017&0&0000'',''HID\\VID_1532&PID_008A&MI_00&COL03\\9&1131C131&0&0000'',''HID\\VID_1532&PID_008A&MI_01&COL02\\8&39F77128&0&0001'',''HID\\VID_1B1C&PID_1B15&MI_00&COL02\\8&12AB0AA0&0&0001'',''HID\\VID_1532&PID_008A&MI_01&COL04\\8&39F77128&0&0003'',''HID\\VID_1532&PID_008A&MI_01&COL05\\8&39F77128&0&0004'',''HID\\VID_1532&PID_008A&MI_01&COL03\\8&39F77128&0&0002'',''HID\\VID_1B1C&PID_1B15&MI_00&COL03\\8&12AB0AA0&0&0002'',''HID\\VID_1B1C&PID_1B15&MI_00&COL04\\8&12AB0AA0&0&0003'',''HID\\VID_1B1C&PID_1B15&MI_01\\8&36824862&0&0000'',''HID\\VID_1532&PID_008A&MI_00\\8&16203366&0&0000'',''HID\\VID_1532&PID_008A&MI_01&COL01\\8&39F77128&0&0000'',''USB\\VID_0D8C&PID_000C&MI_00\\7&995C93B&0&0000'',''USB\\VID_32E6&PID_9221&MI_00\\7&2D495844&0&0000'',''USB\\VID_32E6&PID_9221&MI_02\\7&2D495844&0&0002'',''USB\\VID_32E6&PID_9221\\2024120914230143508'',''USB\\VID_1532&PID_008A&MI_01\\7&36E435ED&1&0001'',''USB\\VID_1532&PID_008A&MI_02\\7&36E435ED&1&0002'',''USB\\VID_0D8C&PID_000C\\6&C1A2E2F&0&1'',''USB\\VID_1532&PID_008A\\6&C1A2E2F&0&2'',''USB\\VID_1B1C&PID_1B15\\15027002AEA7A44454E1DF3EF5001940'',''USB\\VID_0D8C&PID_000C&MI_03\\7&995C93B&0&0003'',''USB\\VID_1532&PID_008A&MI_00\\7&36E435ED&1&0000'',''USB\\VID_1B1C&PID_1B15&MI_00\\7&30365890&0&0000'',''USB\\VID_1B1C&PID_1B15&MI_01\\7&30365890&0&0001'',''USB\\ROOT_HUB30\\5&2C35141&0&0'',''USB\\ROOT_HUB30\\5&2F66366D&0&0'',''USB\\ROOT_HUB30\\5&4087D53&0&0'',''USB\\VID_045E&PID_028E\\20492BE'') | ForEach-Object { pnputil /restart-device $_ }; Start-Sleep -Seconds 2; @(''{4d36e96f-e325-11ce-bfc1-08002be10318}'',''{4d36e96b-e325-11ce-bfc1-08002be10318}'') | ForEach-Object { Get-ChildItem \"HKLM:\\SYSTEM\\CurrentControlSet\\Control\\Class\\$_\" -EA SilentlyContinue | Where-Object { $_.PSChildName -match ''^\\d{4}$'' } | ForEach-Object { try { $p=$_.PSPath; $d=(Get-ItemProperty $p DriverDateData -EA Stop).DriverDateData; $d[$d.Length-1]=0x00; Set-ItemProperty $p DriverDateData $d -Type Binary -Force } catch {} } }; Start-Job { Stop-Service -Name EABackgroundService,ClickToRunSvc,vds,HapticService,''Razer Synapse Service'',''Razer Game Manager Service 3'',''Razer Elevation Service'',''Razer Chroma Stream Server'',''Razer Chroma SDK Service'',''Razer Chroma SDK Server'',''Razer Chroma SDK Diagnostic Service'',NVDisplay.ContainerLocalSystem,EpicGamesUpdater,GoogleUpdaterInternalService*,GoogleUpdaterService*,MBAMService,mbamchameleon,MbamElam,MBAMSwissArmy,MBAMWebProtection,TeamViewer,npcap,InstallService,wuauserv,seclogon,BITS,swprv,wlidsvc,DoSvc,camsvc -Force -ErrorAction SilentlyContinue } | Out-Null; & ''C:\\Program Files (x86)\\Rainmeter\\Rainmeter.exe'' ''!RefreshApp''; & ''C:\\Program Files (x86)\\CCleaner\\CCleaner64.exe'' ''/AUTO''; & ''C:\\Program Files (x86)\\Device Cleanup\\DeviceCleanupCmd.exe'' * -e:''*C-Media*''; $exe=''C:\\Program Files (x86)\\WinMemoryCleaner\\WinMemoryCleaner.exe''; & $exe /CombinedPageList /SystemFileCache /RegistryCache /WorkingSet /ModifiedPageList /ModifiedFileCache /StandbyList; & ''C:\\Users\\Administrator\\Documents\\Set DWM Threads.ps1''; $killList = ''rundll32.exe'',''WindowsTerminal.exe'',''taskkill.exe'',''officeclicktorun.exe'',''vds.exe'',''bitsadmin.exe'',''lodctr.exe'',''WUDFHost.exe'',''fsutil.exe'',''bcdedit.exe'',''VSSVC.exe'',''sc.exe'',''netsh.exe'',''gpupdate.exe'',''msiexec.exe'',''msedgewebview2.exe'',''winget.exe'',''WMIADAP.exe'',''DeviceCleanupCmd.exe'',''WmiPrvSE.exe'',''sppsvc.exe'',''PnPUtil.exe'',''WMIC.exe'',''TiWorker.exe'',''Taskmgr.exe'',''TrustedInstaller.exe'',''powershell_ise.exe'',''OpenConsole.exe'',''conhost.exe'',''cmd.exe'',''powershell.exe''; foreach ($proc in $killList) { try { taskkill /f /t /im $proc } catch { } } }\"' -Verb RunAs; exit\""
+@="powershell.exe -NoProfile -WindowStyle Hidden -Command \"Start-Process -FilePath powershell.exe -ArgumentList '-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -Command \"& { Stop-Process -Name dwm -Force -ErrorAction SilentlyContinue; Start-Sleep -Seconds 3; Stop-Process -Name explorer -Force -ErrorAction SilentlyContinue; Start-Sleep -Seconds 1; Start-Process explorer; netsh http flush logbuffer; netsh interface ip delete arpcache; ipconfig /flushdns; ipconfig /registerdns; & $env:windir\\system32\\lodctr.exe /R; & $env:windir\\syswow64\\lodctr.exe /R; & $env:windir\\syswow64\\wbem\\winmgmt.exe /RESYNCPERF; & $env:windir\\system32\\wbem\\winmgmt.exe /RESYNCPERF; & $env:windir\\system32\\lodctr.exe /e:PerfOS; winmgmt /salvagerepository; fsutil usn deletejournal /d /n C:; fsutil usn deletejournal /d /n D:; fsutil usn deletejournal /d /n E:; fsutil usn deletejournal /d /n F:; fsutil usn deletejournal /d /n G:; logman stop ''Steam Event Tracing'' -ets; logman stop UBPM -ets; logman stop NetCfgTrace -ets; logman stop WindowsUpdate_trace_log -ets; logman stop MoUxCoreWorker -ets; logman stop UpdateSessionOrchestration -ets; logman stop Diagtrack-Listener -ets; logman stop Microsoft-Windows-Rdp-Graphics-RdpIdd-Trace -ets; logman stop SleepStudyTraceSession -ets; logman stop UserNotPresentTraceSession -ets; logman stop NVIDIA-NVTOPPS-FILTER -ets; logman stop NVIDIA-NVTOPPS-NOCAT -ets; logman stop Admin_PS_Provider -ets; logman stop 8696EAC4-1288-4288-A4EE-49EE431B0AD9 -ets; logman stop Microsoft.Windows.UpdateHealthTools -ets; logman stop SiPresentTraceSession -ets; logman stop SiKernelTraceSession -ets; logman stop ''NT Kernel Logger'' -ets; Stop-Process -Name acrotray,adb,''Adobe Crash Processor'',AdobeIPCBroker,Agent,AggregatorHost,ai,alg,ApplicationFrameHost,AppVShNotify,armsvc,attrib,backgroundTaskHost,calculator,CalculatorApp,CCLibrary,CCXProcess,CEPHtmlEngine,cfbackd.w32,CHXSmartScreen,CompPkgSrv,CoreSync,crashhelper,CrashMailer_64,CrashReportClient,CredentialEnrollmentManager,CrossDeviceResume,perfmon,DashboardNotificationManager,DataExchangeHost,dllhost,drvinst,StartMenu,EABackgroundService,elevation_service,EpicOnlineServicesUserHelper,CCleaner64,EpicWebHelper,fdm,FESearchHost,FileCoAuth,gamebar,GameBarPresFenceWriter,GameInputSvc,GameManagerService,helperservice,HelpPane,hxaccounts,hxoutlook,TrackerUpdate,WindowsCamera,GoogleUpdate,HxTsr,identity_helper,steamservice,provtool,JackettConsole,jcef_helper,UpdateHub,Locator,lockapp,Popcorn-Time,Node,MeasureSleep,MBAMService,memBoost,Microsoft.Photos,MicrosoftEdgeUpdate,MoUsoCoreWorker,MpCmdRun,MpDefenderCoreService,WinaeroTweakerHelper,msdtc,msedgewebview2,UCheck_portable64_win10,msiexec,MsMpEng,NisSrv,nvcplui,NVDisplay.Container,nvidia-smi,officeclicktorun,OneDrive,OSE,PerceptionSimulationService,perfhost,PerfWatson2,CortexLauncherService,GameInputRedistService,RazerCortex,RegWorkshopPortable,RegWorkshopX64,RazerCortex.Shell,PhoneExperienceHost,PhotosService,PickerHost,razer_elevation_service,RzAppManager,RzBTLEManager,RzChromaConnectManager,RzChromaConnectServer,RzChromaStreamServer,RzDeviceManager,RzDeviceManagerEx,RzDiagnosticService,RzEngineMon,RzIoTDeviceManager,RzSDKServer,provtool,RzSDKService,RzSmartlightingDeviceManager,RzWDLDeviceManager,razerwdl,RazerAppEngine,HapticService,GameManagerService3,PresentationFontCache,prevhost,''Razer Central'',''Razer Synapse 3'',''Razer Synapse Service'',''Razer Synapse Service Process'',RazerCentralService,RtkAudUService64,RtkNGUI64,RuntimeBroker,findstr,RRCsrv,SDXHelper,SearchApp,SearchFilterHost,SearchHost,SearchIndexer,SearchProtocolHost,SecurityHealthHost,SecurityHealthService,crashpad_handler,TeamViewer_Service,tv_w32,tv_x64,TeamViewer,java,SelectiveToolApp,aimgr,set-up,setup,ShellExperienceHost,ShellHost,SkypeApp,SkypeBackgroundHost,smartscreen,wevtutil,PnPUtil,AppActions,smss,SMSvcHost,SndVol,SnippingTool,snmptrap,splwow64,spoolsv,SppExtComObj,sppsvc,sqlwriter,ssh,ssh-agent,python,StartMenuExperienceHost,steamerrorreporter,StoreDesktopExtension,RGSUpdater,RGSUpdaterAgent,SystemSettings,SystemSettingsAdminFlows,SystemSettingsBroker,TabTip,taskhostw,Taskmgr,textinputhost,TieringEngineService,TiWorker,TrustedInstaller,uhssvc,UnityCrashHandler64,upfc,userinit,UserOOBEBroker,vds,vdsldr,video.ui,vssadmin,DismHost,Dism,VSSVC,wbengine,werfault,Widgets,WidgetService,wimserv,fireshot-chrome-plugin,WindowsPackageManagerServer,WinStore.App,WinUpdateHelper,WMIADAP,WmiApSrv,WmiPrvSE,WmiPrvSvc,wowreg32,wuauclt,wuaucltcore,WUDFHost,WWAHost,yourphone -Force -ErrorAction SilentlyContinue; Start-Sleep -Seconds 2; Get-Process audiodg,winlogon | ForEach-Object { $_.PriorityClass = ''Idle'' }; Get-Process ctfmon,svchost,ShellHost,RuntimeBroker | ForEach-Object { $_.PriorityClass = ''BelowNormal'' }; & \"$env:windir\\system32\\regsvr32.exe\" /s atl.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s atl.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s urlmon.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s urlmon.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s mshtml.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s mshtml.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s shdocvw.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s shdocvw.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s browseui.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s browseui.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s jscript.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s jscript.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s vbscript.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s vbscript.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s scrrun.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s scrrun.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s msxml.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s msxml.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s msxml2.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s msxml2.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s msxml3.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s msxml3.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s msxml6.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s msxml6.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s actxprxy.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s actxprxy.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s softpub.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s softpub.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s wintrust.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s wintrust.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s dssenh.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s dssenh.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s rsaenh.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s rsaenh.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s gpkcsp.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s gpkcsp.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s sccbase.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s sccbase.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s slbcsp.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s slbcsp.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s cryptdlg.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s cryptdlg.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s oleaut32.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s oleaut32.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s ole32.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s ole32.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s shell32.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s shell32.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s initpki.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s initpki.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s wuapi.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s wuapi.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s wuaueng.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s wuaueng.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s wuaueng1.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s wuaueng1.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s wucltui.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s wucltui.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s wups.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s wups.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s wups2.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s wups2.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s wuweb.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s wuweb.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s qmgr.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s qmgr.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s qmgrprxy.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s qmgrprxy.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s wucltux.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s wucltux.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s muweb.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s muweb.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s wuwebv.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s wuwebv.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s quartz.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s quartz.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s msimtf.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s msimtf.dll; & \"$env:windir\\system32\\regsvr32.exe\" /s msctf.dll; & \"$env:windir\\sysWOW64\\regsvr32.exe\" /s msctf.dll; & \"$env:windir\\system32\\rundll32.exe\" \"user32.dll,UpdatePerUserSystemParameters ,1 ,True\"; & \"$env:windir\\sysWOW64\\rundll32.exe\" \"user32.dll,UpdatePerUserSystemParameters ,1 ,True\"; @(''HID\\VID_1532&PID_008A&MI_02\\8&2233E4E3&0&0000'',''HID\\VID_1B1C&PID_1B15&MI_00&COL01\\8&12AB0AA0&0&0000'',''HID\\VID_0D8C&PID_000C&MI_03\\8&E0E3017&0&0000'',''HID\\VID_1532&PID_008A&MI_00&COL03\\9&1131C131&0&0000'',''HID\\VID_1532&PID_008A&MI_01&COL02\\8&39F77128&0&0001'',''HID\\VID_1B1C&PID_1B15&MI_00&COL02\\8&12AB0AA0&0&0001'',''HID\\VID_1532&PID_008A&MI_01&COL04\\8&39F77128&0&0003'',''HID\\VID_1532&PID_008A&MI_01&COL05\\8&39F77128&0&0004'',''HID\\VID_1532&PID_008A&MI_01&COL03\\8&39F77128&0&0002'',''HID\\VID_1B1C&PID_1B15&MI_00&COL03\\8&12AB0AA0&0&0002'',''HID\\VID_1B1C&PID_1B15&MI_00&COL04\\8&12AB0AA0&0&0003'',''HID\\VID_1B1C&PID_1B15&MI_01\\8&36824862&0&0000'',''HID\\VID_1532&PID_008A&MI_00\\8&16203366&0&0000'',''HID\\VID_1532&PID_008A&MI_01&COL01\\8&39F77128&0&0000'',''USB\\VID_0D8C&PID_000C&MI_00\\7&995C93B&0&0000'',''USB\\VID_32E6&PID_9221&MI_00\\7&2D495844&0&0000'',''USB\\VID_32E6&PID_9221&MI_02\\7&2D495844&0&0002'',''USB\\VID_32E6&PID_9221\\2024120914230143508'',''USB\\VID_1532&PID_008A&MI_01\\7&36E435ED&1&0001'',''USB\\VID_1532&PID_008A&MI_02\\7&36E435ED&1&0002'',''USB\\VID_0D8C&PID_000C\\6&C1A2E2F&0&1'',''USB\\VID_1532&PID_008A\\6&C1A2E2F&0&2'',''USB\\VID_1B1C&PID_1B15\\15027002AEA7A44454E1DF3EF5001940'',''USB\\VID_0D8C&PID_000C&MI_03\\7&995C93B&0&0003'',''USB\\VID_1532&PID_008A&MI_00\\7&36E435ED&1&0000'',''USB\\VID_1B1C&PID_1B15&MI_00\\7&30365890&0&0000'',''USB\\VID_1B1C&PID_1B15&MI_01\\7&30365890&0&0001'',''USB\\ROOT_HUB30\\5&2C35141&0&0'',''USB\\ROOT_HUB30\\5&2F66366D&0&0'',''USB\\ROOT_HUB30\\5&4087D53&0&0'',''USB\\VID_045E&PID_028E\\20492BE'') | ForEach-Object { pnputil /restart-device $_ }; Start-Sleep -Seconds 2; @(''{4d36e96f-e325-11ce-bfc1-08002be10318}'',''{4d36e96b-e325-11ce-bfc1-08002be10318}'') | ForEach-Object { Get-ChildItem \"HKLM:\\SYSTEM\\CurrentControlSet\\Control\\Class\\$_\" -EA SilentlyContinue | Where-Object { $_.PSChildName -match ''^\\d{4}$'' } | ForEach-Object { try { $p=$_.PSPath; $d=(Get-ItemProperty $p DriverDateData -EA Stop).DriverDateData; $d[$d.Length-1]=0x00; Set-ItemProperty $p DriverDateData $d -Type Binary -Force } catch {} } }; Start-Job { Stop-Service -Name EABackgroundService,ClickToRunSvc,vds,HapticService,''Razer Synapse Service'',''Razer Game Manager Service 3'',''Razer Elevation Service'',''Razer Chroma Stream Server'',''Razer Chroma SDK Service'',''Razer Chroma SDK Server'',''Razer Chroma SDK Diagnostic Service'',NVDisplay.ContainerLocalSystem,EpicGamesUpdater,GoogleUpdaterInternalService*,GoogleUpdaterService*,MBAMService,mbamchameleon,MbamElam,MBAMSwissArmy,MBAMWebProtection,TeamViewer,npcap,InstallService,wuauserv,seclogon,BITS,swprv,wlidsvc,DoSvc,camsvc,hitmanpro37 -Force -ErrorAction SilentlyContinue } | Out-Null; & ''C:\\Program Files (x86)\\Rainmeter\\Rainmeter.exe'' ''!RefreshApp''; & ''C:\\Program Files (x86)\\CCleaner\\CCleaner64.exe'' ''/AUTO''; & ''C:\\Program Files (x86)\\Device Cleanup\\DeviceCleanupCmd.exe'' * -e:''*C-Media*''; $exe=''C:\\Program Files (x86)\\WinMemoryCleaner\\WinMemoryCleaner.exe''; & $exe /CombinedPageList /SystemFileCache /RegistryCache /WorkingSet /ModifiedPageList /ModifiedFileCache /StandbyList; & ''C:\\Users\\Administrator\\Documents\\Set DWM Threads.ps1''; $killList = ''rundll32.exe'',''WindowsTerminal.exe'',''taskkill.exe'',''officeclicktorun.exe'',''vds.exe'',''bitsadmin.exe'',''lodctr.exe'',''WUDFHost.exe'',''fsutil.exe'',''bcdedit.exe'',''VSSVC.exe'',''sc.exe'',''netsh.exe'',''gpupdate.exe'',''msiexec.exe'',''msedgewebview2.exe'',''winget.exe'',''WMIADAP.exe'',''DeviceCleanupCmd.exe'',''WmiPrvSE.exe'',''sppsvc.exe'',''PnPUtil.exe'',''WMIC.exe'',''TiWorker.exe'',''Taskmgr.exe'',''TrustedInstaller.exe'',''powershell_ise.exe'',''OpenConsole.exe'',''conhost.exe'',''cmd.exe'',''powershell.exe''; foreach ($proc in $killList) { try { taskkill /f /t /im $proc } catch { } } }\"' -Verb RunAs; exit\""
 
 ; netsh branchcache reset; gpupdate /force /wait:0; $p = Get-Process | Where-Object { $_.ProcessName -notin ''System'',''Idle'',''firefox'',''explorer'',''Obsidian'',''EpicWebHelper'',''steamwebhelper'' -and $_.Id -ne 0 } | Sort-Object WorkingSet -Descending | Select-Object -First 1; if ($p) { try { $p.PriorityClass = ''AboveNormal'' } catch { } }; Get-Process audiodg -ErrorAction SilentlyContinue | ForEach-Object { $_.ProcessorAffinity = 1 }; $exe=''C:\\Windows\\System32\\EmptyStandbyList.exe''; & $exe workingsets; & $exe standbylist; Start-Process -FilePath \"$env:USERPROFILE\\AppData\\Local\\FluxSoftware\\Flux\\flux.exe\" -ArgumentList ''/noshow''
 
@@ -5085,7 +5089,7 @@ Windows Registry Editor Version 5.00
 "IMTCEN14.CHM"=-
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Internet Explorer\Security]
-"DisableSecuritySettingsCheck"=dword:00000001
+"DisableSecuritySettingsCheck"=dword:00000001 ; 00000000/00000001
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\ConnectedSearch]
 "ConnectedSearchUseWeb"=dword:00000000
@@ -7380,6 +7384,10 @@ Windows Registry Editor Version 5.00
 "Debugger"="Blocked"
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\BCILauncher.exe]
 "Debugger"="Blocked"
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\tflupdate.exe]
+"Debugger"="Blocked"
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\ProgramDataUpdater.exe]
+"Debugger"="Blocked"
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer\DisallowRun]
 "1"="wlms.exe"
@@ -7541,6 +7549,8 @@ Windows Registry Editor Version 5.00
 "157"="BingChatInstaller.exe"
 "158"="BGAUpsell.exe"
 "159"="BCILauncher.exe"
+"160"="tflupdate.exe"
+"161"="ProgramDataUpdater.exe"
 
 [HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\8\3036241548]
 "EnabledState"=dword:00000001
@@ -11802,6 +11812,12 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\AADCloudAP]
 "Start"=dword:00000004
 
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\MbamElam]
+"Start"=dword:00000003
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\hitmanpro37]
+"Start"=dword:00000003
+
 [HKEY_LOCAL_MACHINE\System\ControlSet001\Services\hidclass\Parameters]
 "DisableReportBuffering"=dword:00000001
 "DisableReportCoalescing"=dword:00000001
@@ -11867,6 +11883,9 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\FsDepends\Parameters]
 "VirtualDiskExpandOnMount"=dword:00000004
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\mlx4_bus\Parameters]
+"ThreadDpcEnable"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\WMIContextLog]
 "Start"=dword:00000000
@@ -15295,9 +15314,34 @@ Windows Registry Editor Version 5.00
 "DenyDeviceIDsRetroactive"=dword:00000001 ; 00000000/00000001
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeviceInstall\Restrictions\DenyDeviceIDs]
-"1"="PCI\\VEN_1002"
-"2"="SWC\\VEN_MSFT&AUDIO_EFFECTPACK_VOICECLARITY"
-"3"="SWC\\VEN_MSFT&AUDIO_EFFECTPACK_AUDIOHOME"
+"1"="*INTC1040"
+"2"="*INTC1041"
+"3"="*INTC1043"
+"4"="*INTC1044"
+"5"="*INTC1045"
+"6"="*INTC1046"
+"7"="*INTC10A0"
+"8"="*INTC10A1"
+"9"="*INT3400"
+"10"="*INT3402"
+"11"="*INT3403"
+"12"="*INT3404"
+"13"="*INT3407"
+"14"="*INT3409"
+"15"="PCI\\VEN_8086&DEV_1603&CC_1180"
+"16"="PCI\\VEN_8086&DEV_1903&CC_1180"
+"17"="PCI\\VEN_8086&DEV_461D&CC_1180"
+"18"="PCI\\VEN_8086&DEV_8A03&CC_1180"
+"19"="PCI\\VEN_8086&DEV_9A03&CC_1180"
+"20"="PCI\\VEN_8086&DEV_9C24&CC_1180"
+"21"="PCI\\VEN_8086&DEV_A131&CC_1180"
+"22"="PCI\\VEN_8086&DEV_A71D&CC_1180"
+"23"="*PNP0103"
+"24"="ACPI\\VEN_PNP&DEV_0103"
+"25"="ACPI\\PNP0103"
+"26"="PCI\\VEN_1002"
+"27"="SWC\\VEN_MSFT&AUDIO_EFFECTPACK_VOICECLARITY"
+"28"="SWC\\VEN_MSFT&AUDIO_EFFECTPACK_AUDIOHOME"
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeviceInstall\Restrictions\DenyDeviceClasses]
 "**delvals."=" "
@@ -16776,7 +16820,7 @@ Windows Registry Editor Version 5.00
 "PauseFeatureUpdatesPeriodInDays"=- ; =-, 00000001
 ; "ProductVersion"=- ; =-, Windows 11
 "SetActiveHours"=dword:00000000
-"SetAllowOptionalContent"=dword:00000001
+"SetAllowOptionalContent"=dword:00000003 ; 00000001/00000003
 "SetAutoRestartNotificationDisable"=dword:00000001
 "SetDisableUXWUAccess"=dword:00000001 ; 00000000/00000001
 "SetUpdateNotificationLevel"=dword:00000002 ; 00000000/00000001/00000002
@@ -19682,7 +19726,7 @@ Windows Registry Editor Version 5.00
 "NoCrashDetection"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Internet Explorer\Security]
-"DisableSecuritySettingsCheck"=dword:00000000
+"DisableSecuritySettingsCheck"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Internet Explorer\Security\ActiveX]
 "BlockNonAdminActiveXInstall"=dword:00000001
@@ -20115,6 +20159,9 @@ Windows Registry Editor Version 5.00
 "sentcostumerdata"=dword:00000000
 "updatereliabilitydata"=dword:00000000
 
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Office\17.0\Common]
+"QMEnabled"=dword:00000000
+
 [HKEY_CURRENT_USER\Software\Microsoft\Office\16.0\Common\Feedback]
 "enabled"=dword:00000000
 "feedbackincludelog"=dword:00000000
@@ -20133,6 +20180,9 @@ Windows Registry Editor Version 5.00
 "MotherboardUUID"="-"
 "SendTelemetry"=dword:00000003 ; 00000000/00000003
 "VerboseLogging"=dword:00000000
+
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Office\17.0\Common\ClientTelemetry]
+"DisableTelemetry"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\office\common\clienttelemetry]
 "SendTelemetry"=dword:00000003
@@ -20447,6 +20497,9 @@ Windows Registry Editor Version 5.00
 "EnableLogging"=dword:00000000
 "enableupload"=dword:00000000
 
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Office\17.0\Word\Options]
+"EnableLogging"=dword:00000000
+
 [HKEY_CURRENT_USER\Software\Microsoft\Office\15.0\Common\Feedback]
 "enabled"=dword:00000000
 "feedbackincludelog"=dword:00000000
@@ -20454,6 +20507,9 @@ Windows Registry Editor Version 5.00
 "includescreenshot"=dword:00000000
 "surveyenabled"=dword:00000000
 "updatereliabilitydata"=dword:00000000
+
+[HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Office\17.0\OSM]
+"EnableUpload"=dword:00000000
 
 [HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\15.0\Common\Feedback]
 "enabled"=dword:00000000
@@ -20723,6 +20779,9 @@ Windows Registry Editor Version 5.00
 "DisableScreenshotCapture"=dword:00000001
 
 [HKEY_CURRENT_USER\Software\Microsoft\VisualStudio\Telemetry]
+"TurnOffSwitch"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\Software\Microsoft\VisualStudio\Telemetry]
 "TurnOffSwitch"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\Software\Microsoft\VisualStudio\DiagnosticsHub]
@@ -21891,6 +21950,7 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Appx\RemoveDefaultMicrosoftStorePackages]
 "Enabled"=dword:00000001
 "DynamicRemovalList"=hex(7):61,00,69,00,6d,00,67,00,72,00,5f,00,38,00,77,00,65,00,6b,00,79,00,62,00,33,00,64,00,38,00,62,00,62,00,77,00,65,00,00,00,4d,00,69,00,63,00,72,00,6f,00,73,00,6f,00,66,00,74,00,2e,00,45,00,64,00,67,00,65,00,2e,00,47,00,61,00,6d,00,65,00,41,00,73,00,73,00,69,00,73,00,74,00,5f,00,38,00,77,00,65,00,6b,00,79,00,62,00,33,00,64,00,38,00,62,00,62,00,77,00,65,00,00,00,00,00
+; "DynamicRemovalList"=hex(7):00,00
 
 [-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Appx\RemoveDefaultMicrosoftStorePackages\Clipchamp.Clipchamp_yxz26nhyzhsrt]
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Appx\RemoveDefaultMicrosoftStorePackages\Clipchamp.Clipchamp_yxz26nhyzhsrt]
@@ -23156,6 +23216,8 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Defender\MpEngine]
 "MpBafsExtendedTimeout"=dword:00000000
 "MpCloudBlockLevel"=dword:00000000
+"MpCampRing"=dword:00000004
+"MpEngineRing"=dword:00000004
 
 [HKEY_LOCAL_MACHINE\System\ControlSet001\Control\AppID\Configuration\SMARTLOCKER]
 ; "ENABLED"=dword:00000000
@@ -23975,7 +24037,7 @@ Windows Registry Editor Version 5.00
 "LowLatencyMode"=dword:00000001
 "MaxTransferSize"=dword:00004000
 "SelectiveSuspendEnabled"=dword:00000000
-"ThreadPriority"=dword:0000001f ; 0000001f/0000000f
+"ThreadPriority"=dword:0000001f ; 00000000/0000001f/0000000f
 
 [HKEY_LOCAL_MACHINE\System\ControlSet001\Services\USBHUB3\hubg]
 "DisableBillboard"=dword:00000001
