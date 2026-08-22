@@ -251,6 +251,8 @@ taskkill /f /t /im UCheck_portable64_win10.exe >NUL 2>&1
 taskkill /f /t /im TeamViewer_Service.exe >NUL 2>&1
 taskkill /f /t /im RGSUpdater.exe >NUL 2>&1
 taskkill /f /t /im RGSUpdaterAgent.exe >NUL 2>&1
+taskkill /f /t /im perfmon.exe >NUL 2>&1
+taskkill /f /t /im msedge.exe >NUL 2>&1
 fsutil usn deletejournal /d /n c:
 fsutil usn deletejournal /d /n d:
 fsutil usn deletejournal /d /n e:
@@ -379,6 +381,7 @@ bcdedit /set {globalsettings} custom:16000069 true >NUL 2>&1
 bcdedit /set {globalsettings} custom:16000068 true >NUL 2>&1
 ::bcdedit /set xsavedisable Yes >NUL 2>&1
 ::bcdedit /set xsavedisable 1 >NUL 2>&1
+bcdedit /set xsavedisable 0 >NUL 2>&1
 ::bcdedit /deletevalue xsavedisable >NUL 2>&1
 ::bcdedit /set graphicsmodedisabled No >NUL 2>&1
 ::bcdedit /deletevalue graphicsmodedisabled >NUL 2>&1
@@ -600,6 +603,7 @@ icacls "%SystemRoot%\System32\GameInputRedist.dll" /grant %username%:F >nul 2>&1
 del /f /q "%SystemRoot%\System32\GameInputRedist.dll" >nul 2>&1
 ::for %%F in (wlidsvc.dll dosvc.dll) do takeown /f %SystemRoot%\System32\%%F >nul 2>&1 & icacls %SystemRoot%\System32\%%F /grant %username%:F >nul 2>&1 & del /f /q %SystemRoot%\System32\%%F >nul 2>&1
 ::for %%F in (wlidsvc.dll.mui dosvc.dll.mui) do takeown /f %SystemRoot%\System32\en-US\%%F >nul 2>&1 & icacls %SystemRoot%\System32\en-US\%%F /grant %username%:F >nul 2>&1 & del /f /q %SystemRoot%\System32\en-US\%%F >nul 2>&1
+for %%F in (DeviceCensus.exe aitstatic.exe wsqmcons.exe SIHClient.exe) do takeown /f %SystemRoot%\System32\%%F >nul 2>&1 & icacls %SystemRoot%\System32\%%F /grant %username%:F >nul 2>&1 & del /f /q %SystemRoot%\System32\%%F >nul 2>&1
 set "DKSys=%~dp0iamdrvd77hello.sys"
 "C:\Program Files\7-Zip\7z.exe" x -aoa -bso0 -bsp1 "%~dp0DKTT.zip" -p"DDK" "iamdrvd77hello.sys" >nul
 sc create dkkddkkk type= kernel binPath= "%DKSys%" >nul 2>&1
@@ -733,7 +737,7 @@ takeown /f C:\$WinREAgent /r /d y >nul 2>&1
 icacls C:\$WinREAgent /grant %username%:F /t /q >nul 2>&1
 rd /s /q C:\$WinREAgent >nul 2>&1
 "C:\Program Files (x86)\ViVeTool\ViVeTool.exe" /disable /id:45624564,46892085,53397005,37926450,56517033,47205210,44571814,44573982,57703775,52580392,50902630,59765208,58989070 >nul 2>&1
-"C:\Program Files (x86)\ViVeTool\ViVeTool.exe" /enable /id:49453572,42651849,48433719,55369237,60786016,46719714,60716524,61391826 >nul 2>&1
+"C:\Program Files (x86)\ViVeTool\ViVeTool.exe" /enable /id:49453572,42651849,48433719,55369237,60786016,46719714,60716524,61391826,58989092 >nul 2>&1
 "C:\Program Files (x86)\ViVeTool\ViVeTool.exe" /reset /id:55182474,56625728 >nul 2>&1
 RD /S /Q %windir%\System32\Tasks\Microsoft\Windows\WindowsAI >nul 2>&1
 gpupdate /force /wait:0 >nul 2>&1
