@@ -5,6 +5,9 @@ setlocal
 ::schtasks /Change /TN "\CreateExplorerShellUnelevatedTask" /Enable
 for /f "skip=1 usebackq tokens=1 delims=," %%a in (`schtasks /query /fo CSV`) do (echo "%%~a" | findstr /i "GoogleUpdateTaskUser" >nul && schtasks /delete /tn "%%~a" /f)
 schtasks /delete /tn "\Microsoft\Windows\PerformanceTrace\ShowFeedbackToast" /f
+schtasks /Change /TN "\Microsoft\Windows\Setup\gwx\launchtrayprocess" /Disable
+schtasks /Change /TN "\Microsoft\Windows\Setup\gwx\refreshgwxconfig" /Disable
+schtasks /Change /TN "\Microsoft\Windows\Setup\gwx\refreshgwxconfigandcontent" /Disable
 schtasks /delete /tn "XFSET-SetPanelDimensions" /f
 schtasks /delete /tn "SimulateTouchService" /f
 schtasks /delete /tn "EqualizerAPOUpdateChecker" /f
