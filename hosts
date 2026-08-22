@@ -34249,3 +34249,6 @@
 0.0.0.0 bn3p.notify.windows.com
 0.0.0.0 db3p.notify.windows.com
 0.0.0.0 cdn.activity.windows.com
+0.0.0.0 cognitiveservices.azure.com
+0.0.0.0 api.privatelink.monitor.azure.com
+0.0.0.0 pre.oca.telemetry.microsoft.com
