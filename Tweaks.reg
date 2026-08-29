@@ -724,7 +724,7 @@ Windows Registry Editor Version 5.00
 "DISABLE_DYNAMIC_FPS"="1"
 "DISABLE_DYNAMIC_TICK"="1"
 "DisableFullScreenOptimizations"="1" ; 0 w11/1 w10
-"DisableGPUTimeout"="0" ; 0/1
+"DisableGPUTimeout"="1" ; 0/1
 "DISABLE_HYPER_THREADING"="1"
 "DISK_MAX_PENDING_INTERRUPTS"="0"
 "DISK_MAX_PENDING_IO"="0"
@@ -2650,14 +2650,14 @@ Windows Registry Editor Version 5.00
 "CpuClipAreaThreshold"=dword:00004e20
 "CpuClipFlatteningTolerance"=dword:00000000
 "CpuClipWarpPartitionThreshold"=dword:00000400
-"CustomRefreshRateMode"=dword:00000000 ; 00000000/00000001
+"CustomRefreshRateMode"=dword:00000001 ; 00000000/00000001
 "DDisplayTestMode"=dword:00000000
 "DebugFailFast"=dword:00000000
 "DefaultColorizationColorState"=dword:00000000
 "DesktopHeapLogging"=dword:00000000
 "DisableAdvancedDirectFlip"=dword:00000001 ; 00000000/00000001
 "DisableDComp"=dword:00000000 ; 00000000/00000001
-"DisableDeviceBitmaps"=dword:00000000 ; 00000000/00000001
+"DisableDeviceBitmaps"=dword:00000001 ; 00000000/00000001
 "DisableDeviceBitmapsForMultiAdapter"=dword:00000001 ; 00000000/00000001
 "DisableDrawListCaching"=dword:00000001 ; 00000000/00000001
 "DisableDWM"=dword:00000001 ; 00000000 w11/00000001 w10
@@ -2690,15 +2690,15 @@ Windows Registry Editor Version 5.00
 "EnableDesktopOverlays"=dword:00000000
 "EnableDrawToBackbuffer"=dword:00000000 ; 00000000/00000001
 "EnableEffectCaching"=dword:00000001 ; 00000000/00000001
-"EnableFrontBufferRenderChecks"=dword:00000001 ; 00000000/00000001
+"EnableFrontBufferRenderChecks"=dword:00000000 ; 00000000/00000001
 "EnableImageProcessing"=dword:00000001 ; 00000000/00000001
 "EnableInputPrediction"=dword:00000001
 "EnableMegaRects"=dword:00000001 ; 00000000/00000001
 "EnableMPCPerfCounter"=dword:00000000
 "EnableOverlay"=dword:00000000
-"EnablePrimitiveReordering"=dword:00000001 ; 00000000/00000001
+"EnablePrimitiveReordering"=dword:00000000 ; 00000000/00000001
 "EnableRenderPathTestMode"=dword:00000000
-"EnableResizeOptimization"=dword:00000000 ; 00000000/00000001
+"EnableResizeOptimization"=dword:00000001 ; 00000000/00000001
 "EnableShadow"=dword:00000000
 "EnableWindowColorization"=dword:00000001 ; 00000000/00000001
 "FlattenVirtualSurfaceEffectInput"=dword:00000001 ; 00000000/00000001
@@ -2720,8 +2720,8 @@ Windows Registry Editor Version 5.00
 "HighColor"=dword:00000000
 "ImageProcessing8bit"=dword:00000000 ; 00000000/00000001
 "InitialWatchdogTelemetryTimeoutMilliseconds"=dword:00000000
-"InkGPUAccelOverrideVendorWhitelist"=dword:00000000 ; 00000000/00000001
-"InteractionOutputPredictionDisabled"=dword:00000000 ; 00000000/00000001
+"InkGPUAccelOverrideVendorWhitelist"="1" ; 00000000/00000001/1
+"InteractionOutputPredictionDisabled"=dword:00000001 ; 00000000/00000001
 "LayerClippingMode"=dword:00000002
 "LogExpressionPerfStats"=dword:00000000
 "MajorityScreenTest_MinArea"=dword:00000050
@@ -2742,7 +2742,7 @@ Windows Registry Editor Version 5.00
 "MouseWheelScrollingMode"=dword:00000000 ; 00000000/00000001
 "MPCInputRouterWaitForDebugger"=dword:00000000
 "OneCoreNoBootDWM"=dword:00000000 ; 00000000, 00000001
-"OneCoreNoDWMRawGameController"=dword:00000001 ; 00000000/00000001
+"OneCoreNoDWMRawGameController"=dword:00000000 ; 00000000/00000001
 "OptimizeForDirtyExpressions"=dword:00000001
 "OverlayDisqualifyCount"=dword:00000000
 "OverlayDisqualifyInterval"=dword:00000000
@@ -2761,11 +2761,11 @@ Windows Registry Editor Version 5.00
 "ResizeTimeoutGdi"=dword:00000000
 "ResizeTimeoutModern"=dword:00000000
 "RetryFrameOnDrop"=dword:00000000
-"SDRBoostPercentOverride"=dword:00000000 ; 00000000/00000001
+"SDRBoostPercentOverride"=dword:00000001 ; 00000000/00000001
 "ShaderLinkingGPUBlacklist"=""
 "SharedSection"="1024,20480,768"
 "ShowDirtyRegions"=dword:00000000
-"SuperWetEnabled"=dword:00000000 ; 00000000/00000001
+"SuperWetEnabled"=dword:00000001 ; 00000000/00000001
 "SuperWetExtensionTimeMicroseconds"=dword:000003e8 ; 00000000/000003e8
 "SwapEffect"=dword:00000002 ; 00000000/00000002
 "TelemetryFramesReportPeriodMilliseconds"=dword:000493e0 ; 00000000/000493e0
@@ -2775,7 +2775,7 @@ Windows Registry Editor Version 5.00
 "UseCopyOnPresent"=dword:00000001 ; 00000000/00000001
 "UseDpiScaling"=dword:00000000 ; 00000000/00000001
 "UseFastestMonitorAsPrimary"=dword:00000000
-"UseHWDrawListEntriesOnWARP"=dword:00000000 ; 00000000/00000001
+"UseHWDrawListEntriesOnWARP"=dword:00000001 ; 00000000/00000001
 "UseLegacyDisplayFrameBuffer"=dword:00000000 ; 00000000/00000001
 "UseMachineCheck"=dword:00000000
 "UseStaticComposition"=dword:00000001
@@ -2810,6 +2810,79 @@ Windows Registry Editor Version 5.00
 "UseDpiScaling"=dword:00000000
 "UseMachineCheck"=dword:00000000
 "UseWindowFrameStagingBuffer"=dword:00000000
+"FlipPolicy"="Immediate"
+"PresentationInterval"="Immediate"
+"GradientWhitePixelGPUBlacklist"=""
+"ShaderLinkingGPUBlacklist"=""
+"DwmInitSessionActivityId_00000001"=""
+"PresentMonSpinWait"=dword:00000001
+"UseDoubleBuffer"=dword:00000000
+"MaxPendingPresents"=dword:00000000
+"UseFlipEx"=dword:00000000
+"UseHardwareVSync"=dword:00000000
+"ForceCompositionMode"=dword:00000000
+"MaxDeviceLatency"=dword:00000000
+"DisableGPUTimeout"=dword:00000001
+"EnableOverlay"=dword:00000000
+"LatencySensitivity"=dword:00000002
+"ForceDoubleBuffer"=dword:00000000
+"EnableFramePacing"=dword:00000000 ; 00000000/00000001
+"ForceVSync"=dword:00000000
+"UseTripleBuffer"=dword:00000000
+"DwmSpinWaitTimeout"=dword:ffffffff
+"DwmSpinCount"=dword:ffffffff
+"PresentMonTimeout"=dword:ffffffff
+"DwmUseSpinWait"=dword:00000001
+"OverlayMinFPS"=dword:00000000
+"EnableVSync"=dword:00000000
+"MaxFrameLatency"=dword:00000001
+"FlipQueueSize"=dword:00000001
+"OverlayTestMode"=dword:00000005
+"SuperWetEnabled"=dword:00000001
+"SDRBoostPercentOverride"=dword:00000001
+"ResampleInLinearSpace"=dword:00000000
+"OneCoreNoDWMRawGameController"=dword:00000000
+"MPCInputRouterWaitForDebugger"=dword:00000000
+"InteractionOutputPredictionDisabled"=dword:00000001
+"InkGPUAccelOverrideVendorWhitelist"="1"
+"EnableRenderPathTestMode"=dword:00000000
+"FlattenVirtualSurfaceEffectInput"=dword:00000001
+"EnableCpuClipping"=dword:00000001
+"DisallowNonDrawListRendering"=dword:00000001
+"DisableProjectedShadowsRendering"=dword:00000001
+"DisableProjectedShadows"=dword:00000001
+"DisableLockingMemory"=dword:00000001
+"DisableHologramCompositor"=dword:00000001
+"DisableDeviceBitmaps"=dword:00000001
+"DebugFailFast"=dword:00000000
+"DDisplayTestMode"=dword:00000000
+"FrameLatency"=dword:00000002
+"ForceDirectDrawSync"=dword:00000000
+"MaxQueuedPresentBuffers"=dword:00000001
+"UseHWDrawListEntriesOnWARP"=dword:00000001
+"ResampleModeOverride"=dword:00000001
+"RenderThreadWatchdogTimeoutMilliseconds"=dword:00000000
+"ParallelModePolicy"=dword:00000001
+"EnableResizeOptimization"=dword:00000001
+"EnableMegaRects"=dword:00000001
+"EnableFrontBufferRenderChecks"=dword:00000000
+"EnableEffectCaching"=dword:00000001
+"EnableDesktopOverlays"=dword:00000000
+"EnablePrimitiveReordering"=dword:00000000
+"MaxD3DFeatureLevel"=dword:00000000
+"OverlayQualifyCount"=dword:00000000
+"OverlayDisqualifyCount"=dword:00000000
+"ResizeTimeoutModern"=dword:00000000
+"ResizeTimeoutGdi"=dword:00000000
+"HighColor"=dword:00000000
+"DisableDrawListCaching"=dword:00000001
+"AnimationsShiftKey"=dword:00000000
+"EnableCommonSuperSets"=dword:00000001
+"DisableAdvancedDirectFlip"=dword:00000001
+"DwmInitSessionActivityId_00000002"=""
+"EnableDrawToBackbuffer"=dword:00000000
+"RefreshRatePercentage"=dword:00000064
+"CustomRefreshRateMode"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DWM]
 "AnimationAttributionEnabled"=dword:00000000
@@ -2865,7 +2938,7 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Dwm\GpuAccelInkTiming]
 "ExtensionTimeMicroseconds"=dword:000003e8
 "PeriodicFenceMinDifferenceMicroseconds"=dword:000001f4
-"RefreshRatePercentage"=dword:0000000a
+"RefreshRatePercentage"=dword:00000064 ; 0000000a/00000064
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Windows]
 "GDIProcessHandleQuota"=dword:00010000
@@ -3008,7 +3081,7 @@ Windows Registry Editor Version 5.00
 "DisableGdiContextGpuVa"=dword:00000000 ; 00000000/00000001
 "DisableGpuIdle"=dword:00000001
 "DisableGpuMemoryCompression"=dword:00000001
-"DisableGpuTimeoutDetection"=dword:00000000 ; 00000000/00000001
+"DisableGpuTimeoutDetection"=dword:00000001 ; 00000000/00000001
 "DisableIndependentVidPnVSync"=dword:00000001 ; 00000000/00000001
 "DisableKmRender"=dword:00000000
 "DisableKmRenderBoost"=dword:00000000
@@ -3019,7 +3092,7 @@ Windows Registry Editor Version 5.00
 "DisableOverclockedPstates"=dword:00000001 ; 00000000/00000001
 "DisableOverlay"=dword:00000001 ; 00000000/00000001
 "Disable_OverlayDSQualityEnhancement"=dword:00000001
-"DisableOverlays"=dword:00000000 ; 00000000/00000001 w10 only
+"DisableOverlays"=dword:00000001 ; 00000000/00000001 w10 only
 "DisablePagingContextGpuVa"=dword:00000000
 "DisablePFonDP"=dword:00000001
 "DisablePreemption"=dword:00000000 ; 00000000/00000001
@@ -3361,7 +3434,7 @@ Windows Registry Editor Version 5.00
 "AdaptiveVsyncEnable"=dword:00000000
 "AllowDeepCStates"=dword:00000000
 "AllowdGPUPassthrough"=dword:00000000
-"AllowMaxPerf"=dword:00000001 ; 00000001/00000002
+"AllowMaxPerf"=dword:00000002 ; 00000001 downclocks pcie/00000002
 "BuffersInFlight"=dword:00000003
 "ComputePreemption"=dword:00000001
 "ComputePreemptionLevel"=dword:00000001
@@ -3393,7 +3466,7 @@ Windows Registry Editor Version 5.00
 "DisableOverclockedPstates"=dword:00000001
 "DisableOverlay"=dword:00000001
 "Disable_OverlayDSQualityEnhancement"=dword:00000001
-"DisableOverlays"=dword:00000000
+"DisableOverlays"=dword:00000001
 "DisablePFonDP"=dword:00000001
 "DisablePowerGating"=dword:00000001
 ; "DisablePowerMizer"=dword:00000001
@@ -3575,7 +3648,7 @@ Windows Registry Editor Version 5.00
 "Acceleration.Level"=dword:00000000
 "AdaptiveVsyncEnable"=dword:00000000
 "AllowDeepCStates"=dword:00000000
-"AllowMaxPerf"=dword:00000001
+"AllowMaxPerf"=dword:00000002
 "AllowRSOverlay"=dword:00000000
 "AllowSnapshot"=dword:00000000
 "AllowSubscription"=dword:00000000
@@ -3612,7 +3685,7 @@ Windows Registry Editor Version 5.00
 "DisableOverclockedPstates"=dword:00000001
 "DisableOverlay"=dword:00000001
 "Disable_OverlayDSQualityEnhancement"=dword:00000001
-"DisableOverlays"=dword:00000000
+"DisableOverlays"=dword:00000001
 "DisablePFonDP"=dword:00000001
 "DisablePowerGating"=dword:00000001
 ; "DisablePowerManagement"=dword:00000001
@@ -4004,7 +4077,7 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DXGKrnl]
 "CreateGdiPrimaryOnSlaveGPU"=dword:00000000 ; 00000000/00000001
-"DisableOverlay"=dword:00000000
+"DisableOverlay"=dword:00000001
 "DisableOverlays"=dword:00000001
 "DmaMaximumSegmentSize"=dword:00004000
 "DriverSupportsCddDwmInterop"=dword:00000001
@@ -4017,7 +4090,7 @@ Windows Registry Editor Version 5.00
 "DxgkShareSwapChainObject"=dword:00000001
 "DxgkWaitForVerticalBlankEvent"=dword:00000001
 "DxgkWaitForVerticalBlankEvent2"=dword:00000001
-"EnableFlipEx"=dword:00000001
+"EnableFlipEx"=dword:00000000
 "EnableFramePacing"=dword:00000001
 "EnableHDASurfaces"=dword:00000001
 "EnableIndependentFlip"=dword:00000001
@@ -4260,7 +4333,7 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\NVIDIA Corporation\Global]
 "{41FCC608-8496-4DEF-B43E-7D9BD675A6FF}"=dword:00000001
-"AllowMaxPerf"=dword:00000001
+"AllowMaxPerf"=dword:00000002
 "DisableBugcheckCallback"=dword:00000001
 "DisableClockGating"=dword:00000001
 "DisableDynamicClockGating"=dword:00000001
@@ -30492,7 +30565,7 @@ Windows Registry Editor Version 5.00
 "DisablePresentationInterval"=dword:00000001
 "DisableVidMemVBs"=dword:00000000
 "EnableDebugging"=dword:00000000
-"EnableFramePacing"=dword:00000001
+"EnableFramePacing"=dword:00000000
 "EnableMultimonDebugging"=dword:00000000
 "EnableWARP"=dword:00000001
 "FewVertices"=dword:00000001
