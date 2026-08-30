@@ -241,7 +241,7 @@ Windows Registry Editor Version 5.00
 "DisableOptimisticNUMA"=dword:00000000 ; 00000000/00000001
 "DisablePageCombining"=dword:00000001
 "DisablePagingCombining"=dword:00000001
-"DisablePagingExecutive"=dword:00000001 ; 00000000, 00000001
+"DisablePagingExecutive"=dword:00000000 ; 00000000, 00000001
 "DisableRegistryPaging"=dword:00000001
 "DontVerifyRandomDrivers"=dword:00000001 ; 00000000/00000001
 "DynamicMemory"=dword:00000000 ; 00000000/00000001
@@ -267,7 +267,7 @@ Windows Registry Editor Version 5.00
 "ForceSingleCoreAffinityForCriticalThreads"=dword:00000001
 ; "FsLazyWrite"=dword:00000001
 "IoPageLockLimit"=dword:ffffffff ; 00000000/00100000/00ff0000/00400000/04000000/08000000/000f0000/01ff0000/ffffffff
-"LargePageMinimum"=dword:ffffffff ; 00000000/00000001/00100000/ffffffff off
+"LargePageMinimum"=dword:00100000 ; 00000000/00000001/00100000/ffffffff off
 "LargeSystemCache"=dword:00000001 ; 00000000, 00000001
 "MakeLowMemory"=dword:00000001
 "MapAllocationFragment"=dword:00020000 ; 00000001/00010000/00020000
@@ -339,7 +339,7 @@ Windows Registry Editor Version 5.00
 "BootExecuteNoPnpSync"=dword:00000001
 "CWDIllegalInDllSearch"=dword:00000002
 "DesktopHeapLogging"=dword:00000000
-"DisablePagingExecutive"=dword:00000001
+"DisablePagingExecutive"=dword:00000000
 "DisableWpbtExecution"=dword:00000001
 "EnableDeadGwdTimers"=dword:00000001
 "EnableMCA"=dword:00000000
@@ -2657,8 +2657,8 @@ Windows Registry Editor Version 5.00
 "DesktopHeapLogging"=dword:00000000
 "DisableAdvancedDirectFlip"=dword:00000001 ; 00000000/00000001
 "DisableDComp"=dword:00000000 ; 00000000/00000001
-"DisableDeviceBitmaps"=dword:00000001 ; 00000000/00000001
-"DisableDeviceBitmapsForMultiAdapter"=dword:00000001 ; 00000000/00000001
+"DisableDeviceBitmaps"=dword:00000000 ; 00000000/00000001 breaks taskbarhero
+"DisableDeviceBitmapsForMultiAdapter"=dword:00000000 ; 00000000/00000001
 "DisableDrawListCaching"=dword:00000001 ; 00000000/00000001
 "DisableDWM"=dword:00000001 ; 00000000 w11/00000001 w10
 "DisableDynamicShutdownUI"=dword:00000001
@@ -2701,7 +2701,7 @@ Windows Registry Editor Version 5.00
 "EnableResizeOptimization"=dword:00000001 ; 00000000/00000001
 "EnableShadow"=dword:00000000
 "EnableWindowColorization"=dword:00000001 ; 00000000/00000001
-"FlattenVirtualSurfaceEffectInput"=dword:00000001 ; 00000000/00000001
+"FlattenVirtualSurfaceEffectInput"=dword:00000000 ; 00000000/00000001
 "ForceBasicDisplayAdapterOnDWMRestart"=dword:00000000
 "ForceDirectDrawSync"=dword:00000000
 "ForceDisableFrameBuffering"=dword:00000001 ; 00000000/00000001
@@ -2846,14 +2846,14 @@ Windows Registry Editor Version 5.00
 "InteractionOutputPredictionDisabled"=dword:00000001
 "InkGPUAccelOverrideVendorWhitelist"="1"
 "EnableRenderPathTestMode"=dword:00000000
-"FlattenVirtualSurfaceEffectInput"=dword:00000001
+"FlattenVirtualSurfaceEffectInput"=dword:00000000
 "EnableCpuClipping"=dword:00000001
 "DisallowNonDrawListRendering"=dword:00000001
 "DisableProjectedShadowsRendering"=dword:00000001
 "DisableProjectedShadows"=dword:00000001
 "DisableLockingMemory"=dword:00000001
 "DisableHologramCompositor"=dword:00000001
-"DisableDeviceBitmaps"=dword:00000001
+"DisableDeviceBitmaps"=dword:00000000
 "DebugFailFast"=dword:00000000
 "DDisplayTestMode"=dword:00000000
 "FrameLatency"=dword:00000002
