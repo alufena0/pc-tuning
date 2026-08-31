@@ -45,8 +45,8 @@ rd /s /q C:\Windows\Prefetch >nul 2>&1
 taskkill /F /FI "status eq not responding" >nul 2>&1
 netsh interface ip delete arpcache >nul 2>&1
 ipconfig /flushdns >nul 2>&1
-powershell -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File "C:\Users\Administrator\Documents\Set Above Normal Priority.ps1"
-powershell -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File "C:\Users\Administrator\Documents\Set Trim High Memory.ps1"
+powershell -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File "C:\Users\Administrator\Documents\Set Process Priority.ps1"
+powershell -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File "C:\Users\Administrator\Documents\Set Memory Leak Trim.ps1"
 "C:\Program Files (x86)\WinMemoryCleaner\WinMemoryCleaner.exe" /StandbyList
 start /B "" "C:\Users\Administrator\Documents\Kill Razer.bat"
 exit
