@@ -13,6 +13,10 @@ Windows Registry Editor Version 5.00
 "ShowStartupPanel"=dword:00000000
 "TaskSwitcherNexusInjectionEnabled"=dword:00000000
 "UseNexusForGameBarEnabled"=dword:00000000
+"GameDVR_FSEBehaviorMode"=dword:00000002
+"GameDVR_HonorUserFSEBehaviorMode"=dword:00000000
+"GameDVR_FSEBehavior"=dword:00000002
+"GameDVR_Enabled"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\GraphicsDrivers]
 "HwSchedMode"=dword:00000001 ; HAGS on 00000002, off 00000001
@@ -309,7 +313,7 @@ Windows Registry Editor Version 5.00
 "SystemCacheLimit"=dword:00000000
 "SystemPages"=dword:ffffffff ; 00000000/0000c000/ffffffff off
 "SystemPtesLimit"=dword:00000000
-"ThirdLevelDataCache"=dword:00018000 ; 00010000/00018000
+"ThirdLevelDataCache"=dword:00018000 ; 00002000/00010000/00018000
 "ThreadSchedulingMode"=dword:00000001
 "ThreadSchedulingModel"=dword:00000001
 "TimerBResolution"=dword:00000001
@@ -373,6 +377,9 @@ Windows Registry Editor Version 5.00
 "HeapDeCommitTotalFreeThreshold"=dword:00020000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\kernel]
+"CetCompatible"=dword:00000000 ; 00000000/00000001
+"CfgBitMapSize"=dword:00000000 ; 00000000/00000020
+"KernelCFGEnabled"=dword:00000000 ; 00000000/00000001
 "ObjectSecurityInheritance"=dword:00000000
 "RequireDeviceAccessCheck"=dword:00000000
 "SystemMitigationOptions"=hex:22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22
@@ -418,7 +425,7 @@ Windows Registry Editor Version 5.00
 "CpuThrottle"=dword:00000000
 "CyclesPerClockQuantum"=dword:00000001
 "DebuggerIsStallOwner"=dword:00000000
-"DebugPollInterval"=dword:00000001 ; 00000000/00000001/000003e8/000000fa/000007d0
+"DebugPollInterval"=dword:000003e8 ; 00000000/00000001/000003e8/000000fa/000007d0
 "DefaultDynamicHeteroCpuPolicy"=dword:00000003 ; 00000003/00000006
 "DefaultHeteroCpuPolicy"=dword:00000005 ; 00000001/00000005/00000004
 "DelayCloseSize"=dword:00000001 ; 00000000/00000001
@@ -476,7 +483,7 @@ Windows Registry Editor Version 5.00
 "EnableFsCacheHost"=dword:00000001
 "EnableLowLatencyIo"=dword:00000001
 "EnableLowMemoryKiller"=dword:00000001
-"EnablePerCpuClockTickScheduling"=dword:00000001 ; 00000000/00000001
+"EnablePerCpuClockTickScheduling"=dword:00000001 ; 00000000/00000001/00000002
 "EnableTickAccumulationFromAccountingPeriods"=dword:00000000 ; 00000000/00000001
 "EnableTsx"=dword:00000000
 "EnableUserModeCache"=dword:00000001
@@ -649,6 +656,9 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Kernel\RNG]
 "RNGAuxiliarySeed"=dword:2c48f2e3
+
+; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Kernel\KGroups\00]
+; "SmallProcessorMask"=dword:00003fff ; 000000ff/00003fff
 
 [HKEY_LOCAL_MACHINE\SYSTEM]
 "InterruptSteeringDisabled"=dword:00000000
@@ -1269,7 +1279,7 @@ Windows Registry Editor Version 5.00
 "MaxNumRssCpus"=dword:00000001
 "MaxNumRssThreads"=dword:00000001
 "MaxUserPort"=dword:0000fffe ; 0000fffe/00065534
-"MTU"=dword:000005dc
+"MTU"=dword:000005d4 ; 000005d4/000005dc
 "MultihopSets"=dword:0000000f ; 0000000f/0000001e
 "OptimizeTcpAckHandling"=dword:00000001
 "ParallelStack"=dword:00000001
@@ -1314,7 +1324,7 @@ Windows Registry Editor Version 5.00
 "IRPStackSize"=dword:00000032
 "MaxFreeTcbs"=dword:00001000
 "MaxUserPort"=dword:0000fffe
-"MTU"=dword:000005dc
+"MTU"=dword:000005d4
 "SackOpts"=dword:00000001
 "Tcp1323Opts"=dword:00000003
 "TcpAckFrequency"=dword:00000001
@@ -1595,7 +1605,7 @@ Windows Registry Editor Version 5.00
 "ForcePS0"=dword:00000001
 "IdlePowerMode"=dword:00000000
 "IdlePowerState"=dword:00000000
-"IoTimeoutValue"=dword:0000003c ; 000001f4/0000003c
+"IoTimeoutValue"=dword:0000003c ; 000001f4/0000003c/000000ff
 "MinActivePowerState"=dword:00000000
 "QueueDepth"=dword:00000040 ; 00000020/00000040
 "IdleTimeoutInMS"=dword:00000000
@@ -1683,7 +1693,7 @@ Windows Registry Editor Version 5.00
 "CheckpointSystemSleep"=dword:00000000
 "CheckpointSystemSleepSimulateFlags"=dword:00000000
 "CheckPowerSourceAfterRtcWakeTime"=dword:00000000 ; 00000000/0000001e
-"Class1InitialUnparkCount"=dword:00000040 ; 00000040/00000064
+"Class1InitialUnparkCount"=dword:00000064 ; 00000040/00000064
 "Class2InitialUnparkCount"=dword:00000064
 "CoalescingFlushInterval"=dword:00000000 ; 00000000/0000003c
 "CoreParkingDisabled"=dword:00000001
@@ -1886,6 +1896,7 @@ Windows Registry Editor Version 5.00
 "VideoIdleTimeout"=dword:00000000
 "WatchdogWorkOrderTimeout"=dword:000493e0
 "Win32kCalloutWatchdogTimeoutSeconds"=dword:00000000 ; 00000000/0000001e
+"PlatformRole"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\whesvc]
 "ECP_WhatIf"=dword:00000001
@@ -2626,9 +2637,10 @@ Windows Registry Editor Version 5.00
 "ShortLinkTrainingTimeout"=dword:000000c8
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Dwm]
+"MaxLoaderBuffers"=dword:00000000
 "IdleTimeout"=dword:00000000
 "DisableHWAcceleration"=dword:00000001
-"AlwaysEnableTripleBuffering"=dword:00000000 ; 00000000/00000001
+"AlwaysEnableTripleBuffering"=dword:00000001 ; 00000000/00000001
 "AlwaysHibernateThumbnails"=dword:00000000
 "AlwaysOffscreenComposition"=dword:00000000 ; 00000000/00000001
 "AnimationAttributionEnabled"=dword:00000000 ; 00000000, 00000001
@@ -3002,6 +3014,7 @@ Windows Registry Editor Version 5.00
 "DmaRemappingCompatible"=dword:00000000
 "StorageSupportedFeatures"=dword:00000001
 "IoTimeoutValue"=dword:0000003c
+"EnableLogging"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\StorNVMe\Parameters\Device]
 "ArbitrationBurst"=dword:00000100
@@ -3612,6 +3625,16 @@ Windows Registry Editor Version 5.00
 "WDDMv21Enable2MPageSupport"=dword:00000001
 "WDDMv21Enable64KbSysmemSupport"=dword:00000001
 "WDDMv22EnableSmoothTransition"=dword:00000000
+"TdrLevel"=dword:00000000
+"TdrDelay"=dword:00000000
+"NvTelemetryContainer"=dword:00000000
+"LogLevel"=dword:00000000
+"EnableDebugLayer"=dword:00000000
+"NVAPIDebugLevel"=dword:00000000
+"LogWarningEntries"=dword:00000000
+"LogPagingEntries"=dword:00000000
+"LogEventEntries"=dword:00000000
+"LogErrorEntries"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\NVIDIA Corporation\Global\System]
 "EnableAGPFW"=dword:00000000 ; 00000000/00000001
@@ -3627,7 +3650,16 @@ Windows Registry Editor Version 5.00
 "TurboQueue"=dword:00000001
 
 ; gpu
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0000]
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0002]
+"Display1_DisableAsyncFlips"=dword:00000001
+"RMDbgLevel"=dword:00000000
+"NVVerbose"=dword:00000000
+"NVTweakLogLevel"=dword:00000000
+"EnableGPUCrashDump"=dword:00000000
+"PerfLogLevel"=dword:00000000
+"GPUTelemetry"=dword:00000000
+"NVLogLevel"=dword:00000000
+"RMTraceLevel"=dword:00000000
 ; "enforceReferenceColorAccuracyMode"=dword:00000001
 "PStateTime"=dword:ffffffff
 "MinPstateForHDVideo"=dword:00000000
@@ -3794,7 +3826,7 @@ Windows Registry Editor Version 5.00
 "PowerMizerLevelAC"=-
 "PowerSavingTweaks"=dword:00000000
 "Power schemizerLevelAC"=-
-"PP_GPUPowerDownEnabled"=dword:00000001
+"PP_GPUPowerDownEnabled"=dword:00000000 ; 00000000/00000001
 "PP_SclkDeepSleepDisable"=dword:00000001
 "PP_ThermalAutoThrottlingEnable"=dword:00000000
 "PreferredPerformanceMode"=dword:00000001
@@ -4105,6 +4137,8 @@ Windows Registry Editor Version 5.00
 "ReduceStalls"=dword:00000001
 "SwapChainBackBuffer"=dword:00000001
 "TdrResetFromTimeoutAsync"=dword:00000001
+"ThreadPriority"=dword:00000004 ; 00000004/0000000f
+"DisplayPowerSaving"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\GraphicsDrivers\Scheduler]
 "AdjustWorkerThreadPriority"=dword:00000000 ; 00000000/00000001
@@ -4211,6 +4245,8 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\nvlddmkm\NVAPI]
 "physxGpuId"=hex:00,07,00,00
 "RmGpsPsEnablePerCpuCoreDpc"=dword:00000000
+"NvAPILoggingEnabled"=dword:00000000
+"NVAPIDebugLevel"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\nvlddmkm\Global\NVTweak]
 "DisableVTC"=dword:00000001
@@ -4230,6 +4266,11 @@ Windows Registry Editor Version 5.00
 "DisableLoad"=dword:00000001
 "LogFile"=-
 "LogLevel"=dword:00000000
+"RMDbgLevel"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NVDisplay.ContainerLocalSystem\LocalSystem]
+"TelemetryEnable"=dword:00000000
+"VerboseLog"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NVDisplay.ContainerLocalSystem\LocalSystem\_DisplayDriverRAS]
 "DisableLoad"=dword:00000001
@@ -4245,6 +4286,9 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NVDisplay.ContainerLocalSystem\LocalSystem\Watchdog]
 "LogLevel"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NVDisplay.ContainerLocalSystem\LocalSystem\Watchdog\Session]
+"Folder"=""
 
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\nvlddmkm\Parameters\Global\NVTweak]
 "NvCplPhysxAuto"=dword:00000000
@@ -4264,6 +4308,16 @@ Windows Registry Editor Version 5.00
 "RmPowerFeature"=dword:54455555
 "RmPowerFeature2"=dword:05555555
 "RMSlcg"=dword:0003ffff
+"EnableNvTelemetry"=dword:00000000
+"EnableKernelEventTracing"=dword:00000000
+"EnablePowerSavingMode"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\nvlddmkm\NGXCore]
+"NGXDebugEnabled"=dword:00000000
+"NGXPath"=""
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\nvlddmkm\NvCamera]
+"NvCameraPath"=""
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\NVIDIA Corporation\NvContainer\NvAppTimestamps]
 "NvDriverUpdateNotificationPopupShownTime"=dword:00000000
@@ -4271,6 +4325,9 @@ Windows Registry Editor Version 5.00
 
 [HKEY_CURRENT_USER\Software\NVIDIA Corporation\Global\NVTweak]
 "Gestalt"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\NVIDIA Corporation\Global\NvProfile]
+"TelemetryEnable"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\NVIDIA Corporation\Global\NVTweak]
 "Boost"=dword:00000001
@@ -4281,6 +4338,16 @@ Windows Registry Editor Version 5.00
 "PowerSaving"=dword:00000000
 ; "ThreadedOptimization"=dword:00000001
 "NvCplEnableGpuActivityIcon"=dword:00000001
+"DisplayPowerSaving"=dword:00000000
+"NvCplDebug"=dword:00000000
+"NvCplVerbose"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\NVIDIA Corporation\GPUDebugger]
+"EnableInterface"=dword:00000000
+"EnableRemoteDebugger"=dword:00000000
+"LogMask"=dword:00000000
+"DisableLoad"=dword:00000001
+"LogPath"=""
 
 [HKEY_CURRENT_USER\Software\NVIDIA Corporation\Global\NvCplApi\Policies]
 "ContextUIPolicy"=dword:00000002
@@ -4418,9 +4485,10 @@ Windows Registry Editor Version 5.00
 "EnableRID73780"=dword:00000001
 "EnableRID74361"=dword:00000001
 "EnableSCGMidBufferPreemption"=dword:00000001
-"GPUPreemptionLevel"=dword:00000001
+"GPUPreemptionLevel"=dword:00000001 ; 00000001/00000002
 "PerfAnalyzeMidBufferPreemption"=dword:00000001
 "UsePolledSwapChain"=dword:00000001
+"EnableTelemetry"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\nvlddmkm\Parameters\FTS]
 "EnableDDC68"=dword:00000000
@@ -4593,34 +4661,42 @@ Windows Registry Editor Version 5.00
 [HKEY_CLASSES_ROOT\*\shell\hash]
 "MUIVerb"="Hash value"
 "subCommands"=""
+; MD5
 [HKEY_CLASSES_ROOT\*\shell\hash\shell\01menu]
 "MUIVerb"="MD5"
 [HKEY_CLASSES_ROOT\*\shell\hash\shell\01menu\command]
 @="cmd /c echo \\\"%1\\\" | powershell -nop $file=[string]$input; get-filehash -literalpath $file.substring(2,$file.length - 5) -algorithm MD5 ^| format-list; Start-Sleep 3600"
+; SHA1
 [HKEY_CLASSES_ROOT\*\shell\hash\shell\02menu]
 "MUIVerb"="SHA1"
 [HKEY_CLASSES_ROOT\*\shell\hash\shell\02menu\command]
 @="cmd /c echo \\\"%1\\\" | powershell -nop $file=[string]$input; get-filehash -literalpath $file.substring(2,$file.length - 5) -algorithm SHA1 ^| format-list; Start-Sleep 3600"
+; SHA256
 [HKEY_CLASSES_ROOT\*\shell\hash\shell\03menu]
 "MUIVerb"="SHA256"
 [HKEY_CLASSES_ROOT\*\shell\hash\shell\03menu\command]
 @="cmd /c echo \\\"%1\\\" | powershell -nop $file=[string]$input; get-filehash -literalpath $file.substring(2,$file.length - 5) -algorithm SHA256 ^| format-list; Start-Sleep 3600"
+; SHA384
 [HKEY_CLASSES_ROOT\*\shell\hash\shell\04menu]
 "MUIVerb"="SHA384"
 [HKEY_CLASSES_ROOT\*\shell\hash\shell\04menu\command]
 @="cmd /c echo \\\"%1\\\" | powershell -nop $file=[string]$input; get-filehash -literalpath $file.substring(2,$file.length - 5) -algorithm SHA384 ^| format-list; Start-Sleep 3600"
+; SHA512
 [HKEY_CLASSES_ROOT\*\shell\hash\shell\05menu]
 "MUIVerb"="SHA512"
 [HKEY_CLASSES_ROOT\*\shell\hash\shell\05menu\command]
 @="cmd /c echo \\\"%1\\\" | powershell -nop $file=[string]$input; get-filehash -literalpath $file.substring(2,$file.length - 5) -algorithm SHA512 ^| format-list; Start-Sleep 3600"
+; MACTripleDES
 [HKEY_CLASSES_ROOT\*\shell\hash\shell\06menu]
 "MUIVerb"="MACTripleDES"
 [HKEY_CLASSES_ROOT\*\shell\hash\shell\06menu\command]
 @="cmd /c echo \\\"%1\\\" | powershell -nop $file=[string]$input; get-filehash -literalpath $file.substring(2,$file.length - 5) -algorithm MACTripleDES ^| format-list; Start-Sleep 3600"
+; RIPEMD160
 [HKEY_CLASSES_ROOT\*\shell\hash\shell\07menu]
 "MUIVerb"="RIPEMD160"
 [HKEY_CLASSES_ROOT\*\shell\hash\shell\07menu\command]
 @="cmd /c echo \\\"%1\\\" | powershell -nop $file=[string]$input; get-filehash -literalpath $file.substring(2,$file.length - 5) -algorithm RIPEMD160 ^| format-list; Start-Sleep 3600"
+; Allget-filehash -literalpath '%1' -algorithm RIPEMD160 | format-list
 [HKEY_CLASSES_ROOT\*\shell\hash\shell\08menu]
 "CommandFlags"=dword:00000020
 "MUIVerb"="Show all"
@@ -5329,6 +5405,7 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\OOBE]
 "DisablePrivacyExperience"=dword:00000001
+"AllowOOBEUpdates"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\software\microsoft\windows\currentversion\setup\state]
 "imagestate"="image_state_complete"
@@ -5901,8 +5978,10 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Biometrics\Credential Provider]
 "Enabled"=dword:00000000
 "Domain Accounts"=dword:00000000
+"EnhancedAntiSpoofing"=dword:00000000
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Notifications\Settings\Windows.Defender.SecurityCenter]
 "Enabled"=dword:00000000
+[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\IsoEnvBroker]
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\IsoEnvBroker]
 "Enabled"=dword:00000000
 "Start"=dword:00000004
@@ -6347,7 +6426,7 @@ Windows Registry Editor Version 5.00
 "LsaCfgFlags"=dword:00000000
 "MachineIdentityIsolation"=dword:00000000
 "RequireMicrosoftSignedBootChain"=dword:00000000
-"RequirePlatformSecurityFeatures"=dword:00000000 ; 00000000/00000001/00000003 security option for anticheats
+"RequirePlatformSecurityFeatures"=dword:ffffffff ; 00000000/00000001/00000003 security option for anticheats
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows]
 "NonBestEffortLimit"=dword:00000000
@@ -6455,6 +6534,15 @@ Windows Registry Editor Version 5.00
 "DisableSendRequestAdditionalSoftwareToWER"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer]
+"CheckSameSourceAndTargetForFRAndDFS"=dword:00000000
+"PreXPSP2ShellProtocolBehavior"=dword:00000001 ; 00000000/00000001
+"DisableAdvancedSettingsSourceIntegration"=dword:00000001
+"AdminInfoUrl"=""
+"MakePrintScreenKeyYieldable"=dword:00000001 ; 00000000/00000001
+"DisableFileExplorerPrelaunch"=dword:00000001 ; 00000000/00000001
+"DisableMotWOnInsecurePathCopy"=dword:00000001
+"DisableRoamedProfileInit"=dword:00000001
+"SimplifyQuickSettings"=dword:00000000
 "ToastEnabled"=dword:00000000
 "AllowOnlineTips"=dword:00000000
 "CheckSameSourceAndTargetForFRAndDFS"=dword:00000000
@@ -6546,6 +6634,10 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Conferencing]
 "NoRDS"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\ShareSheet]
+"DisableInlineCompose"=dword:00000001
+"DisableShareAppPromotions"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\TableTextService]
 "EnableTableTextService"=dword:00000000
@@ -6667,6 +6759,7 @@ Windows Registry Editor Version 5.00
 
 [HKEY_CURRENT_USER\Console]
 "QuickEdit"=dword:00000001
+"VirtualTerminalLevel"=dword:00000001
 
 [HKEY_CURRENT_USER\Console\%%Startup]
 "DelegationConsole"="{B23D10C0-E52E-411E-9D5B-C09FDF709C7D}"
@@ -6962,7 +7055,12 @@ Windows Registry Editor Version 5.00
 "VDMDisallowed"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\AppCompat]
+"DisableEngine"=dword:00000001
+"SbEnable"=dword:00000000
 "AITEnable"=dword:00000000
+"DisableInventory"=dword:00000001
+"DisablePCA"=dword:00000001
+"DisableUAR"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\AIT]
 "AITEnable"=dword:00000000
@@ -6984,6 +7082,10 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\WaaSAssessment]
 "Endpoint"="localhost"
 "NoSelfHeal"=dword:00000001
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\WaaSAssessment\Cache]
+"UpToDateStatus"=dword:00000000
+"UpToDateImpact"=dword:00000000
+"UpToDateDays"=dword:00000000
 [HKEY_LOCAL_MACHINE\SYSTEM\WaaS\Upfc]
 "BlackoutEndTime"="2050-01-01T00:00:00Z"
 "BlackoutStartTime"="2049-12-25T00:00:00Z"
@@ -7747,6 +7849,9 @@ Windows Registry Editor Version 5.00
 "168"="GameBarFTServer.exe"
 "169"="OneDrive.Sync.Service.exe"
 
+[HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\8\3694159502]
+"EnabledState"=dword:00000001
+
 [HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\8\3036241548]
 "EnabledState"=dword:00000001
 
@@ -8007,7 +8112,7 @@ Windows Registry Editor Version 5.00
 "NoLock"=dword:00000001
 "RequireMicrosoftSignedBootChain"=dword:00000000
 "RequirePlatformSecurityFeature"=dword:00000000
-"RequirePlatformSecurityFeatures"=dword:00000000 ; 00000000/ffffffff
+"RequirePlatformSecurityFeatures"=dword:ffffffff ; 00000000/ffffffff
 "Unlocked"=dword:00000001
 "WasEnabledBy"=dword:00000002
 
@@ -8047,6 +8152,7 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\WindowsHello]
 "Enabled"=dword:00000000
+
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\BaseVirtualization]
 "Enabled"=dword:00000000
 
@@ -8651,7 +8757,8 @@ Windows Registry Editor Version 5.00
 "UseWin32BatteryFlyout"=dword:00000001
 "UseWin32TrayClockExperience"=dword:00000001
 
-; [HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Authentication\LogonUI\TestHooks]
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\LogonUI\TestHooks]
+"DisablePreLaunch"=dword:00000001
 ; "ConsoleMode"=dword:00000001
 ; "XamlCredUIAvailable"=dword:00000000
 
@@ -8684,9 +8791,18 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Internet Explorer\Infodelivery\Restrictions]
 "NoUpdateCheck"=dword:00000001
 
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\MicrosoftEdge\F12]
+"AllowDeveloperTools"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\MicrosoftEdge\Extensions]
+"ExtensionsEnabled"=dword:00000001
+"AllowSideloadingOfExtensions"=dword:00000001
+"PreventTurningOffRequiredExtensions"=dword:00000000
+
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\BooksLibrary]
 "EnableExtendedBooksTelemetry"=dword:00000000
 "AllowConfigurationUpdateForBooksLibrary"=dword:00000000
+"UseSharedFolderForBooks"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\BrowserEmulation]
 "MSCompatibilityMode"=dword:00000000
@@ -9231,6 +9347,9 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\Security]
 "FlashClickToRunMode"=dword:00000000
 
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\MicrosoftEdge\Main\EnterpriseMode]
+"SiteList"=""
+
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Edge\ExtensionInstallForcelist]
 "1"="odfafepnkmbhccpbejgmiehpchacaeak"
 
@@ -9339,6 +9458,40 @@ Windows Registry Editor Version 5.00
 "AlwaysEnableBooksLibrary"=dword:00000000
 "Use FormSuggest"="no"
 "FormSuggest Passwords"="no"
+"AllowFullScreenMode"=dword:00000001
+"AllowInPrivate"=dword:00000001
+"AllowPrinting"=dword:00000000
+"AllowSavingHistory"=dword:00000001
+"ConfigureFavoritesBar"=dword:00000001
+"AllowPopups"="no"
+"AllowMixedModePrintingInPDF"=dword:00000001
+"SyncFavoritesBetweenIEAndMicrosoftEdge"=dword:00000000
+"PreventAccessToAboutFlagsInMicrosoftEdge"=dword:00000000
+"ShowMessageWhenOpeningSitesInInternetExplorer"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\MicrosoftEdge\Internet Settings]
+"ConfigureHomeButton"=dword:00000000
+"ConfigureOpenMicrosoftEdgeWith"=dword:00000002
+"ProvisionedHomePages"=""
+"DisableLockdownOfStartPages"=dword:00000001
+"PreventCertErrorOverrides"=dword:00000000
+"HomeButtonURL"=""
+"NewTabPageURL"=""
+"UnlockHomeButton"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\MicrosoftEdge\Favorites]
+"LockdownFavorites"=dword:00000000
+"ConfiguredFavorites"=""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\SecondaryAuthenticationFactor]
+"AllowSecondaryAuthenticationDevice"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\MicrosoftEdge\KioskMode]
+"ConfigureKioskMode"=dword:00000000
+"ConfigureKioskResetAfterIdleTimeout"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\MicrosoftEdge\EdgeDeprecation]
+"SuppressEdgeDeprecationNotification"=dword:00000001
 
 [HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\MicrosoftEdge\SearchScopes]
 "ShowSearchSuggestionsGlobal"=dword:00000000
@@ -9348,6 +9501,8 @@ Windows Registry Editor Version 5.00
 "DoNotTrack"=dword:00000001
 "AlwaysEnableBooksLibrary"=dword:00000000
 "PreventLiveTileDataCollection"=dword:00000001
+"HideLocalHostIP"=dword:00000001
+"SendIntranetTraffictoInternetExplorer"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\EdgeUpdate]
 "AutoUpdateCheckPeriodMinutes"=dword:00000000
@@ -9929,7 +10084,7 @@ Windows Registry Editor Version 5.00
 "DefaultWindowPlacementSetting"=dword:00000003
 "DeletingUndecryptablePasswordsEnabled"=dword:00000001
 "DesktopSharingHubEnabled"=dword:00000000
-"DeveloperToolsAvailability"=dword:00000001
+"DeveloperToolsAvailability"=dword:00000002 ; 00000001/00000002
 "DeveloperToolsDisabled"=dword:00000000
 "DeviceActivityHeartbeatEnabled"=dword:00000000
 "DeviceMetricsReportingEnabled"=dword:00000000
@@ -10123,6 +10278,8 @@ Windows Registry Editor Version 5.00
 "RendererCodeIntegrityEnabled"=dword:00000000
 "SleepingTabsEnabled"=dword:00000000
 "StartupBoostEnabled"=dword:00000000
+"BrowserExecutableFolder"="C:\\Empty" ; webview2 kill switch (redirect to empty folder)
+"HardwareAccelerationModeEnabled"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power BI Desktop]
 "AutoUpdateEnabled"=dword:00000000
@@ -10531,6 +10688,11 @@ Windows Registry Editor Version 5.00
 "ExtensionManifestV2Availability"=dword:00000002
 "DefaultNotificationsSetting"=dword:00000002
 
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Helium]
+"HardwareAccelerationModeEnabled"=dword:00000000
+"BackgroundModeEnabled"=dword:00000000
+"HighEfficiencyModeEnabled"=dword:00000000
+
 [HKEY_CURRENT_USER\Software\Policies\Chromium]
 "SuppressUnsupportedOSWarning"=dword:00000001
 
@@ -10696,6 +10858,9 @@ Windows Registry Editor Version 5.00
 "DisableRemoveBackground"=dword:00000001
 "DisableImageCreator"=dword:00000001
 "DisableGenerativeFill"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Intelligence]
+"AllowWindowsIntelligence"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\ClickToRunSvc]
 "Start"=dword:00000003
@@ -11127,6 +11292,7 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\TPM]
 "Start"=dword:00000004 ; 00000003, 00000004
+"PlatformLogRetention"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\TimeBroker]
 "Start"=dword:00000004 ; 00000003, 00000004
@@ -12054,6 +12220,21 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RzCommon]
 "Start"=dword:00000004 ; 00000003, 00000004
 
+[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\AiFabric]
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\AiFabric]
+"Start"=dword:00000004
+[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\InputInsights]
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\InputInsights]
+"Start"=dword:00000004
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\nvrtxvad_WaveExtensible]
+"Start"=dword:00000004
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Parsec]
+"Start"=dword:00000004 ; 00000002, 00000004
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\parsecvusba]
+"Start"=dword:00000004 ; 00000003, 00000004
+
 [HKEY_LOCAL_MACHINE\System\ControlSet001\Services\hidclass\Parameters]
 "DisableReportBuffering"=dword:00000001
 "DisableReportCoalescing"=dword:00000001
@@ -12122,6 +12303,12 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\mlx4_bus\Parameters]
 "ThreadDpcEnable"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\igfx\Parameters]
+"EnablePreemption"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Intel\GMM]
+"DedicatedSegmentSize"=dword:00000400
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\WMIContextLog]
 "Start"=dword:00000000
@@ -12875,6 +13062,9 @@ Windows Registry Editor Version 5.00
 "Enabled"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-Application\{88cd9180-4491-4640-b571-e3bee2527943}]
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\Tpm\{3A8D6942-B034-48E2-B314-F69C2B4655A3}]
 "Enabled"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\WMI\Autologger\EventLog-Application\{8939299f-2315-4c5c-9b91-abb86aa0627d}]
@@ -14225,6 +14415,9 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\AUEP]
 "RSX_AUEPStatus"=dword:00000002 ; 00000002/00000004
 
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WebClient\Parameters]
+"FileSizeLimitInBytes"=dword:ffffffff
+
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\BTHPORT\Parameters]
 "AllowInteractiveConnect"=dword:00000000
 "DisableAdvertising"=dword:00000001
@@ -14357,6 +14550,7 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\Software\Microsoft\PolicyManager\current\device\Accounts]
 "AllowMicrosoftAccountSignInAssistant"=dword:00000001 ; 00000000/00000001
 
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\current\device\Stickers]
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\current\device\Stickers]
 "EnableStickers"=dword:00000000
 
@@ -14369,8 +14563,11 @@ Windows Registry Editor Version 5.00
 "ShortcutNameTemplate"="%s"
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Policies\Microsoft\PortableOperatingSYSTEM]
-"Hibernate"=-
+"Hibernate"=dword:00000000
 "Sleep"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\PortableOperatingSystem]
+"Launcher"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Network\NetworkLocationWizard]
 "HideWizard"=dword:00000001
@@ -14655,6 +14852,9 @@ Windows Registry Editor Version 5.00
 "LegacyImpersonationLevel"=dword:00000004
 "MachineAccessRestriction"=-
 "MachineLaunchRestriction"=-
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Ole\Eventlog]
+"SuppressDuplicateDuration"=dword:2ce81800
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SoftwareProtectionPlatform\ESU]
 "Win10CommercialW365ESUEligible"=dword:00000001
@@ -16063,7 +16263,7 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\default\Defender\PUAProtection]
 "value"=dword:00000000
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\default\Defender\RealTimeScanDirection]
-"value"=dword:00000000
+"value"=dword:00000001 ; 00000000/00000001
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\default\Defender\ScanParameter]
 "value"=dword:00000002
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\default\Defender\ScheduleScanDay]
@@ -16109,7 +16309,7 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\default\DeviceGuard\LsaCfgFlags]
 "value"=dword:00000000
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\default\DeviceGuard\RequirePlatformSecurityFeatures]
-"value"=dword:00000000
+"value"=dword:ffffffff
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\default\VirtualizationBasedTechnology\HypervisorEnforcedCodeIntegrity]
 "value"=dword:00000000
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\default\VirtualizationBasedTechnology\RequireUEFIMemoryAttributesTable]
@@ -16263,6 +16463,10 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\default\Storage\AllowDiskHealthModelUpdates]
 "value"=dword:00000000
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\default\Storage\AllowStorageSenseTemporaryFilesCleanup]
+"value"=dword:00000000
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\default\Experience\AllowVideoFilters]
+"value"=dword:00000000
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\default\Camera\AllowCameraEffects]
 "value"=dword:00000000
 
 ; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\iaStorV\Parameters\Device]
@@ -16478,6 +16682,22 @@ Windows Registry Editor Version 5.00
 "PerformanceIdleTime"=dword:00000000
 "SystemResponsiveness"=dword:0000000a
 "SpatialAudioHrtfOnByDefault"=dword:00000000
+"DisableAudioProcessing"=dword:00000001
+; "DisableAudioEnhancements"=dword:00000001
+"DisableLFX"=dword:00000001
+"DisableGFX"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Audio]
+"DisableAudioProcessing"=dword:00000001
+; "DisableAudioEnhancements"=dword:00000001
+"DisableLFX"=dword:00000001
+"DisableGFX"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech_OneCore\AudioProcessing]
+"EnableEnhancedAudio"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Speech_OneCore\AudioProcessing]
+"EnableEnhancedAudio"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Audio\Policy\Spatial]
 "SpatialAudioLicenseCheckStartDelay"=dword:000dbba0
@@ -16602,6 +16822,7 @@ Windows Registry Editor Version 5.00
 "TurnOffSavingSnapshots"=dword:00000001
 "TurnOffWindowsCopilot"=dword:00000001
 "RemoveMicrosoftCopilotApp"=dword:00000001
+"DisableAIDataCollection"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsAI]
 "ConfigureAgentConnectors"=dword:00000002
@@ -16637,6 +16858,7 @@ Windows Registry Editor Version 5.00
 "TurnOffWindowsCopilot"=dword:00000001
 "AllowCopilotRuntime"=dword:00000000
 "RemoveMicrosoftCopilotApp"=dword:00000001
+"DisableAIDataCollection"=dword:00000001
 
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsAI]
 "SnapNowEnabled"=dword:00000000
@@ -16695,6 +16917,8 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\MDM]
 "DisableRegistration"=dword:00000001
 "AutoEnrollMDM"=dword:00000000
+"UseAADCredentialType"=dword:00000000
+"MDMApplicationId"=""
 
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\EOSNotify]
 "DiscontinueEOS"=dword:00000001
@@ -16860,6 +17084,10 @@ Windows Registry Editor Version 5.00
 "VKToggleRecording"=dword:00000000
 "VKToggleRecordingIndicator"=dword:00000000
 
+[-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\GameBar]
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\GameBar]
+"UseGamingCopilot"=dword:00000000
+
 [HKEY_CURRENT_USER\Software\Classes\ms-gamebar]
 "URL Protocol"=""
 @="URL:ms-gamebar"
@@ -16893,6 +17121,13 @@ Windows Registry Editor Version 5.00
 
 [HKEY_CURRENT_USER\Software\Classes\*\shell\pintohomefile]
 "ProgrammaticAccessOnly"=""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Control Panel\Glass]
+"IsEyeContactEnabled"=dword:00000000
+"IsVoiceFocusEnabled"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Microsoft\Speech_OneCore\Settings\VoiceActivation\AppLaunchAllowed]
+"AgentAllowed"=dword:00000000
 
 [-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\TPM\WMI\Endorsement]
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\TPM\WMI]
@@ -16937,13 +17172,13 @@ Windows Registry Editor Version 5.00
 "DisablePeriodicScan"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\NetworkList\DefaultMediaCost]
-"3G"=dword:00000001 ; 00000001/00000002
-"4G"=dword:00000001 ; 00000001/00000002
-"cost"=dword:00000000
-"Default"=dword:00000001 ; 00000001/00000002
-"Ethernet"=dword:00000001 ; 00000001/00000002
-"weaker cost"=dword:00000000
-"WiFi"=dword:00000001 ; 00000001/00000002
+"3G"=dword:00000002 ; 00000001/00000002
+"4G"=dword:00000002 ; 00000001/00000002
+"cost"=dword:00000002
+"Default"=dword:00000002 ; 00000001/00000002
+"Ethernet"=dword:00000002 ; 00000001/00000002
+"weaker cost"=dword:00000002
+"WiFi"=dword:00000002 ; 00000001/00000002
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\w32time\TimeProviders\VMICTimeProvider]
 "Enabled"=dword:00000000
@@ -16985,7 +17220,7 @@ Windows Registry Editor Version 5.00
 "AutoRebootLimitInDays"=dword:0000016d
 "DeferUpgrade"=dword:00000001
 "ExcludeWUDriversInQualityUpdate"=dword:00000001 ; 00000000/00000001
-"FlightSettingsMaxPauseDays"=dword:00001c84
+"FlightSettingsMaxPauseDays"=dword:00001c84 ; 00001c84/ffffffff
 "HideMCTLink"=dword:00000001
 "HideUpdateNotifications"=dword:00000001
 "HideWUFUSoftLandingPage"=dword:00000001
@@ -17259,7 +17494,7 @@ Windows Registry Editor Version 5.00
 "JPEGImportQuality"=dword:00000064
 "KeyboardSpeed"="31" ; 0/31/48
 "LockScreenAutoLockActive"="0"
-"LogPixels"=dword:00000060 ; =-/00000060/00000073/00000096
+"LogPixels"=dword:00000060 ; =-/00000060/00000073/00000078
 "LowLevelHooksTimeout"=dword:000003e8
 "MaxAnimate"="0"
 "MenuShowDelay"="400"
@@ -17285,19 +17520,20 @@ Windows Registry Editor Version 5.00
 "WaitToKillServiceTimeout"="1000" ; 1/1000/00000001
 "WheelScrollChars"="7"
 "WheelScrollLines"="7" ; 3, -3/7
-"Win8DpiScaling"=dword:00000001 ; 00000000/00000001
+"Win8DpiScaling"=dword:00000000 ; 00000000/00000001
 "WindowArrangementActive"="0"
 "DstNotification"=dword:00000000
 "CaretWidth"=dword:00000001
 "VisualFXSetting"="3"
 "Composition"=dword:00000000
 "DisableAnimations"=dword:00000001
+"DockMoving"="0"
 
 [-HKEY_CURRENT_USER\Control Panel\Desktop\PerMonitorSettings]
 [HKEY_CURRENT_USER\Control Panel\Desktop\PerMonitorSettings]
 "DpiValue"=dword:00000000
 "LogPixels"=dword:00000060
-"Win8DpiScaling"=dword:00000001
+"Win8DpiScaling"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\FontDPI]
 "LogPixels"=dword:00000060
@@ -17510,6 +17746,21 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\HomeGroup]
 "DisableHomeGroup"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\HumanPresence]
+"ForceAllowDimWhenExternalDisplayConnected"=dword:00000002
+"ForceAllowLockWhenExternalDisplayConnected"=dword:00000002
+"ForceAllowWakeWhenExternalDisplayConnected"=dword:00000002
+"ForceDisableWakeWhenBatterySaverOn"=dword:00000001
+"ForceInstantDim"=dword:00000002
+"ForceInstantLock"=dword:00000002
+"ForceInstantWake"=dword:00000002
+"ForceOnlookerDetection"=dword:00000002
+"ForceOnlookerDetectionAction"=dword:00000000
+"ForceLockTimeout"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows NT\IIS]
+"PreventIISInstall"=dword:00000001
 
 [HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\TrayNotify]
 "SystemTrayChevronVisibility"=dword:00000001 ; 00000000/00000001
@@ -17885,6 +18136,8 @@ Windows Registry Editor Version 5.00
 "NonCriticalTimeOut"=dword:00000000
 "EnableDynamicSignatureDroppedEventReporting"=dword:00000000
 "MpHeartbeatReportingFrequency"=dword:00000000
+"ServiceHealthReportInterval"=dword:00000000
+"RecentlyCleanedTimeout"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Defender\Windows Defender\ControlledFolderAccess]
 "Enable"=dword:00000000
@@ -17909,6 +18162,7 @@ Windows Registry Editor Version 5.00
 "AllowDatacollection"=dword:00000000
 "ForceDefenderPassiveMode"=dword:00000001
 "OnboardingInfo"=""
+"PreferStaticProxyForHttpRequest"=dword:00000001
 
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Notifications\Settings\Windows.SystemToast.StartupApp]
 "Enabled"=dword:00000000
@@ -17996,6 +18250,7 @@ Windows Registry Editor Version 5.00
 "DetailsContainer"=hex:01,00,00,00,02,00,00,00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
+"EnterpriseDeviceAuthOnly"=dword:00000001
 "MaxDevicePasswordFailedAttempts"=dword:00000000
 "InactivityTimeoutSecs"=dword:00000000
 "ConsentPromptBehaviorAdmin"=dword:00000000
@@ -18069,6 +18324,7 @@ Windows Registry Editor Version 5.00
 "VerboseStatus"=dword:00000001
 
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
+"DisableRegistryTools"=dword:00000000
 "DisableLockWorkstation"=dword:00000001
 "DisableTaskMgr"=- ; =-, 00000001
 "NoChangingWallPaper"=-
@@ -18247,6 +18503,9 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\FindMyDevice]
 "Enabled"=dword:00000000
 
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Handwriting]
+"PanelDefaultModeDocked"=dword:00000001
+
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FindMyDevice]
 "AllowFindMyDevice"=dword:00000000
 "LocationSyncEnabled"=dword:00000000
@@ -18297,6 +18556,7 @@ Windows Registry Editor Version 5.00
 "Security_options_edit"=dword:00000001
 "Security_zones_map_edit"=dword:00000001
 "WarnOnBadCertRecving"=dword:00000001
+"DisableWpad"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HTTP\Parameters]
 "EnableHttp2Cleartext"=dword:00000001
@@ -18641,6 +18901,8 @@ Windows Registry Editor Version 5.00
 "NetworkPrinters"=dword:00000000
 "RoamingCredentialSettings"=dword:00000000
 "ThemeSettings"=dword:00000000
+"VdiState"=dword:00000000
+"VdiCollectionName"=""
 
 [HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Schedule]
 "DisableRpcOver"=dword:00000001
@@ -18834,6 +19096,42 @@ Windows Registry Editor Version 5.00
 "BypassTPM"=dword:00000001
 "BypassTPMCheck"=dword:00000001
 
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Conferencing]
+"NoAppSharing"=dword:00000001
+"NoTrueColorSharing"=dword:00000001
+"NoAllowControl"=dword:00000001
+"NoSharingDesktop"=dword:00000001
+"NoSharing"=dword:00000001
+"NoSharingDosWindows"=dword:00000001
+"NoSharingExplorer"=dword:00000001
+"NoAudio"=dword:00000001
+"NoFullDuplex"=dword:00000001
+"MaximumBandwidth"=dword:00000000
+"NoChangeDirectSound"=dword:00000001
+"NoReceivingVideo"=dword:00000001
+"NoSendingVideo"=dword:00000001
+"NoAdvancedCalling"=dword:00000001
+"NoAudioPage"=dword:00000001
+"NoGeneralPage"=dword:00000001
+"NoSecurityPage"=dword:00000001
+"NoVideoPage"=dword:00000001
+"PersistAutoAcceptCalls"=dword:00000000
+"NoChat"=dword:00000001
+"NoDirectoryServices"=dword:00000001
+"NoOldWhiteBoard"=dword:00000001
+"NoNewWhiteBoard"=dword:00000001
+"Use AutoConfig"=dword:00000000
+"ConfigFile"=""
+"MaxFileSendSize"=dword:00000000
+"NoAddingDirectoryServers"=dword:00000001
+"NoAutoAcceptCalls"=dword:00000001
+"NoChangingCallMode"=dword:00000001
+"NoReceivingFiles"=dword:00000001
+"NoSendingFiles"=dword:00000001
+"NoWebDirectory"=dword:00000001
+"CallSecurity"=dword:00000002
+"IntranetSupportURL"=""
+
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecureBoot\SBAT]
 "OptOut"=dword:00000001
 
@@ -18849,6 +19147,213 @@ Windows Registry Editor Version 5.00
 "SyncOverMeteredNetworkWhenRoaming"=dword:00000000
 "SyncProviderPingEnabled"=dword:00000000
 "SyncUnlistedWindows8Apps"=dword:00000000
+"SyncMethod"="None"
+"SettingsImportNotifyEnabled"=dword:00000000
+"SettingsImportNotifyDelayInSeconds"=dword:00000000
+"SettingsStoragePath"=""
+"SyncOverMeteredNetwork"=dword:00000000
+"SyncTimeoutInMilliseconds"=dword:00000000
+"PingSettingsStorageOnSync"=dword:00000000
+"FirstUseNotificationEnabled"=dword:00000000
+"TrayIconEnabled"=dword:00000000
+"SyncUnlistedWindowsApps"=dword:00000000
+"UseUserExperienceVirtualization"=dword:00000000
+"SettingsTemplateCatalogPath"=""
+"VDIConfiguration"=""
+"ContactITLinkText"=""
+"ContactITUrl"=""
+"NotifySyncNotificationTimeout"=dword:00000000
+"ContactITDescription"=""
+"OverrideMSTemplates"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\UEV\Agent\Configuration\Applications]
+"MicrosoftCalculator6"=dword:00000000
+"MicrosoftInternetExplorer.Common"=dword:00000000
+"MicrosoftInternetExplorer.Version8"=dword:00000000
+"MicrosoftInternetExplorer.Version9"=dword:00000001
+"MicrosoftInternetExplorer.Version10"=dword:00000000
+"MicrosoftInternetExplorer.Version11"=dword:00000000
+"MicrosoftLync2010"=dword:00000000
+"MicrosoftLync2013BackupWin32"=dword:00000000
+"MicrosoftLync2013BackupWin64"=dword:00000000
+"MicrosoftLync2013Office365Win32"=dword:00000000
+"MicrosoftLync2013Office365Win64"=dword:00000000
+"MicrosoftLync2013Win32"=dword:00000000
+"MicrosoftLync2013Win64"=dword:00000000
+"MicrosoftLync2016BackupWin32"=dword:00000000
+"MicrosoftLync2016BackupWin64"=dword:00000000
+"MicrosoftLync2016Office365Win32"=dword:00000000
+"MicrosoftLync2016Office365Win64"=dword:00000000
+"MicrosoftLync2016Win32"=dword:00000000
+"MicrosoftLync2016Win64"=dword:00000000
+"MicrosoftNotepad6"=dword:00000000
+"MicrosoftOffice2010Win32.Access"=dword:00000000
+"MicrosoftOffice2010Win32.Common"=dword:00000000
+"MicrosoftOffice2010Win32.Excel"=dword:00000000
+"MicrosoftOffice2010Win32.Groove"=dword:00000000
+"MicrosoftOffice2010Win32.InfoPath"=dword:00000000
+"MicrosoftOffice2010Win32.OneNote"=dword:00000000
+"MicrosoftOffice2010Win32.Outlook"=dword:00000000
+"MicrosoftOffice2010Win32.PowerPoint"=dword:00000000
+"MicrosoftOffice2010Win32.Project"=dword:00000000
+"MicrosoftOffice2010Win32.Publisher"=dword:00000000
+"MicrosoftOffice2010Win32.SharePointDesigner"=dword:00000000
+"MicrosoftOffice2010Win32.Visio"=dword:00000000
+"MicrosoftOffice2010Win32.Word"=dword:00000000
+"MicrosoftOffice2010Win64.Access"=dword:00000000
+"MicrosoftOffice2010Win64.Common"=dword:00000000
+"MicrosoftOffice2010Win64.Excel"=dword:00000000
+"MicrosoftOffice2010Win64.Groove"=dword:00000000
+"MicrosoftOffice2010Win64.InfoPath"=dword:00000000
+"MicrosoftOffice2010Win64.OneNote"=dword:00000000
+"MicrosoftOffice2010Win64.Outlook"=dword:00000000
+"MicrosoftOffice2010Win64.PowerPoint"=dword:00000000
+"MicrosoftOffice2010Win64.Project"=dword:00000000
+"MicrosoftOffice2010Win64.Publisher"=dword:00000000
+"MicrosoftOffice2010Win64.SharePointDesigner"=dword:00000000
+"MicrosoftOffice2010Win64.Visio"=dword:00000000
+"MicrosoftOffice2010Win64.Word"=dword:00000000
+"MicrosoftOffice2013BackupWin32.Access"=dword:00000000
+"MicrosoftOffice2013BackupWin32.Common"=dword:00000000
+"MicrosoftOffice2013BackupWin32.Excel"=dword:00000000
+"MicrosoftOffice2013BackupWin32.InfoPath"=dword:00000000
+"MicrosoftOffice2013BackupWin32.OneNote"=dword:00000000
+"MicrosoftOffice2013BackupWin32.Outlook"=dword:00000000
+"MicrosoftOffice2013BackupWin32.PowerPoint"=dword:00000000
+"MicrosoftOffice2013BackupWin32.Project"=dword:00000000
+"MicrosoftOffice2013BackupWin32.Publisher"=dword:00000000
+"MicrosoftOffice2013BackupWin32.SharePointDesigner"=dword:00000000
+"MicrosoftOffice2013BackupWin32.Visio"=dword:00000000
+"MicrosoftOffice2013BackupWin32.Word"=dword:00000000
+"MicrosoftOffice2013BackupWin64.Access"=dword:00000000
+"MicrosoftOffice2013BackupWin64.Common"=dword:00000000
+"MicrosoftOffice2013BackupWin64.Excel"=dword:00000000
+"MicrosoftOffice2013BackupWin64.InfoPath"=dword:00000000
+"MicrosoftOffice2013BackupWin64.OneNote"=dword:00000000
+"MicrosoftOffice2013BackupWin64.Outlook"=dword:00000000
+"MicrosoftOffice2013BackupWin64.PowerPoint"=dword:00000000
+"MicrosoftOffice2013BackupWin64.Project"=dword:00000000
+"MicrosoftOffice2013BackupWin64.Publisher"=dword:00000000
+"MicrosoftOffice2013BackupWin64.SharePointDesigner"=dword:00000000
+"MicrosoftOffice2013BackupWin64.Visio"=dword:00000000
+"MicrosoftOffice2013BackupWin64.Word"=dword:00000000
+"MicrosoftOffice2013Office365Win32.Access"=dword:00000000
+"MicrosoftOffice2013Office365Win32.Common"=dword:00000000
+"MicrosoftOffice2013Office365Win32.Excel"=dword:00000000
+"MicrosoftOffice2013Office365Win32.InfoPath"=dword:00000000
+"MicrosoftOffice2013Office365Win32.OneNote"=dword:00000000
+"MicrosoftOffice2013Office365Win32.Outlook"=dword:00000000
+"MicrosoftOffice2013Office365Win32.PowerPoint"=dword:00000000
+"MicrosoftOffice2013Office365Win32.Project"=dword:00000000
+"MicrosoftOffice2013Office365Win32.Publisher"=dword:00000000
+"MicrosoftOffice2013Office365Win32.SharePointDesigner"=dword:00000000
+"MicrosoftOffice2013Office365Win32.Visio"=dword:00000000
+"MicrosoftOffice2013Office365Win32.Word"=dword:00000000
+"MicrosoftOffice2013Office365Win64.Access"=dword:00000000
+"MicrosoftOffice2013Office365Win64.Common"=dword:00000000
+"MicrosoftOffice2013Office365Win64.Excel"=dword:00000000
+"MicrosoftOffice2013Office365Win64.InfoPath"=dword:00000000
+"MicrosoftOffice2013Office365Win64.OneNote"=dword:00000000
+"MicrosoftOffice2013Office365Win64.Outlook"=dword:00000000
+"MicrosoftOffice2013Office365Win64.PowerPoint"=dword:00000000
+"MicrosoftOffice2013Office365Win64.Project"=dword:00000000
+"MicrosoftOffice2013Office365Win64.Publisher"=dword:00000000
+"MicrosoftOffice2013Office365Win64.SharePointDesigner"=dword:00000000
+"MicrosoftOffice2013Office365Win64.Visio"=dword:00000000
+"MicrosoftOffice2013Office365Win64.Word"=dword:00000000
+"MicrosoftOffice2013Win32.Access"=dword:00000000
+"MicrosoftOffice2013Win32.Common"=dword:00000000
+"MicrosoftOffice2013Win32.Excel"=dword:00000000
+"MicrosoftOffice2013Win32.InfoPath"=dword:00000000
+"MicrosoftOffice2013Win32.OneDrive"=dword:00000000
+"MicrosoftOffice2013Win32.OneNote"=dword:00000000
+"MicrosoftOffice2013Win32.Outlook"=dword:00000000
+"MicrosoftOffice2013Win32.PowerPoint"=dword:00000000
+"MicrosoftOffice2013Win32.Project"=dword:00000000
+"MicrosoftOffice2013Win32.Publisher"=dword:00000000
+"MicrosoftOffice2013Win32.SharePointDesigner"=dword:00000000
+"MicrosoftOffice2013Win32.UploadCenter"=dword:00000000
+"MicrosoftOffice2013Win32.Visio"=dword:00000000
+"MicrosoftOffice2013Win32.Word"=dword:00000000
+"MicrosoftOffice2013Win64.Access"=dword:00000000
+"MicrosoftOffice2013Win64.Common"=dword:00000000
+"MicrosoftOffice2013Win64.Excel"=dword:00000000
+"MicrosoftOffice2013Win64.InfoPath"=dword:00000000
+"MicrosoftOffice2013Win64.OneDrive"=dword:00000000
+"MicrosoftOffice2013Win64.OneNote"=dword:00000000
+"MicrosoftOffice2013Win64.Outlook"=dword:00000000
+"MicrosoftOffice2013Win64.PowerPoint"=dword:00000000
+"MicrosoftOffice2013Win64.Project"=dword:00000000
+"MicrosoftOffice2013Win64.Publisher"=dword:00000000
+"MicrosoftOffice2013Win64.SharePointDesigner"=dword:00000000
+"MicrosoftOffice2013Win64.UploadCenter"=dword:00000000
+"MicrosoftOffice2013Win64.Visio"=dword:00000000
+"MicrosoftOffice2013Win64.Word"=dword:00000000
+"MicrosoftOffice2016BackupWin32.Access"=dword:00000000
+"MicrosoftOffice2016BackupWin32.Common"=dword:00000000
+"MicrosoftOffice2016BackupWin32.Excel"=dword:00000000
+"MicrosoftOffice2016BackupWin32.OneNote"=dword:00000000
+"MicrosoftOffice2016BackupWin32.Outlook"=dword:00000000
+"MicrosoftOffice2016BackupWin32.PowerPoint"=dword:00000000
+"MicrosoftOffice2016BackupWin32.Project"=dword:00000000
+"MicrosoftOffice2016BackupWin32.Publisher"=dword:00000000
+"MicrosoftOffice2016BackupWin32.Visio"=dword:00000000
+"MicrosoftOffice2016BackupWin32.Word"=dword:00000000
+"MicrosoftOffice2016BackupWin64.Access"=dword:00000000
+"MicrosoftOffice2016BackupWin64.Common"=dword:00000000
+"MicrosoftOffice2016BackupWin64.Excel"=dword:00000000
+"MicrosoftOffice2016BackupWin64.OneNote"=dword:00000000
+"MicrosoftOffice2016BackupWin64.Outlook"=dword:00000000
+"MicrosoftOffice2016BackupWin64.PowerPoint"=dword:00000000
+"MicrosoftOffice2016BackupWin64.Project"=dword:00000000
+"MicrosoftOffice2016BackupWin64.Publisher"=dword:00000000
+"MicrosoftOffice2016BackupWin64.Visio"=dword:00000000
+"MicrosoftOffice2016BackupWin64.Word"=dword:00000000
+"MicrosoftOffice2016Office365Win32.Access"=dword:00000000
+"MicrosoftOffice2016Office365Win32.Common"=dword:00000000
+"MicrosoftOffice2016Office365Win32.Excel"=dword:00000000
+"MicrosoftOffice2016Office365Win32.OneNote"=dword:00000000
+"MicrosoftOffice2016Office365Win32.Outlook"=dword:00000000
+"MicrosoftOffice2016Office365Win32.PowerPoint"=dword:00000000
+"MicrosoftOffice2016Office365Win32.Project"=dword:00000000
+"MicrosoftOffice2016Office365Win32.Publisher"=dword:00000000
+"MicrosoftOffice2016Office365Win32.Visio"=dword:00000000
+"MicrosoftOffice2016Office365Win32.Word"=dword:00000000
+"MicrosoftOffice2016Office365Win64.Access"=dword:00000000
+"MicrosoftOffice2016Office365Win64.Common"=dword:00000000
+"MicrosoftOffice2016Office365Win64.Excel"=dword:00000000
+"MicrosoftOffice2016Office365Win64.OneNote"=dword:00000000
+"MicrosoftOffice2016Office365Win64.Outlook"=dword:00000000
+"MicrosoftOffice2016Office365Win64.PowerPoint"=dword:00000000
+"MicrosoftOffice2016Office365Win64.Project"=dword:00000000
+"MicrosoftOffice2016Office365Win64.Publisher"=dword:00000000
+"MicrosoftOffice2016Office365Win64.Visio"=dword:00000000
+"MicrosoftOffice2016Office365Win64.Word"=dword:00000000
+"MicrosoftOffice2016Win32.Access"=dword:00000000
+"MicrosoftOffice2016Win32.Common"=dword:00000000
+"MicrosoftOffice2016Win32.Excel"=dword:00000000
+"MicrosoftOffice2016Win32.OneDrive"=dword:00000000
+"MicrosoftOffice2016Win32.OneNote"=dword:00000000
+"MicrosoftOffice2016Win32.Outlook"=dword:00000000
+"MicrosoftOffice2016Win32.PowerPoint"=dword:00000000
+"MicrosoftOffice2016Win32.Project"=dword:00000000
+"MicrosoftOffice2016Win32.Publisher"=dword:00000000
+"MicrosoftOffice2016Win32.UploadCenter"=dword:00000000
+"MicrosoftOffice2016Win32.Visio"=dword:00000000
+"MicrosoftOffice2016Win32.Word"=dword:00000000
+"MicrosoftOffice2016Win64.Access"=dword:00000000
+"MicrosoftOffice2016Win64.Common"=dword:00000000
+"MicrosoftOffice2016Win64.Excel"=dword:00000000
+"MicrosoftOffice2016Win64.OneDrive"=dword:00000000
+"MicrosoftOffice2016Win64.OneNote"=dword:00000000
+"MicrosoftOffice2016Win64.Outlook"=dword:00000000
+"MicrosoftOffice2016Win64.PowerPoint"=dword:00000000
+"MicrosoftOffice2016Win64.Project"=dword:00000000
+"MicrosoftOffice2016Win64.Publisher"=dword:00000000
+"MicrosoftOffice2016Win64.UploadCenter"=dword:00000000
+"MicrosoftOffice2016Win64.Visio"=dword:00000000
+"MicrosoftOffice2016Win64.Word"=dword:00000000
+"MicrosoftWordpad6"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\TV System Services]
 "EnableEventLogging"=dword:00000000
@@ -18903,9 +19408,9 @@ Windows Registry Editor Version 5.00
 [-HKEY_CLASSES_ROOT\Directory\shellex\ContextMenuHandlers\{596AB062-B4D2-4215-9F74-E9109B0A8153}]
 [-HKEY_CLASSES_ROOT\Drive\shellex\ContextMenuHandlers\{596AB062-B4D2-4215-9F74-E9109B0A8153}]
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer]
-"NoPreviousVersionsPage"=-
+"NoPreviousVersionsPage"=dword:00000001 ; =-/00000001
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer]
-"NoPreviousVersionsPage"=-
+"NoPreviousVersionsPage"=dword:00000001
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\PreviousVersions]
 "DisableLocalPage"=-
 
@@ -18918,6 +19423,7 @@ Windows Registry Editor Version 5.00
 "CN_Hide_Toast_Notification"="true"
 "SystemTray"="false"
 "WizardProfile"="PROFILE_CUSTOM"
+"EnableMetricsService"=dword:00000000
 
 [HKEY_CURRENT_USER\Software\AMD\CN\FreeSync]
 "AlreadyNotified"=dword:00000001
@@ -19476,6 +19982,10 @@ Windows Registry Editor Version 5.00
 "ctfmon.exe"=-
 "APSDaemon"=-
 "TeamsMachineInstaller"=-
+"Intel(R) Graphics Software"=-
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Run]
+"Intel(R) Graphics Software"=-
 
 [HKEY_USERS\.DEFAULT\Software\Microsoft\Windows\CurrentVersion\Run]
 "RazerAppEngine"=-
@@ -19509,6 +20019,7 @@ Windows Registry Editor Version 5.00
 "Teams"=-
 "com.squirrel.Teams.Teams"=-
 "MSTeams"=-
+"CanvaAutoLaunchAvailabilityCheckAgent"=-
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Teams]
 "IsWVDEnvironment"=dword:00000001
@@ -19582,6 +20093,7 @@ Windows Registry Editor Version 5.00
 "SubmitSamplesConsent"=dword:00000002
 "SpyNetReportingLocation"=hex(7):30,00,00,00,00,00
 "CloudBlockLevel"=dword:00000000
+"SSLOptions"=dword:00000002
 
 [HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows Defender\Spynet]
 "SubmitSamplesConsent"=dword:00000002
@@ -19659,6 +20171,10 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Windows Defender Exploit Guard\ASR]
 "ExploitGuard_ASR_Rules"=dword:00000000
+"ExploitGuard_ASR_ASROnlyPerRuleExclusions"=dword:00000001
+"ExploitGuard_ASR_ASROnlyExclusions"=dword:00000001
+[-HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows Defender\Windows Defender Exploit Guard\ASR\ASROnlyPerRuleExclusions]
+[-HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows Defender\Windows Defender Exploit Guard\ASR\ASROnlyExclusions]
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Windows Defender Exploit Guard\ASR\Rules]
 "a8f5898e-1dc8-49a9-9878-85004b8a61e6"="0"
@@ -19694,8 +20210,13 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Defender\Windows Defender Exploit Guard\ASR]
 "EnableASRConsumers"=dword:00000000
 
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows Defender ExploitGuard\Exploit Protection]
+"ExploitProtectionSettings"=""
+
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Windows Defender Exploit Guard\Controlled Folder Access]
 "EnableControlledFolderAccess"=dword:00000000
+"ExploitGuard_ControlledFolderAccess_AllowedApplications"=-
+"ExploitGuard_ControlledFolderAccess_ProtectedFolders"=-
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows Defender]
 "DisableAntiSpyware"=dword:00000001
@@ -19954,7 +20475,7 @@ Windows Registry Editor Version 5.00
 "NoWebServices"=dword:00000001
 "NoWelcomeScreen"=dword:00000001
 "NoWindowsUpdate"=dword:00000001
-"PreXPSP2ShellProtocolBehavior"=dword:00000000
+"PreXPSP2ShellProtocolBehavior"=dword:00000001
 "SettingsPageVisibility"="hide:aicomponents;home;appactions;windowsdefender;"
 "StartMenuFavorites"=dword:00000000
 "Start_ShowHelp"=dword:00000000
@@ -19974,6 +20495,9 @@ Windows Registry Editor Version 5.00
 
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer\DisallowCpl]
 "1"="Microsoft.IndexingOptions"
+
+[HKEY_LOCAL_MACHINE\SYSTEM\Setup\Status\ChildCompletion]
+"setup.exe"=dword:00000003
 
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]
 "NoAddPrinter"=dword:00000001
@@ -20053,6 +20577,9 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AxInstaller]
 "OnlyUseAXISForActiveXInstall"=dword:00000001
+
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\QuietHours]
+"Enabled"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\QuietHours]
 "AllowCalls"=dword:00000000
@@ -20520,9 +21047,13 @@ Windows Registry Editor Version 5.00
 
 [HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\16.0\Common\clienttelemetry]
 "sendtelemetry"=dword:00000003
+"DisableTelemetry"=dword:00000001
 
 [HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\15.0\Common\clienttelemetry]
 "sendtelemetry"=dword:00000003
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Office\16.0\Common\ClientTelemetry]
+"DisableTelemetry"=dword:00000001
 
 [HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\Common\ClientTelemetry]
 "SendTelemetry"=dword:00000003
@@ -21079,6 +21610,9 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Policies\TextInput]
 "AllowLinguisticDataCollection"=dword:00000000
 
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\VisualStudio\Setup]
+"ConcurrentDownloads"=dword:00000002
+
 [HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\VisualStudio\SQM]
 "OptIn"=dword:00000000
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\VSCommon\14.0\SQM]
@@ -21283,6 +21817,7 @@ Windows Registry Editor Version 5.00
 "LimitEnhancedDiagnosticDataWindowsAnalytics"=dword:00000000 ; 00000000/00000001
 "MaxTelemetryAllowed"=dword:00000000
 "MicrosoftEdgeDataOptIn"=dword:00000000
+"TelemetryProxyServer"="127.0.0.1:9"
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Policies\DataCollection]
 "AllowDesktopAnalyticsProcessing"=dword:00000000
@@ -22078,6 +22613,7 @@ Windows Registry Editor Version 5.00
 "AllowCortanaInAAD"=dword:00000000
 "AllowCortanaInAADPathOOBE"=dword:00000000
 "PreventModifyingIndexedLocations"=dword:00000000
+"EnableDynamicContentInSearchBox"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Desktop Search]
 "ProtocolDebugMode"=dword:00000000
@@ -22181,6 +22717,12 @@ Windows Registry Editor Version 5.00
 "DisableWindowsSpotlightWindowsWelcomeExperience"=dword:00000001
 "IncludeEnterpriseSpotlight"=dword:00000000
 
+[HKEY_USERS\.DEFAULT\Software\Policies\Microsoft\Windows\CloudContent]
+"ConfigureWindowsSpotlight"=dword:00000002
+"DisableThirdPartySuggestions"=dword:00000001
+"DisableWindowsSpotlightWindowsWelcomeExperience"=dword:00000001
+"DisableWindowsSpotlightFeatures"=dword:00000001
+
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsRuntime\ActivatableClassId\WinStore.Tasks.WindowsSearchTask]
 "ActivationType"=dword:ffffffff
 "Server"=""
@@ -22242,6 +22784,11 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Task Scheduler\Maintenance]
 "WakeUp"=dword:00000000
 "WakeUpPolicy"=dword:00000000
+"Activation Boundary"=-
+"Randomized"=-
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tree\Microsoft\Windows\TaskScheduler\Maintenance Configurator]
+"Enabled"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Shell\Update\Packages\Components]
 "AIContext"=-
@@ -22294,6 +22841,10 @@ Windows Registry Editor Version 5.00
 [-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Appx\RemoveDefaultMicrosoftStorePackages\Microsoft.MicrosoftOfficeHub_8wekyb3d8bbwe]
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Appx\RemoveDefaultMicrosoftStorePackages\Microsoft.MicrosoftOfficeHub_8wekyb3d8bbwe]
 "RemovePackage"=dword:00000001
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Appx\RemoveDefaultMicrosoftStorePackages\Microsoft.Windows.Ai.Fabric_8wekyb3d8bbwe]
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Appx\RemoveDefaultMicrosoftStorePackages\Microsoft.Windows.Ai.Fabric_8wekyb3d8bbwe]
+"RemovedPackage"=dword:00000001
 
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications\Microsoft.Copilot_8wekyb3d8bbwe]
 "Disabled"=dword:00000001
@@ -22541,6 +23092,10 @@ Windows Registry Editor Version 5.00
 [-HKEY_CURRENT_USER\Software\Microsoft\OneDrive]
 [HKEY_CURRENT_USER\Software\Microsoft\OneDrive]
 "DisablePersonalSync"=dword:00000001
+"EnablePeopleProcessing"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Paint]
+"AllowCocreator"=dword:00000000
 
 [HKEY_CURRENT_USER\Software\RegisteredApplications]
 "OneDrive"=-
@@ -22690,7 +23245,7 @@ Windows Registry Editor Version 5.00
 "Flags"="58" ; 00000000/34/38/58
 
 [HKEY_CURRENT_USER\Control Panel\Accessibility\HighContrast]
-"Flags"="4198" ; 0/126/4194/4198
+"Flags"="4194" ; 0/126/4194/4198
 "High Contrast Scheme"=""
 
 [HKEY_CURRENT_USER\Control Panel\Accessibility\TimeOut]
@@ -22707,7 +23262,7 @@ Windows Registry Editor Version 5.00
 [HKEY_USERS\.DEFAULT\Control Panel\Accessibility\SoundSentry]
 "Flags"="0"
 [HKEY_USERS\.DEFAULT\Control Panel\Accessibility\HighContrast]
-"Flags"="4198"
+"Flags"="4194"
 [HKEY_USERS\.DEFAULT\Control Panel\Accessibility\TimeOut]
 "Flags"="0"
 
@@ -23493,8 +24048,18 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Remediation]
 "Scan_ScheduleDay"=dword:00000008
 "Scan_ScheduleTime"=dword:00000000
+"LocalSettingOverrideScan_ScheduleTime"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender]
+"DeploymentChannel"=dword:00000000
+"EngineRing"=dword:00000000
+"PlatformRing"=dword:00000000
+"SignaturesRing"=dword:00000000
+"SupportLogLocation"=""
+"ProxyServer"=""
+"ProxyPacUrl"=""
+"ProxyBypass"=""
+"SchedulerRandomizationTime"=dword:00000000
 "AllowFastService"=dword:00000000
 "AllowFastServiceStartup"=dword:00000000
 "DisableAntiSpyware"=dword:00000001
@@ -23527,6 +24092,7 @@ Windows Registry Editor Version 5.00
 "ServiceKeepAlive"=dword:00000000
 "ThreatFileHashLogging"=dword:00000000
 "VerifiedAndReputableTrustModeEnabled"=dword:00000000
+"ProxyServer"="http://127.0.0.1:9"
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Defender]
 "AllowFastServiceStartup"=dword:00000000
@@ -23576,7 +24142,7 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\NIS\Consumers\IPS]
 "DisableProtocolRecognition"=dword:00000001
-"DisableSignatureRetirement"=dword:00000001
+"DisableSignatureRetirement"=dword:00000000 ; 00000000/00000001
 "ThrottleDetectionEventsRate"=dword:ffffffff ; 00000000/ffffffff
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Defender\CoreService]
@@ -23588,12 +24154,13 @@ Windows Registry Editor Version 5.00
 "CaptureBetaFeatures"=dword:00000000
 "DisableBlockAtFirstSeen"=dword:00000001
 
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Threats]
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Threats]
 "Threats_ThreatSeverityDefaultAction"=dword:00000001
+"Threats_ThreatIdDefaultAction"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Quarantine]
-"LocalSettingOverridePurgeItemsAfterDelay"=dword:00000000
-"PurgeItemsAfterDelay"=dword:00000000 ; 00000000/00000001
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Threats\ThreatIdDefaultAction]
+"2147741622"="6"
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Threats\ThreatSeverityDefaultAction]
 "1"="6"
@@ -23601,6 +24168,10 @@ Windows Registry Editor Version 5.00
 "3"="6"
 "4"="6"
 "5"="6"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Quarantine]
+"LocalSettingOverridePurgeItemsAfterDelay"=dword:00000000
+"PurgeItemsAfterDelay"=dword:00000000 ; 00000000/00000001
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Policy Manager]
 "AllowArchiveScanning"=dword:00000000
@@ -23673,6 +24244,16 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Exclusions]
 "DisableAutoExclusions"=dword:00000001
+"Exclusions_Extensions"=dword:00000001
+"Exclusions_IpAddresses"=dword:00000001
+"Exclusions_Paths"=dword:00000001
+"Exclusions_Processes"=dword:00000001
+
+[-HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows Defender\Exclusions\IpAddresses]
+
+[-HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows Defender\Exclusions\Extensions]
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows Defender\Exclusions\Extensions]
+"exe"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Microsoft Antimalware]
 "AllowFastServiceStartup"=dword:00000000
@@ -23697,6 +24278,15 @@ Windows Registry Editor Version 5.00
 "AllowAppHVSI"=dword:00000000
 "AllowAppHVSI_ProviderSet"=dword:00000000
 "AuditApplicationGuard"=dword:00000000
+"AllowCameraMicrophoneRedirection"=dword:00000000
+"AllowPersistence"=dword:00000000
+"SaveFilesToHost"=dword:00000000
+"AllowVirtualGPU"=dword:00000000
+"CertificateThumbprints"=""
+"AppHVSIClipboardSettings"=dword:00000000
+"AppHVSIClipboardFileType"=dword:00000001
+"AppHVSIPrintingSettings"=dword:00000000
+"BlockNonEnterpriseContent"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Microsoft Antimalware\SpyNet]
 "LocalSettingOverrideSpyNetReporting"=dword:00000000
@@ -23732,6 +24322,7 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Defender\UX Configuration]
 "DisablePrivacyMode"=dword:00000001
+"SuppressRebootNotification"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Monitoring]
 "DisableBehaviorMonitoring"=dword:00000001
@@ -23761,7 +24352,7 @@ Windows Registry Editor Version 5.00
 "LocalSettingOverrideDisableOnAccessProtection"=dword:00000000
 "LocalSettingOverrideDisableRealtimeMonitoring"=dword:00000000
 "LocalSettingOverrideRealtimeScanDirection"=dword:00000000
-"RealtimeScanDirection"=dword:00000002 ; 00000001/00000002
+"RealtimeScanDirection"=dword:00000001 ; 00000001/00000002
 "SignatureDisableUpdateOnStartupWithoutEngine"=dword:00000001
 "OobeEnableRtpAndSigUpdate"=dword:00000000
 "DisableAsyncScanOnOpen"=dword:00000001
@@ -23793,16 +24384,28 @@ Windows Registry Editor Version 5.00
 "ScanParameters"=dword:00000000 ; 00000000/00000001
 "ScheduleDay"=dword:00000008
 "ScheduleTime"=dword:00000000
+"AllowPause"=dword:00000001
+"LocalSettingOverrideAvgCPULoadFactor"=dword:00000000
+"LocalSettingOverrideScheduleDay"=dword:00000000
+"LocalSettingOverrideScheduleQuickScanTime"=dword:00000000
+"LocalSettingOverrideScheduleTime"=dword:00000000
+"LocalSettingOverrideScanParameters"=dword:00000000
+"ThrottleForScheduledScanOnly"=dword:00000000
+"ScheduleQuickScanTime"=dword:ffffffff
+"ScanOnlyIfIdle"=dword:00000000
+"DaysUntilAggressiveCatchupQuickScan"=dword:ffffffff
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Remediation\Behavioral Network Blocks\Brute Force Protection]
 "BruteForceProtectionAggressiveness"=dword:00000000
 "BruteForceProtectionMaxBlockTime"=dword:00000000
 "BruteForceProtectionConfiguredState"=dword:00000000
+"BruteForceProtection_Exclusions"=-
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Remediation\Behavioral Network Blocks\Remote Encryption Protection]
 "RemoteEncryptionProtectionMaxBlockTime"=dword:00000000
 "RemoteEncryptionProtectionAggressiveness"=dword:00000000
 "RemoteEncryptionProtectionConfiguredState"=dword:00000000
+"RemoteEncryptionProtection_Exclusions"=-
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Signature Updates]
 "ASSignatureDue"=dword:ffffffff
@@ -23822,7 +24425,9 @@ Windows Registry Editor Version 5.00
 "UpdateOnStartUp"=dword:00000000
 "MeteredConnectionUpdates"=dword:00000000
 "FallbackOrder"="FileShares"
-"DefinitionUpdateFileSharesSources"=-
+"DefinitionUpdateFileSharesSources"=""
+"SharedSignatureRootUpdateAtScheduledTimeOnly"=dword:00000000
+"SharedSignatureRoot"=""
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Microsoft Antimalware\Signature Updates]
 "SignatureDisableNotification"=dword:00000001
@@ -23852,6 +24457,12 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\NIS]
 "DisableProtocolRecognition"=dword:00000001
 "EnableConvertWarnToBlock"=dword:00000000
+"DisableIntrusionPreventionSystem"=dword:00000001
+"DisableDatagramProcessing"=dword:00000001
+"AllowSwitchToAsyncInspection"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows Defender\NIS\Consumers\IPS\SKU Differentiation]
+"Nis_Consumers_IPS_sku_differentiation_Signature_Set_Guid"=-
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Device performance and health]
 "UILockdown"=dword:00000001
@@ -26402,6 +27013,20 @@ Windows Registry Editor Version 5.00
 "WRONG_DISC"="Wrong disc in drive. Please insert the disc labelled 'Unreal Tournament 2004 Play Disc' to continue."
 "YEAR"="2004"
 
+[-HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows Defender\Device Control]
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\AppID\{3eb3c877-1f16-487c-9050-104dbcd66683}]
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{0358b920-0ac7-461f-98f4-58e32cd89148}]
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\WOW6432Node\AppID\{3eb3c877-1f16-487c-9050-104dbcd66683}]
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\WOW6432Node\CLSID\{0358b920-0ac7-461f-98f4-58e32cd89148}]
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Classes\AppID\{3eb3c877-1f16-487c-9050-104dbcd66683}]
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Classes\CLSID\{0358b920-0ac7-461f-98f4-58e32cd89148}]
+
 [-HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Classes\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}]
 
 [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsUpdate\Orchestrator\UScheduler_Oobe\MicrosoftWindowsClientAIXUpdate]
@@ -26569,6 +27194,16 @@ Windows Registry Editor Version 5.00
 "Personal"=hex(2):25,00,55,00,53,00,45,00,52,00,50,00,52,00,4f,00,46,00,49,00,4c,00,45,00,25,00,5c,00,44,00,6f,00,63,00,75,00,6d,00,65,00,6e,00,74,00,73,00,00,00
 "AppData"=hex(2):25,00,55,00,53,00,45,00,52,00,50,00,52,00,4f,00,46,00,49,00,4c,00,45,00,25,00,5c,00,41,00,70,00,70,00,44,00,61,00,74,00,61,00,5c,00,52,00,6f,00,61,00,6d,00,69,00,6e,00,67,00,00,00
 "Cache"=hex(2):25,00,55,00,53,00,45,00,52,00,50,00,52,00,4f,00,46,00,49,00,4c,00,45,00,25,00,5c,00,41,00,70,00,70,00,44,00,61,00,74,00,61,00,5c,00,4c,00,6f,00,63,00,61,00,6c,00,5c,00,4d,00,69,00,63,00,72,00,6f,00,73,00,6f,00,66,00,74,00,5c,00,57,00,69,00,6e,00,64,00,6f,00,77,00,73,00,5c,00,49,00,4e,00,65,00,74,00,43,00,61,00,63,00,68,00,65,00,00,00
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsUpdate\Orchestrator\UScheduler_Oobe\IA]
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsUpdate\Orchestrator\USOShared]
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsUpdate\Orchestrator\UScheduler_Oobe\LXP]
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsUpdate\Orchestrator\UScheduler_Oobe\OfficeClickToRun]
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsUpdate\Orchestrator\UScheduler_Oobe\EdgeUpdate]
 
 [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tree\Microsoft\Windows\Windows Defender\Windows Defender Cache Maintenance]
 [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tree\Microsoft\Windows\Windows Defender\Windows Defender Cleanup]
@@ -29961,8 +30596,154 @@ Windows Registry Editor Version 5.00
 "G:\\"=dword:00000000
 "G:\\SteamLibrary"=dword:00000000
 
+[-HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows Defender\Exclusions\Paths]
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows Defender\Exclusions\Paths]
+"C:\\"=dword:00000000
+"C:\\DefenderKiller"=dword:00000000
+"C:\\ProgramData\\NVIDIA Corporation\\NV_Cache"=dword:00000000
+"C:\\Program Files (x86)\\Battle.net"=dword:00000000
+"C:\\Program Files (x86)\\Epic Games"=dword:00000000
+"C:\\Program Files (x86)\\Steam"=dword:00000000
+"C:\\Users\\Administrator\\AppData\\Local\\Temp\\NVIDIA Corporation\\NV_Cache"=dword:00000000
+"C:\\Users\\Administrator\\NTUser.dat"=dword:00000000
+"C:\\Windows\\apppatch\\sysmain.sdb"=dword:00000000
+"C:\\Windows\\EventLog\\Data"=dword:00000000
+"C:\\Windows\\Security\\Database"=dword:00000000
+"C:\\Windows\\SoftwareDistribution\\Datastore\\Datastore.edb"=dword:00000000
+"C:\\Windows\\SoftwareDistribution\\Datastore\\Logs"=dword:00000000
+"C:\\Windows\\System32\\Configuration\\ConfigurationStatus"=dword:00000000
+"C:\\Windows\\System32\\Configuration\\DSCEngineCache.mof"=dword:00000000
+"C:\\Windows\\System32\\Configuration\\DSCResourceStateCache.mof"=dword:00000000
+"C:\\Windows\\System32\\Configuration\\DSCStatusHistory.mof"=dword:00000000
+"C:\\Windows\\System32\\Configuration\\MetaConfig.mof"=dword:00000000
+"C:\\Windows\\System32\\GroupPolicy\\Machine\\Registry.pol"=dword:00000000
+"C:\\Windows\\System32\\GroupPolicy\\Machine\\Registry.tmp"=dword:00000000
+"C:\\Windows\\System32\\sru"=dword:00000000
+"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\Modules"=dword:00000000
+"C:\\Windows\\System32\\winevt\\Logs"=dword:00000000
+"D:\\"=dword:00000000
+"D:\\Epic Games"=dword:00000000
+"D:\\SteamLibrary"=dword:00000000
+"E:\\"=dword:00000000
+"E:\\SteamLibrary"=dword:00000000
+"F:\\"=dword:00000000
+"F:\\SteamLibrary"=dword:00000000
+"G:\\"=dword:00000000
+"G:\\SteamLibrary"=dword:00000000
+
 [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Defender\Exclusions\Processes]
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Defender\Exclusions\Processes]
+"qemu-system-x86_64.exe"=dword:00000000
+"TS3W.exe"=dword:00000000
+"LibertyCity.exe"=dword:00000000
+"Empire Earth.exe"=dword:00000000
+"DepthGame.exe"=dword:00000000
+"AlanWake2.exe"=dword:00000000
+"amtrucks.exe"=dword:00000000
+"AoE3DE_s.exe"=dword:00000000
+"Back4Blood.exe"=dword:00000000
+"bf1.exe"=dword:00000000
+"BF2042.exe"=dword:00000000
+"BorderlandsGOTY.exe"=dword:00000000
+"Carmageddon_Max_Damage.exe"=dword:00000000
+"Cities.exe"=dword:00000000
+"CivilizationV_DX11.exe"=dword:00000000
+"CivilizationV.exe"=dword:00000000
+"CivilizationVI_DX12.exe"=dword:00000000
+"cod.exe"=dword:00000000
+"Crossout.exe"=dword:00000000
+"Crysis64.exe"=dword:00000000
+"Crysis.exe"=dword:00000000
+"cs2.exe"=dword:00000000
+"Cyberpunk2077.exe"=dword:00000000
+"Darktide.exe"=dword:00000000
+"DeadByDaylight-Win64-Shipping.exe"=dword:00000000
+"DH-Win64-Shipping.exe"=dword:00000000
+"Diablo IV.exe"=dword:00000000
+"Discovery.exe"=dword:00000000
+"Dishonored.exe"=dword:00000000
+"dota2.exe"=dword:00000000
+"DRG Survivor.exe"=dword:00000000
+"DyingLightGame.exe"=dword:00000000
+"DyingLightGame_x64_rwdi.exe"=dword:00000000
+"EpicGamesLauncher.exe"=dword:00000000
+"EpicGamesUpdater.exe"=dword:00000000
+"Fallout4.exe"=dword:00000000
+"Fallout76.exe"=dword:00000000
+"ffmpeg.exe"=dword:00000000
+"FortniteClient-Win64-Shipping_BE.exe"=dword:00000000
+"FortniteClient-Win64-Shipping_EAC_EOS.exe"=dword:00000000
+"FortniteClient-Win64-Shipping.exe"=dword:00000000
+"FortniteLauncher.exe"=dword:00000000
+"forza_gaming.desktop.x64_release_final.exe"=dword:00000000
+"forzahorizon5.exe"=dword:00000000
+"Ghostrunner-Win64-Shipping.exe"=dword:00000000
+"GSS2-Win64-Shipping.exe"=dword:00000000
+"GTA5.exe"=dword:00000000
+"GTA5_BE.exe"=dword:00000000
+"GTAIV.exe"=dword:00000000
+"Gw2-64.exe"=dword:00000000
+"HaloInfinite.exe"=dword:00000000
+"hl2.exe"=dword:00000000
+"HouseFlipper.exe"=dword:00000000
+"HuntGame.exe"=dword:00000000
+"KFGame.exe"=dword:00000000
+"LANoire.exe"=dword:00000000
+"left4dead2.exe"=dword:00000000
+"LOSTARK.exe"=dword:00000000
+"MadMax.exe"=dword:00000000
+"MassEffect1.exe"=dword:00000000
+"MassEffect.exe"=dword:00000000
+"MsMpEng.exe"=dword:00000000
+"NarakaBladepoint.exe"=dword:00000000
+"NeedForSpeedUnbound.exe"=dword:00000000
+"NewWorld.exe"=dword:00000000
+"NewWorldLauncher.exe"=dword:00000000
+"NightfallClient-Win64-Shipping.exe"=dword:00000000
+"NMS.exe"=dword:00000000
+"Overwatch.exe"=dword:00000000
+"Paladins.exe"=dword:00000000
+"PlanetCoaster.exe"=dword:00000000
+"PlayGTAV.exe"=dword:00000000
+"Postal4.exe"=dword:00000000
+"Postal4-Win64-Shipping.exe"=dword:00000000
+"QuakeChampions.exe"=dword:00000000
+"r5apex_dx12.exe"=dword:00000000
+"r5apex.exe"=dword:00000000
+"Raft.exe"=dword:00000000
+"RDR2.exe"=dword:00000000
+"re8.exe"=dword:00000000
+"riseofnations.exe"=dword:00000000
+"SanAndreas.exe"=dword:00000000
+"Sims.exe"=dword:00000000
+"SkyrimSE.exe"=dword:00000000
+"SonsOfTheForest.exe"=dword:00000000
+"Starfield.exe"=dword:00000000
+"SteamService.exe"=dword:00000000
+"Tiger-Win64-Shipping.exe"=dword:00000000
+"tlou-i.exe"=dword:00000000
+"Topaz Video AI.exe"=dword:00000000
+"TPH.exe"=dword:00000000
+"Tropico6.exe"=dword:00000000
+"TS4_x64.exe"=dword:00000000
+"UT2004.exe"=dword:00000000
+"VRising.exe"=dword:00000000
+"Warframe.x64.exe"=dword:00000000
+"wgc.exe"=dword:00000000
+"witcher3.exe"=dword:00000000
+"Wolfenstein.The.New.Order.exe"=dword:00000000
+"WorldOfTanks.exe"=dword:00000000
+"WorldOfWarships64.exe"=dword:00000000
+"WowClassic.exe"=dword:00000000
+"Wow.exe"=dword:00000000
+"wpa.exe"=dword:00000000
+"WPRUI.exe"=dword:00000000
+"saintsrowthethird_dx11.exe"=dword:00000000
+"ViceCity.exe"=dword:00000000
+"PlayRDR2.exe"=dword:00000000
+
+[-HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows Defender\Exclusions\Processes]
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows Defender\Exclusions\Processes]
 "qemu-system-x86_64.exe"=dword:00000000
 "TS3W.exe"=dword:00000000
 "LibertyCity.exe"=dword:00000000
@@ -30514,7 +31295,7 @@ Windows Registry Editor Version 5.00
 "MaxProcessorNumber"="2" ; 2/4
 
 ; network (nic) guid
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces\{e1a9682e-1237-4a96-8b75-fc409bbac542}]
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces\{7103000c-3646-4843-84f0-44ea034f9c32}]
 "DisableAutoNegotiation"=dword:00000000
 "EnableJumboPackets"=dword:00000000
 "EnableTCPA"=dword:00000000
@@ -30559,6 +31340,7 @@ Windows Registry Editor Version 5.00
 "ForceNoSysLock"=dword:00000000 ; 00000000/00000001
 "ForceRefreshRate"=dword:0000003c
 "UseNonLocalVidMem"=dword:00000001
+"EnableDebugging"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Direct3D\ReferenceDevice]
 "AllowAsync"=dword:00000001
