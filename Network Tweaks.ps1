@@ -7,28 +7,28 @@ netsh advfirewall firewall add rule name="Block Copilot Telemetry & Update" dir=
 netsh advfirewall firewall add rule name="Block 40.76.0.0/14" dir=out action=block remoteip=40.76.0.0/14 enable=yes
 netsh advfirewall firewall add rule name="Block 40.96.0.0/12" dir=out action=block remoteip=40.96.0.0/12 enable=yes
 netsh advfirewall firewall add rule name="Block 40.124.0.0/16" dir=out action=block remoteip=40.124.0.0/16 enable=yes
-#netsh advfirewall firewall add rule name="Block 40.112.0.0/13" dir=out action=block remoteip=40.112.0.0/13 enable=yes
+# netsh advfirewall firewall add rule name="Block 40.112.0.0/13" dir=out action=block remoteip=40.112.0.0/13 enable=yes
 netsh advfirewall firewall add rule name="Block 40.125.0.0/17" dir=out action=block remoteip=40.125.0.0/17 enable=yes
-#netsh advfirewall firewall add rule name="Block 40.74.0.0/15" dir=out action=block remoteip=40.74.0.0/15 enable=yes
+# netsh advfirewall firewall add rule name="Block 40.74.0.0/15" dir=out action=block remoteip=40.74.0.0/15 enable=yes
 netsh advfirewall firewall add rule name="Block 40.80.0.0/12" dir=out action=block remoteip=40.80.0.0/12 enable=yes
 netsh advfirewall firewall add rule name="Block 40.120.0.0/14" dir=out action=block remoteip=40.120.0.0/14 enable=yes
 netsh advfirewall firewall add rule name="Block 137.116.0.0/16" dir=out action=block remoteip=137.116.0.0/16 enable=yes
-#netsh advfirewall firewall add rule name="Block 23.192.0.0/11" dir=out action=block remoteip=23.192.0.0/11
-#netsh advfirewall firewall add rule name="Block 23.32.0.0/11" dir=out action=block remoteip=23.32.0.0/11
-#netsh advfirewall firewall add rule name="Block 23.64.0.0/14" dir=out action=block remoteip=23.64.0.0/14
+# netsh advfirewall firewall add rule name="Block 23.192.0.0/11" dir=out action=block remoteip=23.192.0.0/11
+# netsh advfirewall firewall add rule name="Block 23.32.0.0/11" dir=out action=block remoteip=23.32.0.0/11
+# netsh advfirewall firewall add rule name="Block 23.64.0.0/14" dir=out action=block remoteip=23.64.0.0/14
 netsh advfirewall firewall add rule name="Block 134.170.0.0/16" dir=out action=block remoteip=134.170.0.0/16 enable=yes
-#netsh advfirewall firewall add rule name="Block 23.0.0.0/8" dir=out action=block remoteip=23.0.0.0/8 enable=yes
-#netsh advfirewall firewall add rule name="Block 40.0.0.0/8" dir=out action=block remoteip=40.0.0.0/8 enable=yes
-#netsh advfirewall firewall add rule name="Block 52.0.0.0/8" dir=out action=block remoteip=52.0.0.0/8 enable=yes
-#netsh advfirewall firewall add rule name="Block 65.0.0.0/8" dir=out action=block remoteip=65.0.0.0/8 enable=yes
+# netsh advfirewall firewall add rule name="Block 23.0.0.0/8" dir=out action=block remoteip=23.0.0.0/8 enable=yes
+# netsh advfirewall firewall add rule name="Block 40.0.0.0/8" dir=out action=block remoteip=40.0.0.0/8 enable=yes
+# netsh advfirewall firewall add rule name="Block 52.0.0.0/8" dir=out action=block remoteip=52.0.0.0/8 enable=yes
+# netsh advfirewall firewall add rule name="Block 65.0.0.0/8" dir=out action=block remoteip=65.0.0.0/8 enable=yes
 netsh advfirewall firewall add rule name="Block 131.107.0.0/16" dir=out action=block remoteip=131.107.0.0/16 enable=yes
-#netsh advfirewall firewall add rule name="Block 157.54.0.0/15" dir=out action=block remoteip=157.54.0.0/15 enable=yes
+# netsh advfirewall firewall add rule name="Block 157.54.0.0/15" dir=out action=block remoteip=157.54.0.0/15 enable=yes
 netsh advfirewall firewall add rule name="Block 207.46.0.0/16" dir=out action=block remoteip=207.46.0.0/16 enable=yes
 netsh advfirewall firewall add rule name="Block 207.68.0.0/16" dir=out action=block remoteip=207.68.0.0/16 enable=yes
-#netsh advfirewall firewall add rule name="TCP Block" dir=out action=block protocol=TCP remoteport=1-42,44-79,81-442,444-586,588-852,854-992,994-1024,1025-3073,3075-5227,5229-27014,27051-65535
+# netsh advfirewall firewall add rule name="TCP Block" dir=out action=block protocol=TCP remoteport=1-42,44-79,81-442,444-586,588-852,854-992,994-1024,1025-3073,3075-5227,5229-27014,27051-65535
 netsh advfirewall firewall add rule name="TCP Block A" dir=out action=block protocol=TCP remoteport="1-52,54-79,81-442,444-586,588-852,854-992,994-1024,1025-1118,1121-1934,4001-4999,5021-5221" enable=yes
 netsh advfirewall firewall add rule name="TCP Block B" dir=out action=block protocol=TCP remoteport="5224-5227,5229-6111,6121-6462,25301-26099,26101-27013,28000-28889,45001-49151" enable=yes
-#netsh advfirewall firewall add rule name="UDP Block" dir=out action=block protocol=UDP remoteport=1-52,54-122,124-442,444-1024 enable=yes
+# netsh advfirewall firewall add rule name="UDP Block" dir=out action=block protocol=UDP remoteport=1-52,54-122,124-442,444-1024 enable=yes
 netsh advfirewall firewall add rule name="UDP Block (except DHCP + ControlD)" dir=out action=block protocol=UDP remoteport=1-52,54-66,69-122,124-442,444-1024 enable=yes
 netsh advfirewall firewall add rule name="Allow DHCP Client (67-68)" dir=out action=allow protocol=UDP remoteport=67,68 enable=yes
 netsh advfirewall firewall add rule name="Allow ControlD UDP 53" dir=out action=allow protocol=UDP remoteport=53 remoteip=76.76.2.0/24,76.76.10.0/24 enable=yes
@@ -83,7 +83,7 @@ netsh int ipv6 set glob defaultcurhoplimit=64
 netsh int isatap set state disabled
 netsh int isatap set state disable
 netsh int tcp set global autotuninglevel=normal # disabled/normal
-#netsh int tcp set global autotuninglevel=disable
+# netsh int tcp set global autotuninglevel=disable
 netsh int tcp set global chimney=disabled
 netsh int tcp set global chimney=disable
 netsh int tcp set global congestionprovider=cubic # cubic w10/default/ctcp/dctcp/bbr2 w11
@@ -111,8 +111,8 @@ netsh int tcp set global rsc=disable
 netsh int tcp set global rss=disabled # disabled/enabled
 netsh int tcp set global rss=disable
 netsh int tcp set global timestamps=allowed # disabled/enabled/allowed
-#netsh int tcp set global timestamps=enable
-#netsh int tcp set heuristics wsh=disabled forcews=disabled # forcews disabled/enabled
+# netsh int tcp set global timestamps=enable
+# netsh int tcp set heuristics wsh=disabled forcews=disabled # forcews disabled/enabled
 netsh int tcp set heuristics disabled
 netsh int tcp set heuristics disable
 netsh int tcp set security mpp=disabled
@@ -130,8 +130,8 @@ netsh int udp set global uro=disable
 netsh int udp set global uso=disabled
 netsh int udp set global uso=disable
 netsh winsock set autotuning on # off/on
-#netsh int ipv6 set gl loopbacklargemtu=disabled
-#netsh int ipv4 set gl loopbacklargemtu=disabled
+# netsh int ipv6 set gl loopbacklargemtu=disabled
+# netsh int ipv4 set gl loopbacklargemtu=disabled
 
 netsh interface tcp set supplemental template=automatic congestionprovider=cubic
 netsh interface tcp set supplemental template=automatic delayedackfrequency=1 # 1/2
@@ -180,7 +180,7 @@ netsh interface tcp set supplemental template=custom taillossprobe=enabled
 
 netsh int tcp set supplemental template=internetcustom congestionprovider=cubic # cubic w10/bbr2 w11/BBR/ctcp/dctcp/NewReno
 
-netsh interface ipv4 set subinterface Ethernet mtu=1500 store=persistent
+netsh interface ipv4 set subinterface Ethernet mtu=1492 store=persistent
 
 Disable-NetAdapterBinding -Name "*" -ComponentId 'ms_implat'
 Disable-NetAdapterBinding -Name "*" -ComponentId 'ms_lldp'
@@ -211,8 +211,8 @@ Disable-NetAdapterEncapsulatedPacketTaskOffload -Name "*" # Disable/Enable
 Disable-NetAdapterRss -Name "*" # Disable/Enable
 Set-NetAdapterDataPathConfiguration -Name '*' -IncludeHidden -Profile Dispatch # Dispatch/Passive
 Set-NetAdapterIPsecOffload -Name "*" -Enabled $False # False/True
-#Set-NetAdapterRdma -Name "*" -Enabled $True
-#Set-NetAdapterRss -Name "*" -BaseProcessorGroup 0 -BaseProcessorNumber 2 -MaxProcessorGroup 0 -MaxProcessorNumber 2 -MaxProcessors 1 -NumberOfReceiveQueues 1 -Profile NUMAStatic -Enabled $true
+# Set-NetAdapterRdma -Name "*" -Enabled $True
+# Set-NetAdapterRss -Name "*" -BaseProcessorGroup 0 -BaseProcessorNumber 2 -MaxProcessorGroup 0 -MaxProcessorNumber 2 -MaxProcessors 1 -NumberOfReceiveQueues 1 -Profile NUMAStatic -Enabled $true
 Set-NetOffloadGlobalSetting -Chimney Disabled
 Set-NetOffloadGlobalSetting -NetworkDirectAcrossIPSubnets Allowed # Blocked/Allowed
 Set-NetOffloadGlobalSetting -NetworkDirect Enabled # Disabled/Enabled
@@ -236,7 +236,7 @@ Set-NetIPv4Protocol -IcmpRedirects Disabled
 Set-NetIPv4Protocol -IGMPLevel All
 Set-NetIPv4Protocol -IGMPVersion Version3
 Set-NetIPv4Protocol -MediaSenseEventLog Disabled
-Set-NetIPv4Protocol -MinimumMtu 1500
+Set-NetIPv4Protocol -MinimumMtu 1492
 Set-NetIPv4Protocol -MulticastForwarding Disabled # Disabled/Enabled
 Set-NetIPv4Protocol -NeighborCacheLimitEntries 256
 Set-NetIPv4Protocol -RandomizeIdentifiers Enabled
@@ -253,7 +253,7 @@ Set-NetIPv6Protocol -IcmpRedirects Disabled
 Set-NetIPv6Protocol -IGMPLevel All
 Set-NetIPv6Protocol -IGMPVersion Version3
 Set-NetIPv6Protocol -MediaSenseEventLog Disabled
-Set-NetIPv6Protocol -MinimumMtu 1500
+Set-NetIPv6Protocol -MinimumMtu 1492
 Set-NetIPv6Protocol -MulticastForwarding Disabled
 Set-NetIPv6Protocol -NeighborCacheLimitEntries 256
 Set-NetIPv6Protocol -RandomizeIdentifiers Enabled
@@ -279,7 +279,7 @@ Set-NetIPInterface -InterfaceAlias 'Wi-Fi' -AddressFamily IPv4 -InterfaceMetric 
 Set-NetIPInterface -InterfaceAlias 'Wi-Fi' -AddressFamily IPv4 -ManagedAddressConfiguration Disabled
 Set-NetIPInterface -InterfaceAlias 'Wi-Fi' -AddressFamily IPv4 -NeighborDiscoverySupported No # Disabled/No
 Set-NetIPInterface -InterfaceAlias 'Wi-Fi' -AddressFamily IPv4 -NeighborUnreachabilityDetection Enabled
-Set-NetIPInterface -InterfaceAlias 'Wi-Fi' -AddressFamily IPv4 -NlMtuBytes 1500
+Set-NetIPInterface -InterfaceAlias 'Wi-Fi' -AddressFamily IPv4 -NlMtuBytes 1492
 Set-NetIPInterface -InterfaceAlias 'Wi-Fi' -AddressFamily IPv4 -OtherStatefulConfiguration Disabled
 Set-NetIPInterface -InterfaceAlias 'Wi-Fi' -AddressFamily IPv4 -PolicyStore ActiveStore
 Set-NetIPInterface -InterfaceAlias 'Wi-Fi' -AddressFamily IPv4 -ReachableTime 5000
@@ -306,7 +306,7 @@ Set-NetIPInterface -InterfaceAlias 'Wi-Fi' -AddressFamily IPv6 -InterfaceMetric 
 Set-NetIPInterface -InterfaceAlias 'Wi-Fi' -AddressFamily IPv6 -ManagedAddressConfiguration Disabled
 Set-NetIPInterface -InterfaceAlias 'Wi-Fi' -AddressFamily IPv6 -NeighborDiscoverySupported No
 Set-NetIPInterface -InterfaceAlias 'Wi-Fi' -AddressFamily IPv6 -NeighborUnreachabilityDetection Enabled
-Set-NetIPInterface -InterfaceAlias 'Wi-Fi' -AddressFamily IPv6 -NlMtuBytes 1500
+Set-NetIPInterface -InterfaceAlias 'Wi-Fi' -AddressFamily IPv6 -NlMtuBytes 1492
 Set-NetIPInterface -InterfaceAlias 'Wi-Fi' -AddressFamily IPv6 -OtherStatefulConfiguration Disabled
 Set-NetIPInterface -InterfaceAlias 'Wi-Fi' -AddressFamily IPv6 -PolicyStore ActiveStore
 Set-NetIPInterface -InterfaceAlias 'Wi-Fi' -AddressFamily IPv6 -ReachableTime 5000
@@ -333,7 +333,7 @@ Set-NetIPInterface -InterfaceAlias 'Ethernet' -AddressFamily IPv4 -InterfaceMetr
 Set-NetIPInterface -InterfaceAlias 'Ethernet' -AddressFamily IPv4 -ManagedAddressConfiguration Disabled
 Set-NetIPInterface -InterfaceAlias 'Ethernet' -AddressFamily IPv4 -NeighborDiscoverySupported No
 Set-NetIPInterface -InterfaceAlias 'Ethernet' -AddressFamily IPv4 -NeighborUnreachabilityDetection Enabled
-Set-NetIPInterface -InterfaceAlias 'Ethernet' -AddressFamily IPv4 -NlMtuBytes 1500
+Set-NetIPInterface -InterfaceAlias 'Ethernet' -AddressFamily IPv4 -NlMtuBytes 1492
 Set-NetIPInterface -InterfaceAlias 'Ethernet' -AddressFamily IPv4 -OtherStatefulConfiguration Disabled
 Set-NetIPInterface -InterfaceAlias 'Ethernet' -AddressFamily IPv4 -PolicyStore ActiveStore
 Set-NetIPInterface -InterfaceAlias 'Ethernet' -AddressFamily IPv4 -ReachableTime 5000
@@ -360,7 +360,7 @@ Set-NetIPInterface -InterfaceAlias 'Ethernet' -AddressFamily IPv6 -InterfaceMetr
 Set-NetIPInterface -InterfaceAlias 'Ethernet' -AddressFamily IPv6 -ManagedAddressConfiguration Disabled
 Set-NetIPInterface -InterfaceAlias 'Ethernet' -AddressFamily IPv6 -NeighborDiscoverySupported No
 Set-NetIPInterface -InterfaceAlias 'Ethernet' -AddressFamily IPv6 -NeighborUnreachabilityDetection Enabled
-Set-NetIPInterface -InterfaceAlias 'Ethernet' -AddressFamily IPv6 -NlMtuBytes 1500
+Set-NetIPInterface -InterfaceAlias 'Ethernet' -AddressFamily IPv6 -NlMtuBytes 1492
 Set-NetIPInterface -InterfaceAlias 'Ethernet' -AddressFamily IPv6 -OtherStatefulConfiguration Disabled
 Set-NetIPInterface -InterfaceAlias 'Ethernet' -AddressFamily IPv6 -PolicyStore ActiveStore
 Set-NetIPInterface -InterfaceAlias 'Ethernet' -AddressFamily IPv6 -ReachableTime 5000
@@ -369,24 +369,24 @@ Set-NetIPInterface -InterfaceAlias 'Ethernet' -AddressFamily IPv6 -RouterDiscove
 Set-NetIPInterface -InterfaceAlias 'Ethernet' -AddressFamily IPv6 -WeakHostReceive Disabled
 Set-NetIPInterface -InterfaceAlias 'Ethernet' -AddressFamily IPv6 -WeakHostSend Disabled
 
-#Remove-NetQosPolicy -Name "bufferbloat_throttle" -PolicyStore ActiveStore -Confirm:$false -ErrorAction SilentlyContinue
-#Remove-NetQosPolicy -Name "bufferbloat_priority" -PolicyStore ActiveStore -Confirm:$false -ErrorAction SilentlyContinue
+# Remove-NetQosPolicy -Name "bufferbloat_throttle" -PolicyStore ActiveStore -Confirm:$false -ErrorAction SilentlyContinue
+# Remove-NetQosPolicy -Name "bufferbloat_priority" -PolicyStore ActiveStore -Confirm:$false -ErrorAction SilentlyContinue
 
-#New-NetQosPolicy Bufferbloat_throttle -PolicyStore ActiveStore -NetworkProfile Private -IPProtocol TCP -Precedence 254 -DSCPAction 16 -MinBandwidthWeightAction 5
-#New-NetQosPolicy Bufferbloat_priority -PolicyStore ActiveStore -NetworkProfile Private -Default -Precedence 252 -DSCPAction 32 -MinBandwidthWeightAction 90
+# New-NetQosPolicy Bufferbloat_throttle -PolicyStore ActiveStore -NetworkProfile Private -IPProtocol TCP -Precedence 254 -DSCPAction 16 -MinBandwidthWeightAction 5
+# New-NetQosPolicy Bufferbloat_priority -PolicyStore ActiveStore -NetworkProfile Private -Default -Precedence 252 -DSCPAction 32 -MinBandwidthWeightAction 90
 
-#$qos  = "Remove-NetQosPolicy -PolicyStore ActiveStore -name * -Confirm:`$false -ea 0"
-#$qos += ";New-NetQosPolicy Bufferbloat_throttle -PolicyStore ActiveStore -NetworkProfile Private -IPProtocol TCP -Precedence 254 -DSCPAction 16 -MinBandwidthWeightAction 5"
-#$qos += ";New-NetQosPolicy Bufferbloat_priority -PolicyStore ActiveStore -NetworkProfile Private -Default -Precedence 252 -DSCPAction 32 -MinBandwidthWeightAction 90"
+# $qos = "Remove-NetQosPolicy -PolicyStore ActiveStore -name * -Confirm:`$false -ea 0"
+# $qos += ";New-NetQosPolicy Bufferbloat_throttle -PolicyStore ActiveStore -NetworkProfile Private -IPProtocol TCP -Precedence 254 -DSCPAction 16 -MinBandwidthWeightAction 5"
+# $qos += ";New-NetQosPolicy Bufferbloat_priority -PolicyStore ActiveStore -NetworkProfile Private -Default -Precedence 252 -DSCPAction 32 -MinBandwidthWeightAction 90"
 
-#Unregister-ScheduledTask -TaskName 'Bufferbloat' -Confirm:$false -ErrorAction SilentlyContinue
-#$sa = New-ScheduledTaskAction -Execute powershell.exe -Argument "-nop -c `"$qos`""
-#$st = New-ScheduledTaskTrigger -AtStartup
-#Register-ScheduledTask -TaskName 'Bufferbloat' -Action $sa -Trigger $st -User 'NT AUTHORITY\SYSTEM' -Force | Out-Null
-#Start-ScheduledTask -TaskName 'Bufferbloat'
+# Unregister-ScheduledTask -TaskName 'Bufferbloat' -Confirm:$false -ErrorAction SilentlyContinue
+# $sa = New-ScheduledTaskAction -Execute powershell.exe -Argument "-nop -c `"$qos`""
+# $st = New-ScheduledTaskTrigger -AtStartup
+# Register-ScheduledTask -TaskName 'Bufferbloat' -Action $sa -Trigger $st -User 'NT AUTHORITY\SYSTEM' -Force | Out-Null
+# Start-ScheduledTask -TaskName 'Bufferbloat'
 
-#Clear-DnsClientCache
-#Start-Process -FilePath "ipconfig.exe" -ArgumentList "/flushdns" -NoNewWindow -Wait
-#Start-Process -FilePath "ipconfig.exe" -ArgumentList "/renew" -NoNewWindow -Wait
+# Clear-DnsClientCache
+# Start-Process -FilePath "ipconfig.exe" -ArgumentList "/flushdns" -NoNewWindow -Wait
+# Start-Process -FilePath "ipconfig.exe" -ArgumentList "/renew" -NoNewWindow -Wait
 
 exit
