@@ -63,6 +63,8 @@ sc stop Volmgrx >NUL 2>&1
 sc stop wlidsvc >NUL 2>&1
 sc stop DoSvc >NUL 2>&1
 sc stop TeamViewer >NUL 2>&1
+sc stop RazerExperienceService >NUL 2>&1
+sc stop "Steam Client Service" >NUL 2>&1
 taskkill /f /t /im WindowsMigration.exe >NUL 2>&1
 taskkill /f /t /im WindowsBackupClient.exe >NUL 2>&1
 taskkill /f /t /im SoftLandingTask.exe >NUL 2>&1
@@ -253,6 +255,11 @@ taskkill /f /t /im RGSUpdater.exe >NUL 2>&1
 taskkill /f /t /im RGSUpdaterAgent.exe >NUL 2>&1
 taskkill /f /t /im perfmon.exe >NUL 2>&1
 taskkill /f /t /im msedge.exe >NUL 2>&1
+taskkill /f /t /im RazerExperienceService.exe >NUL 2>&1
+taskkill /f /t /im EpicOnlineServicesInstaller.exe >NUL 2>&1
+taskkill /f /t /im EpicGamesLauncher.exe >NUL 2>&1
+taskkill /f /t /im EpicOnlineServicesUIHelper.exe >NUL 2>&1
+taskkill /f /t /im ScreenClippingHost.exe >NUL 2>&1
 fsutil usn deletejournal /d /n c:
 fsutil usn deletejournal /d /n d:
 fsutil usn deletejournal /d /n e:
@@ -716,6 +723,9 @@ reg delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Superfetch\PfAp" /
 reg delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Superfetch" /v "LastResPriGenTime" /f >NUL 2>&1
 reg delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Superfetch" /v "StartedComponents" /f >NUL 2>&1
 reg delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Superfetch" /v "PfIuHistory" /f >NUL 2>&1
+reg delete "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\ThumbnailCache" /f >nul 2>&1
+reg delete "HKCU\Software\Microsoft\Windows\Recent\AutomaticDestinations" /f >nul 2>&1
+reg delete "HKCU\Software\Microsoft\Windows\Recent\CustomDestinations" /f >nul 2>&1
 rundll32.exe setupapi.dll,InstallHinfSection DefaultInstall 132 %windir%\inf\input.inf >nul 2>&1
 rundll32.exe advapi32.dll,ProcessIdleTasks >nul 2>&1
 rundll32.exe pnpclean.dll,RunDLL_PnpClean /DRIVERS /MAXCLEAN >nul 2>&1
@@ -736,7 +746,7 @@ icacls C:\Windows\System32\SleepStudy /remove:g Administrators >nul 2>&1
 takeown /f C:\$WinREAgent /r /d y >nul 2>&1
 icacls C:\$WinREAgent /grant %username%:F /t /q >nul 2>&1
 rd /s /q C:\$WinREAgent >nul 2>&1
-"C:\Program Files (x86)\ViVeTool\ViVeTool.exe" /disable /id:45624564,46892085,53397005,37926450,56517033,47205210,44571814,44573982,57703775,52580392,50902630,59765208,58989070 >nul 2>&1
+"C:\Program Files (x86)\ViVeTool\ViVeTool.exe" /disable /id:45624564,46892085,53397005,37926450,56517033,47205210,44571814,44573982,57703775,52580392,50902630,59765208,58989070,62103454 >nul 2>&1
 "C:\Program Files (x86)\ViVeTool\ViVeTool.exe" /enable /id:49453572,42651849,48433719,55369237,60786016,46719714,60716524,61391826,58989092 >nul 2>&1
 "C:\Program Files (x86)\ViVeTool\ViVeTool.exe" /reset /id:55182474,56625728 >nul 2>&1
 RD /S /Q %windir%\System32\Tasks\Microsoft\Windows\WindowsAI >nul 2>&1
