@@ -265,8 +265,8 @@ Windows Registry Editor Version 5.00
 "EnergyDriverPolicyVideo"=dword:00000001 ; 00000000/00000001
 "EnforceWriteProtection"=dword:00000000
 "FeatureSettings"=dword:00000001 ; 00000003, 00000001
-"FeatureSettingsOverride"=dword:20000003 ; 00000001, 00000003/00000048/02000000/02000003/07800003/0200000b/20000003 security option for anticheats
-"FeatureSettingsOverrideMask"=dword:20000003 ; 00000001, 00000003/02000003/07800003/0200000b/20000003 security option for anticheats
+"FeatureSettingsOverride"=dword:00000003 ; 00000001, 00000003/00000048/02000000/02000003/07800003/0200000b/20000003 security option for anticheats
+"FeatureSettingsOverrideMask"=dword:00000003 ; 00000001, 00000003/02000003/07800003/0200000b/20000003 security option for anticheats
 "FirstLevelDataCache"=dword:00000020 ; 00000020/00000300
 "ForceSingleCoreAffinityForCriticalThreads"=dword:00000001
 ; "FsLazyWrite"=dword:00000001
@@ -1597,13 +1597,15 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\stornvme\Parameters\Device]
 "DeviceQueueDepth"=dword:00000008 ; 00000020, 00000008
 "DisableAPST"=dword:00000001
-"DisableDSTThrottle"=dword:00000001
+; "DisableDSTThrottle"=dword:00000001
+"DisableDSTThrottle"=hex(7):2a,00,20,00,31,00,00,00,00,00
 "DisableNVMeIdleTimer"=dword:00000001
 "EnableAPST"=dword:00000000 ; 00000000/00000001
 "EnableIdlePowerManagement"=dword:00000000
 "ForcedPhysicalSectorSizeInBytes"=hex(7):2a,00,20,00,34,00,30,00,39,00,35,00,00,00,00,00
 "ForcePS0"=dword:00000001
-"IdlePowerMode"=dword:00000000
+; "IdlePowerMode"=dword:00000000
+"IdlePowerMode"=hex(7):2a,00,20,00,30,00,00,00,00,00
 "IdlePowerState"=dword:00000000
 "IoTimeoutValue"=dword:0000003c ; 000001f4/0000003c/000000ff
 "MinActivePowerState"=dword:00000000
@@ -5981,6 +5983,8 @@ Windows Registry Editor Version 5.00
 "Enabled"=dword:00000000
 "Domain Accounts"=dword:00000000
 "EnhancedAntiSpoofing"=dword:00000000
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\PassportForWork]
+"Enabled"=dword:00000000
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Notifications\Settings\Windows.Defender.SecurityCenter]
 "Enabled"=dword:00000000
 [-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\IsoEnvBroker]
@@ -6317,6 +6321,9 @@ Windows Registry Editor Version 5.00
 
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Wisp\Pen\PenFeedback]
 "TurnOnPressAndHold"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\SmartScreenSettings]
+"EnabledV9"="Off"
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CI\Config]
 "EnabledV9"=dword:00000000
@@ -6941,6 +6948,10 @@ Windows Registry Editor Version 5.00
 "SaveZoneInformation"=dword:00000001
 "ScanWithAntiVirus"=dword:00000001
 "HideZoneInfoOnProperties"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Attachments]
+"SaveZoneInformation"=dword:00000001
+"ScanWithAntiVirus"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\QualityCompat]
 "cadca5fe-87d3-4b96-b7fb-a231484277cc"=-
@@ -7686,6 +7697,8 @@ Windows Registry Editor Version 5.00
 "Debugger"="Blocked"
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\OneDrive.Sync.Service.exe]
 "Debugger"="Blocked"
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\mscopilot_proxy.exe]
+"Debugger"="Blocked"
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer\DisallowRun]
 "1"="wlms.exe"
@@ -7857,6 +7870,7 @@ Windows Registry Editor Version 5.00
 "167"="GameBarFT.exe"
 "168"="GameBarFTServer.exe"
 "169"="OneDrive.Sync.Service.exe"
+"170"="mscopilot_proxy.exe"
 
 [HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\8\3694159502]
 "EnabledState"=dword:00000001
@@ -9382,6 +9396,9 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Edge]
 "SmartScreenEnabled"="0"
 
+[HKEY_USERS\.DEFAULT\Software\Microsoft\Edge]
+"SmartScreenEnabled"=dword:00000000
+
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\M365Copilot]
 "AutoStartDelayEnabled"=dword:00000000
 "IsCompanionWindowAvailable"=dword:00000000
@@ -10768,17 +10785,17 @@ Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Control Panel\Mouse]
 "ActiveWindowTracking"=dword:00000000
 "Beep"="No"
-"DoubleClickHeight"="2" ; 2/4
-"DoubleClickSpeed"="900" ; 00000001/200/400/500/900
-"DoubleClickWidth"="2" ; 2/4
+"DoubleClickHeight"="4" ; 4, 2
+"DoubleClickSpeed"="200" ; 500, 00000001/200/400/900
+"DoubleClickWidth"="4" ; 4, 2
 "ExtendedSounds"="No"
 "LowLevelHooksTimeout"=dword:000003e8 ; 00000001/500/1000/3000/0000000a/000003e8
 "MouseAccel"="0"
 "MouseAccel_Max"="0"
 "MouseAccel_Scale"="0"
-"MouseHoverHeight"="2" ; 2/4
+"MouseHoverHeight"="4" ; 4, 2
 "MouseHoverTime"="400" ; 400, 0/8/100
-"MouseHoverWidth"="2" ; 2/4
+"MouseHoverWidth"="4" ; 4, 2
 "MouseSensitivity"="10"
 "MouseSpeed"="0"
 "MouseThreshold1"="0"
@@ -10814,17 +10831,17 @@ Windows Registry Editor Version 5.00
 [HKEY_USERS\.DEFAULT\Control Panel\Mouse]
 "ActiveWindowTracking"=dword:00000000
 "Beep"="No"
-"DoubleClickHeight"="2"
-"DoubleClickSpeed"="900"
-"DoubleClickWidth"="2"
+"DoubleClickHeight"="4"
+"DoubleClickSpeed"="200"
+"DoubleClickWidth"="4"
 "ExtendedSounds"="No"
 "LowLevelHooksTimeout"=dword:000003e8
 "MouseAccel"="0"
 "MouseAccel_Max"="0"
 "MouseAccel_Scale"="0"
-"MouseHoverHeight"="2"
+"MouseHoverHeight"="4"
 "MouseHoverTime"="400"
-"MouseHoverWidth"="2"
+"MouseHoverWidth"="4"
 "MouseSensitivity"="10"
 "MouseSpeed"="0"
 "MouseThreshold1"="0"
@@ -10856,6 +10873,12 @@ Windows Registry Editor Version 5.00
 ; "SmoothMouseXCurve"=hex:00,00,00,00,00,00,00,00,00,A0,00,00,00,00,00,00,00,40,01,00,00,00,00,00,00,80,02,00,00,00,00,00,00,00,05,00,00,00,00,00
 ; "SmoothMouseXCurve"=hex:00,00,00,00,00,00,00,00,10,00,00,00,00,00,00,00,10,00,00,00,00,00,00,00,20,00,00,00,00,00,00,00,20,00,00,00,00,00,00,00
 ; "SmoothMouseYCurve"=hex:00,00,00,00,00,00,00,00,10,00,00,00,00,00,00,00,10,00,00,00,00,00,00,00,20,00,00,00,00,00,00,00,20,00,00,00,00,00,00,00
+
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\Paint]
+"DisableGenerativeFill"=dword:00000001
+"DisableCocreator"=dword:00000001
+"DisableImageCreator"=dword:00000001
+
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Paint]
 "DisableCocreator"=dword:00000001
@@ -11389,7 +11412,7 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\lltdio]
 "Start"=dword:00000004 ; 00000002, 00000004
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\luafv]
-"Start"=dword:00000002 ; 00000002, 00000004 breaks safe mode
+"Start"=dword:00000002 ; 00000002, 00000003/00000004 breaks safe mode
 
 ; windows firewall
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\MpsSvc]
@@ -14718,7 +14741,7 @@ Windows Registry Editor Version 5.00
 "ShowEncryptCompressedColor"=dword:00000000
 "ShowFrequentList"=dword:00000000
 "ShowGallery"=dword:00000000
-"ShowInfoTip"=dword:00000001
+"ShowInfoTip"=dword:00000001 ; 00000000/00000001
 "ShowInputButton"=dword:00000000
 "ShowNotificationIcon"=dword:00000000
 "ShowRecentList"=dword:00000000
@@ -14787,6 +14810,8 @@ Windows Registry Editor Version 5.00
 "EnableSnapAssistFlyoutOnHover"=dword:00000000
 "Start_ShowFrequentList"=dword:00000000
 "Start_ShowRecentList"=dword:00000000
+"GroupByType"=dword:00000000
+"LaunchGallery"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
 "Start_SearchFromTaskbar"=dword:00000000
@@ -14872,7 +14897,7 @@ Windows Registry Editor Version 5.00
 "Win10CommercialW365ESUEligible"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\Software\Microsoft\Ole\AppCompat]
-"RequireIntegrityActivationAuthenticationLevel"=dword:00000000
+"RequireIntegrityActivationAuthenticationLevel"=dword:00000000 ; 00000000/00000001
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsInkWorkspace]
 "AllowSuggestedAppsInWindowsInkWorkspace"=dword:00000000
@@ -15469,6 +15494,14 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\documentsLibrary\Microsoft.WindowsFeedbackHub_8wekyb3d8bbwe]
 "Value"="Deny"
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\documentsLibrary\Microsoft.WindowsFeedbackHub_8wekyb3d8bbwe]
+"Value"="Deny"
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\sms]
+"Value"="Deny"
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\sms]
+"Value"="Deny"
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\graphicsCapture]
+"Value"="Deny"
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\graphicsCapture]
 "Value"="Deny"
 
 ; camera
@@ -16206,8 +16239,8 @@ Windows Registry Editor Version 5.00
 "AllowRspndrOnPublicNet"=dword:00000000 ; 00000000/00000001
 "EnableLLTDIO"=dword:00000000
 "EnableRspndr"=dword:00000000
-"ProhibitLLTDIOOnPrivateNet"=dword:00000001
-"ProhibitRspndrOnPrivateNet"=dword:00000001
+"ProhibitLLTDIOOnPrivateNet"=dword:00000000 ; 00000000/00000001
+"ProhibitRspndrOnPrivateNet"=dword:00000000 ; 00000000/00000001
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\LLTD]
 "AllowLLTDIOOnDomain"=dword:00000000
@@ -16216,8 +16249,8 @@ Windows Registry Editor Version 5.00
 "AllowRspndrOnPublicNet"=dword:00000000
 "EnableLLTDIO"=dword:00000000
 "EnableRspndr"=dword:00000000
-"ProhibitLLTDIOOnPrivateNet"=dword:00000001
-"ProhibitRspndrOnPrivateNet"=dword:00000001
+"ProhibitLLTDIOOnPrivateNet"=dword:00000000
+"ProhibitRspndrOnPrivateNet"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CPSS\UserPolicy\ImproveInkingAndTyping]
 "DefaultValue"=dword:00000000
@@ -16874,6 +16907,9 @@ Windows Registry Editor Version 5.00
 "DisableAIDataCollection"=dword:00000001
 "OnDeviceRegistryLoggingLevel"=-
 
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\AIX]
+"DisableAIX"=dword:00000001
+
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsAI]
 "SnapNowEnabled"=dword:00000000
 "DisableAIDataAnalysis"=dword:00000001
@@ -17168,7 +17204,8 @@ Windows Registry Editor Version 5.00
 "DoNotShowAgain"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\ForceHibernateDisabled]
-"Policy"=dword:00000000 ; 00000000/00000001
+"Policy"=dword:00000001 ; 00000000/00000001
+"GuardedHost"=dword:00000001 ; 00000000/00000001
 
 [HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\CredUI]
 "DisablePasswordReveal"=-
@@ -17392,6 +17429,9 @@ Windows Registry Editor Version 5.00
 "AllowMUUpdateService"=dword:00000000
 "AlwaysAutoRebootAtScheduledTime"=dword:00000000
 ; "EnableFeaturedSoftware"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows\WindowsUpdate\AU]
+"AutoInstallMinorUpdates"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\default\Update\DeferFeatureUpdatesPeriodInDays]
 "value"=- ; =-, 0000016d
@@ -17622,6 +17662,9 @@ Windows Registry Editor Version 5.00
 "DisableWebPrinting"=dword:00000001
 "CopyFilesPolicy"=dword:00000001
 "RedirectionGuardPolicy"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows NT\Printers\Wizard]
+"Downlevel Browse"=dword:00000000
 
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Network]
 "NoComputersNearMe"=dword:00000001
@@ -20507,6 +20550,9 @@ Windows Registry Editor Version 5.00
 "NoSaveSettings"=dword:00000000
 "SettingsPageVisibilityNotifications"=dword:00000000
 
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\CPSS\Store\InsightsPersonalization]
+"InsightsEnabled"=dword:00000000
+
 [HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Policies\Explorer]
 "AllowOnlineTips"=dword:00000000
 "NoWelcomeScreen"=dword:00000001
@@ -21846,6 +21892,7 @@ Windows Registry Editor Version 5.00
 "MaxTelemetryAllowed"=dword:00000000
 "MicrosoftEdgeDataOptIn"=dword:00000000
 "TelemetryProxyServer"="127.0.0.1:9"
+"EnableEventTranscript"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Policies\DataCollection]
 "AllowDesktopAnalyticsProcessing"=dword:00000000
@@ -22502,9 +22549,17 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\current\device\Bluetooth]
 "AllowAdvertising"=dword:00000000
+"AllowDiscoverableMode"=dword:00000000
+"AllowPrepairing"=dword:00000000
 
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CPSS\Store\AdvertisingInfo]
 "Value"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\default\Bluetooth\AllowDiscoverableMode]
+"value"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\default\Bluetooth\AllowPrepairing]
+"value"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\SmartGlass]
 "BluetoothPolicy"=dword:00000000
@@ -22717,6 +22772,7 @@ Windows Registry Editor Version 5.00
 "AllowTelemetry"=dword:00000000
 "ConfigureTelemetryOptInChangeNotification"=dword:00000000
 "ConfigureTelemetryOptInSettingsUx"=dword:00000000
+"AllowLocation"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\default\Device\System]
 "AllowExperimentation"=dword:00000000
@@ -23023,6 +23079,7 @@ Windows Registry Editor Version 5.00
 "TabsEnabled"=dword:00000000
 "fPasteOriginalEOL"=dword:00000001
 "fWindowsOnlyEOL"=dword:00000000 ; 00000000/00000001
+"DisableAIFeatures"=dword:00000001
 
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ImmersiveShell\StateStore]
 "ResetCache"=dword:00000001
@@ -23262,6 +23319,9 @@ Windows Registry Editor Version 5.00
 "Teclado_DelayRepeat"=dword:0000dde4
 "Wsa_D3s"=dword:00000000
 "Modify"="1" ; 0/1/2/3
+"Last Valid Delay"=dword:00000000
+"Last Valid Repeat"=dword:00000000
+"Last Valid Wait"=dword:00000000
 
 [HKEY_CURRENT_USER\Software\Microsoft\Osk]
 "BounceTime"=dword:00000000
@@ -24506,7 +24566,9 @@ Windows Registry Editor Version 5.00
 "UILockdown"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Defender\SmartScreen]
-"Enabled"="Off"
+"ConfigureAppInstallControlEnabled"=dword:00000001
+"ConfigureAppInstallControl"="Anywhere"
+"Enabled"=dword:00000000 ; Off/00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer]
 "SpecialRoamingOverrideAllowed"=dword:00000000
@@ -24629,6 +24691,10 @@ Windows Registry Editor Version 5.00
 "EnableWebContentEvaluation"=dword:00000000
 "PreventOverride"=dword:00000000
 "SmartScreenEnabled"="Off"
+
+[HKEY_USERS\.DEFAULT\Software\Microsoft\Windows\CurrentVersion\AppHost]
+"EnableWebContentEvaluation"=dword:00000000
+"PreventOverride"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\AppHost]
 "EnableWebContentEvaluation"=dword:00000000
