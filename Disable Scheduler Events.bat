@@ -343,6 +343,9 @@ schtasks /Change /TN "\Microsoft\XblGameSave\XblGameSaveTaskLogon" /Disable
 schtasks /Change /TN "\Mozilla\Firefox Default Browser Agent 308046B0AF4A39CB" /disable
 schtasks /Change /TN "\Mozilla\Firefox Background Update 308046B0AF4A39CB" /disable
 schtasks /Change /TN "\NvDriverUpdateCheckDaily_{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}" /Disable
+schtasks /Change /Tn "NvNodeLauncher" /Disable
+schtasks /Change /Tn "NvBatteryBoostCheckOnLogon" /Disable
+schtasks /Change /Tn "NvProfile" /Disable
 schtasks /Change /TN "\NVIDIA GeForce Experience SelfUpdate_{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}" /Disable
 schtasks /Change /TN "\NvTmMon_{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}" /Disable
 schtasks /Change /TN "\NvTmRep_CrashReport1_{B2FE1952-0186-46C3-BAEC-A80AA35AC5B8}" /Disable
