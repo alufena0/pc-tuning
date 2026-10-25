@@ -18,6 +18,47 @@ timeout /t 3 /nobreak >nul
 
 echo Searching and removing telemetry files...
 
+FOR /F "delims=" %%i IN ('DIR /B /S "%WINDIR%\System32\DriverStore\FileRepository\NvTelemetry64.dll" 2^>nul') DO (
+    echo Processing: %%i
+    takeown /F "%%i" /A >nul 2>&1
+    icacls "%%i" /grant administrators:F >nul 2>&1
+    attrib -s -h -r "%%i" >nul 2>&1
+    del /F /Q "%%i" >nul 2>&1
+    if exist "%%i" (
+        echo File locked, renaming: %%i
+        ren "%%i" "%%~nxi.disabled" >nul 2>&1
+    ) else (
+        echo Deleted: %%i
+    )
+)
+
+FOR /F "delims=" %%i IN ('DIR /B /S "%WINDIR%\System32\DriverStore\FileRepository\*_DisplayDriverRAS.dll" 2^>nul') DO (
+    echo Processing: %%i
+    takeown /F "%%i" /A >nul 2>&1
+    icacls "%%i" /grant administrators:F >nul 2>&1
+    attrib -s -h -r "%%i" >nul 2>&1
+    del /F /Q "%%i" >nul 2>&1
+    if exist "%%i" (
+        echo File locked, renaming: %%i
+        ren "%%i" "%%~nxi.disabled" >nul 2>&1
+    ) else (
+        echo Deleted: %%i
+    )
+)
+
+FOR /F "delims=" %%i IN ('DIR /B /S /AD "%WINDIR%\System32\DriverStore\FileRepository\NvCamera" 2^>nul') DO (
+    echo Removing directory: %%i
+    takeown /F "%%i" /A /R >nul 2>&1
+    icacls "%%i" /grant administrators:F /T >nul 2>&1
+    attrib -s -h -r "%%i" >nul 2>&1
+    RMDIR /S /Q "%%i" >nul 2>&1
+    if exist "%%i" (
+        echo Directory locked: %%i
+    ) else (
+        echo Removed: %%i
+    )
+)
+
 FOR /F "delims=" %%i IN ('DIR /B /S "%WINDIR%\System32\DriverStore\FileRepository\*NvGSTPlugin*" 2^>nul') DO (
     echo Processing: %%i
     takeown /F "%%i" /A >nul 2>&1
@@ -26,7 +67,7 @@ FOR /F "delims=" %%i IN ('DIR /B /S "%WINDIR%\System32\DriverStore\FileRepositor
     del /F /Q "%%i" >nul 2>&1
     if exist "%%i" (
         echo File locked, renaming: %%i
-        ren "%%i" "%%i.disabled" >nul 2>&1
+        ren "%%i" "%%~nxi.disabled" >nul 2>&1
     ) else (
         echo Deleted: %%i
     )
@@ -40,7 +81,7 @@ FOR /F "delims=" %%i IN ('DIR /B /S "%WINDIR%\System32\DriverStore\FileRepositor
     del /F /Q "%%i" >nul 2>&1
     if exist "%%i" (
         echo File locked, renaming: %%i
-        ren "%%i" "%%i.disabled" >nul 2>&1
+        ren "%%i" "%%~nxi.disabled" >nul 2>&1
     ) else (
         echo Deleted: %%i
     )
@@ -54,7 +95,7 @@ FOR /F "delims=" %%i IN ('DIR /B /S "%WINDIR%\System32\DriverStore\FileRepositor
     del /F /Q "%%i" >nul 2>&1
     if exist "%%i" (
         echo File locked, renaming: %%i
-        ren "%%i" "%%i.disabled" >nul 2>&1
+        ren "%%i" "%%~nxi.disabled" >nul 2>&1
     ) else (
         echo Deleted: %%i
     )
@@ -68,7 +109,7 @@ FOR /F "delims=" %%i IN ('DIR /B /S "%WINDIR%\System32\DriverStore\FileRepositor
     del /F /Q "%%i" >nul 2>&1
     if exist "%%i" (
         echo File locked, renaming: %%i
-        ren "%%i" "%%i.disabled" >nul 2>&1
+        ren "%%i" "%%~nxi.disabled" >nul 2>&1
     ) else (
         echo Deleted: %%i
     )
@@ -82,7 +123,7 @@ FOR /F "delims=" %%i IN ('DIR /B /S "%WINDIR%\System32\DriverStore\FileRepositor
     del /F /Q "%%i" >nul 2>&1
     if exist "%%i" (
         echo File locked, renaming: %%i
-        ren "%%i" "%%i.disabled" >nul 2>&1
+        ren "%%i" "%%~nxi.disabled" >nul 2>&1
     ) else (
         echo Deleted: %%i
     )
