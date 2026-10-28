@@ -13,6 +13,7 @@ sc stop BITS >NUL 2>&1
 sc stop TeamViewer >NUL 2>&1
 sc stop hitmanpro37 >NUL 2>&1
 sc stop "Steam Client Service" >NUL 2>&1
+sc stop NcbService >NUL 2>&1
 taskkill /F /T /IM ScreenClippingHost.exe >nul 2>&1
 taskkill /F /T /IM fireshot-chrome-plugin.exe >nul 2>&1
 taskkill /F /T /IM CompPkgSrv.exe >nul 2>&1
@@ -50,14 +51,18 @@ taskkill /F /T /IM EpicGamesLauncher.exe >NUL 2>&1
 taskkill /F /T /IM EpicOnlineServicesUIHelper.exe >NUL 2>&1
 taskkill /F /T /IM StoreDesktopExtension.exe >NUL 2>&1
 taskkill /F /T /IM Agent.exe >NUL 2>&1
-taskkill /F /T /IM conhost.exe >NUL 2>&1
+taskkill /F /T /IM vds.exe >NUL 2>&1
+taskkill /F /T /IM vdsldr.exe >NUL 2>&1
+"%windir%\System32\lodctr.exe" /R & "%windir%\SysWOW64\lodctr.exe" /R
 powershell -NoProfile -Command "Set-Clipboard -Value $null" >NUL 2>&1
+powershell -NoProfile -Command "Get-Process explorer -ErrorAction SilentlyContinue | ForEach-Object { $_.PriorityClass = 'BelowNormal' }" >NUL 2>&1
 rd /s /q C:\Windows\Prefetch >nul 2>&1
-taskkill /F /FI "status eq not responding" >nul 2>&1
 netsh interface ip delete arpcache >nul 2>&1
 ipconfig /flushdns >nul 2>&1
 powershell -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File "C:\Users\Administrator\Documents\Set Process Priority.ps1"
 powershell -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File "C:\Users\Administrator\Documents\Set Memory Leak Trim.ps1"
 "C:\Program Files (x86)\WinMemoryCleaner\WinMemoryCleaner.exe" /StandbyList
 start /B "" "C:\Users\Administrator\Documents\Kill Razer.bat"
+taskkill /F /FI "status eq not responding" >nul 2>&1
+taskkill /F /T /IM conhost.exe >NUL 2>&1
 exit
