@@ -1,7 +1,7 @@
 Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\PriorityControl]
-"Win32PrioritySeparation"=dword:00000026 ; 00000002, 00000016/00000018/00000024/00000026/00000028/0000002a
+"Win32PrioritySeparation"=dword:00000028 ; 00000002, 00000016/00000018/00000024/00000026/00000028/0000002a
 
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\GameBar]
 "AllowAutoGameMode"=dword:00000000 ; game mode 00000001, 00000000
@@ -951,6 +951,9 @@ Windows Registry Editor Version 5.00
 "NSIGHT_LAUNCH"=-
 "VK_LOADER_DEBUG"="none"
 "DISABLE_VK_RAY_TRACING"="1"
+"BUZZ_REDUCE_GPU_MEMORY"="false" ; false/true
+"BUZZ_FORCE_CPU"="false" ; false/true
+"BUZZ_WHISPERCPP_N_THREADS"="8"
 
 [HKEY_CURRENT_USER\Environment]
 "JAVA_HOME"="C:\\Users\\Administrator\\jdk-21.0.10+7"
@@ -965,6 +968,9 @@ Windows Registry Editor Version 5.00
 "Logging__EventLog__LogLevel__Default"="None"
 "VK_LOADER_DEBUG"="none"
 "DISABLE_VK_RAY_TRACING"="1"
+"BUZZ_REDUCE_GPU_MEMORY"="false"
+"BUZZ_FORCE_CPU"="false"
+"BUZZ_WHISPERCPP_N_THREADS"="8"
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\Profile\Events\{54533251-82be-4824-96c1-47b60b740d00}\{0AABB002-A307-447e-9B81-1D819DF6C6D0}]
 "Name"="SustainedPerf"
@@ -4635,7 +4641,7 @@ Windows Registry Editor Version 5.00
 "EnableCoreSlowdown"=dword:00000000
 "EnableDirectFlip"=dword:00000001
 "EnableFastCopyPixels"=dword:00000001
-"EnableGpuFirmware"=dword:00000001 ; 00000000, 00000001
+"EnableGpuFirmware"=dword:00000001 ; 00000002, 00000000/00000001/00000010/00000011/00000012/00000020
 "EnableHDAudioD3Cold"=dword:00000000
 "EnableIdlePowerSavings"=dword:00000000
 "EnableIndependentFlip"=dword:00000001
@@ -5072,7 +5078,7 @@ Windows Registry Editor Version 5.00
 "ForceFlipTrueImmediateMode"=dword:00000000 ; 00000000/00000001
 ; "ForceIndependentFlip"=dword:00000000 ; 00000000/00000001
 "ForcePreemptionAware"=dword:00000001
-"ForegroundPriorityBoost"=dword:00000001 ; 00000000/00000001
+"ForegroundPriorityBoost"=dword:00000000 ; 00000000/00000001
 "FrameServerAutoBoostPriority"=dword:00000000 ; 00000000/00000011
 "FrametimeThreshold"=dword:00000001
 "GPUPreemptionLevel"=dword:00000001
@@ -5503,6 +5509,7 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\NVIDIA Corporation\Global\Stereo3D]
 "StereoEnable"=dword:00000000
 "StereoDisplayMode"=dword:00000000
+"OverlayTestMode"=dword:00000005
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\NVIDIA Corporation\Global\Streamline]
 "EnableConsoleLogging"=-
@@ -6580,8 +6587,8 @@ Windows Registry Editor Version 5.00
 "FindNextRetryCount"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\NcsiUwpApp]
-; "EnableActiveProbing"=dword:00000000
-; "EnablePassivePolling"=dword:00000000
+"EnableActiveProbing"=dword:00000001
+"EnablePassivePolling"=dword:00000001
 "EnableTelemetry"=dword:00000000
 "EnableLogging"=dword:00000000
 "BackgroundTask"=dword:00000000
@@ -6600,7 +6607,7 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\NcsiUwpApp]
 "NotifyAppChange"=dword:00000000
-; "EnableActiveProbing"=dword:00000000
+"EnableActiveProbing"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Internet Explorer\Security]
 "DisableSecuritySettingsCheck"=dword:00000001 ; 00000000/00000001
@@ -10804,7 +10811,7 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\PrecisionTouchPad]
 "EnableVirtualTouchpad"=dword:00000000
-"AAPThreshold"=dword:00000000
+"AAPThreshold"=dword:00000002
 "AccelerationLevel"=dword:00000000
 "AdaptiveScrolling"=dword:00000000
 "ChicletKeyboardThreshold"=dword:00000000
@@ -11678,7 +11685,7 @@ Windows Registry Editor Version 5.00
 "DisablePCA"=dword:00000001
 "DisablePcaRecording"=dword:00000001
 "DisablePcaUI"=dword:00000001 ; 00000000/00000001
-"DisablePropPage"=-
+"DisablePropPage"=dword:00000000
 "DisableScriptedDiagnosticLogging"=dword:00000001
 "DisableUAR"=dword:00000001
 "DisableWin32AppBackup"=dword:00000001
@@ -12807,6 +12814,8 @@ Windows Registry Editor Version 5.00
 "Debugger"="Blocked"
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\NvAppMcpServer.exe]
 "Debugger"="Blocked"
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\sethc.exe]
+"Debugger"="Blocked"
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer\DisallowRun]
 "1"="wlms.exe"
@@ -12980,6 +12989,7 @@ Windows Registry Editor Version 5.00
 "169"="OneDrive.Sync.Service.exe"
 "170"="mscopilot_proxy.exe"
 "171"="NvAppMcpServer.exe"
+"172"="sethc.exe"
 
 [HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\8\3694159502]
 "EnabledState"=dword:00000001
@@ -13549,11 +13559,8 @@ Windows Registry Editor Version 5.00
 "MinimumInternetHopCount"=dword:00000008 ; 00000008, 00000001/00000014
 "PassivePollPeriod"=dword:0000000f ; 0000000f, 00000000/0000001e/00000005
 
-; [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\NetworkList\Nla]
-; "EnableActiveProbing"=dword:00000000
-
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\NetworkList\Nla]
-"EnableActiveProbing"=dword:00000000
+"EnableActiveProbing"=dword:00000001
 
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\Zones]
 "SecuritySafe"=dword:00000001
@@ -18014,6 +18021,9 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\CrossDeviceService]
 "Start"=dword:00000004
 
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\XboxService]
+"Start"=dword:00000004
+
 [HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\hidclass\Parameters]
 "DisableReportBuffering"=dword:00000001
 "DisableReportCoalescing"=dword:00000001
@@ -21365,7 +21375,7 @@ Windows Registry Editor Version 5.00
 ; "EnableXamlStartMenu"=dword:00000001
 "EncryptionContextMenu"=-
 "ExpandableTaskbar"=dword:00000000
-"ExtendedUIHoverTime"=dword:00000000 ; 00000000/00000001/00002710/00030000
+"ExtendedUIHoverTime"=dword:00000190 ; 00000000/00000001/00000190/00002710/00030000
 "FileExplorerInTouchImprovement"=dword:00000001
 "FolderContentsInfoTip"=dword:00000001
 "FriendlyTree"=dword:00000000
@@ -21519,7 +21529,7 @@ Windows Registry Editor Version 5.00
 "EnableBalloonTips"=dword:00000001
 "EnableSnapAssistFlyout"=dword:00000000
 "EnableSnapBar"=dword:00000000
-"ExtendedUIHoverTime"=dword:00000000
+"ExtendedUIHoverTime"=dword:00000190
 "FolderSizeTooltip"=dword:00000001
 "Hidden"=dword:00000001
 "JointResize"=dword:00000000
@@ -24608,7 +24618,7 @@ Windows Registry Editor Version 5.00
 "EnablePasskeySupport"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Psched]
-"MaxOutstandingSends"=dword:00000000 ; 00000000/00000001/0000ffff
+"MaxOutstandingSends"=dword:0000ffff ; 00000000/00000001/0000ffff
 "NonBestEffortLimit"=dword:00000000
 "TimerResolution"=dword:00000001 ; 00000001/0000000a
 
@@ -28706,7 +28716,7 @@ Windows Registry Editor Version 5.00
 "FontSmoothing"="2" ; 0/2
 "FontSmoothingType"=dword:00000002
 "ForegroundFlashCount"="0" ; 0/00000001
-"ForegroundLockTimeout"=dword:00000000 ; 00000000/00030d40/ffffffff
+"ForegroundLockTimeout"=dword:00030d40 ; 00000000/00030d40/ffffffff
 "GestureExecutionDelay"=dword:00000000
 "HungAppTimeout"="1000"
 "JPEGImportQuality"=dword:00000064
@@ -39439,7 +39449,7 @@ Windows Registry Editor Version 5.00
 "NoSecurityTrayItem"=dword:00000001
 "NoSMInternetSettingsWarning"=dword:00000001
 "NoStartMenuMFUprogramsList"=dword:00000001
-"NoStartMenuMorePrograms"=dword:00000000 ; =-, 00000000/00000001/00000002
+"NoStartMenuMorePrograms"=dword:00000001 ; =-, 00000000/00000001/00000002
 "NoStrCmpLogical"=dword:00000000 ; =-, 00000000/00000001
 "NoThumbnailCache"=dword:00000001
 "NoWebServices"=dword:00000001
@@ -39753,7 +39763,7 @@ Windows Registry Editor Version 5.00
 "NoStartBanner"=dword:01000000
 "NoStartMenuEjectPC"=dword:00000001
 "NoStartMenuMFUprogramsList"=dword:00000001
-"NoStartMenuMorePrograms"=dword:00000000
+"NoStartMenuMorePrograms"=dword:00000001
 "NoSystraySystemPromotion"=dword:00000001
 "NoThumbnailCache"=dword:00000001
 "NoWinKeys"=-
@@ -43046,6 +43056,7 @@ Windows Registry Editor Version 5.00
 "{ED215C26-C810-49CE-929E-31D7E83A82E9}"="Ask Copilot - NEW"
 "{f81e9010-6ea4-11ce-a7ff-00aa003ca9f6}"="Give access to"
 "{1FA0E654-C9F2-4A1F-9800-B9A75D744B00}"=""
+"{DB6BACB1-FC31-4B28-9C53-7240A4F98404}"="Ask Copilot - NEW2"
 
 [HKEY_LOCAL_MACHINE\Software\WOW6432Node\Microsoft\Windows\CurrentVersion\Shell Extensions\Blocked]
 "{596AB062-B4D2-4215-9F74-E9109B0A8153}"=""
@@ -45475,6 +45486,10 @@ Windows Registry Editor Version 5.00
 "LetAppsAccessPasskeysEnumeration_UserInControlOfTheseApps"=hex(7):00,00
 "LetAppsAccessPasskeysEnumeration_ForceAllowTheseApps"=hex(7):00,00
 "LetAppsAccessPasskeysEnumeration_ForceDenyTheseApps"=hex(7):00,00
+"LetAppsAccessForegroundText"=dword:00000002
+"LetAppsAccessForegroundText_UserInControlOfTheseApps"=hex(7):00,00
+"LetAppsAccessForegroundText_ForceAllowTheseApps"=hex(7):00,00
+"LetAppsAccessForegroundText_ForceDenyTheseApps"=hex(7):00,00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy]
 "LetAppsAccessAccountInfo"=dword:00000002
@@ -45601,6 +45616,10 @@ Windows Registry Editor Version 5.00
 "LetAppsAccessPasskeysEnumeration_UserInControlOfTheseApps"=hex(7):00,00
 "LetAppsAccessPasskeysEnumeration_ForceAllowTheseApps"=hex(7):00,00
 "LetAppsAccessPasskeysEnumeration_ForceDenyTheseApps"=hex(7):00,00
+"LetAppsAccessForegroundText"=dword:00000002
+"LetAppsAccessForegroundText_UserInControlOfTheseApps"=hex(7):00,00
+"LetAppsAccessForegroundText_ForceAllowTheseApps"=hex(7):00,00
+"LetAppsAccessForegroundText_ForceDenyTheseApps"=hex(7):00,00
 
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\TabletPC\Snipping Tool]
 "DisplaySnipInstructions"=dword:00000000 ; 00000000/00000001
@@ -47835,7 +47854,7 @@ Windows Registry Editor Version 5.00
 "ShowFrequentList"=dword:00000000
 "ShowRecentList"=dword:00000000
 "StartAllPinsList"=dword:00000001
-; "ShowAllAppsSection"=dword:00000001
+"ShowAllAppsSection"=dword:00000000 ; 00000000/00000001 NoStartMenuMorePrograms
 ; "StartMenuSize"=dword:00000001
 "HideUserInformation"=dword:00000001
 "ShowSuggestedFiles"=dword:00000000
@@ -53507,7 +53526,7 @@ Windows Registry Editor Version 5.00
 "ForegroundFlashCount"=dword:00000000
 "CaretWidth"=dword:00000001
 "DesktopLivePreviewHoverTime"=dword:00000000
-"ExtendedUIHoverTime"=dword:00000000
+"ExtendedUIHoverTime"=dword:00000190
 "ThumbnailLivePreviewHoverTime"=dword:00000001
 "NoActivateTimeout"=dword:00000001
 "AnimationDuration"=dword:00000000
@@ -53516,7 +53535,7 @@ Windows Registry Editor Version 5.00
 "ProcessCreationTimeout"=dword:00002710
 "ThreadCreationTimeout"=dword:00002710
 "AutoEndTasks"=dword:00000001
-"ForegroundLockTimeout"=dword:00000000
+"ForegroundLockTimeout"=dword:00030d40
 "HungAppTimeout"="1000"
 "LowLevelHooksTimeout"=dword:000003e8
 ; "MenuShowDelay"="0"
