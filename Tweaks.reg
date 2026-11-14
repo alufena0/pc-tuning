@@ -4527,7 +4527,7 @@ Windows Registry Editor Version 5.00
 "TurboQueue"=dword:00000001
 
 ; gpu
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0002]
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0000]
 "PP_DisableVoltageIsland"=dword:00000001
 "KMD_EnableVcnRTPM"=dword:00000000
 "KMD_EnableContextBasedPowerManagement"=dword:00000000
@@ -5916,16 +5916,16 @@ Windows Registry Editor Version 5.00
 "11"=" $I=[int32]; $M=$I.module.gettype(\"System.Runtime.Interop`Services.Mar`shal\"); $P=$I.module.gettype(\"System.Int`Ptr\"); $S=[string]"
 "12"=" $D=@(); $T=@(); $DM=[AppDomain]::CurrentDomain.\"DefineDynami`cAssembly\"(1,1).\"DefineDynami`cModule\"(1); $Z=[uintptr]::size "
 "13"=" 0..5|% {$D += $DM.\"Defin`eType\"(\"AveYo_$_\",1179913,[ValueType])}; $D += [uintptr]; 4..6|% {$D += $D[$_].\"MakeByR`efType\"()}"
-"14"=" $F='kernel','advapi','advapi', ($S,$S,$I,$I,$I,$I,$I,$S,$D[7],$D[8]), ([uintptr],$S,$I,$I,$D[9]),([uintptr],$S,$I,$I,[byte[]],$I)"
-"15"=" 0..2|% {$9=$D[0].\"DefinePInvok`eMethod\"(('CreateProcess','RegOpenKeyEx','RegSetValueEx')[$_],$F[$_]+'32',8214,1,$S,$F[$_+3],1,4)}"
+"14"=" $F='kernel','kernel','kernel','advapi','advapi', ($S,$S,$I,$I,$I,$I,$I,$S,$D[7],$D[8]),($P,$I,$I,[IntPtr].MakeByRefType()),($P,$I,$I,$P,$I,$I,$I),([uintptr],$S,$I,$I,$D[9]),([uintptr],$S,$I,$I,[byte[]],$I)"
+"15"=" 0..4|% {$9=$D[0].\"DefinePInvok`eMethod\"(('CreateProcess','InitializeProcThreadAttributeList','UpdateProcThreadAttribute','RegOpenKeyEx','RegSetValueEx')[$_],$F[$_]+'32',8214,1,$S,$F[$_+5],1,4)}"
 "16"=" $DF=($P,$I,$P),($I,$I,$I,$I,$P,$D[1]),($I,$S,$S,$S,$I,$I,$I,$I,$I,$I,$I,$I,[int16],[int16],$P,$P,$P,$P),($D[3],$P),($P,$P,$I,$I)"
 "17"=" 1..5|% {$k=$_; $n=1; $DF[$_-1]|% {$9=$D[$k].\"Defin`eField\"('f' + $n++, $_, 6)}}; 0..5|% {$T += $D[$_].\"Creat`eType\"()}"
 "18"=" 0..5|% {nv \"A$_\" ([Activator]::CreateInstance($T[$_])) -fo}; function F ($1,$2) {$T[0].\"G`etMethod\"($1).invoke(0,$2)}"
 "19"=" $TI=(whoami /groups)-like'*1-16-16384*'; $As=0; if(!$cmd) {$cmd='control';$arg='admintools'}; if ($cmd-eq'This PC'){$cmd='file:'}"
 "20"=" if (!$TI) {'TrustedInstaller','lsass','winlogon'|% {if (!$As) {$9=sc.exe start $_; $As=@(get-process -name $_ -ea 0|% {$_})[0]}}"
 "21"=" function M ($1,$2,$3) {$M.\"G`etMethod\"($1,[type[]]$2).invoke(0,$3)}; $H=@(); $Z,(4*$Z+16)|% {$H += M \"AllocHG`lobal\" $I $_}"
-"22"=" M \"WriteInt`Ptr\" ($P,$P) ($H[0],$As.Handle); $A1.f1=131072; $A1.f2=$Z; $A1.f3=$H[0]; $A2.f1=1; $A2.f2=1; $A2.f3=1; $A2.f4=1"
-"23"=" $A2.f6=$A1; $A3.f1=10*$Z+32; $A4.f1=$A3; $A4.f2=$H[1]; M \"StructureTo`Ptr\" ($D[2],$P,[boolean]) (($A2 -as $D[2]),$A4.f2,$false)"
+"22"=" M \"WriteInt`Ptr\" ($P,$P) ($H[0],$As.Handle); $A3.f1=10*$Z+32; $A4.f1=$A3; F 'InitializeProcThreadAttributeList' @($H[1],1,0,[IntPtr](4*$Z+16))"
+"23"=" F 'UpdateProcThreadAttribute' @($H[1],0,0x00020000,$H[0],$P::Size,0,0); $A4.f2=$H[1]"
 "24"=" $Run=@($null, \"powershell -win 1 -nop -c iex `$env:R; # $id\", 0, 0, 0, 0x0E080600, 0, $null, ($A4 -as $T[4]), ($A5 -as $T[5]))"
 "25"=" F 'CreateProcess' $Run; return}; $env:R=''; rp $key $id -force; $priv=[diagnostics.process].\"GetM`ember\"('SetPrivilege',42)[0]"
 "26"=" 'SeSecurityPrivilege','SeTakeOwnershipPrivilege','SeBackupPrivilege','SeRestorePrivilege' |% {$priv.Invoke($null, @(\"$_\",2))}"
@@ -7965,6 +7965,7 @@ Windows Registry Editor Version 5.00
 "AllowDomainPINLogon"=dword:00000000 ; 00000000/00000001
 "AllowCustomSSPsAPs"=dword:00000000
 "DisableCMD"=-
+"AllowNonStandardUserProfilePaths"=-
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsCopilot]
 "DisableAIDataAnalysis"=dword:00000001
@@ -8150,6 +8151,7 @@ Windows Registry Editor Version 5.00
 "RDVActiveDirectoryBackup"=dword:00000000
 "RDVDenyCrossOrg"=dword:00000000
 "UseEnhancedPin"=dword:00000000 ; 00000000/00000001
+"DisableWinRETrust"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Policies\Microsoft\FVE]
 "FDVDenyWriteAccess"=dword:00000000
@@ -9740,6 +9742,13 @@ Windows Registry Editor Version 5.00
 "RestrictAppToSystemVolume"=dword:00000001 ; =-, 00000001
 ; "MdmHosts"="^(?:[^\\/]*)\\.MANAGE[^\\.]*\\.(MICROSOFT\\.(COM|US)|MICROSOFTONLINE\\.CN)$"
 "BlockNonAdminUserInstall"=dword:00000000 ; 00000000/00000001
+"EnableMsixAllowedZones"=-
+"LocalMachine"=-
+"Intranet"=-
+"TrustedSites"=-
+"Internet"=-
+"UntrustedSites"=-
+"EnableMsixSmartScreenCheck"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\OOBE]
 "BypassNRO"=dword:00000001
@@ -12816,6 +12825,8 @@ Windows Registry Editor Version 5.00
 "Debugger"="Blocked"
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\sethc.exe]
 "Debugger"="Blocked"
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\SearchApp.exe]
+"Debugger"="Blocked"
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer\DisallowRun]
 "1"="wlms.exe"
@@ -12990,6 +13001,7 @@ Windows Registry Editor Version 5.00
 "170"="mscopilot_proxy.exe"
 "171"="NvAppMcpServer.exe"
 "172"="sethc.exe"
+"173"="SearchApp.exe"
 
 [HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\FeatureManagement\Overrides\8\3694159502]
 "EnabledState"=dword:00000001
@@ -13531,7 +13543,7 @@ Windows Registry Editor Version 5.00
 "RealTimeIsUniversal"=dword:00000000 ; 00000000/00000001
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\NetworkConnectivityAssistant]
-"PassiveMode"=dword:00000000 ; 00000000/00000001
+"PassiveMode"=dword:00000001 ; 00000000/00000001
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\default\Connectivity]
 "DisallowNetworkConnectivityActiveTests"=dword:00000000 ; 00000000/00000001
@@ -14379,7 +14391,7 @@ Windows Registry Editor Version 5.00
 "AudioProcessHighPriorityEnabled"=dword:00000000
 "AudioSandboxEnabled"=dword:00000001
 ; "AuthSchemes"="ntlm,negotiate"
-"AutoDiscardSleepingTabsEnabled"=-
+"AutoDiscardSleepingTabsEnabled"=dword:00000000
 "AutofillAddressEnabled"=dword:00000000
 "AutofillCreditCardEnabled"=dword:00000000
 "AutofillMembershipsEnabled"=dword:00000000
@@ -24928,6 +24940,13 @@ Windows Registry Editor Version 5.00
 "NtlmMinClientSec"=dword:20000000
 "BlockNtlmv1SSO"=dword:00000000 ; 00000000/00000001
 
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\NTLM\Parameters]
+"EnhancedNtlmBlocks"=dword:00000001
+"BlockDomainAccountSSO"=dword:00000002
+"BlockDomainControllerAuth"=dword:00000002
+"EnforceMachineBinding"=dword:00000000
+"BlockAll"=dword:00000000
+
 ; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4d36e96c-e325-11ce-bfc1-08002be10318}]
 ; "UpperFilters"=hex(7): ; ksthunk
 ; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4d36e967-e325-11ce-bfc1-08002be10318}]
@@ -26857,11 +26876,12 @@ Windows Registry Editor Version 5.00
 "TurnOffWindowsCopilot"=dword:00000001
 "RemoveMicrosoftCopilotApp"=dword:00000001
 "DisableAIDataCollection"=dword:00000001
-"OnDeviceRegistryLoggingLevel"=-
+"OnDeviceRegistryLoggingLevel"=dword:00000000
+"AgentConnectorAccessPolicy"=""
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsAI]
 "ConfigureAgentConnectors"=dword:00000002
-"AgentConsentDuration"=dword:00000001
+"AgentConsentDuration"=dword:00000001 ; 00000001/00002238
 "AgentConnectorMinimumPolicy"=dword:00000001
 "AllowRecallEnablement"=dword:00000000
 "AllowRecallExport"=dword:00000000
@@ -26894,7 +26914,8 @@ Windows Registry Editor Version 5.00
 "AllowCopilotRuntime"=dword:00000000
 "RemoveMicrosoftCopilotApp"=dword:00000001
 "DisableAIDataCollection"=dword:00000001
-"OnDeviceRegistryLoggingLevel"=-
+"OnDeviceRegistryLoggingLevel"=dword:00000000
+"AgentConnectorAccessPolicy"=""
 
 [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\AIX]
 "DisableAIX"=dword:00000001
@@ -29034,6 +29055,9 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows NT\Printers\DriverRanking]
 "UseWindowsReadyPrintDriverRankingGroupPolicy"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WinRE]
+"AllowTrustedOfflineScan"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\DVDNavigator]
 "DisableAutoPlay"=dword:00000001
@@ -32210,6 +32234,8 @@ Windows Registry Editor Version 5.00
 "EnableNegotiate"=dword:00000000
 "MigrateProxy"=dword:00000001 ; 00000000/00000001
 "WarnonZoneCrossing"=dword:00000000
+"ProxyEnable"=dword:00000000
+"ProxyServer"=""
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\Internet Settings]
 "CallLegacyWCMPolicies"=dword:00000000
@@ -36415,6 +36441,7 @@ Windows Registry Editor Version 5.00
 "MaxDisconnectionTime"=dword:00000000
 "DeleteTempDirsOnExit"=dword:00000001
 "PerSessionTempDir"=dword:00000000
+"EnableMicrosoftEntraIdAuthenticationEnforcement"=-
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Remote Assistance]
 "fAllowToGetHelp"=dword:00000000
@@ -43057,6 +43084,7 @@ Windows Registry Editor Version 5.00
 "{f81e9010-6ea4-11ce-a7ff-00aa003ca9f6}"="Give access to"
 "{1FA0E654-C9F2-4A1F-9800-B9A75D744B00}"=""
 "{DB6BACB1-FC31-4B28-9C53-7240A4F98404}"="Ask Copilot - NEW2"
+"{8BCF599D-B158-450F-B4C2-430932F2AF2F}"=""
 
 [HKEY_LOCAL_MACHINE\Software\WOW6432Node\Microsoft\Windows\CurrentVersion\Shell Extensions\Blocked]
 "{596AB062-B4D2-4215-9F74-E9109B0A8153}"=""
@@ -43184,7 +43212,7 @@ Windows Registry Editor Version 5.00
 "ShellFeedsTaskbarContentUpdateMode"=dword:00000001
 "ShellFeedsTaskbarOpenOnHover"=dword:00000000
 "ShellFeedsTaskbarViewMode"=dword:00000002
-; "EnShellFeedsTaskbarViewMode"=dword:00000002 ; ltsc only
+"EnShellFeedsTaskbarViewMode"=dword:00000002 ; ltsc only. fixes slow startmenu open
 
 [HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Feeds]
 "ShellFeedsTaskbarViewMode"=dword:00000002
@@ -47473,6 +47501,7 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\OnlineProviders]
 "Enabled"=dword:00000000
 
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\OneDrive]
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\OneDrive]
 "DisableFileSync"=dword:00000001
 "DisableFileSyncNGSC"=dword:00000001
@@ -58081,6 +58110,12 @@ Windows Registry Editor Version 5.00
 "WRONG_DISC"="Wrong disc in drive. Please insert the disc labelled 'Unreal Tournament 2004 Play Disc' to continue."
 "YEAR"="2004"
 
+[-HKEY_CLASSES_ROOT\CLSID\{018D5C66-4533-4307-9B53-2ad27925cc1a}]
+[-HKEY_CLASSES_ROOT\WOW6432Node\CLSID\{018D5C66-4533-4307-9B53-2ad27925cc1a}]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{018D5C66-4533-4307-9B53-2ad27925cc1a}]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\WOW6432Node\CLSID\{018D5C66-4533-4307-9B53-2ad27925cc1a}]
+[-HKEY_CURRENT_USER\Software\Classes\CLSID\{018D5C66-4533-4307-9B53-2ad27925cc1a}]
+
 [-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}]
 
 [-HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\Cache]
@@ -59401,8 +59436,6 @@ Windows Registry Editor Version 5.00
 [-HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\PushNotifications\Backup\Windows.Defender]
 
 [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\PushNotifications\Applications\Windows.Defender]
-
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{BB64F8A7-BEE7-4E1A-AB8D-7D8273F7FDB6}\DefaultIcon]
 
 [-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{F56F6FDD-AA9D-4618-A949-C1B91AF43B1A}]
 
@@ -62348,33 +62381,33 @@ Windows Registry Editor Version 5.00
 "Throttle Rate"="-1"
 "Version"="1.0"
 
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WinSock2\Parameters\NameSpace_Catalog5\Catalog_Entries\000000000001]
-"Enabled"=dword:00000000
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WinSock2\Parameters\NameSpace_Catalog5\Catalog_Entries64\000000000001]
-"Enabled"=dword:00000000
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WinSock2\Parameters\NameSpace_Catalog5\Catalog_Entries\000000000002]
-"Enabled"=dword:00000000
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WinSock2\Parameters\NameSpace_Catalog5\Catalog_Entries64\000000000002]
-"Enabled"=dword:00000000
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WinSock2\Parameters\NameSpace_Catalog5\Catalog_Entries\000000000003]
-"Enabled"=dword:00000000
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WinSock2\Parameters\NameSpace_Catalog5\Catalog_Entries64\000000000003]
-"Enabled"=dword:00000000
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WinSock2\Parameters\NameSpace_Catalog5\Catalog_Entries\000000000004]
-"Enabled"=dword:00000000
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WinSock2\Parameters\NameSpace_Catalog5\Catalog_Entries64\000000000004]
-"Enabled"=dword:00000000
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WinSock2\Parameters\NameSpace_Catalog5\Catalog_Entries\000000000005]
-"Enabled"=dword:00000000
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WinSock2\Parameters\NameSpace_Catalog5\Catalog_Entries64\000000000005]
-"Enabled"=dword:00000000
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WinSock2\Parameters\NameSpace_Catalog5\Catalog_Entries\000000000007]
-"Enabled"=dword:00000000
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WinSock2\Parameters\NameSpace_Catalog5\Catalog_Entries64\000000000007]
-"Enabled"=dword:00000000
+; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WinSock2\Parameters\NameSpace_Catalog5\Catalog_Entries\000000000001]
+; "Enabled"=dword:00000000
+; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WinSock2\Parameters\NameSpace_Catalog5\Catalog_Entries64\000000000001]
+; "Enabled"=dword:00000000
+; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WinSock2\Parameters\NameSpace_Catalog5\Catalog_Entries\000000000002]
+; "Enabled"=dword:00000000
+; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WinSock2\Parameters\NameSpace_Catalog5\Catalog_Entries64\000000000002]
+; "Enabled"=dword:00000000
+; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WinSock2\Parameters\NameSpace_Catalog5\Catalog_Entries\000000000003]
+; "Enabled"=dword:00000000
+; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WinSock2\Parameters\NameSpace_Catalog5\Catalog_Entries64\000000000003]
+; "Enabled"=dword:00000000
+; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WinSock2\Parameters\NameSpace_Catalog5\Catalog_Entries\000000000004]
+; "Enabled"=dword:00000000
+; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WinSock2\Parameters\NameSpace_Catalog5\Catalog_Entries64\000000000004]
+; "Enabled"=dword:00000000
+; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WinSock2\Parameters\NameSpace_Catalog5\Catalog_Entries\000000000005]
+; "Enabled"=dword:00000000
+; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WinSock2\Parameters\NameSpace_Catalog5\Catalog_Entries64\000000000005]
+; "Enabled"=dword:00000000
+; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WinSock2\Parameters\NameSpace_Catalog5\Catalog_Entries\000000000007]
+; "Enabled"=dword:00000000
+; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WinSock2\Parameters\NameSpace_Catalog5\Catalog_Entries64\000000000007]
+; "Enabled"=dword:00000000
 
 ; network (nic)
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\0001]
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\0000]
 "LpsEn"=dword:00000000
 "AdaptiveIFS"="0"
 "AdvancedEEE"="0"
@@ -62586,11 +62619,11 @@ Windows Registry Editor Version 5.00
 "EnableSelectiveSuspend"=dword:00000000
 "AllowIdleIrpInD3"=dword:00000000
 "*PMNetworkStandbyMode"="0"
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\0001\PowerSettings]
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}\0000\PowerSettings]
 "IdleInWorkingState"=dword:00000000
 
 ; network (nic) guid
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces\{33c7ec58-b376-4c20-a801-364f047fd309}]
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces\{413b79b3-aa39-4f41-a0a4-1403360aecac}]
 "DisableAutoNegotiation"=dword:00000000
 "EnableJumboPackets"=dword:00000000
 "EnableTCPA"=dword:00000000
@@ -62603,7 +62636,15 @@ Windows Registry Editor Version 5.00
 "TCPInitialRtt"=dword:0000012c
 
 ; realtek audio guid
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4d36e96c-e325-11ce-bfc1-08002be10318}\0000\PowerSettings]
+"ConservationIdleTime"=hex:ff,ff,ff,ff
+"IdlePowerState"=hex:00,00
+"PerformanceIdleTime"=hex:ff,ff,ff,ff
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4d36e96c-e325-11ce-bfc1-08002be10318}\0001\PowerSettings]
+"ConservationIdleTime"=hex:ff,ff,ff,ff
+"IdlePowerState"=hex:00,00
+"PerformanceIdleTime"=hex:ff,ff,ff,ff
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4d36e96c-e325-11ce-bfc1-08002be10318}\0002\PowerSettings]
 "ConservationIdleTime"=hex:ff,ff,ff,ff
 "IdlePowerState"=hex:00,00
 "PerformanceIdleTime"=hex:ff,ff,ff,ff
